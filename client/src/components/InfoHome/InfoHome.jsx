@@ -1,6 +1,11 @@
 import Card from '@mui/material'
 import React from 'react'
-import CardMedia from '@mui/material/CardMedia'
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import CompareIcon from '@mui/icons-material/Compare';
 import './InfoHome.css'
 
 const InfoHome = () => {
@@ -9,7 +14,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>Info1</h3>
+<h3><StarRateIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
@@ -19,7 +24,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>Info2</h3>
+<h3><EventNoteIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
@@ -29,7 +34,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>Info3</h3>
+<h3><DriveFileRenameOutlineIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
@@ -39,7 +44,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>info4</h3>
+<h3><PlaylistAddIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
@@ -49,7 +54,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>info5</h3>
+<h3><FavoriteIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
@@ -59,7 +64,7 @@ const InfoHome = () => {
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>
-<h3>info6</h3>
+<h3><CompareIcon/></h3>
 <p>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, beatae! Obcaecati .
 </p>
