@@ -1,5 +1,5 @@
 import React from 'react'
-import './Navbar.css';
+import './NavbarP.css';
 import imagen from '../media/LogoCompleto.png'
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import Button from '@mui/material/Button'

@@ -3,7 +3,7 @@ import './Home.css';
 import Button from '@mui/material/Button'
 import { useSelector } from 'react-redux';
 import fondo from '../media/fondo.jpg'
-import NavbarP from '../Navbar/Navbar';
+import NavbarP from '../NavbarP/NavbarP';
 import Carrousel from '../Carrousel/Carrousel';
 import Acordeon from '../Acordeon/Acordeon';
 import InfoHome from '../InfoHome/InfoHome';

@@ -8,26 +8,23 @@
 
 .cartas{
     position:relative;
-    top: 350px;
+    top: 345px;
     display: inline-flex;
     align-items: center;
     justify-content:flex-end;
     grid-column-gap: 2px;
         grid-row-gap: 2px;   
-        padding-left: 5%;
     padding-inline-start: 100px;
     background: none;
+    grid-template-columns: repeat(3, 1fr); 
 }
 
 .card{
     position: relative;
     width: 300px;
     height: 350px;
-    margin: 10px;
+    margin: 8px;
 }
-
-
-
 
 
 
@@ -57,4 +54,10 @@
 .face-back p{
     letter-spacing: 1px;
 }
+
+.face-back:hover{
+    background-color: #f44336;
+}
+
+
 
