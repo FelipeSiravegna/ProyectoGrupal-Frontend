@@ -14,7 +14,7 @@ export default function Searchbar(){
        dispatch()
        setInput('')
     }
-
+    
     return(
         <div>
             <h1>Searchbar component!</h1>
