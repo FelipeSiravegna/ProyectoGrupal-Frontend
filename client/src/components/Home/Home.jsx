@@ -7,6 +7,7 @@ import NavbarP from '../NavbarP/NavbarP';
 import Carrousel from '../Carrousel/Carrousel';
 import Acordeon from '../Acordeon/Acordeon';
 import InfoHome from '../InfoHome/InfoHome';
+import Searchbar from '../Searchbar/Searchbar';
 
 
 
@@ -17,11 +18,13 @@ const Home = () => {
   return (
     
     <div className="App">
-<img className='fondo'src={fondo} alt="" />
+      <img className='fondo'src={fondo} alt="" />
 <NavbarP/>
        <Carrousel/>
   <InfoHome/>
+  <Searchbar/>
        <Acordeon/>
+
       </div>
     );
   }

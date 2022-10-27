@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import {useDispatch} from 'react-redux'
+import Button from '@mui/material/Button'
+import Input from '@mui/material/Input';
+import './searchbar.css'
 
 export default function Searchbar(){
     const dispatch = useDispatch()
@@ -16,9 +19,14 @@ export default function Searchbar(){
     }
     
     return(
-        <div>
-            <h1>Searchbar component!</h1>
-            <label><input type="text" value={input} onChange={e => handleChange(e)} /><button onClick={handleClick}>Search</button></label>
+        <div className='search'>
+            <label>
+            <h2 className='titulo'>Search movie!</h2>
+            <Input className='buscar' placeholder='movie...' type="text" value={input} onChange={e => handleChange(e)} />
+            <Button onClick={handleClick} variant="contained" color="rojo">
+              Search
+            </Button>
+            </label>
         </div>
     )
 }
