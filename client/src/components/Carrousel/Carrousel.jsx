@@ -10,7 +10,7 @@ const Carrousel = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://media.istockphoto.com/vectors/photo-afpgetty-vector-id1063865208?s=612x612"
+              src="https://m.media-amazon.com/images/S/sonata-images-prod/SVOD_ROW_Argentina1985_v2/1030ed55-6ca2-43ce-849d-ec8fcc86d599._UR3000,600_SX1500_FMwebp_.jpeg"
               alt="First slide"
             />
             <Carousel.Caption>
@@ -20,8 +20,10 @@ const Carrousel = () => {
           </Carousel.Item>
           <Carousel.Item>
             <img
+          
+        
               className="d-block w-100"
-              src="https://i.pinimg.com/originals/21/04/5b/21045b89220b68fb67adf60f6be3fa68.jpg"
+              src="https://m.media-amazon.com/images/S/sonata-images-prod/SVOD_ROW_ThisIsUs_S5_NoLocaleOnly/c5365d24-a8d1-4c87-bb9b-2f8db713351e._UR3000,600_SX1500_FMwebp_.jpeg"
               alt="Second slide"
             />
             <Carousel.Caption>
@@ -32,7 +34,7 @@ const Carrousel = () => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://i.pinimg.com/originals/b4/00/79/b400790a7f27577bda84752c365dd67a.jpg"
+              src="https://m.media-amazon.com/images/S/sonata-images-prod/SVOD_ROW_DragonBallZBattleOfGods/3c09959f-0c18-481b-b12a-cae3f19747f7._UR3000,600_SX1500_FMwebp_.jpeg"
               alt="Third slide"
             />
             <Carousel.Caption>

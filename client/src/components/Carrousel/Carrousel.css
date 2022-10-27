@@ -1,8 +1,18 @@
 .carrousel{
- width:275px; 
- height:175px;
-align-items: center;
+ width:1356px; 
+height:175px;
 position: absolute;
-margin-top:3%;
-margin-left: 40%
 }
+
+.carousel-item{
+  align-items: center;
+    height: 300px;
+  }
+
+  .carousel-item > img {
+    height: 100%;
+  object-fit: center center
+  
+
+
+  }
