@@ -6,6 +6,7 @@ import {
   GET_SORT_POP,
   FILTER,
   PAGES,
+  RESET,
   GET_ALL_GENRES
 } from "../actions";
 
