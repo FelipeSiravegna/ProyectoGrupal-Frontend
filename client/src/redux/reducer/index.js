@@ -12,7 +12,7 @@ import {
 const initialState = {
   movies: [],
   detail: {},
-  backgames: [],
+  backvideos: [],
   page: 1,
   genre: []
 };
@@ -23,7 +23,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         movies: payload,
-        backgames: payload,
+        backvideos: payload,
       };
     case GET_ALL_GENRES:
       return {
@@ -56,7 +56,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case RESET:
       return {
         ...state,
-        games: state.backgames,
+        games: state.backvideos,
       };
       case PAGES:
         return{
