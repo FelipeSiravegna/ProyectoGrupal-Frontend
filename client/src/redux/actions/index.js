@@ -22,14 +22,17 @@ export const getAllMovies= ()=>{
 }
 
 export const getMovieDetail= (id)=>{
-    return async(dispatch)=>{
-        let data = await axios.get('')
-       return dispatch={
-            type: GET_MOVIE_DETAIL,
-            payload: data
+        return async function(dispatch) {
+            const detalle = await axios.get(`http://localhost:3001/detail/${id}`)
+                dispatch ({
+                    type: GET_MOVIE_DETAIL,
+                    payload: detalle.data
+                })
+                
         }
     }
 }
+
 export const getAllGenres= ()=>{
     return async(dispatch)=>{
      let json = await axios.get('')

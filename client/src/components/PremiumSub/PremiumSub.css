@@ -1,0 +1,27 @@
+.fondo2{
+ 
+    width: 100%;
+    height: 400%;
+    position: absolute;
+top: -1%;
+
+}
+
+.fondo3{
+ 
+    width: 60%;
+    height: 90%;
+    left: 40%;
+    border-radius: 100%;
+    position: absolute;
+top: 10%;
+box-shadow: 3px 3px red, -3em 0 1em rgb(38, 40, 197);
+opacity: 30%;
+}
+
+
+.contenidoPremium{
+    position: relative;
+    padding-top: 30%;
+    padding-left: 15%
+}

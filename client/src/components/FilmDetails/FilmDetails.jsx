@@ -1,33 +1,31 @@
-import React from 'react'
 import './FilmDetails.css'
 import { useDispatch, useSelector } from "react-redux";
-//import { traerFilmDetalle} from '../../redux/actions';
+import { useEffect } from 'react';
+import { getMovieDetail} from '../../redux/actions';
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import fondoDetalle from '../media/fondoDetalle.jpg'
 import NavbarP from '../NavbarP/NavbarP';
 import StarHalf from '@mui/icons-material/StarHalf';
-import CommentIcon from '@mui/icons-material/Comment';
 import QueueIcon from '@mui/icons-material/Queue';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Button from '@mui/material/Button'
-
+import GroupsIcon from '@mui/icons-material/Groups';
+import Logo from '../media/Logo.png'
 const FilmDetails = () => {
-
-  
 
 
     const dispatch = useDispatch();
     const params = useParams();
     const { idFilm } = params
-    const FilmDetails = useSelector(state => state.filmDetalle)
+    const filmDetails = useSelector(state => state.detail)
     
-    
-    //useEffect(() => {
-    //  dispatch(traerFilmDetalle(idFilm))
-    //}, [dispatch, idFilm])
+    useEffect(() => {
+      dispatch(getMovieDetail(idFilm))
+    }, [dispatch, idFilm])
+
+    console.log(filmDetails)
 
   return (
       <div>
@@ -36,48 +34,53 @@ const FilmDetails = () => {
       <div className='Contenedor'> 
 
       <div className='nombre'>
-        <ul><h1> Cadena Perpetua</h1></ul>
+        <ul><h1>{filmDetails.name}</h1></ul>
       </div>
 
       <div className='foto'> 
-      <img className='ImagenPelicula' src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/dc1fX265fZIIY5Hab8I7CdETyJy.jpg" alt="" />
+      <img className='ImagenPelicula' src={filmDetails.image ? filmDetails.image : Logo} alt="" />
+
+
+
 <p className='emojis'></p>
-
-
-      <h className='ratings'></h>
-        <StarHalf color='amarillo' fontSize="large"/> <p className='valores'>25.5</p>
-
-      <h className='totalComentarios'></h>
-        <CommentIcon color='azul' fontSize="large"/> <p  className='valores'>433</p>
-
-      <h className='totalPlaylist'></h>
-        <QueueIcon color='gris' fontSize="large"/> <p  className='valores'>449</p>
       
+        <StarHalf color='amarillo' fontSize="large" className='icono' /> 
+        <p className='valores'>{filmDetails.rating ? filmDetails.rating : 0}</p>
+
+      
+        <GroupsIcon color='azul' sx={{ fontSize: 40 }} className='icono2' /> 
+        <p  className='valores2'>{filmDetails.popularity ? filmDetails.popularity : 0}</p>
+
+      
+        <QueueIcon color='gris' sx={{ fontSize: 30 }}  className='icono3'/> 
+        <p  className='valores3'>{filmDetails.save ? filmDetails.save : 0}</p>
+    
       
       </div>
 
       <div className='descripcion'>
-        <p> Lorem ipsum dolor sit amet consectetur lore, adipisicing elit. Delectus alias, reiciendis aliquid sunt quas tempora? Eaque, ex quibusdam reiciendis vero, distinctio nesciunt earum qui optio veritatis voluptatem consequatur magni. Amet?
-           </p>
+        <p> {filmDetails.description} </p>
       </div>
 
     <div className='Tab'>
 
       <Tabs  className='tabs' id="controlled-tab-example">
       <Tab eventKey="contact" title="GENRES">
-       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus nisi vitae repellendus doloremque quo. Tempora, eveniet ad consequuntur minima eligendi, quidem sapiente minus iste labore inventore aspernatur! Quisquam, veritatis iusto.
+       {filmDetails.genres}
       </Tab>
       <Tab eventKey="profile" title="DETAILS">
-       Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ipsum quidem placeat voluptatibus fugiat neque nulla, minima velit assumenda quasi doloremque dicta magnam quam? Minima sequi esse harum in tempore?
+      <li>Language: {filmDetails.language}</li>
+      <li>Duration: {filmDetails.duration}</li>
+
       </Tab>
       <Tab eventKey="home" title="CAST" className='cast'>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam dolore fugit delectus cum possimus ipsum, ullam ea doloremque repudiandae rerum libero mollitia eius, facilis eum magni consectetur nisi exercitationem aperiam!
+      {filmDetails.fullCast}
       </Tab>
     </Tabs>
 
 <div className='trailer'>
     
- <a href="https://youtube.com/"> 
+ <a href={filmDetails.trailer}> 
  <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large"/> watch movie preview</Button></a>
 </div>
 
@@ -85,7 +88,7 @@ const FilmDetails = () => {
    </div>
 
    <div className='comentarios'>
-    <label> REVIEWS</label>
+    <label>REVIEWS</label>
    </div>
  </div>
   )
