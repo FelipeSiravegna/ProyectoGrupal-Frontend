@@ -36,7 +36,16 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-
+      case RESET:
+        return {
+          ...state,
+          games: state.backvideos,
+        };
+        case PAGES:
+          return{
+          ...state,
+          page: action.payload
+          }
     default:
       return state;
   }
