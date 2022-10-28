@@ -4,25 +4,13 @@ color: white;
 }
 
 .buscar{
-    background-color: rgb(163, 162, 162);
+    background-color: white;
     position: relative;
-    height: 50%;
-    width: 120%;
-    border-radius: 10%;
-}
-
-.botonBusqueda{
-    position: relative;
-left: 122%;
-top: -52%;
 }
 
 .search{
-    display: inline-flex;
-    margin-top: 1%;
-    padding-left: 35%;
-}
-
-.buscar :focus{
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 28%;
+    text-align: center;
 }

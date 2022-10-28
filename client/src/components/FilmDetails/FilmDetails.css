@@ -45,7 +45,18 @@ top: 150px;
 
 
 
+.valores{
+    max-width: 40px;
 
+    display: inline-flex;
+    align-items: center;
+    justify-content:flex-end;
+    margin-bottom: 20px;
+        padding: 0px 10px;
+        text-align: center;
+        color: aliceblue;
+        
+}
 
 .Tab{
     position: relative;
@@ -79,7 +90,7 @@ top: 150px;
 }
 
 .comentarios{
-    margin-top: 20%;
+    margin-top: 5%;
     position: relative;
     display: block;
     background: rgb(3, 35, 54);
@@ -101,50 +112,4 @@ top: 150px;
 
  
     left: 40%
-}
-
-.icono{
-    margin-top: -10%;  
-    margin-left: 1%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icono2{
-    margin-left: 40%;
-    margin-top: -62%; 
-}
-
-.icono3{
-    margin-left: 80%;
-    margin-top: -112%; 
-
-}
-
-.valores{
-    position: relative;
-        text-align: center;
-        color: aliceblue;
-        max-width: 40px;
-        top: -10px
-}
-
-.valores2{
-        color: aliceblue;
-        max-width: 40px;
-        padding-left: 40%;
-        position: relative;
-        top: -73px;
-        text-align: center;
-
-}
-
-.valores3{
-    color: aliceblue;
-        max-width: 40px;
-        padding-left: 80%;
-        position: relative;
-        top: -136px;
-        text-align: center;
 }

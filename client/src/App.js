@@ -1,24 +1,20 @@
-import './App.css';
 import React, { Component } from 'react';
+import './App.css';
 import Carrousel from './components/Carrousel/Carrousel';
 import FilmDetails from './components/FilmDetails/FilmDetails';
 import Home from './components/Home/Home';
-import PremiumSub from './components/PremiumSub/PremiumSub';
+import InfoHome from './components/InfoHome/InfoHome';
 
 
 
 //<Carrousel/>
-//<Home/>
-//<PremiumSub/>
-//<Home/>
+//<FilmDetails/>
+  
+  const App = () => {
+    return (  
+      <div>
+<Home/>
 
-const App = () => {
-  return (  
-    <div>
-     
-        <FilmDetails/>
-
-     
       </div>
     );
   }

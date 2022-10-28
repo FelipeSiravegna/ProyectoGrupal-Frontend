@@ -18,7 +18,6 @@ const initialState = {
   genre: []
 };
 
-
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case GET_ALL_MOVIES:
@@ -33,11 +32,9 @@ export default function reducer(state = initialState, { type, payload }) {
         genre: payload
       };
     case GET_MOVIE_DETAIL:
-      console.log(detail)
       return {
         ...state,
         detail: payload,
-        
       };
     case ADD_MOVIE:
       return {
