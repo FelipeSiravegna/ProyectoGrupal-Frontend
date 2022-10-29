@@ -33,7 +33,6 @@ export default function reducer(state = initialState, { type, payload }) {
         genre: payload
       };
     case GET_MOVIE_DETAIL:
-      console.log(detail)
       return {
         ...state,
         detail: payload,
