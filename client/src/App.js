@@ -4,11 +4,14 @@ import Carrousel from './components/Carrousel/Carrousel';
 import FilmDetails from './components/FilmDetails/FilmDetails';
 import Home from './components/Home/Home';
 import PremiumSub from './components/PremiumSub/PremiumSub';
+
 import { Route, Routes } from 'react-router-dom';
 
 
 
+
 //<PremiumSub/>
+
 
 
 const App = () => {
@@ -21,7 +24,7 @@ const App = () => {
         </Routes>
         
         
-    
+ 
       </div>
     );
   }

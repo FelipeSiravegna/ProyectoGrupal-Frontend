@@ -7,13 +7,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Login from '../Login/Login'
+import Profile from '../Login/Profile'
 
 const NavbarP = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   return (
     <div className='navv'>
@@ -22,10 +23,9 @@ const NavbarP = () => {
     <Container>
       <Navbar.Brand><img src={imagen} alt="" className='imagen' /></Navbar.Brand>
         <Nav>
+          <Profile/>
           <Nav.Link>
-          <Button variant="text" color="rojo" className="botones" onClick={handleShow}>
-              Login
-            </Button>
+          <Login/>
           </Nav.Link>
           <Nav.Link>
             <Button variant="contained" color="rojo" className="botones">
