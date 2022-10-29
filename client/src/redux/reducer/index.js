@@ -4,6 +4,7 @@ import {
   ADD_MOVIE,
   GET_SORT,
   FILTER,
+  
 } from "../actions";
 
 const initialState = {
@@ -22,7 +23,6 @@ export default function reducer(state = initialState, { type, payload }) {
         movies: payload,
       };
     case GET_MOVIE_DETAIL:
-      console.log(detail)
       return {
         ...state,
         detail: payload,
@@ -36,7 +36,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-      case RESET:
+      /*case RESET:
         return {
           ...state,
           games: state.backvideos,
@@ -45,7 +45,7 @@ export default function reducer(state = initialState, { type, payload }) {
           return{
           ...state,
           page: action.payload
-          }
+          }*/
     default:
       return state;
   }

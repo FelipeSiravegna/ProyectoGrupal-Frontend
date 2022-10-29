@@ -15,18 +15,19 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import Logo from '../media/Logo.png'
 const FilmDetails = () => {
 
-
-    const dispatch = useDispatch();
+   const dispatch = useDispatch();
     const params = useParams();
     const { idFilm } = params
     const filmDetails = useSelector(state => state.detail)
-    
+   
+
     useEffect(() => {
       dispatch(getMovieDetail(idFilm))
     }, [dispatch, idFilm])
 
-    console.log(filmDetails)
 
+ console.log(filmDetails.languaje)
+    
   return (
       <div>
       <img className='fondo'src={fondoDetalle} alt="" />
@@ -53,7 +54,7 @@ const FilmDetails = () => {
 
       
         <QueueIcon color='gris' sx={{ fontSize: 30 }}  className='icono3'/> 
-        <p  className='valores3'>{filmDetails.save ? filmDetails.save : 0}</p>
+        <p  className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
     
       
       </div>
@@ -68,13 +69,20 @@ const FilmDetails = () => {
       <Tab eventKey="contact" title="GENRES">
        {filmDetails.genres}
       </Tab>
-      <Tab eventKey="profile" title="DETAILS">
-      <li>Language: {filmDetails.language}</li>
-      <li>Duration: {filmDetails.duration}</li>
+      <Tab eventKey="profile" title="DETAILS" className='cast'>
+      <li>LANGUAJE: <br></br>{filmDetails.language}</li>
+      <br></br>
+      <li>DURATION: <br></br>{filmDetails.duration}</li>
+      <br></br>
+      <li>RELEASED DATE: <br></br>{filmDetails.releaseDate}</li>
 
       </Tab>
       <Tab eventKey="home" title="CAST" className='cast'>
-      {filmDetails.fullCast}
+      <li>DIRECTOR: <br></br>{filmDetails.director}.</li>
+      <br></br>
+      <li>CAST: <br></br>{filmDetails.cast}.</li>
+      <br></br> 
+      <li>PRODUCERS: <br></br>{filmDetails.producer}.</li>
       </Tab>
     </Tabs>
 
