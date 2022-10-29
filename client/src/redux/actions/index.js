@@ -94,4 +94,7 @@ export const pages=(payload)=>{
             payload
         })
     }
+
+
 }
+

@@ -57,6 +57,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+
     case RESET:
       return {
         ...state,
