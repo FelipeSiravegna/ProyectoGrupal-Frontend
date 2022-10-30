@@ -21,6 +21,7 @@ export default function Searchbar(){
     return(
         <div className='search'>
             <label>
+            <h2 className='titulo'>Search movie!</h2>
             <Input className='buscar' placeholder='movie...' type="text" value={input} onChange={e => handleChange(e)} />
             <Button onClick={handleClick} className='botonBusqueda' variant="contained" color="rojo">
               Search
