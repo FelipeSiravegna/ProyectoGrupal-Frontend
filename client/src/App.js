@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import Carrousel from './components/Carrousel/Carrousel';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
 import InfoHome from './components/InfoHome/InfoHome';
 import Navbar from './components/Navbar/Navbar';
+import Form from './components/Form/Form'
+import BasicPagination from './components/Pagination/Pagination'
 
 
 //<Carrousel/>
@@ -12,7 +14,10 @@ import Navbar from './components/Navbar/Navbar';
     return (  
       <div>
       
-<Home/>
+{/* <Home/> */}
+
+<Form/>
+<BasicPagination />
 
       </div>
     );
