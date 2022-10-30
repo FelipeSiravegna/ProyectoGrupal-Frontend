@@ -8,20 +8,14 @@ const FilmCard = ({name, img, id, rating }) => {
         
             
     <div className='Cardback'>
-<Link to={`/details/${id}`}>
-        <div className="Nombre">
-            <span >{name}</span>
-        </div>
+<Link to={`/filmdetails/${id}`}>
+
        
         <div className='Imagen'>
-            <img width={275} height={175} src={img} alt={"IMG NOT FOUND"}/>
+            <img width={190} height={230} src={img} alt={"IMG NOT FOUND"}/>
         </div>
 
-<br/>
-        <div className='Rating'>
-            <p>⭐{rating}</p>
-                  
-        </div>
+
         </Link>
 
 
