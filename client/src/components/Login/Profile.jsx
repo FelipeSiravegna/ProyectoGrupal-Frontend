@@ -5,7 +5,7 @@ import './Login.css'
 export default function Profile(){
 
     const {isAuthenticated,user} = useAuth0()
-
+    console.log(user)
     return(
             <div>
                 {
