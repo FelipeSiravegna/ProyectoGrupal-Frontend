@@ -4,6 +4,8 @@ export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
 export const ADD_MOVIE ='ADD_MOVIE';
 export const GET_SORT = 'GET_SORT';
 export const FILTER = 'FILTER';
+export const PAGES = 'PAGES'
+export const RESET = 'RESET'
 
 
 
@@ -60,21 +62,27 @@ export const filter = (payload) =>{
     }
 }
 
-/*export const reset= ()=>{
+export const pages=(name)=>{
+    return async function (dispatch){
+        try {
+            let result = await axios.get(`localhost:3001/movies/search/?name=ad${name}`);
+            return dispatch({
+                type: PAGES,
+                payload: result.data
+            })
+        } catch(err){
+            console.log(err)
+            console.log(payload)
+        }
+    }
+}
+
+export const reset= ()=>{
     return (dispatch)=>{
         return dispatch({
             type: RESET,
             
         })
     }
-}*/
-
-export const pages=(payload)=>{
-    return async(dispatch)=>{
-        let json = await axios.get('')
-        return dispatch({
-            type: PAGES,
-            payload
-        })
-    }
 }
+
