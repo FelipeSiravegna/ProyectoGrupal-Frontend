@@ -1,3 +1,4 @@
+
 import './App.css';
 import React, { Component } from 'react';
 import Carrousel from './components/Carrousel/Carrousel';
@@ -8,21 +9,19 @@ import Login from './components/Login/Login'
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import Profile from './components/Login/Profile';
+import { Route, Routes } from 'react-router-dom';
 
 
-//<Carrousel/>
-//<Home/>
-//<PremiumSub/>
-//<Login/>
-//<FilmDetails/>
-//<NavbarP/>
-//<Home/>
 
 const App = () => {
   return (  
-    <div>
-      <UserProfile/>
-     
+    <div className='App'>
+
+     <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
+        </Routes>
+       
       </div>
     );
   }

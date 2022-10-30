@@ -1,17 +1,12 @@
 .Cardback{
     min-height:200px;
-    width:260px;
-    margin:40px 10px;
-    padding:1rem;
-    cursor:pointer;
-    background-color:#F4FCD9;
-    border: 1px solid white;
-    border-radius: 15px;
+    width:192px;
+    height: 250px;
+    margin:0px 10px;
   }
 
   .Cardback:hover{
-    margin-top:-10px;
-    box-shadow:0 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow:0 0 4px 6px rgba(214, 1, 1, 0.3);
   }
 
 .Rating {
@@ -22,3 +17,7 @@
  display: flex;
 }
 
+.Imagen{
+  border: 1px solid white;
+
+}
