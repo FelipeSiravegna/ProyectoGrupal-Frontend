@@ -1,0 +1,14 @@
+.conteiner{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.seguidores{
+    margin-left: 50px;
+}
+
+.seguidores{
+    text-align: center;
+}

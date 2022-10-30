@@ -17,9 +17,13 @@ export default function Paginado() {
   }
 
   return (
+
     <Stack spacing={2}>
       <Pagination count={10} color="rojo" sx={{button:{color: '#ffffff'}}} onChange={handleChange}/>
     </Stack>
+
+
+
   );
 }
 
