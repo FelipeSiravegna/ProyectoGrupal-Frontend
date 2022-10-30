@@ -16,23 +16,25 @@ import Paginado from '../Pagination/Pagination';
 import { pages } from '../../redux/actions';
 
 const Home = () => {
-
+ 
   let peliculas = useSelector(state => (state.movies)) 
       const dispatch = useDispatch()
-  
 
       function onClick(e){
           e.preventDefault()
           dispatch(getAllMovies())
         }
-
+      
         useEffect(() => {
           if(!peliculas.length){
           dispatch(getAllMovies())
           }
       }, [dispatch, peliculas.length])
 
+
 //<Paginado/>
+
+
   return (
     
     <div className="App">

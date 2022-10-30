@@ -5,9 +5,11 @@ import {
   GET_SORT_ASC,
   GET_SORT_POP,
   FILTER,
+
   PAGES,
   RESET,
   GET_ALL_GENRES
+
 } from "../actions";
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   backvideos: [],
   page: 1,
   genre: []
+
 };
 
 
@@ -25,15 +28,16 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         movies: payload,
+
         backvideos: payload,
       };
     case GET_ALL_GENRES:
       return {
         ...state,
         genre: payload
+
       };
     case GET_MOVIE_DETAIL:
-      console.log(detail)
       return {
         ...state,
         detail: payload,
@@ -57,6 +61,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+
     case RESET:
       return {
         ...state,
@@ -67,6 +72,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         page: action.payload
         }
+
 
     default:
       return state;

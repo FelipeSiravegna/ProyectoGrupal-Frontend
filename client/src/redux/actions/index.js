@@ -11,6 +11,7 @@ export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 
 
 
+
 export const getAllMovies= ()=>{
     return async function (dispatch) {
         await axios.get('http://localhost:3001/movies/popular/')
@@ -82,6 +83,21 @@ export const filter = (payload) =>{
     }
 }
 
+export const pages=(name)=>{
+    return async function (dispatch){
+        try {
+            let result = await axios.get(`localhost:3001/movies/search/?name=ad${name}`);
+            return dispatch({
+                type: PAGES,
+                payload: result.data
+            })
+        } catch(err){
+            console.log(err)
+            console.log(payload)
+        }
+    }
+}
+
 export const reset= ()=>{
     return (dispatch)=>{
         return dispatch({
@@ -89,7 +105,8 @@ export const reset= ()=>{
             
         })
     }
-}
+
+}*/
 
 export const pages=(payload)=>{
     return async(dispatch)=>{
@@ -99,4 +116,7 @@ export const pages=(payload)=>{
             payload
         })
     }
+
+
 }
+

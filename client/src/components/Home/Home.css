@@ -6,3 +6,8 @@
 top: -1%;
 
 }
+
+.cards{
+    position: absolute;
+    top: 80%
+}

@@ -1,4 +1,4 @@
-[
+const arreglo = [
     {
         "id": 238,
         "name": "El padrino",
@@ -140,3 +140,5 @@
         "rating": 8.5
     }
 ]
+
+export default arreglo

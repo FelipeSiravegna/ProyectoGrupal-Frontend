@@ -2,25 +2,26 @@ import { Link } from 'react-router-dom'
 import './FilmCard.css'
 
 
+
 const FilmCard = ({name, img, id, rating }) => {
+ return (      
 
- return (
-        
-            
-    <div className='Cardback'>
 <Link to={`/filmdetails/${id}`}>
+    <div className='Cardback'>
 
+
+
+        
        
         <div className='Imagen'>
-            <img width={190} height={230} src={img} alt={"IMG NOT FOUND"}/>
+            <img width={190} height={240} src={img} alt={"IMG NOT FOUND"}/>
         </div>
 
-
-        </Link>
 
 
 
     </div>
+        </Link>
         
   )
 }
