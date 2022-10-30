@@ -9,15 +9,16 @@ export default function Login(){
     return(
           <div>
              {
-              !isAuthenticated &&
+              !isAuthenticated ?
             <Button variant="text" color="rojo" className="botones" onClick={() => loginWithRedirect()}>
               Login
             </Button>
-             }
-
+            :
             <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
             Logout
           </Button>
+             }
+
           </div>
     )
 }

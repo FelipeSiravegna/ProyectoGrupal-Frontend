@@ -23,7 +23,9 @@ const NavbarP = () => {
     <Container>
       <Navbar.Brand><img src={imagen} alt="" className='imagen' /></Navbar.Brand>
         <Nav>
+          <Nav.Link href='/UserProfile'>
           <Profile/>
+          </Nav.Link>
           <Nav.Link>
           <Login/>
           </Nav.Link>
