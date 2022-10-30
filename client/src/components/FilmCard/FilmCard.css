@@ -1,18 +1,15 @@
 .Cardback{
-    min-height:200px;
-    width:192px;
-    height: 250px;
-    margin:0px 10px;
-  }
+  min-height:200px;
+  width:192px;
+  height: 250px;
+  margin:0px 10px;
+
+}
 
 
-
-.Rating {
-    width: 100px;
-  height: max-content;
-  font-size: 13px;
- margin-left: 200px;
- display: flex;
+.Imagen{
+border: 1px solid white;
+position: relative;
 }
 
 .Imagen{

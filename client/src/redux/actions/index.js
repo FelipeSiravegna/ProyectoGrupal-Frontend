@@ -38,6 +38,7 @@ export const getMovieDetail= (id)=>{
         }
     }
 
+
 export const getAllGenres= ()=>{
     return async(dispatch)=>{
      let json = await axios.get('')

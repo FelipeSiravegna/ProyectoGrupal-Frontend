@@ -12,6 +12,7 @@ import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import arreglo from '../FilmCard/FilmCard.js'
 import Paginado from '../Pagination/Pagination';
+
 import { pages } from '../../redux/actions';
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
 
 
 //<Paginado/>
+
 
   return (
     
@@ -56,7 +58,6 @@ const Home = () => {
             })
         }
             </div >
-
 
 
       </div>

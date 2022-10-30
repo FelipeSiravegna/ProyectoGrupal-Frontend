@@ -10,13 +10,13 @@ const FilmCard = ({name, img, id, rating }) => {
     <div className='Cardback'>
 
 
+
         
        
         <div className='Imagen'>
             <img width={190} height={240} src={img} alt={"IMG NOT FOUND"}/>
         </div>
 
-        
 
 
 
