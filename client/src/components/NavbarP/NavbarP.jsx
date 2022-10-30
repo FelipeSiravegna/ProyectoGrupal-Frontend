@@ -38,11 +38,15 @@ const NavbarP = () => {
 
 
       <div className='VentanaLogin'>
-<Modal show={show} onHide={handleClose}>
+
+          
+        <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+
+
         <div className='formLogin'>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail" >
