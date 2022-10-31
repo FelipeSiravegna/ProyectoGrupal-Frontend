@@ -18,8 +18,7 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile' element={<UserProfile/>}/>
         </Routes>
-       
-      </div>
+    
     );
   }
 

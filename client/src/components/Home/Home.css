@@ -8,6 +8,19 @@ top: -1%;
 }
 
 .cards{
-    position: absolute;
-    top: 80%
-}
+    margin-top: 61%;
+    margin-left: 5%;
+        box-sizing: content-box;
+        color: white;  
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;   
+        padding-left: 5%;
+        padding-bottom: 150px;
+        font-size: 32px;
+        height: 10%;
+        position: absolute;
+          top: 110px;
+}        

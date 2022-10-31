@@ -106,17 +106,6 @@ export const reset= ()=>{
         })
     }
 
-}*/
-
-export const pages=(payload)=>{
-    return async(dispatch)=>{
-        let json = await axios.get('')
-        return dispatch({
-            type: PAGES,
-            payload
-        })
-    }
-
-
 }
+
 
