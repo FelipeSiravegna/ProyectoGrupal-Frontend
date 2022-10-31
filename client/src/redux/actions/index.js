@@ -41,7 +41,7 @@ export const getAllGenres= ()=>{
 }
 export const addMovie= (payload)=>{
     return async(dispatch)=>{
-        let json = await axios.post('')
+        let json = await axios.post('http://localhost:3001/createMovie, payload')
            return json
         }
     }
