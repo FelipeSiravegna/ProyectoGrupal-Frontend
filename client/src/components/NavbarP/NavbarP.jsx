@@ -9,10 +9,11 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Login from '../Login/Login'
 import Profile from '../Login/Profile'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const NavbarP = () => {
   const [show, setShow] = useState(false);
-
+  const {isAuthenticated} = useAuth0()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -29,11 +30,14 @@ const NavbarP = () => {
           <Nav.Link>
           <Login/>
           </Nav.Link>
+            {
+              !isAuthenticated &&
           <Nav.Link>
             <Button variant="contained" color="rojo" className="botones">
               Register
             </Button>
           </Nav.Link>
+            }
         </Nav>
     </Container>
   </Navbar>
