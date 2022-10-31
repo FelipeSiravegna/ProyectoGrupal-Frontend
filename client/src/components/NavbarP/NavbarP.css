@@ -8,13 +8,22 @@
   }
 
 
-  .botones{
-    left: 50%;
-    margin-top: -25%;
-    margin-left: -15%;
+  .botones2{
+    left: 40%;
     position:relative;
-    margin-bottom: -5%;
+    
   }
 
+  .botonesDiv{
+    padding-top: 1%;
+    position: relative;
+    left: 16%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+        grid-column-gap: 15px;
+        
+  }
+
+  
  
   

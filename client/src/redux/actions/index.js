@@ -86,7 +86,7 @@ export const filter = (payload) =>{
 export const pages=(name)=>{
     return async function (dispatch){
         try {
-            let result = await axios.get(`localhost:3001/movies/search/?name=ad${name}`);
+            let result = await axios.get(`localhost:3001/movies/search/?name=${name}`);
             return dispatch({
                 type: PAGES,
                 payload: result.data
@@ -106,17 +106,6 @@ export const reset= ()=>{
         })
     }
 
-}*/
-
-export const pages=(payload)=>{
-    return async(dispatch)=>{
-        let json = await axios.get('')
-        return dispatch({
-            type: PAGES,
-            payload
-        })
-    }
-
-
 }
+
 

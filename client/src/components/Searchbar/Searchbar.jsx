@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import Button from '@mui/material/Button'
 import Input from '@mui/material/Input';
 import './searchbar.css'
+import { pages } from '../../redux/actions';
 
 export default function Searchbar(){
     const dispatch = useDispatch()
@@ -14,14 +15,13 @@ export default function Searchbar(){
      }
     
     function handleClick(){
-       dispatch()
+       dispatch(pages())
        setInput('')
     }
     
     return(
         <div className='search'>
             <label>
-            <h2 className='titulo'>Search movie!</h2>
             <Input className='buscar' placeholder='movie...' type="text" value={input} onChange={e => handleChange(e)} />
             <Button onClick={handleClick} className='botonBusqueda' variant="contained" color="rojo">
               Search
