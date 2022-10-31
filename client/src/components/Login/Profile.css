@@ -1,3 +1,9 @@
+
+.lafoto{
+    position: absolute;
+    left: 95%;
+    top: 13%
+
 .picture{
     position: absolute;
     left:95%;
@@ -11,4 +17,5 @@
     position: absolute;
     left:94%;
     top: 0%
+
 }

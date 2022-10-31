@@ -31,6 +31,7 @@ const NavbarP = () => {
           <Login/>
           </Nav.Link>
 
+
             {
               !isAuthenticated &&
           <Nav.Link>
@@ -39,6 +40,7 @@ const NavbarP = () => {
             </Button>
           </Nav.Link>
             }
+
         </Nav>
     </Container>
   </Navbar>
