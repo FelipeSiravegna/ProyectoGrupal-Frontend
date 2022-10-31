@@ -19,15 +19,15 @@ const FilmDetails = () => {
     const params = useParams();
     const { idFilm } = params
     const filmDetails = useSelector(state => state.detail)
-   
-
+    
+    
     useEffect(() => {
       dispatch(getMovieDetail(idFilm))
-    }, [dispatch, idFilm])
-
-
- console.log(filmDetails.languaje)
+    }, [])
     
+
+ console.log("soy detalles", filmDetails)
+    console.log(filmDetails.fullCast)
   return (
       <div>
       <img className='fondo'src={fondoDetalle} alt="" />
@@ -67,22 +67,22 @@ const FilmDetails = () => {
 
       <Tabs  className='tabs' id="controlled-tab-example">
       <Tab eventKey="contact" title="GENRES">
-       {filmDetails.genres}
+       {filmDetails.length !== 0 ? filmDetails.genres.map(a => a.name + ", ") : null}
       </Tab>
       <Tab eventKey="profile" title="DETAILS" className='cast'>
       <li>LANGUAJE: <br></br>{filmDetails.language}</li>
       <br></br>
-      <li>DURATION: <br></br>{filmDetails.duration}</li>
+      <li>DURATION: <br></br>{(filmDetails.length / 60).toFixed(2)} hr</li>
       <br></br>
       <li>RELEASED DATE: <br></br>{filmDetails.releaseDate}</li>
 
       </Tab>
       <Tab eventKey="home" title="CAST" className='cast'>
-      <li>DIRECTOR: <br></br>{filmDetails.director}.</li>
+      <li>DIRECTOR: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.director.name : null }.</li>
       <br></br>
-      <li>CAST: <br></br>{filmDetails.cast}</li>
+      <li>CAST: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.cast.map(a => a.name + "," + " ") : null}.</li>
       <br></br> 
-      <li>PRODUCERS: <br></br>{filmDetails.producer}.</li>
+      <li>PRODUCERS: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.producers.map(a => a.name + "," + " ") : null}.</li>
       </Tab>
     </Tabs>
 

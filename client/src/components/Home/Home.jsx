@@ -12,27 +12,26 @@ import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import arreglo from '../FilmCard/FilmCard.js'
 import Paginado from '../Pagination/Pagination';
-
 import { pages } from '../../redux/actions';
+import { withEvents } from 'react-component-update';
+
+
 
 const Home = () => {
- 
-  let peliculas = useSelector(state => (state.movies)) 
-      const dispatch = useDispatch()
 
-      function onClick(e){
-          e.preventDefault()
-          dispatch(getAllMovies())
-        }
+  let peliculas = useSelector(state => (state.movies)) 
+  let pagina = useSelector(state => (state.page))
+  const dispatch = useDispatch()
+
+    
       
         useEffect(() => {
-          if(!peliculas.length){
-          dispatch(getAllMovies())
-          }
-      }, [dispatch, peliculas.length])
+          dispatch(getAllMovies(pagina)) 
+      }, [])
 
 
-//<Paginado/>
+
+
 
 
   return (
@@ -44,10 +43,11 @@ const Home = () => {
   <InfoHome/>
   <Searchbar/>
        <Acordeon/>
-        <button className="HOLAA" onClick={onClick}>ACA</button>
+<Paginado/>
+       
 
        <div className='cards'>
-            {peliculas.map(a => {
+            {peliculas.length !== 0 ? peliculas.rows.map(a => {
                 return <FilmCard
                 key = {a.id}
                 name = {a.name}
@@ -55,8 +55,8 @@ const Home = () => {
                 img = {a.image}   
                 rating = {a.rating}    
                 />             
-            })
-        }
+            }) : null
+        } 
             </div >
 
 

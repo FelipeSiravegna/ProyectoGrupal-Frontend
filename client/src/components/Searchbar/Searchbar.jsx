@@ -15,7 +15,7 @@ export default function Searchbar(){
      }
     
     function handleClick(){
-       dispatch(pages())
+       dispatch(pages(input, 0))
        setInput('')
     }
     
