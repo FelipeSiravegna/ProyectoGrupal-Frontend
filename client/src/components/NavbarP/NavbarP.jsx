@@ -30,17 +30,6 @@ const NavbarP = () => {
           <Nav.Link>
           <Login/>
           </Nav.Link>
-
-
-            {
-              !isAuthenticated &&
-          <Nav.Link>
-            <Button variant="contained" color="rojo" className="botones">
-              Register
-            </Button>
-          </Nav.Link>
-            }
-
         </Nav>
     </Container>
   </Navbar>

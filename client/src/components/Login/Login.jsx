@@ -6,6 +6,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Profile.jsx'
 import './Login.css'
+import { Link } from 'react-router-dom';
+import PremiumSub from '../PremiumSub/PremiumSub.jsx';
 
 export default function Login(){
   
@@ -31,10 +33,12 @@ export default function Login(){
             :
             <div className='botonesDiv'>
 
+<Link className='botones4' to={'/premium'}>
+          <Button variant="text" color="amarillo">
+          Premium
 
-          <Button variant="text" color="amarillo" className="botones4" >
-        Premium
           </Button>
+          </Link>
 
           <Button variant="text" color="rojo" className="botones" >
         Compare
