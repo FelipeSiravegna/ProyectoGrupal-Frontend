@@ -24,12 +24,23 @@ const NavbarP = () => {
     <Container>
       <Navbar.Brand><img src={imagen} alt="" className='imagen' /></Navbar.Brand>
         <Nav>
-          <Nav.Link href='/UserProfile'>
+          <Nav.Link href='/UserProfile' className='aber'>
           <Profile/>
           </Nav.Link>
           <Nav.Link>
           <Login/>
           </Nav.Link>
+
+
+            {
+              !isAuthenticated &&
+          <Nav.Link>
+            <Button variant="contained" color="rojo" className="botones">
+              Register
+            </Button>
+          </Nav.Link>
+            }
+
         </Nav>
     </Container>
   </Navbar>

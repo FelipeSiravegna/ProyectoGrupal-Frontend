@@ -80,7 +80,7 @@ const FilmDetails = () => {
       <Tab eventKey="home" title="CAST" className='cast'>
       <li>DIRECTOR: <br></br>{filmDetails.director}.</li>
       <br></br>
-      <li>CAST: <br></br>{filmDetails.cast}.</li>
+      <li>CAST: <br></br>{filmDetails.cast}</li>
       <br></br> 
       <li>PRODUCERS: <br></br>{filmDetails.producer}.</li>
       </Tab>
