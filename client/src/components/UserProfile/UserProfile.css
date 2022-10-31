@@ -3,12 +3,33 @@
     justify-content:left;
     align-items: center;
     margin-top: 50px;
+    margin-left: 250px;
 }
 
 .seguidores{
     margin-left: 50px;
+    text-align: center;
+    margin-left: 80px;
 }
 
-.seguidores{
-    text-align: center;
+.name{
+    display: flex;
+    position:absolute;
+    margin-left: 550px;
+    margin-top: 10px;
+}
+
+.name .edit{
+    margin-left: 100px;
+    margin-top: 8px;
+}
+
+.avatar{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.list{
+    margin-left: 150px;
 }
