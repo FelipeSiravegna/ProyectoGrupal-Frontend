@@ -12,18 +12,18 @@ export default function Paginado() {
   let pagina = useSelector(state => (state.page))
   
 
-  console.log(pagina)
 
   const handleChange=(e, p)=>{
     dispatch(pages(p))
     dispatch(getAllMovies(p))
   }
     
+ 
 
   return (
 <div className='elPaginado'>
     <Stack spacing={2}>
-      <Pagination count={10} color="rojo" sx={{button:{color: '#ffffff'}}} onChange={handleChange}/>
+      <Pagination count={9} color="rojo" sx={{button:{color: '#ffffff'}}} onChange={handleChange}/>
     </Stack>
     </div>
 
