@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+import './App.css';
+import React, { Component } from 'react';
+import Carrousel from './components/Carrousel/Carrousel';
+import FilmDetails from './components/FilmDetails/FilmDetails';
+import Home from './components/Home/Home';
+import PremiumSub from './components/PremiumSub/PremiumSub';
+import UserProfile from './components/UserProfile/UserProfile'
+import NavbarP from './components/NavbarP/NavbarP';
+
+import { Route, Routes } from 'react-router-dom';
+
+const App = () => {
+  return (  
+
+     <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
+        <Route exact path='/UserProfile' element={<UserProfile/>}/>
+        <Route exact path='/premium' element={<PremiumSub/>}/>
+        </Routes>
     );
   }
-}
+
 
 export default App;

@@ -1,0 +1,29 @@
+
+  .imagen{
+    width: 25%;
+    margin-top: -3%;
+    margin-left: -15%;
+    position:relative;
+    margin-bottom: -5%;
+  }
+
+
+  .botones2{
+    left: 40%;
+    position:relative;
+    
+  }
+
+  .botonesDiv{
+    padding-top: 1%;
+    position: relative;
+    left: 16%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+        grid-column-gap: 15px;
+        
+  }
+
+  
+ 
+  
