@@ -25,9 +25,6 @@ const FilmDetails = () => {
       dispatch(getMovieDetail(idFilm))
     }, [])
     
-
- console.log("soy detalles", filmDetails)
-    console.log(filmDetails.fullCast)
   return (
       <div>
       <img className='fondo'src={fondoDetalle} alt="" />

@@ -5,11 +5,10 @@ import {
   GET_SORT_ASC,
   GET_SORT_POP,
   FILTER,
-
+  SEARCH_BY_NAME,
   PAGES,
   RESET,
   GET_ALL_GENRES
-
 } from "../actions";
 
 const initialState = {
@@ -18,8 +17,8 @@ const initialState = {
   backvideos: [],
   page: 1,
   genre: []
-
 };
+
 
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -70,9 +69,12 @@ export default function reducer(state = initialState, { type, payload }) {
         return{
         ...state,
         page: payload
-        }
-
-
+        };
+        case SEARCH_BY_NAME:
+          return {
+            ...state,
+            movies: payload
+          };
     default:
       return state;
   }

@@ -60,13 +60,20 @@ export default function Login(){
           
       <DropdownButton  align="end" id="nav-dropdown">
         <div>
-        <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+
+        
+        <Dropdown.Item className='drop'>
+        <Link className='botones4' to={'/UserProfile'}>
+          <Button variant="text" color="rojo" className="botones">
             My Profile
-            </Button></Dropdown.Item>
-            <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+            </Button>
+            </Link>
+            </Dropdown.Item>
+
+            <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
             Following
             </Button></Dropdown.Item>
-            <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+            <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
            Settings
             </Button></Dropdown.Item>
         <Dropdown.Item className='drop'>

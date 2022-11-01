@@ -8,7 +8,7 @@ export const FILTER = 'FILTER';
 export const RESET = 'RESET';
 export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
-
+export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 
 
 
@@ -34,7 +34,6 @@ export const getMovieDetail= (id)=>{
                     type: GET_MOVIE_DETAIL,
                     payload: detalle.data
                 })
-                
         }
     }
 
@@ -107,3 +106,12 @@ export const reset= ()=>{
 }
 
 
+export const searchByName = (name) => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&page=1`);
+            return dispatch({
+                type: SEARCH_BY_NAME,
+                payload: result.data
+            })
+    }
+}
