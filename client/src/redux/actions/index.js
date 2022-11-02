@@ -10,8 +10,6 @@ export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 
-
-
 export const getAllMovies= (name = 0)=>{
     return async function (dispatch) {
         await axios.get(`/movies/popular?page=${name}`)
@@ -28,15 +26,14 @@ export const getAllMovies= (name = 0)=>{
   };
 
 export const getMovieDetail= (id)=>{
-        return async function(dispatch) {
-            const detalle = await axios.get(`/detail/${id}`)
-                dispatch ({
-                    type: GET_MOVIE_DETAIL,
-                    payload: detalle.data
-                })
-        }
+    return async function(dispatch) {
+        const detalle = await axios.get(`/detail/${id}`)
+            dispatch ({
+                type: GET_MOVIE_DETAIL,
+                payload: detalle.data
+            })
     }
-
+}
 
 export const getAllGenres= ()=>{
     return async(dispatch)=>{
@@ -47,12 +44,14 @@ export const getAllGenres= ()=>{
         }
     }   
 }
+
 export const addMovie= (payload)=>{
     return async(dispatch)=>{
         let json = await axios.post('')
            return json
-        }
     }
+}
+
 export const sortAsc = (payload) =>{
     return async(dispatch)=>{
         let json = await axios.get('')
@@ -85,15 +84,13 @@ export const filter = (payload) =>{
 
 export const pages=(page)=>{
     return async function (dispatch){
-        // let result = await axios.get(`http://localhost:3001/movies/popular?page=${page}`);
+            // let result = await axios.get(`/movies/popular?page=${page}`);
             return dispatch({
                 type: PAGES,
                 payload: page
             })
-        }
     }
-
-
+}
 
 export const reset= ()=>{
     return (dispatch)=>{
@@ -102,9 +99,7 @@ export const reset= ()=>{
             
         })
     }
-
 }
-
 
 export const searchByName = (name) => {
     return async function (dispatch){

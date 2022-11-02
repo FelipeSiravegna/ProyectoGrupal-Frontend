@@ -8,9 +8,10 @@ import PremiumSub from './components/PremiumSub/PremiumSub';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import dotenv from 'dotenv';
+import axios from 'axios';
 dotenv.config();
 
-axios.defaults.baseURL = process.env.REACT_APP_API || "http:localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 import { Route, Routes } from 'react-router-dom';
 
