@@ -83,7 +83,7 @@ top: 150px;
     margin-top: 20%;
     position: relative;
     display: block;
-    background: rgb(3, 35, 54);
+    background: rgb(255, 255, 255);
     width: 1200px;
     height: 200px;
     max-height: 500px;
@@ -148,4 +148,36 @@ top: 150px;
         position: relative;
         top: -136px;
         text-align: center;
+}
+
+.logeado{
+    position: relative;
+    margin-top: -180%;
+    border-spacing: 100px;
+    margin-left: -30%;
+}
+
+
+#ratingDet{
+    display: block;
+    position: absolute;
+    margin-top: 28%;
+    margin-left: 30%;
+    background-color: #181818;
+    border-radius: 10px;
+}
+
+.interaccion{
+    position: relative;
+    top: 10%
+    
+    
+}
+
+.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+
+
+.ola{
+    width: 800px;
+    background-color: white;
 }
