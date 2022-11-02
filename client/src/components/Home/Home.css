@@ -24,3 +24,10 @@ top: -1%;
         position: absolute;
           top: 110px;
 }        
+
+
+.carga{
+    position: relative;
+    left: 1300%;
+    top: 300%;
+}

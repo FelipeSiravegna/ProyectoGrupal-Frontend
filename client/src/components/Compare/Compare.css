@@ -1,0 +1,58 @@
+.inputs{
+    position:absolute;
+    display: inline-flex;
+    align-items: center;
+    grid-column-gap: 10px;
+    padding-left: 0%;
+    padding-top: 0%;
+    padding-bottom: 105%;
+    border-radius: 10%;
+    background-color: white;
+    left: 0%;
+}      
+
+
+
+.label{
+    position: relative;
+    right: 13%;
+    text-decoration: underline 1px;
+    color: brown;
+}
+
+.izq{
+    position: absolute;
+    text-align: right;
+    padding-top: 10%;
+    width: 300px;
+
+}
+
+.der{
+    width: 300px;
+    position: absolute;
+    padding-top: 10%;
+    padding-left: 0%;
+}
+
+.contain1, .contain2{
+background-color: rgb(255, 255, 255);
+}
+
+.lacarta, .lacarta2{
+    background-color: white;
+}
+
+.label2{
+    position: relative;
+    right: 10%;
+    text-decoration: underline 1px;
+    color: brown;
+}
+
+.label3{
+    position: relative;
+    right: 10%;
+    text-decoration: underline 1px;
+    color: brown;
+}

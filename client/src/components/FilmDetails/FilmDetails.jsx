@@ -1,6 +1,6 @@
 import './FilmDetails.css'
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getMovieDetail} from '../../redux/actions';
 import { useParams } from "react-router-dom";
 import fondoDetalle from '../media/fondoDetalle.jpg'
@@ -13,14 +13,55 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import Button from '@mui/material/Button'
 import GroupsIcon from '@mui/icons-material/Groups';
 import Logo from '../media/Logo.png'
+import { useAuth0 } from "@auth0/auth0-react";
+import Rating from '@mui/material/Rating';
+import Fab from '@mui/material/Fab';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import Profile from '../Login/Profile';
+import MoreTimeIcon from '@mui/icons-material/MoreTime';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+
+
 const FilmDetails = () => {
 
    const dispatch = useDispatch();
     const params = useParams();
     const { idFilm } = params
     const filmDetails = useSelector(state => state.detail)
-    
-    
+    const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+
+    const [value, setValue] = useState(2);
+    const [favorito, setFavorito] = useState(false);
+    const [guardado, setGuardado] = useState(false);
+    const [playlist, setPlaylist] = useState(false);
+
+    const list = () =>{
+      setPlaylist(true)
+      if(playlist === true){
+        setPlaylist(false)
+      }
+    }
+
+
+    const like = () =>{
+      setFavorito(true)
+      if(favorito === true){
+        setFavorito(false)
+      }
+    }
+
+    const save = () =>{
+      setGuardado(true)
+      if(guardado === true){
+        setGuardado(false)
+      }
+    }
+
     useEffect(() => {
       dispatch(getMovieDetail(idFilm))
     }, [])
@@ -53,6 +94,25 @@ const FilmDetails = () => {
         <QueueIcon color='gris' sx={{ fontSize: 30 }}  className='icono3'/> 
         <p  className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
     
+      <div>{isAuthenticated ? 
+
+<div className='logeado'> 
+<div className='interacción'>
+<Fab color='rojo' aria-label="like" onClick={like}>
+  {favorito ? <FavoriteIcon/> : <FavoriteBorderIcon />}</Fab>
+  <br></br><br></br>
+  <Fab color='azul' aria-label="like" onClick={save}>
+  {guardado ? <AccessTimeFilledIcon/> : <MoreTimeIcon />}</Fab>
+  <br></br><br></br>
+<Fab color='amarillo' aria-label="like" onClick={list}>
+  {playlist ? <PlaylistAddCheckIcon/> : <PlaylistAddIcon />}</Fab>
+</div>
+
+<Rating id='ratingDet' name="simple-controlled" value={value} size="small"onChange={(event, newValue) => {setValue(newValue);}}/>
+
+  </div>
+    : null}
+   </div>
       
       </div>
 
@@ -91,11 +151,12 @@ const FilmDetails = () => {
 
     </div>  
    </div>
-
    <div className='comentarios'>
     <label>REVIEWS</label>
-   </div>
- </div>
+
+       </div>
+       </div>
+
   )
 }
 

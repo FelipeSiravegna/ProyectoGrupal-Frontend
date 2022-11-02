@@ -11,7 +11,8 @@ import {getAllMovies, filter} from '../../redux/actions'
 import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import Paginado from '../Pagination/Pagination';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
@@ -51,10 +52,12 @@ const Home = () => {
                 img = {a.image}   
                 rating = {a.rating}    
                 />             
-            }) : null
+            }) : <Box className='carga'  sx={{ display: 'flex' }}>
+            <CircularProgress color="rojo" />
+          </Box>
         } 
             </div >
-
+            
 
       </div>
     );

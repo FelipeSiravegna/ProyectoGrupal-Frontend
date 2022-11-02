@@ -33,3 +33,13 @@
     text-decoration: none;
     color: yellow;
 }
+
+
+.my-modal .modal-content {
+    width: 122.4%;
+  }
+
+  .tituloModal{
+    position: relative;
+    left: 34%
+  }

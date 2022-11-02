@@ -8,15 +8,26 @@ import './Profile.jsx'
 import './Login.css'
 import { Link } from 'react-router-dom';
 import PremiumSub from '../PremiumSub/PremiumSub.jsx';
+import Rating from '@mui/material/Rating';
+import { useState } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Compare from '../Compare/Compare.jsx';
 
 export default function Login(){
   
 
-  
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
   const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+  
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+ 
 
     return(
           <div>
@@ -40,9 +51,20 @@ export default function Login(){
           </Button>
           </Link>
 
-          <Button variant="text" color="rojo" className="botones" >
+
+          <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
-          </Button>
+          </Button> 
+          <Modal show={show} onHide={handleClose} className="my-modal" >
+        <Modal.Header closeButton>
+          <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <Compare/> </Modal.Body>
+ 
+      </Modal>
+    
+
+
 
           <Button variant="text" color="rojo" className="botones" >
           Watchlist
@@ -52,6 +74,7 @@ export default function Login(){
           List
           </Button>
 
+          
           <Button variant="text" color="rojo" className="botones" >
         favorites
           </Button>

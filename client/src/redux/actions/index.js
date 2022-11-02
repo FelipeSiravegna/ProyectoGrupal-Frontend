@@ -9,8 +9,9 @@ export const RESET = 'RESET';
 export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
-
-
+export const COMPARE_SELEC = 'COMPARE_SELEC'
+export const SEARCH_COMPARE = 'SEARCH_COMPARE'
+export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2'
 
 export const getAllMovies= (name = 0)=>{
     return async function (dispatch) {
@@ -115,3 +116,35 @@ export const searchByName = (name) => {
             })
     }
 }
+
+
+export const compareSelec = () => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/movies/all`);
+            return dispatch({
+                type: COMPARE_SELEC,
+                payload: result.data
+            })
+    }
+}
+
+export const searchCompare = (name) => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&?offset=1`);
+            return dispatch({
+                type: SEARCH_COMPARE,
+                payload: result.data
+            })
+    }
+}
+
+export const searchCompare2 = (name) => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&?offset=1`);
+            return dispatch({
+                type: SEARCH_COMPARE2,
+                payload: result.data
+            })
+    }
+}
+

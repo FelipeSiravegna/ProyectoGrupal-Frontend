@@ -8,7 +8,10 @@ import {
   SEARCH_BY_NAME,
   PAGES,
   RESET,
-  GET_ALL_GENRES
+  GET_ALL_GENRES,
+  COMPARE_SELEC,
+  SEARCH_COMPARE2,
+  SEARCH_COMPARE
 } from "../actions";
 
 const initialState = {
@@ -16,7 +19,10 @@ const initialState = {
   detail: [],
   backvideos: [],
   page: 1,
-  genre: []
+  genre: [],
+  compare: [],
+  busqueda1: [],
+  busqueda2: []
 };
 
 
@@ -74,6 +80,21 @@ export default function reducer(state = initialState, { type, payload }) {
           return {
             ...state,
             movies: payload
+          };
+          case COMPARE_SELEC:
+          return {
+            ...state,
+            compare: payload
+          };
+          case SEARCH_COMPARE:
+          return {
+            ...state,
+            busqueda1: payload
+          };
+          case SEARCH_COMPARE2:
+          return {
+            ...state,
+            busqueda2: payload
           };
     default:
       return state;
