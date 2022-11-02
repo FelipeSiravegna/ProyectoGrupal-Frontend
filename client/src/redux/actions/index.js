@@ -14,7 +14,7 @@ export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
 
 export const getAllMovies= (name = 0)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/movies/popular?page=${name}`)
+        await axios.get(`/movies/popular?page=${name}`)
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
@@ -29,7 +29,7 @@ export const getAllMovies= (name = 0)=>{
 
 export const getMovieDetail= (id)=>{
         return async function(dispatch) {
-            const detalle = await axios.get(`http://localhost:3001/detail/${id}`)
+            const detalle = await axios.get(`/detail/${id}`)
                 dispatch ({
                     type: GET_MOVIE_DETAIL,
                     payload: detalle.data
@@ -85,7 +85,7 @@ export const filter = (payload) =>{
 
 export const pages=(page)=>{
     return async function (dispatch){
-           // let result = await axios.get(`http://localhost:3001/movies/popular?page=${page}`);
+        // let result = await axios.get(`http://localhost:3001/movies/popular?page=${page}`);
             return dispatch({
                 type: PAGES,
                 payload: page
@@ -108,7 +108,7 @@ export const reset= ()=>{
 
 export const searchByName = (name) => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&page=1`);
+            let result = await axios.get(`/movies/search/?name=${name}&page=1`);
             return dispatch({
                 type: SEARCH_BY_NAME,
                 payload: result.data
