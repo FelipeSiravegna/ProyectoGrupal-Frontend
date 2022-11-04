@@ -11,7 +11,7 @@ export default function Profile(){
     return(
             <div className='lafoto'>
                 {
-                    isAuthenticated && <img className='picture' src={user.picture} width='50px' height='50px' />
+                    isAuthenticated && <Link to={'/UserProfile'}><img className='picture' src={user.picture} width='50px' height='50px' /></Link>
                 
                 }
             </div>
