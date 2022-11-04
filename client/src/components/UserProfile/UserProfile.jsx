@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import NavbarP from '../NavbarP/NavbarP';
 import { useAuth0 } from "@auth0/auth0-react";
 import ListFav from '../List/List';
-import PlayList from '../Playlist/PlayList';
+import PlayList from '../PlayList/PlayList';
 import './UserProfile.css'
 
 export default function UserProfile() {
@@ -43,8 +43,8 @@ user &&
  }
  <br/>
  <br/>
- <div className='list'>
-<ListFav/>
+ <div>
+ <PlayList/>
 </div>
 <br/>
 <PlayList/>
