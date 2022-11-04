@@ -26,3 +26,27 @@ top: -52%;
 .buscar :focus{
     background-color: white;
 }
+
+
+
+.buscar2{
+    position: absolute;
+    height: 50%;
+    left: 232%;
+    top: 0px;
+    background-color: aliceblue;
+    border-radius: 20%;
+}
+
+.botonBusqueda2{
+    position: absolute;
+left: 232%;
+top: 5px
+}
+
+.search2{
+    position: relative;
+    background-image: url(https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80);
+    top: 30px;
+    width: 700px;
+}
