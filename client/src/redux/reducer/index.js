@@ -11,7 +11,10 @@ import {
   GET_ALL_GENRES,
   COMPARE_SELEC,
   SEARCH_COMPARE2,
-  SEARCH_COMPARE
+  SEARCH_COMPARE,
+  GET_MOVIES_SOON,
+  FILTER_GENRES,
+  ALL_GENRES
 } from "../actions";
 
 const initialState = {
@@ -22,7 +25,9 @@ const initialState = {
   genre: [],
   compare: [],
   busqueda1: [],
-  busqueda2: []
+  busqueda2: [],
+  moviesSoon: [],
+  genres: []
 };
 
 
@@ -61,9 +66,15 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload,
       };
-    case FILTER:
+    case FILTER_GENRES:
       return {
         ...state,
+        movies: payload
+      };
+      case ALL_GENRES:
+      return {
+        ...state,
+        genres: payload
       };
 
     case RESET:
@@ -96,6 +107,12 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             busqueda2: payload
           };
+          case GET_MOVIES_SOON:
+      return {
+        ...state,
+        moviesSoon: payload
+
+      };
     default:
       return state;
   }
