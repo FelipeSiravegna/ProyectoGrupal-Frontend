@@ -8,6 +8,7 @@ import PremiumSub from './components/PremiumSub/PremiumSub';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import Compare from './components/Compare/Compare'
+import NavDash from './components/Nav+Dash/Nav+Dash';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path='/UserProfile' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
         <Route exact path='/aa' element={<Compare/>}/>
+        <Route exact path='/dashboard' element={<NavDash/>}/>
         </Routes>
     );
   }
