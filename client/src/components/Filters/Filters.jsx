@@ -57,7 +57,7 @@ useEffect(() => {
             <em>None</em>
           </MenuItem>
           {generos.map(a=> 
-          <MenuItem key={a.id}  value={a.name}>{a.name}</MenuItem>
+          <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
           )}
         </Select>
       </FormControl>

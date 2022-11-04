@@ -34,6 +34,11 @@
     color: yellow;
 }
 
+.botonesDiv .botones{
+position: relative;
+top: 0%
+
+}
 
 .my-modal .modal-content {
     width: 122.4%;
