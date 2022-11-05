@@ -14,7 +14,8 @@ import {
   SEARCH_COMPARE,
   GET_MOVIES_SOON,
   FILTER_GENRES,
-  ALL_GENRES
+  ALL_GENRES,
+  RESET_DETAIL
 } from "../actions";
 
 const initialState = {
@@ -111,8 +112,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         moviesSoon: payload
-
       };
+      case RESET_DETAIL:
+          return{
+            ...state,
+            detail: []
+          }
     default:
       return state;
   }
