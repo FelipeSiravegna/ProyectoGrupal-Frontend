@@ -78,7 +78,20 @@ export const filterGenres = (filtro) =>{
     }
 }
 
+export const userCreate = (form) =>{
+    return async function (){
+        try {
 
+            let response = await axios.post('http://localhost:3001/user' , form)
+            return response
+
+        } catch (error) {
+            console.log(error)
+        }
+
+     
+    }
+}
 
 export const pages=(page)=>{
     return async function (dispatch){

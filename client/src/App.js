@@ -9,7 +9,7 @@ import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import Compare from './components/Compare/Compare'
 import NavDash from './components/Nav+Dash/Nav+Dash';
-
+import Register from './components/Register/Register'
 import { Route, Routes } from 'react-router-dom';
 import ComingSoon from './components/ComingSoon/ComingSoon';
 import CarrouselSlick from './components/CarrouselSlick/CarrouselSlick.jsx';
@@ -35,7 +35,7 @@ const App = () => {
         
         
         
-        
+        <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
 
         <Route exact path='/aa' element={<Filters/>}/>
