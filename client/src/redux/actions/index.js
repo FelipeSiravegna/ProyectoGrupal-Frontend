@@ -23,6 +23,16 @@ export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
 
 
+export const orderRating = (order) =>{
+    return async function (dispatch){
+        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${order}`)
+        return dispatch({
+            type: ORDER_RATING,
+            payload: json.data
+        })
+    }
+}
+
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
