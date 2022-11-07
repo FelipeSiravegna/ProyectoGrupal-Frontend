@@ -14,10 +14,13 @@ export const SEARCH_COMPARE = 'SEARCH_COMPARE'
 export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2'
 export const GET_MOVIES_SOON = 'GET_MOVIES_SOON'
 export const ALL_GENRES = 'ALL_GENRES'
+
 export const ALL_USERS  =  'ALL_USERS'
 export const FILTER_DIRECTOR = 'FILTER_DIRECTOR'
 export const ALL_DIRECTOR ='ALL_DIRECTOR'
 export const USER_PREMIUM = 'USER_PREMIUM'
+export const RESET_DETAIL = 'RESET_DETAIL'
+
 
 
 //peliculas
@@ -201,6 +204,7 @@ export const allUsers= ()=>{
             type: ALL_USERS,
             payload:result.data
         })
+
     }
 }
 
@@ -214,4 +218,13 @@ export const UserPremium= (id)=>{
     }
 }
 
+
+
+
+export const resetDetail = () => {
+    return(dispatch) => {
+        dispatch({
+            type: "RESET_DETAIL"
+        });
+    }
 

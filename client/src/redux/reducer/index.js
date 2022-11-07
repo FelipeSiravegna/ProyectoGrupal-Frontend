@@ -15,10 +15,12 @@ import {
   GET_MOVIES_SOON,
   FILTER_GENRES,
   ALL_GENRES,
+
   ALL_USERS,
   ALL_DIRECTOR,
   FILTER_DIRECTOR,
   USER_PREMIUM
+  RESET_DETAIL
 } from "../actions";
 
 const initialState = {
@@ -118,6 +120,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         moviesSoon: payload
       };
+
       case ALL_USERS:
       return {
         ...state,
@@ -137,7 +140,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
-
+      case RESET_DETAIL:
+          return{
+            ...state,
+            detail: []
+          }
     default:
       return state;
   }
