@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
 import { getMovieDetail } from '../../redux/actions';
 import { useParams } from "react-router-dom";
+import { resetDetail } from '../../redux/actions';
 import fondoDetalle from '../media/fondoDetalle.jpg'
 import NavbarP from '../NavbarP/NavbarP';
 import StarHalf from '@mui/icons-material/StarHalf';
@@ -66,6 +67,15 @@ const FilmDetails = () => {
     dispatch(getMovieDetail(idFilm))
   }, [])
 
+
+  //componentWillUnmount
+  useEffect(() => {
+    return () => {
+      dispatch(resetDetail());
+    }
+  }, [])
+
+
   return (
     <div>
       <img className='fondo' src={fondoDetalle} alt="" />
@@ -114,6 +124,7 @@ const FilmDetails = () => {
             : null}
           </div>
 
+
         </div>
 
         <div className='descripcion'>
@@ -145,7 +156,10 @@ const FilmDetails = () => {
 
           <div className='trailer'>
 
-            <a href={filmDetails.trailer} target="_blank">
+
+            <a href={filmDetails.trailer}>
+
+
               <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large" /> watch movie preview</Button></a>
           </div>
 

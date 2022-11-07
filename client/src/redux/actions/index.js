@@ -14,6 +14,7 @@ export const SEARCH_COMPARE = 'SEARCH_COMPARE'
 export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2'
 export const GET_MOVIES_SOON = 'GET_MOVIES_SOON'
 export const ALL_GENRES = 'ALL_GENRES'
+export const RESET_DETAIL = 'RESET_DETAIL'
 
 
 
@@ -157,3 +158,11 @@ export const getComingSoon=()=>{
         });
     };
   };
+
+export const resetDetail = () => {
+    return(dispatch) => {
+        dispatch({
+            type: "RESET_DETAIL"
+        });
+    }
+}
