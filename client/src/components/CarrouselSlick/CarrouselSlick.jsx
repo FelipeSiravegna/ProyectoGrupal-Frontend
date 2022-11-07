@@ -24,17 +24,18 @@ const CarrouselSlick = () => {
       autoplay: true,
       speed: 2000,
       autoplaySpeed: 2000,
-      cssEase: "linear"
+      cssEase: "linear",
+      vertical: true,
+      arrows : false,
     };
 
 
     return (
       <div className="elslid">
-        <Slider {...settings}>
+        <Slider {...settings} className='ey'>
             {estrenos.map(a => 
           <div>
             <img className="slick" src={a.image} alt="" />
-            <p className="p">{a.releaseDate}</p>
           </div>
           )}
         </Slider>

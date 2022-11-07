@@ -25,6 +25,7 @@ import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import Profile from '../Login/Profile';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
 
 
 const FilmDetails = () => {
@@ -70,6 +71,8 @@ const FilmDetails = () => {
       <div>
       <img className='fondo'src={fondoDetalle} alt="" />
       <NavbarP/>
+      <p className='nene'>Coming soon in The Corner Movies...</p>
+      <p className='aberg'><CarrouselSlick/></p>
       <div className='Contenedor'> 
 
       <div className='nombre'>
@@ -144,10 +147,11 @@ const FilmDetails = () => {
     </Tabs>
 
 <div className='trailer'>
-    
  <a href={filmDetails.trailer}> 
- <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large"/> watch movie preview</Button></a>
+ <Button variant="text" color="rojo">movie  preview <YouTubeIcon fontSize="large"/></Button></a>
 </div>
+
+
 
     </div>  
    </div>

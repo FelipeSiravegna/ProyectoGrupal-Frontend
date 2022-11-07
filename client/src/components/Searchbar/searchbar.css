@@ -12,15 +12,15 @@ color: white;
 }
 
 .botonBusqueda{
-    position: relative;
+    position: absolute;
 left: 122%;
-top: -52%;
+top: -32px
 }
 
 .search{
-    display: inline-flex;
+ position: absolute;
     margin-top: 1%;
-    padding-left: 35%;
+    left: 40%;
 }
 
 .buscar :focus{

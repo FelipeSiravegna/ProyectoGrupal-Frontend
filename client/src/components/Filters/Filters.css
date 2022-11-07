@@ -1,4 +1,7 @@
-.botones{
+.filtritos{
     position: absolute;
-    top: 800px
+    padding: 0;
+    top: 70%;
+    border-radius: 20%;
+    background-color: aliceblue;
 }
