@@ -26,7 +26,7 @@ export const RESET_DETAIL = 'RESET_DETAIL'
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/movies/rating?page=${name}&order=DESC`)
+        await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
