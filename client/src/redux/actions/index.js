@@ -20,6 +20,7 @@ export const ALL_DIRECTOR ='ALL_DIRECTOR'
 export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
+export const ORDER_RATING = 'ORDER_RATING'
 
 
 //peliculas
