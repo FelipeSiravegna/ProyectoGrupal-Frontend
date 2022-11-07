@@ -210,6 +210,21 @@ export const searchCompare2 = (name) => {
 
 //admin
 
+export const userCreate = (form) =>{
+    return async function (){
+        try {
+
+            let response = await axios.post('http://localhost:3001/user' , form)
+            return response
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
+    }
+}
+
 export const allUsers= ()=>{
     return async function (dispatch){
         let result = await axios.get(`/allusers`);
