@@ -79,12 +79,12 @@ const FilmDetails = () => {
 
   return (
 
-      <div>
-      <img className='fondo'src={fondoDetalle} alt="" />
-      <NavbarP/>
+    <div>
+      <img className='fondo' src={fondoDetalle} alt="" />
+      <NavbarP />
       <p className='nene'>Coming soon in The Corner Movies...</p>
-      <p className='aberg'><CarrouselSlick/></p>
-      <div className='Contenedor'> 
+      <p className='aberg'><CarrouselSlick /></p>
+      <div className='Contenedor'>
 
 
         <div className='nombre'>
@@ -162,7 +162,7 @@ const FilmDetails = () => {
           <div className='trailer'>
 
 
-            <a href={filmDetails.trailer}>
+            <a href={filmDetails.trailer} target="_blank">
 
 
               <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large" /> watch movie preview</Button></a>
@@ -170,12 +170,12 @@ const FilmDetails = () => {
 
         </div>
       </div>
-      
-   <div className='comentarios'>
-    <label>REVIEWS</label>
 
-       </div>
-       </div>
+      <div className='comentarios'>
+        <label>REVIEWS</label>
+
+      </div>
+    </div>
 
 
   )
