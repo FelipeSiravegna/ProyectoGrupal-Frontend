@@ -227,4 +227,4 @@ export const resetDetail = () => {
             type: "RESET_DETAIL"
         });
     }
-
+}
