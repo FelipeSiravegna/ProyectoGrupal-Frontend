@@ -17,7 +17,7 @@ import Filters from './components/Filters/Filters';
 import Carrousel2 from './components/Carrousel/Carrousel2';
 import Admin from './components/Admin/Admin';
 import Users from './components/Users.jsx/Users';
-
+import Register from './components/Register/Register'
 const App = () => {
   return (  
 
@@ -28,6 +28,7 @@ const App = () => {
         <Route exact path='/premium' element={<PremiumSub/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/aa' element={<Users/>}/>
+        <Route exact path='/register' element={<Register/>}/>
         </Routes>
       
     );

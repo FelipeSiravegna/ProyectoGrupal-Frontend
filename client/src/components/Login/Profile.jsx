@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import './Login.css'
 import './Profile.css'
+import imagenLogo from '../media/Logo.png'
 
 
 export default function Profile(){
@@ -11,7 +12,7 @@ export default function Profile(){
     return(
             <div className='lafoto'>
                 {
-                    isAuthenticated && <Link to={'/UserProfile'}><img className='picture' src={user.picture} width='50px' height='50px' /></Link>
+                    isAuthenticated && <Link to={'/UserProfile'}><img className='picture' src={imagenLogo} width='50px' height='50px' /></Link>
                 
                 }
             </div>
