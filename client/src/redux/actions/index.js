@@ -20,13 +20,12 @@ export const ALL_DIRECTOR ='ALL_DIRECTOR'
 export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
-export const ORDER_RATING = 'ORDER_RATING'
+
 
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
         await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
-
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
@@ -40,33 +39,22 @@ export const getAllMovies= (name = 1)=>{
 };
 
 export const getMovieDetail= (id)=>{
-    return async function(dispatch) {
-        const detalle = await axios.get(`/detail/${id}`)
-            dispatch ({
-                type: GET_MOVIE_DETAIL,
-                payload: detalle.data
-            })
-    }
-}
-
-
-export const getAllGenres= ()=>{
-    return async(dispatch)=>{
-     let json = await axios.get('')
-        dispatch = {
-            type: GET_ALL_GENRES,
-            payload: json.data
+        return async function(dispatch) {
+            const detalle = await axios.get(`http://localhost:3001/detail/${id}`)
+                dispatch ({
+                    type: GET_MOVIE_DETAIL,
+                    payload: detalle.data
+                })
         }
-    }   
-}
+    }
 
 
 export const addMovie= (payload)=>{
     return async(dispatch)=>{
         let json = await axios.post('')
            return json
+        }
     }
-
 
     export const searchByName = (name) => {
         return async function (dispatch){
@@ -75,15 +63,6 @@ export const addMovie= (payload)=>{
                     type: SEARCH_BY_NAME,
                     payload: result.data
                 })
-
-}
-
-export const sortAsc = (payload) =>{
-    return async(dispatch)=>{
-        let json = await axios.get('')
-        return dispatch = {
-            type: GET_SORT_ASC,
-            payload: json.data
         }
     }
     
@@ -100,29 +79,19 @@ export const sortAsc = (payload) =>{
             });
         };
       };
-
+    
 
 
 //filtros
 
 
 export const orderPopularity = (order) =>{
-    return async function (dispatch){
+    return async(dispatch)=>{
         let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${order}`)
-        return dispatch({
+        return dispatch = {
             type: ORDER_POPULARITY,
             payload: json.data
-        })
-    }
-}
-
-export const orderRating = (order) =>{
-    return async function (dispatch){
-        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${order}`)
-        return dispatch({
-            type: ORDER_RATING,
-            payload: json.data
-        })
+        }
     }
 }
 
@@ -146,20 +115,7 @@ export const filterGenres = (filtro) =>{
     }
 }
 
-export const userCreate = (form) =>{
-    return async function (){
-        try {
 
-            let response = await axios.post('http://localhost:3001/user' , form)
-            return response
-
-        } catch (error) {
-            console.log(error)
-        }
-
-     
-    }
-}
 
 export const allGenres= ()=>{
     return async function (dispatch){
@@ -198,14 +154,13 @@ export const allDirector= ()=>{
 //paginado
 export const pages=(page)=>{
     return async function (dispatch){
-            // let result = await axios.get(`/movies/popular?page=${page}`);
-
             return dispatch({
                 type: PAGES,
                 payload: page
             })
+        }
     }
-}
+
 
 
 
@@ -234,19 +189,6 @@ export const searchCompare = (name) => {
 export const searchCompare2 = (name) => {
     return async function (dispatch){
             let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&offset=true`);
-            
-export const reset= ()=>{
-    return (dispatch)=>{
-        return dispatch({
-            type: RESET,
-            
-        })
-    }
-}
-
-export const searchByName = (name) => {
-    return async function (dispatch){
-            let result = await axios.get(`/movies/search/?name=${name}&page=1`);
             return dispatch({
                 type: SEARCH_COMPARE2,
                 payload: result.data
