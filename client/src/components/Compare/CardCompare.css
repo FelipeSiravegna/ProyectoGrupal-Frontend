@@ -1,0 +1,38 @@
+.contain{
+    position: absolute;
+    grid-template-columns: repeat(0, 0fr);
+    background-color: rgb(255, 255, 255);
+}
+.imgCompare{
+    width: 250px;
+    height: 250px;
+    background-color: rgb(255, 255, 255);
+    padding: 1px 1px;
+    padding-left: 22%;
+}
+
+
+.NombreD{
+    font-size: 15px;
+    color: black;
+    font-family:'Roboto';
+    padding-left: 0%;
+    text-align: center;
+    text-decoration: underline 1px;
+}
+
+.NombreI{
+    font-size: 15px;
+    color: black;
+    font-family:'Roboto';
+    padding-left: 0%;
+    text-align: right;
+    text-decoration: underline 1px;
+}
+
+.datos{
+    position: relative;
+    top: 0%;
+    background-color: white;
+}
+
