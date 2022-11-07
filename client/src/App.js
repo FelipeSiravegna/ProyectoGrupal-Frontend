@@ -15,13 +15,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 import Compare from './components/Compare/Compare'
 import NavDash from './components/Nav+Dash/Nav+Dash';
-
-
 import { Route, Routes } from 'react-router-dom';
-import CardsRotate from './components/CardsRotate/CardsRotate';
-import CarrouselSlick from './components/CarrouselSlick/CarrouselSlick.jsx';
-import SearchLog from './components/Searchbar/SearchLog';
-import Filters from './components/Filters/Filters';
 import Carrousel2 from './components/Carrousel/Carrousel2';
 import Admin from './components/Admin/Admin';
 import Users from './components/Users.jsx/Users';

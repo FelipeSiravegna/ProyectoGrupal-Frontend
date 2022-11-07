@@ -25,31 +25,6 @@ export default function Login(){
   const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
 
   const dispatch = useDispatch()
-  
-  const {loginWithRedirect,logout,isAuthenticated,isLoading,user} = useAuth0()
-  
-  const [newUser,setUser] = useState({
-    email: '',
-    password: '',
-    username: ''
-  })
-  
-  
-//   useEffect(()=>{
-//   let num = 22
-//   if(user){
-//     setUser({
-//       email: user.email ? user.email : `example${num+1}@example.com`,
-//       password: `${user.sub.split("|")[1].slice(12)}@hH`,
-//       username: user.nickname.split(" ")[0]
-//     })
-//   }
-//   num += 1
-// },[])
-
-// if(user && newUser.username){
-//   console.log(newUser,'llegueeeee')
-//   dispatch(userCreate(newUser))
 
 // }
 
@@ -79,9 +54,14 @@ export default function Login(){
             <div className='botonesDiv'>
 
 <Link className='botones4' to={'/premium'}>
+          <Link className='botones4' to={'/noticias'}>
+           <Button variant="text" color="azul">
+              News
+           </Button>
+          </Link>
+
           <Button variant="text" color="amarillo">
           Premium
-
           </Button>
           </Link>
 
@@ -112,11 +92,6 @@ export default function Login(){
         favorites
           </Button>
 
-          <Link className='botones4' to={'/noticias'}>
-           <Button variant="text" color="amarillo">
-              News
-           </Button>
-          </Link>
 
 
           
