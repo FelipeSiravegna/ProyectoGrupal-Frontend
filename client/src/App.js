@@ -7,6 +7,8 @@ import Home from './components/Home/Home';
 import PremiumSub from './components/PremiumSub/PremiumSub';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
+
+import News from './components/Noticias/News';
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
@@ -23,9 +25,9 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
+        <Route exact path='/noticias' element={<News/>}/>
         </Routes>
     );
   }
-
 
 export default App;
