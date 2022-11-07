@@ -135,8 +135,8 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
           color='rojo'
         >
           <MenuItem value={"None"}><em>None</em></MenuItem>
-          <MenuItem value="ASC">Most Popular</MenuItem>
-          <MenuItem value="DESC">Less Popular</MenuItem>
+          <MenuItem value="ASC">Less Popular</MenuItem>
+          <MenuItem value="DESC">Most Popular</MenuItem>
         </Select>
       </FormControl>
 
@@ -150,8 +150,8 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
           color='rojo'
         >
           <MenuItem value={"None"}><em>None</em></MenuItem>
-          <MenuItem value="ASC">Most Rating</MenuItem>
-          <MenuItem value="DESC">Less Rating</MenuItem>
+          <MenuItem value="ASC">Less Rating</MenuItem>
+          <MenuItem value="DESC">Most Rating</MenuItem>
         </Select>
       </FormControl>
 
