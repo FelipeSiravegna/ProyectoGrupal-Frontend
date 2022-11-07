@@ -36,7 +36,7 @@ export const orderRating = (order) =>{
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
-        await axios.get(`/movies/popular/?page=${name}&ord=DESC`)
+        await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
