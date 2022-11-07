@@ -214,7 +214,7 @@ export const userCreate = (form) =>{
     return async function (){
         try {
 
-            let response = await axios.post('http://localhost:3001/user' , form)
+            let response = await axios.post('/user' , form)
             return response
 
         } catch (error) {
