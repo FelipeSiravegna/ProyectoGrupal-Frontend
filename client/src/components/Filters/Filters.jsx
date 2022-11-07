@@ -2,7 +2,7 @@ import React from 'react'
 import './Filters.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies} from '../../redux/actions'
+import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity} from '../../redux/actions'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -21,6 +21,8 @@ const [age, setAge] = useState('');
 const [open, setOpen] = useState(false);
 const [age2, setAge2] = useState('');
 const [open2, setOpen2] = useState(false);
+const [age3, setAge3] = useState('');
+const [open3, setOpen3] = useState(false);
 
 
 useEffect(() => {
@@ -41,6 +43,13 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
   dispatch(filterDirector(e.target.value))
 }
 
+function onSelectPopularity(e){
+if(e.target.value === "None") return dispatch(getAllMovies(1))
+  dispatch(orderPopularity(e.target.value))
+}
+
+
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -56,6 +65,8 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
   const handleOpen2 = () => {
     setOpen2(true);
   };
+
+
 
   return (
     <div className='filtritos' >
@@ -104,6 +115,18 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
         </Select>
       </FormControl>
 
+      <FormControl sx={{ m: 0, minWidth: 110 }} size="small" style={{ color: "#f44336" }}>
+        <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Popularity</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          onChange={e => onSelectPopularity(e)}
+        >
+          <MenuItem value={"None"}><em>None</em></MenuItem>
+          <MenuItem value={"ASC"}>Most Popular</MenuItem>
+          <MenuItem value={"DESC"}>Less Popular</MenuItem>
+        </Select>
+      </FormControl>
       </div>
   )
 }

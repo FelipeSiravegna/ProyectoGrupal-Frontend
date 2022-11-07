@@ -14,13 +14,12 @@ export const SEARCH_COMPARE = 'SEARCH_COMPARE'
 export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2'
 export const GET_MOVIES_SOON = 'GET_MOVIES_SOON'
 export const ALL_GENRES = 'ALL_GENRES'
-
 export const ALL_USERS  =  'ALL_USERS'
 export const FILTER_DIRECTOR = 'FILTER_DIRECTOR'
 export const ALL_DIRECTOR ='ALL_DIRECTOR'
 export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
-
+export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 
 
 //peliculas
@@ -84,11 +83,13 @@ export const addMovie= (payload)=>{
 
 
 //filtros
-export const sortAsc = (payload) =>{
+
+
+export const orderPopularity = (order) =>{
     return async(dispatch)=>{
-        let json = await axios.get('')
+        let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${order}`)
         return dispatch = {
-            type: GET_SORT_ASC,
+            type: ORDER_POPULARITY,
             payload: json.data
         }
     }

@@ -170,42 +170,7 @@ const FilmDetails = () => {
 
         </div>
       </div>
-      <div className='comentarios'>
-        <label>REVIEWS</label>
-
-
-    <div className='Tab'>
-
-      <Tabs  className='tabs' id="controlled-tab-example">
-      <Tab eventKey="contact" title="GENRES">
-       {filmDetails.length !== 0 ? filmDetails.genres.map(a => a.name + ", ") : null}
-      </Tab>
-      <Tab eventKey="profile" title="DETAILS" className='cast'>
-      <li>LANGUAJE: <br></br>{filmDetails.language}</li>
-      <br></br>
-      <li>DURATION: <br></br>{(filmDetails.length / 60).toFixed(2)} hr</li>
-      <br></br>
-      <li>RELEASED DATE: <br></br>{filmDetails.releaseDate}</li>
-
-      </Tab>
-      <Tab eventKey="home" title="CAST" className='cast'>
-      <li>DIRECTOR: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.director.name : null }.</li>
-      <br></br>
-      <li>CAST: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.cast.map(a => a.name + "," + " ") : null}.</li>
-      <br></br> 
-      <li>PRODUCERS: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.producers.map(a => a.name + "," + " ") : null}.</li>
-      </Tab>
-    </Tabs>
-
-<div className='trailer'>
- <a href={filmDetails.trailer}> 
- <Button variant="text" color="rojo">movie  preview <YouTubeIcon fontSize="large"/></Button></a>
-</div>
-
-
-
-    </div>  
-   </div>
+      
    <div className='comentarios'>
     <label>REVIEWS</label>
 
