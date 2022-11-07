@@ -67,12 +67,14 @@ const FilmDetails = () => {
     dispatch(getMovieDetail(idFilm))
   }, [])
 
+
   //componentWillUnmount
   useEffect(() => {
     return () => {
       dispatch(resetDetail());
     }
   }, [])
+
 
   return (
     <div>
@@ -122,6 +124,7 @@ const FilmDetails = () => {
             : null}
           </div>
 
+
         </div>
 
         <div className='descripcion'>
@@ -153,7 +156,10 @@ const FilmDetails = () => {
 
           <div className='trailer'>
 
+
             <a href={filmDetails.trailer}>
+
+
               <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large" /> watch movie preview</Button></a>
           </div>
 
