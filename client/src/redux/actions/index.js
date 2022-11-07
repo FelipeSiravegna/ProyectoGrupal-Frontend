@@ -26,6 +26,7 @@ export const ORDER_RATING = 'ORDER_RATING'
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
         await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
+
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
@@ -39,22 +40,33 @@ export const getAllMovies= (name = 1)=>{
 };
 
 export const getMovieDetail= (id)=>{
-        return async function(dispatch) {
-            const detalle = await axios.get(`http://localhost:3001/detail/${id}`)
-                dispatch ({
-                    type: GET_MOVIE_DETAIL,
-                    payload: detalle.data
-                })
-        }
+    return async function(dispatch) {
+        const detalle = await axios.get(`/detail/${id}`)
+            dispatch ({
+                type: GET_MOVIE_DETAIL,
+                payload: detalle.data
+            })
     }
+}
+
+
+export const getAllGenres= ()=>{
+    return async(dispatch)=>{
+     let json = await axios.get('')
+        dispatch = {
+            type: GET_ALL_GENRES,
+            payload: json.data
+        }
+    }   
+}
 
 
 export const addMovie= (payload)=>{
     return async(dispatch)=>{
         let json = await axios.post('')
            return json
-        }
     }
+
 
     export const searchByName = (name) => {
         return async function (dispatch){
@@ -63,6 +75,15 @@ export const addMovie= (payload)=>{
                     type: SEARCH_BY_NAME,
                     payload: result.data
                 })
+
+}
+
+export const sortAsc = (payload) =>{
+    return async(dispatch)=>{
+        let json = await axios.get('')
+        return dispatch = {
+            type: GET_SORT_ASC,
+            payload: json.data
         }
     }
     
@@ -177,13 +198,14 @@ export const allDirector= ()=>{
 //paginado
 export const pages=(page)=>{
     return async function (dispatch){
+            // let result = await axios.get(`/movies/popular?page=${page}`);
+
             return dispatch({
                 type: PAGES,
                 payload: page
             })
-        }
     }
-
+}
 
 
 
@@ -212,6 +234,19 @@ export const searchCompare = (name) => {
 export const searchCompare2 = (name) => {
     return async function (dispatch){
             let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&offset=true`);
+            
+export const reset= ()=>{
+    return (dispatch)=>{
+        return dispatch({
+            type: RESET,
+            
+        })
+    }
+}
+
+export const searchByName = (name) => {
+    return async function (dispatch){
+            let result = await axios.get(`/movies/search/?name=${name}&page=1`);
             return dispatch({
                 type: SEARCH_COMPARE2,
                 payload: result.data

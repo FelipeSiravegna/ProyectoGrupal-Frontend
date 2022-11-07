@@ -1,29 +1,29 @@
-.Contenedor{
+.Contenedor {
 
-margin-top: -5%;
+    margin-top: -5%;
 }
 
-.foto{
+.foto {
     position: absolute;
     padding-left: 20%;
     padding-top: 10%;
 }
 
-.ImagenPelicula{
+.ImagenPelicula {
     width: 250px;
     height: 300px;
     background-color: rgb(255, 255, 255);
     padding: 1px 1px;
 }
 
-.nombre{
-position: relative;
-top: 150px;
+.nombre {
+    position: relative;
+    top: 150px;
     color: rgb(255, 255, 255);
     letter-spacing: 1px;
     left: 38%;
     margin: 0%;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size-adjust: 1em;
     text-shadow: 1px 1px 15px rgb(0, 0, 0);
     max-height: 100px;
@@ -31,30 +31,30 @@ top: 150px;
     text-decoration: underline 1px;
 }
 
-.descripcion{
-    position:relative;
+.descripcion {
+    position: relative;
     top: 150px;
     left: 39%;
     display: block;
     color: white;
     max-width: 560px;
     max-height: 230px;
-    overflow:hidden;
-    
+    overflow: hidden;
+
 }
 
 
 
 
 
-.Tab{
+.Tab {
     position: relative;
     color: aliceblue;
     left: 40%;
-    margin-top:12%;
+    margin-top: 12%;
     max-width: 400px;
     max-height: 300px;
-    background-color: 0, 0 ,0 
+    background-color: 0, 0, 0
 }
 
 
@@ -63,13 +63,16 @@ top: 150px;
    background-color: rgb(48, 48, 48) !important;
    border-radius: 10px;
   }
-
-
-.cast > li{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: rgb(48, 48, 48) !important;
+    border-radius: 10px;
 }
 
-.trailer > a{
+
+.cast>li {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.trailer>a {
     text-decoration: none
 }
 
@@ -80,7 +83,7 @@ top: 150px;
 font-display:inherit;
 }
 
-.comentarios{
+.comentarios {
     margin-top: 20%;
     position: relative;
     display: block;
@@ -93,56 +96,56 @@ font-display:inherit;
 
 }
 
-.comentarios > label{
+.comentarios>label {
     position: relative;
     margin-top: 2px;
     font-size: 60px;
     font-family: monospace;
-    color:#f44336;
-    box-shadow:   25px rgb(0, 0, 0);
+    color: #f44336;
+    box-shadow: 25px rgb(0, 0, 0);
 
- 
+
     left: 40%
 }
 
-.icono{
-    margin-top: -10%;  
+.icono {
+    margin-top: -10%;
     margin-left: 1%;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.icono2{
+.icono2 {
     margin-left: 40%;
-    margin-top: -62%; 
+    margin-top: -62%;
 }
 
-.icono3{
+.icono3 {
     margin-left: 80%;
-    margin-top: -112%; 
+    margin-top: -112%;
 
 }
 
-.valores{
+.valores {
     position: relative;
-        text-align: center;
-        color: aliceblue;
-        max-width: 40px;
-        top: -10px
+    text-align: center;
+    color: aliceblue;
+    max-width: 40px;
+    top: -10px
 }
 
-.valores2{
-        color: aliceblue;
-        max-width: 40px;
-        padding-left: 40%;
-        position: relative;
-        top: -73px;
-        text-align: center;
+.valores2 {
+    color: aliceblue;
+    max-width: 40px;
+    padding-left: 40%;
+    position: relative;
+    top: -73px;
+    text-align: center;
 
 }
 
-.valores3{
+.valores3 {
     color: aliceblue;
         max-width: 40px;
         padding-left: 80%;
@@ -199,4 +202,9 @@ font-display:inherit;
     right: 5%;
     top: 20%;
 
+    max-width: 40px;
+    padding-left: 80%;
+    position: relative;
+    top: -136px;
+    text-align: center;
 }
