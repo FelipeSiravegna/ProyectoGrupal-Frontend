@@ -22,6 +22,9 @@ export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
 
+
+
+
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
@@ -60,7 +63,6 @@ export const getAllGenres= ()=>{
     }   
 }
 
-
 export const addMovie= (payload)=>{
     return async(dispatch)=>{
         let json = await axios.post('')
@@ -76,14 +78,7 @@ export const addMovie= (payload)=>{
                     payload: result.data
                 })
 
-}
 
-export const sortAsc = (payload) =>{
-    return async(dispatch)=>{
-        let json = await axios.get('')
-        return dispatch = {
-            type: GET_SORT_ASC,
-            payload: json.data
         }
     }
     
@@ -208,9 +203,22 @@ export const pages=(page)=>{
 }
 
 
+export const reset= ()=>{
+    return (dispatch)=>{
+        return dispatch({
+            type: RESET,
+            
+        })
+    }
+}
+
+export const searchByName = (name) => {
+    return async function (dispatch){
+            let result = await axios.get(`/movies/search/?name=${name}&page=1`);
+            }
+            }
 
 
-//Compare
 export const compareSelec = () => {
     return async function (dispatch){
             let result = await axios.get(`http://localhost:3001/movies/all`);
@@ -252,6 +260,7 @@ export const searchByName = (name) => {
                 payload: result.data
             })
     }
+
 }
 
 
@@ -287,4 +296,5 @@ export const resetDetail = () => {
             type: "RESET_DETAIL"
         });
     }
+
 }

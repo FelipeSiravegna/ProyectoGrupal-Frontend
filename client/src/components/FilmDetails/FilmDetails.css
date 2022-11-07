@@ -63,14 +63,13 @@
    background-color: rgb(48, 48, 48) !important;
    border-radius: 10px;
   }
-    background-color: rgb(48, 48, 48) !important;
-    border-radius: 10px;
-}
+
 
 
 .cast>li {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 
 .trailer>a {
     text-decoration: none
@@ -103,8 +102,6 @@ font-display:inherit;
     font-family: monospace;
     color: #f44336;
     box-shadow: 25px rgb(0, 0, 0);
-
-
     left: 40%
 }
 
@@ -147,11 +144,11 @@ font-display:inherit;
 
 .valores3 {
     color: aliceblue;
-        max-width: 40px;
-        padding-left: 80%;
-        position: relative;
-        top: -136px;
-        text-align: center;
+    max-width: 40px;
+    padding-left: 80%;
+    position: relative;
+    top: -136px;
+    text-align: center;
 }
 
 .logeado{

@@ -7,12 +7,15 @@ import Home from './components/Home/Home';
 import PremiumSub from './components/PremiumSub/PremiumSub';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
-import Compare from './components/Compare/Compare'
-import NavDash from './components/Nav+Dash/Nav+Dash';
+import News from './components/Noticias/News';
 import dotenv from 'dotenv';
 import axios from 'axios';
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+
+import Compare from './components/Compare/Compare'
+import NavDash from './components/Nav+Dash/Nav+Dash';
+
 
 import { Route, Routes } from 'react-router-dom';
 import CardsRotate from './components/CardsRotate/CardsRotate';
@@ -31,13 +34,17 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
+        <Route exact path='/noticias' element={<News/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/aa' element={<Users/>}/>
         <Route exact path='/register' element={<Register/>}/>
+
         </Routes>
       
     );
   }
 
 
+
 export default App;
+

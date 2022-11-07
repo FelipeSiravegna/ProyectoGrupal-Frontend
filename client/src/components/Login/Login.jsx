@@ -17,6 +17,13 @@ import { userCreate } from '../../redux/actions/index.js';
 
 export default function Login(){
   
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+  
+  const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+
   const dispatch = useDispatch()
   
   const {loginWithRedirect,logout,isAuthenticated,isLoading,user} = useAuth0()
@@ -51,7 +58,7 @@ export default function Login(){
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- 
+
 
     return(
           <div>
@@ -105,10 +112,16 @@ export default function Login(){
         favorites
           </Button>
 
+          <Link className='botones4' to={'/noticias'}>
+           <Button variant="text" color="amarillo">
+              News
+           </Button>
+          </Link>
+
 
           
       <DropdownButton  align="end" id="nav-dropdown">
-        <div>
+        <div className='dropy'>
 
         
         <Dropdown.Item className='drop'>
