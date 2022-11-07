@@ -2,13 +2,14 @@ import React from 'react'
 import './Filters.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity} from '../../redux/actions'
+import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity, orderRating} from '../../redux/actions'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { minHeight } from '@mui/system'
+
 
 
 
@@ -22,7 +23,7 @@ const [open, setOpen] = useState(false);
 const [age2, setAge2] = useState('');
 const [open2, setOpen2] = useState(false);
 const [age3, setAge3] = useState('');
-const [open3, setOpen3] = useState(false);
+const [age4, setAge4] = useState('');
 
 
 useEffect(() => {
@@ -39,13 +40,22 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
 
 function onSelectDirector(e){
   setAge2(e.target.value)
-if(e.target.value === "None") return dispatch(getAllMovies(1))
+if(e.target.value === "None") return dispatch(filterDirector(1))
   dispatch(filterDirector(e.target.value))
 }
 
 function onSelectPopularity(e){
+  setAge3(e.target.value)
+  console.log(e.target.value)
 if(e.target.value === "None") return dispatch(getAllMovies(1))
   dispatch(orderPopularity(e.target.value))
+}
+
+function onSelectRating(e){
+  setAge4(e.target.value)
+  console.log(e.target.value)
+if(e.target.value === "None") return dispatch(getAllMovies(1))
+  dispatch(orderRating(e.target.value))
 }
 
 
@@ -120,13 +130,31 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
+          value={age3}
           onChange={e => onSelectPopularity(e)}
+          color='rojo'
         >
           <MenuItem value={"None"}><em>None</em></MenuItem>
-          <MenuItem value={"ASC"}>Most Popular</MenuItem>
-          <MenuItem value={"DESC"}>Less Popular</MenuItem>
+          <MenuItem value="ASC">Most Popular</MenuItem>
+          <MenuItem value="DESC">Less Popular</MenuItem>
         </Select>
       </FormControl>
+
+      <FormControl sx={{ m: 0, minWidth: 110 }} size="small" style={{ color: "#f44336" }}>
+        <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Rating</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          value={age4}
+          onChange={e => onSelectRating(e)}
+          color='rojo'
+        >
+          <MenuItem value={"None"}><em>None</em></MenuItem>
+          <MenuItem value="ASC">Most Rating</MenuItem>
+          <MenuItem value="DESC">Less Rating</MenuItem>
+        </Select>
+      </FormControl>
+
       </div>
   )
 }
