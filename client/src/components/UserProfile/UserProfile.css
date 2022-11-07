@@ -10,6 +10,7 @@
     margin-left: 50px;
     text-align: center;
     margin-left: 80px;
+    color: aliceblue;
 }
 
 .name{
@@ -17,6 +18,7 @@
     position:absolute;
     margin-left: 550px;
     margin-top: 10px;
+    color: #f44336;
 }
 
 .name .edit{
@@ -32,4 +34,16 @@
 
 .list{
     margin-left: 150px;
+}
+
+.PlayList{
+    padding: 55px;
+    position: relative;
+    display: block;
+}
+
+.fondo23{
+    position: relative;
+    background-image: url('../media/fondo.jpg');
+    padding-top: 20px;
 }

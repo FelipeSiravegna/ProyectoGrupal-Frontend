@@ -60,10 +60,12 @@
 
 .tabs {
     display: inline-flex;
+
     background-color: rgb(48, 48, 48) !important;
     border-radius: 10px;
 
 }
+
 
 
 .cast>li {
@@ -75,16 +77,17 @@
 }
 
 .trailer {
-    padding-top: 2%;
-    padding-left: 30%;
-    text-align: initial
+    position: absolute;
+    padding-left: 90%;
+   top: 50px;
+font-display:inherit;
 }
 
 .comentarios {
     margin-top: 20%;
     position: relative;
     display: block;
-    background: rgb(3, 35, 54);
+    background: rgb(255, 255, 255);
     width: 1200px;
     height: 200px;
     max-height: 500px;
@@ -100,8 +103,6 @@
     font-family: monospace;
     color: #f44336;
     box-shadow: 25px rgb(0, 0, 0);
-
-
     left: 40%
 }
 
@@ -149,4 +150,54 @@
     position: relative;
     top: -136px;
     text-align: center;
+}
+
+.logeado{
+    position: relative;
+    margin-top: -180%;
+    border-spacing: 100px;
+    margin-left: -30%;
+}
+
+
+#ratingDet{
+    display: block;
+    position: absolute;
+    margin-top: 28%;
+    margin-left: 30%;
+    background-color: #181818;
+    border-radius: 10px;
+}
+
+.interaccion{
+    position: relative;
+    top: 10%
+    
+    
+}
+
+.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+
+
+.ola{
+    width: 800px;
+    background-color: white;
+}
+
+.aberg{
+    position: absolute;
+    right: 13%;
+    top: 24%
+}
+
+.nene{
+    position: absolute;
+    font-size: 12px;
+    color: white;
+    font-family: 'Roboto';
+    text-shadow: 1px 1px #181818;
+    width: 150px;
+    right: 5%;
+    top: 20%;
+
 }
