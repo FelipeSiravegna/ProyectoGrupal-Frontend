@@ -33,6 +33,7 @@ export const getAllMovies= (name = 0)=>{
             })
         })
         .catch((err) => {
+            console.log(err);
         });
     };
   };

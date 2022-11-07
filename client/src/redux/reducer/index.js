@@ -20,7 +20,8 @@ import {
   FILTER_DIRECTOR,
   USER_PREMIUM,
   RESET_DETAIL,
-  ORDER_POPULARITY
+  ORDER_POPULARITY,
+  RESET_DETAIL,
 } from "../actions";
 
 const initialState = {
