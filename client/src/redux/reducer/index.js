@@ -19,7 +19,7 @@ import {
   ALL_USERS,
   ALL_DIRECTOR,
   FILTER_DIRECTOR,
-  USER_PREMIUM
+  USER_PREMIUM,
   RESET_DETAIL
 } from "../actions";
 
