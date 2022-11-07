@@ -21,7 +21,7 @@ import {
   USER_PREMIUM,
   RESET_DETAIL,
   ORDER_POPULARITY,
-  ORDER_RATING
+  ORDER_RATING,
 } from "../actions";
 
 const initialState = {
