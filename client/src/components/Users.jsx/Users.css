@@ -1,0 +1,7 @@
+.table{
+    position: absolute;
+    top: 10%;
+    max-width: 100px;
+    left: 15%;
+    align-items: center;
+}

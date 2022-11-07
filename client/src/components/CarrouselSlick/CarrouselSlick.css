@@ -1,21 +1,28 @@
 .slick{
-    width: 180px;
-    height: 220px;
+    width: 200px;
+    height: 240px;
 }
+  
 
 .elslid{
-  width: 800px;
-  height: 240px;
-  background-image: url(https://images.unsplash.com/photo-1543121170-856f92d04651?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=951&q=80);
+  width: 180px;
+  height: 140px;
+  background-size: 10px 20px;
+  position: absolute;
+
 }
 
 .p{
   background-color: rgb(109, 109, 109);
-width: 180px;
+width: 200px;
 height: 20px;
-  padding-left: 50px;
+  padding-left: 0px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-shadow: 1px 1px 25px rgb(0, 0, 0);
     box-shadow: 0 0 0 10px rgba(0, 0, 0, 0,6);
+}
+
+.slick-slide {
+  margin: -0px -40px;
 }
 

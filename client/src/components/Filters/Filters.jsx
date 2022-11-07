@@ -2,32 +2,43 @@ import React from 'react'
 import './Filters.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { allGenres, filterGenres} from '../../redux/actions'
+import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies} from '../../redux/actions'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
+import { minHeight } from '@mui/system'
 
 
 
 const Filters = () => {
 const dispatch = useDispatch()
 const generos = useSelector(state => state.genres)
+const directores = useSelector(state => state.directors)
 
 const [age, setAge] = useState('');
 const [open, setOpen] = useState(false);
-
+const [age2, setAge2] = useState('');
+const [open2, setOpen2] = useState(false);
 
 
 useEffect(() => {
   dispatch(allGenres())
+  dispatch(allDirector())
   }, [])
 
 
   function onSelectChange(e){
-    console.log(e.target.value)
+    setAge(e.target.value)
+if(e.target.value === "None") return dispatch(getAllMovies(1))
     dispatch(filterGenres(e.target.value))
+}
+
+function onSelectDirector(e){
+  setAge2(e.target.value)
+if(e.target.value === "None") return dispatch(getAllMovies(1))
+  dispatch(filterDirector(e.target.value))
 }
 
   const handleClose = () => {
@@ -38,11 +49,19 @@ useEffect(() => {
     setOpen(true);
   };
 
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleOpen2 = () => {
+    setOpen2(true);
+  };
+
   return (
-    <div>
+    <div className='filtritos' >
       
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-controlled-open-select-label">Age</InputLabel>
+      <FormControl sx={{ m: 0, minWidth: 90 }} size="small" style={{ color: "#f44336" }}>
+        <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Genres</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -50,10 +69,11 @@ useEffect(() => {
           onClose={handleClose}
           onOpen={handleOpen}
           value={age}
-          label="Age"
+          label="Grouping"
+          color='rojo'
           onChange={e => onSelectChange(e)}
         >
-          <MenuItem value="">
+          <MenuItem value={"None"}>
             <em>None</em>
           </MenuItem>
           {generos.map(a=> 
@@ -62,6 +82,27 @@ useEffect(() => {
         </Select>
       </FormControl>
       
+      <FormControl sx={{ m: 0, minWidth: 98 }} size="small" style={{ color: "#f44336" }}>
+        <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Director</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open2}
+          onClose={handleClose2}
+          onOpen={handleOpen2}
+          value={age2}
+          label="Grouping"
+          color='rojo'
+          onChange={e => onSelectDirector(e)}
+        >
+          <MenuItem value={"None"}>
+            <em>None</em>
+          </MenuItem>
+          {directores.map(a=> 
+          <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
+          )}
+        </Select>
+      </FormControl>
 
       </div>
   )

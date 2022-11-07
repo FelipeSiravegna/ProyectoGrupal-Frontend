@@ -15,6 +15,11 @@ import {
   GET_MOVIES_SOON,
   FILTER_GENRES,
   ALL_GENRES,
+
+  ALL_USERS,
+  ALL_DIRECTOR,
+  FILTER_DIRECTOR,
+  USER_PREMIUM
   RESET_DETAIL
 } from "../actions";
 
@@ -28,7 +33,9 @@ const initialState = {
   busqueda1: [],
   busqueda2: [],
   moviesSoon: [],
-  genres: []
+  genres: [],
+  users: [],
+  directors: []
 };
 
 
@@ -113,6 +120,26 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         moviesSoon: payload
       };
+
+      case ALL_USERS:
+      return {
+        ...state,
+        users: payload
+      };
+      case ALL_DIRECTOR:
+      return {
+        ...state,
+        directors: payload
+      };
+      case FILTER_DIRECTOR:
+      return {
+        ...state,
+        movies: payload
+      };
+      case USER_PREMIUM:
+      return {
+        ...state,
+      };
       case RESET_DETAIL:
           return{
             ...state,
@@ -122,3 +149,4 @@ export default function reducer(state = initialState, { type, payload }) {
       return state;
   }
 }
+

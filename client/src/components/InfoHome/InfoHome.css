@@ -9,6 +9,7 @@
 .cartas{
     position:relative;
     top: 380px;
+    padding-top: 2%;
     display: inline-flex;
     align-items: center;
     justify-content:flex-end;
@@ -17,6 +18,7 @@
     padding-inline-start: 100px;
     background: none;
     grid-template-columns: repeat(3, 1fr); 
+    
 }
 
 .card{
@@ -62,19 +64,23 @@
 
 
 .hola{
-    position: relative;
+    position: absolute;
     margin-top: 4%;
     text-align: center;
     color: white;
     font-family:'Roboto';
     text-shadow: 1px 1px 15px rgb(0, 0, 0);
-    max-height: 100px;
     font-size: 15px;
+    left: 43%;
+    top: 38%;
 }
 
 .publicidad{
-    position: relative;
-    margin-top: 26%;
+    display: flex;
+    top: 130%;
+    position: absolute;
+    left: 30%;
+    align-items: center;
     text-align: center;
     color: white;
     font-family:'Roboto';

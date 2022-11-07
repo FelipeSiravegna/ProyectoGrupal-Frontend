@@ -2,17 +2,16 @@
   min-height:200px;
   width:192px;
   height: 250px;
-  margin:0px 10px;
+
 
 }
 
+.Cardback:hover{
+  margin-top:-10px;
+  box-shadow:0 0 4px 6px rgba(255, 0, 0, 0.3);
+}
 
 .Imagen{
 border: 1px solid white;
-position: relative;
-}
-
-.Imagen{
-  border: 1px solid white;
-
+position: absolute;
 }
