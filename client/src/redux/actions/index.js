@@ -23,9 +23,9 @@ export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 
 
 //peliculas
-export const getAllMovies= (name = 0)=>{
+export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/movies/popular?page=${name}`)
+        await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
@@ -36,7 +36,7 @@ export const getAllMovies= (name = 0)=>{
             console.log(err);
         });
     };
-  };
+};
 
 export const getMovieDetail= (id)=>{
         return async function(dispatch) {
