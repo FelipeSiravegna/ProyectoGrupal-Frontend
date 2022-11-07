@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {HOST} from process.env
 export const GET_ALL_MOVIES ='GET_ALL_MOVIES';
 export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
 export const ADD_MOVIE ='ADD_MOVIE';
@@ -25,7 +26,7 @@ export const ORDER_RATING = 'ORDER_RATING'
 
 export const orderRating = (order) =>{
     return async function (dispatch){
-        let json = await axios.get(`/movies/rating/?page=1&ord=${order}`)
+        let json = await axios.get(`${HOST}/movies/rating/?page=1&ord=${order}`)
         return dispatch({
             type: ORDER_RATING,
             payload: json.data
@@ -36,7 +37,7 @@ export const orderRating = (order) =>{
 //peliculas
 export const getAllMovies= (name = 1)=>{
     return async function (dispatch) {
-        await axios.get(`/movies/popular/?page=${name}&ord=DESC`)
+        await axios.get(`${HOST}/movies/popular/?page=${name}&ord=DESC`)
         .then((pelis) => {
             dispatch ({
                 type: GET_ALL_MOVIES,
@@ -51,7 +52,7 @@ export const getAllMovies= (name = 1)=>{
 
 export const getMovieDetail= (id)=>{
         return async function(dispatch) {
-            const detalle = await axios.get(`/detail/${id}`)
+            const detalle = await axios.get(`${HOST}/detail/${id}`)
                 dispatch ({
                     type: GET_MOVIE_DETAIL,
                     payload: detalle.data
@@ -69,7 +70,7 @@ export const addMovie= (payload)=>{
 
     export const searchByName = (name) => {
         return async function (dispatch){
-                let result = await axios.get(`/movies/search/?name=${name}&page=1`);
+                let result = await axios.get(`${HOST}/movies/search/?name=${name}&page=1`);
                 return dispatch({
                     type: SEARCH_BY_NAME,
                     payload: result.data
@@ -81,7 +82,7 @@ export const addMovie= (payload)=>{
         return async function (dispatch) {
             await axios.get(`/comingSoon`)
             .then((pelis) => {
-                dispatch ({
+                dispatch({
                     type: GET_MOVIES_SOON,
                     payload: pelis.data
                 })
@@ -98,11 +99,11 @@ export const addMovie= (payload)=>{
 
 export const orderPopularity = (order) =>{
     return async(dispatch)=>{
-        let json = await axios.get(`/movies/popular/?page=1&ord=${order}`)
-        return dispatch = {
+        let json = await axios.get(`${HOST}/movies/popular/?page=1&ord=${order}`)
+        return dispatch({
             type: ORDER_POPULARITY,
             payload: json.data
-        }
+        })
     }
 }
 
@@ -118,7 +119,7 @@ export const sortPopularity = (payload) =>{
 
 export const filterGenres = (filtro) =>{
     return async function (dispatch){
-        let json = await axios.get(`/movies/search?genres[]=${filtro}`)
+        let json = await axios.get(`${HOST}/movies/search?genres[]=${filtro}`)
         return dispatch({
             type: FILTER_GENRES,
             payload: json.data
@@ -130,7 +131,7 @@ export const filterGenres = (filtro) =>{
 
 export const allGenres= ()=>{
     return async function (dispatch){
-        let result = await axios.get(`/genres`);
+        let result = await axios.get(`${HOST}/genres`);
         return dispatch({
             type: ALL_GENRES,
             payload:result.data
@@ -141,7 +142,7 @@ export const allGenres= ()=>{
 
 export const filterDirector = (filtro) =>{
     return async function (dispatch){
-        let json = await axios.get(`/movies/search?director[]=${filtro}`)
+        let json = await axios.get(`${HOST}/movies/search?director[]=${filtro}`)
         return dispatch({
             type: FILTER_DIRECTOR,
             payload: json.data
@@ -151,7 +152,7 @@ export const filterDirector = (filtro) =>{
 
 export const allDirector= ()=>{
     return async function (dispatch){
-        let result = await axios.get(`/directors`);
+        let result = await axios.get(`${HOST}/directors`);
         return dispatch({
             type: ALL_DIRECTOR,
             payload:result.data
@@ -179,7 +180,7 @@ export const pages=(page)=>{
 //Compare
 export const compareSelec = () => {
     return async function (dispatch){
-            let result = await axios.get(`/movies/all`);
+            let result = await axios.get(`${HOST}/movies/all`);
             return dispatch({
                 type: COMPARE_SELEC,
                 payload: result.data
@@ -189,7 +190,7 @@ export const compareSelec = () => {
 
 export const searchCompare = (name) => {
     return async function (dispatch){
-            let result = await axios.get(`/movies/search/?name=${name}&offset=true`);
+            let result = await axios.get(`${HOST}/movies/search/?name=${name}&offset=true`);
             return dispatch({
                 type: SEARCH_COMPARE,
                 payload: result.data
@@ -199,7 +200,7 @@ export const searchCompare = (name) => {
 
 export const searchCompare2 = (name) => {
     return async function (dispatch){
-            let result = await axios.get(`/movies/search/?name=${name}&offset=true`);
+            let result = await axios.get(`${HOST}/movies/search/?name=${name}&offset=true`);
             return dispatch({
                 type: SEARCH_COMPARE2,
                 payload: result.data
@@ -214,7 +215,7 @@ export const userCreate = (form) =>{
     return async function (){
         try {
 
-            let response = await axios.post('/user' , form)
+            let response = await axios.post('${HOST}/user' , form)
             return response
 
         } catch (error) {
@@ -227,7 +228,7 @@ export const userCreate = (form) =>{
 
 export const allUsers= ()=>{
     return async function (dispatch){
-        let result = await axios.get(`/allusers`);
+        let result = await axios.get(`${HOST}/allusers`);
         return dispatch({
             type: ALL_USERS,
             payload:result.data
@@ -238,7 +239,7 @@ export const allUsers= ()=>{
 
 export const UserPremium= (id)=>{
     return async function (dispatch){
-        let result = await axios.get(`/${id}/premium`);
+        let result = await axios.get(`${HOST}/${id}/premium`);
         return dispatch({
             type: USER_PREMIUM,
             payload:result.data
