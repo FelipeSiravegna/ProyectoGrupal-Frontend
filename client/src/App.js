@@ -9,14 +9,15 @@ import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import Compare from './components/Compare/Compare'
 import NavDash from './components/Nav+Dash/Nav+Dash';
-import Register from './components/Register/Register'
 import { Route, Routes } from 'react-router-dom';
-import ComingSoon from './components/ComingSoon/ComingSoon';
+import CardsRotate from './components/CardsRotate/CardsRotate';
 import CarrouselSlick from './components/CarrouselSlick/CarrouselSlick.jsx';
 import SearchLog from './components/Searchbar/SearchLog';
 import Filters from './components/Filters/Filters';
-
-
+import Carrousel2 from './components/Carrousel/Carrousel2';
+import Admin from './components/Admin/Admin';
+import Users from './components/Users.jsx/Users';
+import Register from './components/Register/Register'
 const App = () => {
   return (  
 
@@ -25,22 +26,11 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
-
-        <Route exact path='/aa' element={<Compare/>}/>
-        
-        
-        
-        
-        
-        
-        
-        
-        <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
-
-        <Route exact path='/aa' element={<Filters/>}/>
-
+        <Route exact path='/aa' element={<Users/>}/>
+        <Route exact path='/register' element={<Register/>}/>
         </Routes>
+      
     );
   }
 

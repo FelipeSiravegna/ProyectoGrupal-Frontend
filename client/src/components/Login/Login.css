@@ -42,10 +42,11 @@
     color: yellow;
 }
 
-.botonesDiv .botones{
-position: relative;
-top: 0%
-
+.botonesDiv{
+    position: absolute;
+text-align: center;
+left: 48%;
+top: 5%;
 }
 
 .my-modal .modal-content {
@@ -57,7 +58,10 @@ top: 0%
     left: 34%
   }
 
+
   .botonRegister{
     text-decoration: none;
     color: aliceblue;
   }
+
+

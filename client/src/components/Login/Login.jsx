@@ -119,6 +119,7 @@ export default function Login(){
             </Link>
             </Dropdown.Item>
 
+<div className='drope'>
             <Dropdown.Item className='drop'>
         <Link className='botones4' to={'/dashboard'}>
           <Button variant="text" color="rojo" className="botones">
@@ -126,7 +127,6 @@ export default function Login(){
             </Button>
             </Link>
             </Dropdown.Item>
-
             <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
             Following
             </Button></Dropdown.Item>
@@ -137,6 +137,7 @@ export default function Login(){
           <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
             Logout
             </Button></Dropdown.Item>
+            </div>
             </div>
       </DropdownButton>
 

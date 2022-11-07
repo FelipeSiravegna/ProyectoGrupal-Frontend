@@ -21,6 +21,10 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
 import SearchLog from '../Searchbar/SearchLog';
 import Filters from '../Filters/Filters';
+import Button from '@mui/material/Button'
+import Carrousel2 from '../Carrousel/Carrousel2';
+
+
 
 const Home = () => { 
   const dispatch = useDispatch()
@@ -32,7 +36,6 @@ const Home = () => {
   
   useEffect(() => {
     dispatch(getAllMovies(pagina || 1)) 
-    dispatch(filterGenres())
     }, [])
     
     const images = [
@@ -44,12 +47,12 @@ const Home = () => {
       "https://i.pinimg.com/564x/85/35/14/853514b720202376d42d236c3623e4b4.jpg"
     ]
     const images2 = [
-      "https://i.pinimg.com/564x/bc/00/e8/bc00e810b463c99fc85dc31dafff7e71.jpg",
-      "https://i.pinimg.com/564x/5e/2f/71/5e2f71299a594bf9dd528969ab2fe22b.jpg",
-      "https://i.pinimg.com/564x/ef/ee/e4/efeee45a55e4d873bf4de0290658b4df.jpg",
+      "https://i.pinimg.com/564x/5f/b6/d6/5fb6d62a14df6ac1253edc3bf82b2a37.jpg",
+      "https://i.pinimg.com/564x/98/d8/3e/98d83e03b1063e09483d084f8a603658.jpg",
+      "https://i.pinimg.com/564x/df/dd/fe/dfddfe14e7d1178b220fa08fd96e01f1.jpg",
       "https://i.pinimg.com/564x/e3/e0/25/e3e02598d17737f778632428d7b1e708.jpg",
-      "https://i.pinimg.com/564x/c6/4d/2c/c64d2ccbd2ba4e19d4a008d07a525e38.jpg",
-      "https://i.pinimg.com/564x/82/0a/b8/820ab8ab08206d3158800ca8d69f2e42.jpg"
+      "https://i.pinimg.com/564x/2f/a2/12/2fa212650d39691cfcee6b4c74f0ca17.jpg",
+      "https://i.pinimg.com/564x/d7/d7/7d/d7d77dbfb35fa218ebb62b3781593451.jpg"
     ]
 
     const bg = images[Math.floor(Math.random() * images.length)]
@@ -65,10 +68,15 @@ const Home = () => {
 <NavbarP/>
        <Carrousel/>
   <InfoHome/>
+
+  <div className='elBuscador'>
   <Searchbar/>
-       <Acordeon/>
-       
+  </div>
+
+
+       <div className='Paginator'>
 <Paginado/>
+</div>
 
        <div className='cards'>
             {peliculas.length !== 0 ? peliculas.rows.map(a => {
@@ -100,13 +108,44 @@ const Home = () => {
 <div className='nuevasPelis'>
 <h7 className='fraseRandom'>Very soon in The Corner Movies...</h7>
 <CarrouselSlick/>
+</div>
   <img className='loguito' src={Logo}></img>
+
+
+<h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Button variant="text" sx={{ fontSize: 19 }} color="amarillo">
+  premium
+</Button>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }}  color="azul">
+director's 
+</Button>ACCOUNT?</h1>
+ 
+
+
+<div className='carrousel2'>
+  <Carrousel2/>
 </div>
 
 <div className='busqueda'>
 <SearchLog/>
+<Filters/>
 
+<div className='lasCartulis'>
+{peliculas.length !== 0 ? peliculas.rows.map(a => {
+                return <FilmCard
+                key = {a.id}
+                name = {a.name}
+                id = {a.id}
+                img = {a.image}   
+                rating = {a.rating}    
+                />             
+            }) : <Box className='carga'  sx={{ display: 'flex' }}>
+            <CircularProgress color="rojo" />
+          </Box>
+        } 
 </div>
+</div>
+<div className='Paginame'><Paginado/> </div>
+
+
 
          
 
