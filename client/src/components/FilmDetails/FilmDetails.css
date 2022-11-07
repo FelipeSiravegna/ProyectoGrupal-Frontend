@@ -60,17 +60,16 @@
 
 .tabs {
     display: inline-flex;
-
-    background-color: rgb(48, 48, 48) !important;
-    border-radius: 10px;
-
-}
+   background-color: rgb(48, 48, 48) !important;
+   border-radius: 10px;
+  }
 
 
 
 .cast>li {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 
 .trailer>a {
     text-decoration: none
@@ -200,4 +199,9 @@ font-display:inherit;
     right: 5%;
     top: 20%;
 
+    max-width: 40px;
+    padding-left: 80%;
+    position: relative;
+    top: -136px;
+    text-align: center;
 }
