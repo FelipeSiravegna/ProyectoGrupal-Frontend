@@ -15,12 +15,12 @@ import {
   GET_MOVIES_SOON,
   FILTER_GENRES,
   ALL_GENRES,
-
   ALL_USERS,
   ALL_DIRECTOR,
   FILTER_DIRECTOR,
-  USER_PREMIUM
-  RESET_DETAIL
+  USER_PREMIUM,
+  RESET_DETAIL,
+  ORDER_POPULARITY
 } from "../actions";
 
 const initialState = {
@@ -144,7 +144,12 @@ export default function reducer(state = initialState, { type, payload }) {
           return{
             ...state,
             detail: []
-          }
+          };
+          case ORDER_POPULARITY:
+      return {
+        ...state,
+        movies: payload
+      };
     default:
       return state;
   }
