@@ -20,7 +20,7 @@ export const ALL_DIRECTOR ='ALL_DIRECTOR'
 export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
-
+export const ORDER_RATING = 'ORDER_RATING'
 
 //peliculas
 export const getAllMovies= (name = 1)=>{
@@ -86,12 +86,22 @@ export const addMovie= (payload)=>{
 
 
 export const orderPopularity = (order) =>{
-    return async(dispatch)=>{
+    return async function (dispatch){
         let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${order}`)
-        return dispatch = {
+        return dispatch({
             type: ORDER_POPULARITY,
             payload: json.data
-        }
+        })
+    }
+}
+
+export const orderRating = (order) =>{
+    return async function (dispatch){
+        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${order}`)
+        return dispatch({
+            type: ORDER_RATING,
+            payload: json.data
+        })
     }
 }
 

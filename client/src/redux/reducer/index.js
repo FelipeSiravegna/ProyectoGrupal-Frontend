@@ -21,7 +21,7 @@ import {
   USER_PREMIUM,
   RESET_DETAIL,
   ORDER_POPULARITY,
-  RESET_DETAIL,
+  ORDER_RATING
 } from "../actions";
 
 const initialState = {
@@ -147,6 +147,11 @@ export default function reducer(state = initialState, { type, payload }) {
             detail: []
           };
           case ORDER_POPULARITY:
+      return {
+        ...state,
+        movies: payload
+      };
+      case ORDER_RATING:
       return {
         ...state,
         movies: payload
