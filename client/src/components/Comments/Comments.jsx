@@ -25,8 +25,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 //   },
 // }));
 
-function Comments({content, name, img, like}) {
+function Comments({content, name, img, like, id}) {
     // const classes = useStyles();
+
 
     return (
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -42,9 +43,7 @@ function Comments({content, name, img, like}) {
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                // color="rojo"
-              >
-              
+              >      
               </Typography>
               {content}
               <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
