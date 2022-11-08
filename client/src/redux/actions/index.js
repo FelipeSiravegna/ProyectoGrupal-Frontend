@@ -8,10 +8,16 @@ export const FILTER = 'FILTER';
 export const RESET = 'RESET';
 export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
-export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
-export const COMPARE_SELEC = 'COMPARE_SELEC'
-export const SEARCH_COMPARE = 'SEARCH_COMPARE'
-export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2'
+export const SEARCH_BY_NAME = 'SEARCH_BY_NAME';
+export const COMPARE_SELEC = 'COMPARE_SELEC';
+export const SEARCH_COMPARE = 'SEARCH_COMPARE';
+export const SEARCH_COMPARE2 = 'SEARCH_COMPARE2';
+export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const DELETE_REVIEWS = 'GET_ALL_REVIEWS';
+export const GET_LIKES_COUNT = 'GET_LIKES_COUNT';
+export const ADD_LIKES = 'ADD_LIKES';
+
 
 export const getAllMovies= (name = 0)=>{
     return async function (dispatch) {
@@ -144,6 +150,50 @@ export const searchCompare2 = (name) => {
             return dispatch({
                 type: SEARCH_COMPARE2,
                 payload: result.data
+            })
+    }
+}
+export const getAllReviews = () => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/reviews`);
+            return dispatch({
+                type: GET_ALL_REVIEWS,
+                payload: result.data
+            })
+    }
+}
+export const addReviews = (payload) => {
+    return async function (dispatch){
+            await axios.post(`http://localhost:3001/reviews`, payload);
+            return dispatch({
+                type: ADD_REVIEW,
+               
+            })
+    }
+}
+export const deleteReviews = (id) => {
+    return async function (dispatch){
+            await axios.delete(`http://localhost:3001/reviews/${id}`);
+            return dispatch({
+                type: DELETE_REVIEWS,          
+            })
+    }
+}
+export const getLikeCounts = () => {
+    return async function (dispatch){
+            let result = await axios.get(`http://localhost:3001/likes`);
+            return dispatch({
+                type: GET_LIKES_COUNT,
+                payload: result.data
+            })
+    }
+}
+export const addLikes = () => {
+    return async function (dispatch){
+            await axios.get(`http://localhost:3001/likes`);
+            return dispatch({
+                type: ADD_LIKES,
+        
             })
     }
 }

@@ -11,7 +11,12 @@ import {
   GET_ALL_GENRES,
   COMPARE_SELEC,
   SEARCH_COMPARE2,
-  SEARCH_COMPARE
+  SEARCH_COMPARE,
+  GET_ALL_REVIEWS,
+  ADD_REVIEW,
+  DELETE_REVIEWS,
+  GET_LIKES_COUNT,
+  ADD_LIKES
 } from "../actions";
 
 const initialState = {
@@ -22,7 +27,9 @@ const initialState = {
   genre: [],
   compare: [],
   busqueda1: [],
-  busqueda2: []
+  busqueda2: [],
+  reviwes: [],
+  like: 0
 };
 
 
@@ -96,6 +103,30 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             busqueda2: payload
           };
+          case GET_ALL_REVIEWS:
+          return {
+            ...state,
+            reviwes: payload
+          };
+          case ADD_REVIEW:
+      return {
+        ...state,
+      };
+
+      case DELETE_REVIEWS:
+        return {
+          ...state,
+        };
+      case ADD_LIKES:
+        return {
+          ...state,
+        };
+      case GET_LIKES_COUNT:
+        return {
+          ...state,
+          like: payload
+
+        };
     default:
       return state;
   }
