@@ -26,28 +26,28 @@ import DeleteIcon from '@mui/icons-material/Delete';
 //   },
 // }));
 
-function Comments() {
+function Comments({content, name, img, like}) {
     // const classes = useStyles();
 
     return (
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={img} />
         </ListItemAvatar>
         <ListItemText
-          primary="Name"
+          primary={name}
           secondary={
             <React.Fragment>
               <Typography
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                color="text.primary"
+                // color="rojo"
               >
               
               </Typography>
-              {" I'll be in your neighborhood doing errands this…"}
+              {content}
               <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
               <IconButton aria-label="delete">
         <DeleteIcon />
