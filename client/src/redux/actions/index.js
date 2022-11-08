@@ -132,6 +132,7 @@ export const allGenres = () => {
 
 export const filterDirector = (filtro) => {
     return async function (dispatch) {
+        console.log(filtro);
         let json = await axios.get(`/movies/search?director[]=${filtro}`)
         return dispatch({
             type: FILTER_DIRECTOR,
