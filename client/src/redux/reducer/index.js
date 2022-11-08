@@ -12,6 +12,11 @@ import {
   COMPARE_SELEC,
   SEARCH_COMPARE2,
   SEARCH_COMPARE,
+  GET_ALL_REVIEWS,
+  ADD_REVIEW,
+  DELETE_REVIEWS,
+  GET_LIKES_COUNT,
+  ADD_LIKES
   GET_MOVIES_SOON,
   FILTER_GENRES,
   ALL_GENRES,
@@ -22,6 +27,7 @@ import {
   RESET_DETAIL,
   ORDER_POPULARITY,
   ORDER_RATING,
+
 } from "../actions";
 
 const initialState = {
@@ -33,10 +39,13 @@ const initialState = {
   compare: [],
   busqueda1: [],
   busqueda2: [],
+  reviwes: [],
+  like: 0,
   moviesSoon: [],
   genres: [],
   users: [],
   directors: []
+
 };
 
 
@@ -116,6 +125,30 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             busqueda2: payload
           };
+
+          case GET_ALL_REVIEWS:
+          return {
+            ...state,
+            reviwes: payload
+          };
+          case ADD_REVIEW:
+      return {
+        ...state,
+      };
+
+      case DELETE_REVIEWS:
+        return {
+          ...state,
+        };
+      case ADD_LIKES:
+        return {
+          ...state,
+        };
+      case GET_LIKES_COUNT:
+        return {
+          ...state,
+          like: payload
+        };
           case GET_MOVIES_SOON:
       return {
         ...state,
@@ -156,6 +189,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload
       };
+
     default:
       return state;
   }
