@@ -6,7 +6,7 @@ import "./Post.css";
 import {getAllReviews, getLikeCounts, addLikes, addReviews, deleteReviews} from '../../redux/actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 
-function Post(movieId, userId) {
+function Post({movieId, userId}) {
 const dispatch=useDispatch()
 const like = useSelector(state => state.like)
 const reviews = useSelector(state => state.reviews)
@@ -24,10 +24,12 @@ useEffect(()=>
 , [dispatch])
 
 const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(e.target.value)
     dispatch(addReviews({
-        movieId,
-        userId,
-        content: e.target.values
+        movieId:"41d6cb86-6865-40e7-b2ee-54cc9467fe99",
+        userId:1,
+        content: e.target.value
     }))
 }
 
@@ -36,12 +38,16 @@ const handleSubmit=(e)=>{
             <div className="post__header">
           
             {reviews?.map(e=>{ 
-                return (<div className="post__comments">
+                return (
+                <div className="post__comments">
                     <Comments 
+                    content={e.content}
+                    name={e.user.username}
+                    img={e.user.image}
                     like={like}
                     />
-                </div>)
-})}
+                </div>
+            )})}
                 <form className="post__form"  onSubmit={handleSubmit}>
                     <TextField
                         label="add comment"
@@ -54,6 +60,7 @@ const handleSubmit=(e)=>{
                         variant="contained"
                         size="small"
                         endIcon={<SendIcon />}
+                        type="submit"
                        
                     >
                         Send

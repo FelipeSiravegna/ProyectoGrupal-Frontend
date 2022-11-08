@@ -222,6 +222,8 @@ export const getAllReviews = () => {
     }
 }
 export const addReviews = (payload) => {
+    
+    console.log(payload)
     return async function (dispatch){
             await axios.post(`http://localhost:3001/reviews`, payload);
             return dispatch({

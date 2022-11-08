@@ -39,13 +39,12 @@ const initialState = {
   compare: [],
   busqueda1: [],
   busqueda2: [],
-  reviwes: [],
+  reviews: [],
   like: 0,
   moviesSoon: [],
   genres: [],
   users: [],
   directors: []
-
 };
 
 
@@ -129,7 +128,7 @@ export default function reducer(state = initialState, { type, payload }) {
           case GET_ALL_REVIEWS:
           return {
             ...state,
-            reviwes: payload
+            reviews: payload
           };
           case ADD_REVIEW:
       return {
