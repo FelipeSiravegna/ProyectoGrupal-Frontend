@@ -46,14 +46,12 @@ if(e.target.value === "None") return dispatch(filterDirector(1))
 
 function onSelectPopularity(e){
   setAge3(e.target.value)
-  console.log(e.target.value)
 if(e.target.value === "None") return dispatch(getAllMovies(1))
   dispatch(orderPopularity(e.target.value))
 }
 
 function onSelectRating(e){
   setAge4(e.target.value)
-  console.log(e.target.value)
 if(e.target.value === "None") return dispatch(getAllMovies(1))
   dispatch(orderRating(e.target.value))
 }

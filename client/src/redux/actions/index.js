@@ -90,23 +90,23 @@ export const addMovie= (payload)=>{
 
 //filtros
 
-export const orderRating = (order) =>{
-    return async(dispatch)=>{
-        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${order}`)
-        return dispatch = {
+export const orderRating = (filtro) =>{
+    return async function (dispatch){
+        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${filtro}`)
+        return dispatch({
             type: ORDER_RATING,
             payload: json.data
-        }
+        })
     }
 }
 
-export const orderPopularity = (order) =>{
-    return async(dispatch)=>{
-        let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${order}`)
-        return dispatch = {
+export const orderPopularity = (filtro) =>{
+    return async function (dispatch){
+        let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${filtro}`)
+        return dispatch({
             type: ORDER_POPULARITY,
             payload: json.data
-        }
+        })
     }
 }
 
