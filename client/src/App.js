@@ -20,6 +20,8 @@ import Carrousel2 from './components/Carrousel/Carrousel2';
 import Admin from './components/Admin/Admin';
 import Users from './components/Users.jsx/Users';
 import Register from './components/Register/Register'
+import Post from './components/Comments/Post.jsx'
+
 const App = () => {
   return (  
 
@@ -30,7 +32,7 @@ const App = () => {
         <Route exact path='/premium' element={<PremiumSub/>}/>
         <Route exact path='/noticias' element={<News/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
-        <Route exact path='/aa' element={<Users/>}/>
+        <Route exact path='/post' element={<Post/>}/>
         <Route exact path='/register' element={<Register/>}/>
 
         </Routes>
