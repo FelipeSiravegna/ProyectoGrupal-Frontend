@@ -23,6 +23,7 @@ import SearchLog from '../Searchbar/SearchLog';
 import Filters from '../Filters/Filters';
 import Button from '@mui/material/Button'
 import Carrousel2 from '../Carrousel/Carrousel2';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 
 
@@ -118,6 +119,10 @@ const Home = () => {
 director's 
 </Button>ACCOUNT?</h1>
  
+ <div className='infoLIK'> 
+  <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul'/>
+<h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
+</div>
 
 
 <div className='carrousel2'>
