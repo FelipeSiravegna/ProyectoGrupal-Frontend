@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
@@ -12,6 +12,10 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
+import { useDispatch } from 'react-redux';
+import { userCreate } from '../../redux/actions/index.js';
+
+
 
 export default function Login(){
   
@@ -19,38 +23,49 @@ export default function Login(){
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-
-  const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
   
+  const {loginWithRedirect,logout,isAuthenticated, isLoading} = useAuth0()
+
+  const dispatch = useDispatch()
+
+// }
+
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- 
+
 
     return(
           <div>
              {
-              !isAuthenticated ?
+              !isAuthenticated && isLoading ?
               <div>
             <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
               Login
             </Button>
-            <Button variant="contained" color="rojo" className="botones2">
+            <Link to={'./register'} className={'botonRegister'} >
+            <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
             Register
           </Button>
+          </Link>
+ 
           </div>
             :
             <div className='botonesDiv'>
 
 <Link className='botones4' to={'/premium'}>
-          <Button variant="text" color="amarillo">
-          Premium
-
-          </Button>
+          <Link className='botones4' to={'/noticias'}>
+           <Button variant="text" color="azul">
+              News
+           </Button>
           </Link>
 
+          <Button variant="text" color="amarillo">
+          Premium
+          </Button>
+          </Link>
 
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
@@ -80,9 +95,10 @@ export default function Login(){
           </Button>
 
 
+
           
       <DropdownButton  align="end" id="nav-dropdown">
-        <div>
+        <div className='dropy'>
 
         
         <Dropdown.Item className='drop'>
@@ -93,6 +109,14 @@ export default function Login(){
             </Link>
             </Dropdown.Item>
 
+<div className='drope'>
+            <Dropdown.Item className='drop'>
+        <Link className='botones4' to={'/dashboard'}>
+          <Button variant="text" color="rojo" className="botones">
+            Dashboard
+            </Button>
+            </Link>
+            </Dropdown.Item>
             <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
             Following
             </Button></Dropdown.Item>
@@ -103,6 +127,7 @@ export default function Login(){
           <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
             Logout
             </Button></Dropdown.Item>
+            </div>
             </div>
       </DropdownButton>
 

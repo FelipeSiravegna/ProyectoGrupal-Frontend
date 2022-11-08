@@ -16,7 +16,18 @@ import {
   ADD_REVIEW,
   DELETE_REVIEWS,
   GET_LIKES_COUNT,
-  ADD_LIKES
+  ADD_LIKES,
+  GET_MOVIES_SOON,
+  FILTER_GENRES,
+  ALL_GENRES,
+  ALL_USERS,
+  ALL_DIRECTOR,
+  FILTER_DIRECTOR,
+  USER_PREMIUM,
+  RESET_DETAIL,
+  ORDER_POPULARITY,
+  ORDER_RATING,
+
 } from "../actions";
 
 const initialState = {
@@ -29,7 +40,11 @@ const initialState = {
   busqueda1: [],
   busqueda2: [],
   reviews: [],
-  like: 0
+  like: 0,
+  moviesSoon: [],
+  genres: [],
+  users: [],
+  directors: []
 };
 
 
@@ -68,9 +83,15 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload,
       };
-    case FILTER:
+    case FILTER_GENRES:
       return {
         ...state,
+        movies: payload
+      };
+      case ALL_GENRES:
+      return {
+        ...state,
+        genres: payload
       };
 
     case RESET:
@@ -103,6 +124,7 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             busqueda2: payload
           };
+
           case GET_ALL_REVIEWS:
           return {
             ...state,
@@ -125,9 +147,50 @@ export default function reducer(state = initialState, { type, payload }) {
         return {
           ...state,
           like: payload
-
         };
+          case GET_MOVIES_SOON:
+      return {
+        ...state,
+        moviesSoon: payload
+      };
+
+      case ALL_USERS:
+      return {
+        ...state,
+        users: payload
+      };
+      case ALL_DIRECTOR:
+      return {
+        ...state,
+        directors: payload
+      };
+      case FILTER_DIRECTOR:
+      return {
+        ...state,
+        movies: payload
+      };
+      case USER_PREMIUM:
+      return {
+        ...state,
+      };
+      case RESET_DETAIL:
+          return{
+            ...state,
+            detail: []
+          };
+          case ORDER_POPULARITY:
+      return {
+        ...state,
+        movies: payload
+      };
+      case ORDER_RATING:
+      return {
+        ...state,
+        movies: payload
+      };
+
     default:
       return state;
   }
 }
+
