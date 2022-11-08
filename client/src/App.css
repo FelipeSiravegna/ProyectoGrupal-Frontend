@@ -15,3 +15,14 @@
   background-color: rgb(0, 0, 0);
   color: white;
 }
+
+*::-webkit-scrollbar{
+  width: 13px;
+  background: grey;
+
+}
+
+*::-webkit-scrollbar-thumb{
+  background-color:#ef5350;
+  border-radius: 5px;
+}

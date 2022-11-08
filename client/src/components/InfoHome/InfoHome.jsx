@@ -42,6 +42,7 @@ Watch and write reviews of the movies you saw
 </div>
 </div>
 </body>
+<br></br>
 <body className='cartas'>
     <div className='card'>
 <div className='face-back'>

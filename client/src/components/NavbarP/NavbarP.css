@@ -10,20 +10,21 @@
 
 
   .botones2{
-    left: 40%;
     position:relative;
+    margin-top: 13%;
     
   }
 
   .botonesDiv{
     padding-top: 1%;
     position: relative;
-    left: 16%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-        grid-column-gap: 15px;
+    grid-column-gap: 15px;
+    display: inline-flex;
         
   }
+ 
 
   
  
