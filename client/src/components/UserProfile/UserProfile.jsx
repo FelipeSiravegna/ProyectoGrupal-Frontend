@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import NavbarP from '../NavbarP/NavbarP';
 import { useAuth0 } from "@auth0/auth0-react";
 import ListFav from '../List/List';
-//import PlayList from '../PlayList/Playlist';
+import PlayList from '../playListas/Playlist';
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';

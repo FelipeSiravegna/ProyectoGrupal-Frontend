@@ -15,6 +15,8 @@ import Compare from '../Compare/Compare.jsx';
 import { useDispatch } from 'react-redux';
 import { userCreate } from '../../redux/actions/index.js';
 
+
+
 export default function Login(){
   
 
@@ -22,7 +24,7 @@ export default function Login(){
     setAge(event.target.value);
   };
   
-  const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+  const {loginWithRedirect,logout,isAuthenticated, isLoading} = useAuth0()
 
   const dispatch = useDispatch()
 
@@ -38,7 +40,7 @@ export default function Login(){
     return(
           <div>
              {
-              !isAuthenticated && !isLoading ?
+              !isAuthenticated && isLoading ?
               <div>
             <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
               Login
