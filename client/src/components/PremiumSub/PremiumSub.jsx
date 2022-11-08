@@ -7,26 +7,15 @@ import Button from '@mui/material/Button'
 const PremiumSub = () => {
   return (
     <div>
-        <img className='fondo2'src={fondo} alt="" />
-        <img className='fondo3'src={fondoPremium} alt="" />
-
-        
-
-
-<div>
-<div className='contenidoPremium'>
-        <Button variant="contained" sx={{ fontSize: 35 }} color="amarillo" className='botonSub'>SUSCRIBE FOR $499</Button>
-        <h1 className='frase'>statistics, reviews, favorites, unlimited lists and much more</h1>
+      <img className='fondo2' src={fondo} alt="" />
+      <img className='fondo3' src={fondoPremium} alt="" />
+      <div>
+        <div className='contenidoPremium'>
+          <Button variant="contained" sx={{ fontSize: 35 }} color="amarillo" className='botonSub'>SUSCRIBE FOR $499</Button>
+          <h1 className='frase'>statistics, reviews, favorites, unlimited lists and much more</h1>
         </div>
-        
-
-        </div>
-        
-        
-        
-        
-        
-        </div>
+      </div>
+    </div>
   )
 }
 

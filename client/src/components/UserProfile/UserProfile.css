@@ -1,48 +1,48 @@
-.conteiner{
+.conteiner {
     display: flex;
-    justify-content:left;
+    justify-content: left;
     align-items: center;
     margin-top: 50px;
     margin-left: 250px;
 }
 
-.seguidores{
+.seguidores {
     margin-left: 50px;
     text-align: center;
     margin-left: 80px;
     color: aliceblue;
 }
 
-.name{
+.name {
     display: flex;
-    position:absolute;
+    position: absolute;
     margin-left: 550px;
     margin-top: 10px;
     color: #f44336;
 }
 
-.name .edit{
+.name .edit {
     margin-left: 100px;
     margin-top: 8px;
 }
 
-.avatar{
+.avatar {
     width: 250px;
     height: 250px;
     border-radius: 50%;
 }
 
-.list{
+.list {
     margin-left: 150px;
 }
 
-.PlayList{
+.PlayList {
     padding: 55px;
     position: relative;
     display: block;
 }
 
-.fondo23{
+.fondo23 {
     position: relative;
     background-image: url('../media/fondo.jpg');
     padding-top: 20px;

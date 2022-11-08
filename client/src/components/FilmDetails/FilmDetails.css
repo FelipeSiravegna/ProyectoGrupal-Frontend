@@ -1,5 +1,4 @@
 .Contenedor {
-
     margin-top: -5%;
 }
 
@@ -40,12 +39,7 @@
     max-width: 560px;
     max-height: 230px;
     overflow: hidden;
-
 }
-
-
-
-
 
 .Tab {
     position: relative;
@@ -60,16 +54,13 @@
 
 .tabs {
     display: inline-flex;
-   background-color: rgb(48, 48, 48) !important;
-   border-radius: 10px;
-  }
-
-
+    background-color: rgb(48, 48, 48) !important;
+    border-radius: 10px;
+}
 
 .cast>li {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
 
 .trailer>a {
     text-decoration: none
@@ -78,8 +69,8 @@
 .trailer {
     position: absolute;
     padding-left: 90%;
-   top: 50px;
-font-display:inherit;
+    top: 50px;
+    font-display: inherit;
 }
 
 .comentarios {
@@ -139,7 +130,6 @@ font-display:inherit;
     position: relative;
     top: -73px;
     text-align: center;
-
 }
 
 .valores3 {
@@ -151,15 +141,14 @@ font-display:inherit;
     text-align: center;
 }
 
-.logeado{
+.logeado {
     position: relative;
     margin-top: -180%;
     border-spacing: 100px;
     margin-left: -30%;
 }
 
-
-#ratingDet{
+#ratingDet {
     display: block;
     position: absolute;
     margin-top: 28%;
@@ -168,28 +157,31 @@ font-display:inherit;
     border-radius: 10px;
 }
 
-.interaccion{
+.interaccion {
     position: relative;
     top: 10%
-    
-    
 }
 
-.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+.link-muted {
+    color: #aaa;
+}
 
+.link-muted:hover {
+    color: #1266f1;
+}
 
-.ola{
+.ola {
     width: 800px;
     background-color: white;
 }
 
-.aberg{
+.aberg {
     position: absolute;
     right: 13%;
     top: 24%
 }
 
-.nene{
+.nene {
     position: absolute;
     font-size: 12px;
     color: white;
@@ -198,7 +190,6 @@ font-display:inherit;
     width: 150px;
     right: 5%;
     top: 20%;
-
     max-width: 40px;
     padding-left: 80%;
     position: relative;

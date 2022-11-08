@@ -1,13 +1,12 @@
-
-.lafoto{
+.lafoto {
     position: absolute;
     left: 95%;
     top: 13%
 }
 
-.picture{
+.picture {
     position: absolute;
-    left:95%;
+    left: 95%;
     background-color: green;
     background: 0;
     padding: 0;
@@ -15,10 +14,8 @@
     margin-top: 5px;
 }
 
-.aber{
+.aber {
     position: absolute;
-    left:94%;
+    left: 94%;
     top: 0%
 }
-
-

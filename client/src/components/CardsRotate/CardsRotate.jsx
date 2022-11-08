@@ -5,25 +5,24 @@ import { getComingSoon } from '../../redux/actions'
 import { useEffect } from 'react'
 import logo from '../media/LogoCompleto.png'
 
-const CardsRotate = ({imagen, name, date}) => {
-   
-  return (
-    <div>
-        
+const CardsRotate = ({ imagen, name, date }) => {
+    return (
+        <div>
+
             <div className='cartasEstreno'>
                 <div className='frontal'>
-                    <img  className='porfa' src={imagen ? imagen : logo}/>
+                    <img className='porfa' src={imagen ? imagen : logo} />
                 </div>
                 <div className='trasero'>
                     <h1>{name}
-                    <br></br>
-                    {date}  
+                        <br></br>
+                        {date}
                     </h1>
                 </div>
             </div>
-              
+
         </div>
-  )
+    )
 }
 
 export default CardsRotate

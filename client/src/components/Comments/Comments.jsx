@@ -25,11 +25,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 //   },
 // }));
 
-function Comments({content, name, img, like}) {
-    // const classes = useStyles();
+function Comments({ content, name, img, like }) {
+  // const classes = useStyles();
 
-    return (
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+  return (
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src={img} />
@@ -42,25 +42,23 @@ function Comments({content, name, img, like}) {
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                // color="rojo"
+              // color="rojo"
               >
-              
+
               </Typography>
               {content}
               <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
               <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton>
+                <DeleteIcon />
+              </IconButton>
             </React.Fragment>
           }
         />
       </ListItem>
       <Divider variant="inset" component="li" />
-  
+
     </List>
   );
-
-    
 }
 
 export default Comments

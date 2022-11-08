@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-
-
 .cartas {
     position: relative;
     top: 380px;
@@ -17,22 +15,16 @@
     grid-row-gap: 2px;
     padding-inline-start: 100px;
     background: none;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
     position: relative;
     width: 300px;
-    /* height: 350px; */
     margin: 8px;
 }
 
-
-
-
-
 .face-back {
-
     background: rgb(3, 35, 54);
     padding: 1px;
     color: #f3f3f3;
@@ -42,9 +34,6 @@
     text-align: center;
     box-shadow: 0 5px 10px rgb(201, 37, 37);
 }
-
-
-
 
 .face-back h3 {
     font-size: 30px;
@@ -60,10 +49,7 @@
     background-color: #f44336;
 }
 
-
-
-
-.hola{
+.hola {
     position: absolute;
     margin-top: 4%;
     text-align: center;
@@ -75,9 +61,8 @@
     top: 38%;
 }
 
-
-.publicidad{
-   display: flex;
+.publicidad {
+    display: flex;
     top: 130%;
     position: absolute;
     left: 30%;

@@ -3,29 +3,27 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './PlayList.css'
 
-export default function Playlist(){
-const scrollCarrusel = useRef()
+export default function Playlist() {
+    const scrollCarrusel = useRef()
 
-const handleClickRigth = () => {
-    scrollCarrusel.current.scrollLeft += scrollCarrusel.current.offsetWidth
-}
-const handleClickLeft = () => {
-    scrollCarrusel.current.scrollLeft -= scrollCarrusel.current.offsetWidth
-}
+    const handleClickRigth = () => {
+        scrollCarrusel.current.scrollLeft += scrollCarrusel.current.offsetWidth
+    }
+    const handleClickLeft = () => {
+        scrollCarrusel.current.scrollLeft -= scrollCarrusel.current.offsetWidth
+    }
 
-    return(
+    return (
         <div className='peliculas-recomendadas'>
             <div className='contenedor-titulo-controler'>
                 <h3>PLAYLIST</h3>
                 <div className='indicadores'>
-                <button></button>
-                <button></button>
+                    <button></button>
+                    <button></button>
                 </div>
             </div>
             <div className='contenedor-principal'>
-                
-                <button onClick={handleClickLeft} id='flecha-izquierda' className='flecha-izquierda'><ArrowBackIosIcon/></button>
-
+                <button onClick={handleClickLeft} id='flecha-izquierda' className='flecha-izquierda'><ArrowBackIosIcon /></button>
                 <div ref={scrollCarrusel} className='contenedor-carrusel'>
                     <div className='carrusel'>
                         <div className='pelicula'>
@@ -63,11 +61,8 @@ const handleClickLeft = () => {
                         </div>
                     </div>
                 </div>
-
-                <button onClick={handleClickRigth} id='flecha-derecha' className='flecha-derecha'><ArrowForwardIosIcon/></button>
-            
+                <button onClick={handleClickRigth} id='flecha-derecha' className='flecha-derecha'><ArrowForwardIosIcon /></button>
             </div>
-
         </div>
     )
 }

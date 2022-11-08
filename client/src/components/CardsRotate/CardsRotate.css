@@ -1,4 +1,4 @@
-.elbody{
+.elbody {
     width: 155px;
     height: 200px;
 
@@ -35,14 +35,13 @@
     color: #f1f1f1;
 }
 
-
 .cartasEstreno:hover .frontal {
-   
+
     transform: perspective(500px) rotateY(180deg);
 }
 
 .cartasEstreno:hover .trasero {
-   
+
     transform: perspective(500px) rotateY(360deg);
 }
 
@@ -51,12 +50,10 @@
     color: #f1f1f1;
 }
 
-.porfa{
+.porfa {
     min-width: 155px;
     max-height: 200px;
     width: 155px;
     height: 200px;
-  margin:0px 
-
-
+    margin: 0px
 }

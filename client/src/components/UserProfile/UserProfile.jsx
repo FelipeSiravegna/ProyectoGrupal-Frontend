@@ -12,55 +12,48 @@ import imagenLogo from '../media/Logo.png'
 
 export default function UserProfile() {
 
-    const {user} = useAuth0()
+    const { user } = useAuth0()
     const dispatch = useDispatch()
-    let peliculas = useSelector(state => (state.movies)) 
+    let peliculas = useSelector(state => (state.movies))
     let pagina = useSelector(state => (state.page))
     console.log(peliculas)
 
     useEffect(() => {
         dispatch(getAllMovies(pagina || 1))
-        }, [])
+    }, [])
 
     return (
-         <div>
+        <div>
 
-<NavbarP/>
-<div className='fondo23'>
- {
-    
-user && 
-<div>
-
-<div className='name'><Typography variant="h3" gutterBottom>{user.nickname}</Typography>
-<div className='edit'>
-<Button variant="outlined">EDITAR PERFIL</Button>
-</div>
-</div>
-<div className='conteiner'>
-
-<img className='avatar' src={imagenLogo}/>
-
-<div className='seguidores'><Typography variant="h6" gutterBottom>FOLLOWING</Typography>
-<Typography className='contador' variant="h7" display="block" gutterBottom>115</Typography>
-</div>
-
-<div className='seguidores' ><Typography variant="h6" gutterBottom>FOLLOWERS</Typography>
-<Typography className='contador' variant="h7" display="block" gutterBottom>1.000.053</Typography>
-</div>
-
-
-</div>
-</div>
- }
- <br/>
- <br/>
- <div className='PlayList'>
- <PlayList name={'PlayList'} peliculas={peliculas}/>
-<PlayList name={'Favorits'} peliculas={peliculas}/>
-</div>
-<br/>
-         </div>
-         </div>
-        )
-    }
+            <NavbarP />
+            <div className='fondo23'>
+                {
+                    user &&
+                    <div>
+                        <div className='name'><Typography variant="h3" gutterBottom>{user.nickname}</Typography>
+                            <div className='edit'>
+                                <Button variant="outlined">EDITAR PERFIL</Button>
+                            </div>
+                        </div>
+                        <div className='conteiner'>
+                            <img className='avatar' src={imagenLogo} />
+                            <div className='seguidores'><Typography variant="h6" gutterBottom>FOLLOWING</Typography>
+                                <Typography className='contador' variant="h7" display="block" gutterBottom>115</Typography>
+                            </div>
+                            <div className='seguidores' ><Typography variant="h6" gutterBottom>FOLLOWERS</Typography>
+                                <Typography className='contador' variant="h7" display="block" gutterBottom>1.000.053</Typography>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <br />
+                <br />
+                <div className='PlayList'>
+                    <PlayList name={'PlayList'} peliculas={peliculas} />
+                    <PlayList name={'Favorits'} peliculas={peliculas} />
+                </div>
+                <br />
+            </div>
+        </div>
+    )
+}

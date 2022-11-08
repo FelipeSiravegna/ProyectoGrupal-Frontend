@@ -47,8 +47,6 @@ const initialState = {
   directors: []
 };
 
-
-
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
     case GET_ALL_MOVIES:
@@ -67,7 +65,7 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         detail: payload,
-        
+
       };
     case ADD_MOVIE:
       return {
@@ -88,7 +86,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload
       };
-      case ALL_GENRES:
+    case ALL_GENRES:
       return {
         ...state,
         genres: payload
@@ -99,91 +97,91 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         games: state.backvideos,
       };
-      case PAGES:
-        return{
+    case PAGES:
+      return {
         ...state,
         page: payload
-        };
-        case SEARCH_BY_NAME:
-          return {
-            ...state,
-            movies: payload
-          };
-          case COMPARE_SELEC:
-          return {
-            ...state,
-            compare: payload
-          };
-          case SEARCH_COMPARE:
-          return {
-            ...state,
-            busqueda1: payload
-          };
-          case SEARCH_COMPARE2:
-          return {
-            ...state,
-            busqueda2: payload
-          };
+      };
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        movies: payload
+      };
+    case COMPARE_SELEC:
+      return {
+        ...state,
+        compare: payload
+      };
+    case SEARCH_COMPARE:
+      return {
+        ...state,
+        busqueda1: payload
+      };
+    case SEARCH_COMPARE2:
+      return {
+        ...state,
+        busqueda2: payload
+      };
 
-          case GET_ALL_REVIEWS:
-          return {
-            ...state,
-            reviews: payload
-          };
-          case ADD_REVIEW:
+    case GET_ALL_REVIEWS:
+      return {
+        ...state,
+        reviews: payload
+      };
+    case ADD_REVIEW:
       return {
         ...state,
       };
 
-      case DELETE_REVIEWS:
-        return {
-          ...state,
-        };
-      case ADD_LIKES:
-        return {
-          ...state,
-        };
-      case GET_LIKES_COUNT:
-        return {
-          ...state,
-          like: payload
-        };
-          case GET_MOVIES_SOON:
+    case DELETE_REVIEWS:
+      return {
+        ...state,
+      };
+    case ADD_LIKES:
+      return {
+        ...state,
+      };
+    case GET_LIKES_COUNT:
+      return {
+        ...state,
+        like: payload
+      };
+    case GET_MOVIES_SOON:
       return {
         ...state,
         moviesSoon: payload
       };
 
-      case ALL_USERS:
+    case ALL_USERS:
       return {
         ...state,
         users: payload
       };
-      case ALL_DIRECTOR:
+    case ALL_DIRECTOR:
       return {
         ...state,
         directors: payload
       };
-      case FILTER_DIRECTOR:
+    case FILTER_DIRECTOR:
       return {
         ...state,
         movies: payload
       };
-      case USER_PREMIUM:
+    case USER_PREMIUM:
       return {
         ...state,
       };
-      case RESET_DETAIL:
-          return{
-            ...state,
-            detail: []
-          };
-          case ORDER_POPULARITY:
+    case RESET_DETAIL:
+      return {
+        ...state,
+        detail: []
+      };
+    case ORDER_POPULARITY:
       return {
         ...state,
         movies: payload
       };
-      case ORDER_RATING:
+    case ORDER_RATING:
       return {
         ...state,
         movies: payload
@@ -193,4 +191,3 @@ export default function reducer(state = initialState, { type, payload }) {
       return state;
   }
 }
-

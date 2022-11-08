@@ -3,11 +3,10 @@ import Dashboard from '../Dashboard/Dashboard';
 import NavbarP from '../NavbarP/NavbarP';
 
 export default function NavDash() {
-    
     return (
         <div>
-<NavbarP />
-<Dashboard />
+            <NavbarP />
+            <Dashboard />
         </div>
-        )
-    }
+    )
+}

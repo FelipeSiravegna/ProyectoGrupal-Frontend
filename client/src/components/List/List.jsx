@@ -38,7 +38,6 @@ export default function ListFav() {
               </Typography>
               {" — 5.914"}
             </React.Fragment>
-            
           }
         />
       </ListItem>

@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { Component } from 'react';
 import Carrousel from './components/Carrousel/Carrousel';
@@ -22,27 +21,20 @@ import Register from './components/Register/Register'
 import Post from './components/Comments/Post.jsx'
 import Review from './components/Review/Review';
 
-
 const App = () => {
-  return (  
-
-     <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
-        <Route exact path='/UserProfile' element={<UserProfile/>}/>
-        <Route exact path='/premium' element={<PremiumSub/>}/>
-        <Route exact path='/noticias' element={<News/>}/>
-        <Route exact path='/dashboard' element={<NavDash/>}/>
-        <Route exact path='/post' element={<Post/>}/>
-        <Route exact path='/register' element={<Register/>}/>
-        <Route exact path='/a' element={<Review/>}/>
-
-        </Routes>
-      
-    );
-  }
-
-
+  return (
+    <Routes>
+      <Route exact path='/' element={<Home />} />
+      <Route exact path='/filmdetails/:idFilm' element={<FilmDetails />} />
+      <Route exact path='/UserProfile' element={<UserProfile />} />
+      <Route exact path='/premium' element={<PremiumSub />} />
+      <Route exact path='/noticias' element={<News />} />
+      <Route exact path='/dashboard' element={<NavDash />} />
+      <Route exact path='/post' element={<Post />} />
+      <Route exact path='/register' element={<Register />} />
+      <Route exact path='/a' element={<Review />} />
+    </Routes>
+  );
+}
 
 export default App;
-

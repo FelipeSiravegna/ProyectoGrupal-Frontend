@@ -30,80 +30,79 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
 
-    const {isLoading,user} = useAuth0()
+  const { isLoading, user } = useAuth0()
 
   return (
-      <ThemeProvider theme={mdTheme}>
-    {
-    !isLoading && <>
-      <Box sx={{ display: 'flex' }}>
-        <Box
-          component="main"
-          sx={{
-              backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
-              flexGrow: 1,
-              height: '100vh',
-              overflow: 'auto',
-            }}
+    <ThemeProvider theme={mdTheme}>
+      {
+        !isLoading && <>
+          <Box sx={{ display: 'flex' }}>
+            <Box
+              component="main"
+              sx={{
+                backgroundColor: (theme) =>
+                  theme.palette.mode === 'light'
+                    ? theme.palette.grey[100]
+                    : theme.palette.grey[900],
+                flexGrow: 1,
+                height: '100vh',
+                overflow: 'auto',
+              }}
             >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                  <h1>Whelcome {user && user.name} to the Dashboard</h1>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                      p: 2,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      height: 240,
-                    }}
+              <Toolbar />
+              <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+                <h1>Whelcome {user && user.name} to the Dashboard</h1>
+                <Grid container spacing={3}>
+                  {/* Chart */}
+                  <Grid item xs={12} md={8} lg={9}>
+                    <Paper
+                      sx={{
+                        p: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: 240,
+                      }}
                     >
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <DateWeb />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Users />
-                </Paper>
-              </Grid>
+                      <Chart />
+                    </Paper>
+                  </Grid>
+                  {/* Recent Deposits */}
+                  <Grid item xs={12} md={4} lg={3}>
+                    <Paper
+                      sx={{
+                        p: 2,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        height: 240,
+                      }}
+                    >
+                      <DateWeb />
+                    </Paper>
+                  </Grid>
+                  {/* Recent Orders */}
+                  <Grid item xs={12}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                      <Users />
+                    </Paper>
+                  </Grid>
 
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Movies />
-                </Paper>
-              </Grid>
-              
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
-        </Box>
-      </Box>
-    </>
-    }
+                  <Grid item xs={12}>
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                      <Movies />
+                    </Paper>
+                  </Grid>
+
+                </Grid>
+                <Copyright sx={{ pt: 4 }} />
+              </Container>
+            </Box>
+          </Box>
+        </>
+      }
     </ThemeProvider>
   );
 }
 
 export default function Dashboard() {
-    
   return <DashboardContent />;
 }
