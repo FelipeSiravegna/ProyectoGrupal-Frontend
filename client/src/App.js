@@ -20,7 +20,7 @@ import Register from './components/Register/Register'
 import Review from './components/Review/Review';
 import Comments from './components/Comments/Comments';
 import Post from './components/Comments/Post';
-
+import Loginscreen from './components/Login/Loginscreen'
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -38,7 +38,7 @@ const App = () => {
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/a' element={<Post/>}/>
         <Route exact path='/aa' element={<Users/>}/>
-
+        <Route exact path='/login' element={<Loginscreen/>}/>
 
         </Routes>
       
@@ -48,4 +48,3 @@ const App = () => {
 
 
 export default App;
-

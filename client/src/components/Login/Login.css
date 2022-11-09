@@ -59,9 +59,12 @@ top: 7%;
   }
 
 
-  .botonRegister{
+  .botonRegisterLogin{
     text-decoration: none;
     color: aliceblue;
   }
 
-
+  .botonRegisterLogin:hover{
+    text-decoration: none;
+    color: aliceblue;
+  }
