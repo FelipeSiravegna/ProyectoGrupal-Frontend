@@ -28,9 +28,10 @@ import {
   ORDER_POPULARITY,
   ORDER_RATING,
   POST_USER_LOG,
-  GET_USER_iNFO,
+  GET_USER_INFO,
 
 } from "../actions";
+
 
 const initialState = {
   movies: [],
@@ -137,9 +138,7 @@ export default function reducer(state = initialState, { type, payload }) {
           case ADD_REVIEW:
       return {
         ...state,
-        reviews: [...reviews, payload]
       };
-
       case DELETE_REVIEWS:
         return {
           ...state,
@@ -198,7 +197,7 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         idToken:payload
       }
-      case GET_USER_iNFO:
+      case GET_USER_INFO:
       return {
         ...state,
         user:payload

@@ -8,7 +8,7 @@ import Acordeon from '../Acordeon/Acordeon';
 import InfoHome from '../InfoHome/InfoHome';
 import Searchbar from '../Searchbar/Searchbar';
 import { useDispatch, useSelector } from 'react-redux'
-import {filterGenres, getAllMovies, getComingSoon} from '../../redux/actions'
+import {filterGenres, getAllMovies, getComingSoon, getUserInfo} from '../../redux/actions'
 import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import Paginado from '../Pagination/Pagination';
@@ -32,6 +32,16 @@ const Home = () => {
   const {loginWithRedirect,logout,isAuthenticated, user} = useAuth0()
   let peliculas = useSelector(state => (state.movies)) 
   let pagina = useSelector(state => (state.page))
+  const token = useSelector((state)=> state.idToken)
+  const userDB = useSelector((state)=> state.user)
+
+  useEffect(()=>{
+    dispatch(getUserInfo(token)) 
+  },[token])
+
+  useEffect(()=>{
+    console.log(userDB)
+  },[userDB])
 
   
   useEffect(() => {
@@ -62,7 +72,7 @@ const Home = () => {
         
     <div className="App">
     {
-      !isAuthenticated ?
+      !token ?
       <div>
       <img className='fondo'src={fondo} alt="" />
 <NavbarP/>
@@ -104,7 +114,7 @@ const Home = () => {
 <NavbarP/>
 <img className='fondoLogeado'src={bg} alt="" />
 <img className='fondoLogeado2'src={bg2} alt="" />
-<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>"{user.nickname}"</h1></h1>
+<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>"aa"</h1></h1>
 <h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen, 
   as well as <FavoriteIcon fontSize='small'/> it and save it to watch later<AccessTimeFilledIcon fontSize='small'/> Also if 
   are undecided you can compare two movies to choose the one that best suits you.</h6>
