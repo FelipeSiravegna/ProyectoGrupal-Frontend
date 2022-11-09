@@ -40,7 +40,7 @@ export default function Login(){
     return(
           <div>
              {
-              !isAuthenticated && isLoading ?
+              !isAuthenticated && !isLoading ?
               <div>
             <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
               Login
