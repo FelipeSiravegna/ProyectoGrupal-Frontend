@@ -26,8 +26,8 @@ export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
+export const GET_USER_INFO = 'GET_USER_INFO'
 export const POST_USER_LOG = 'POST_USER_LOG'
-export const GET_USER_iNFO = 'GET_USER_iNFO'
 
 
 //peliculas
@@ -216,9 +216,9 @@ export const searchCompare2 = (name) => {
             })
     }
 }
-export const getAllReviews = () => {
+export const getAllReviews = (id) => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/reviews`);
+            let result = await axios.get(`http://localhost:3001/reviews?id=${id}`);
             return dispatch({
                 type: GET_ALL_REVIEWS,
                 payload: result.data
@@ -226,12 +226,10 @@ export const getAllReviews = () => {
     }
 }
 export const addReviews = (payload) => {
-    console.log(payload, "payyy")
     return async function (dispatch){
-            await axios.post(`http://localhost:3001/reviews`, payload);
+        await axios.post(`http://localhost:3001/reviews`, payload);
             return dispatch({
                 type: ADD_REVIEW,
-               payload: payload
             })
     }
 }
@@ -338,7 +336,7 @@ export const getUserInfo = (token) =>{
             
             console.log('json:',json.data)
             return dispatch({
-                type: GET_USER_iNFO,
+                type: GET_USER_INFO,
                 payload: json.data
             })
         } catch (error) {

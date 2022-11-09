@@ -1,4 +1,3 @@
-import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -13,20 +12,15 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: '100%',
-//     maxWidth: '36ch',
-//     backgroundColor: theme.palette.background.paper,
-//   },
-//   inline: {
-//     display: 'inline',
-//   },
-// }));
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAllReviews } from '../../redux/actions';
 
 function Comments({content, name, img, like, id}) {
-    // const classes = useStyles();
+  const dispatch=useDispatch()
+
+
+
 
 
     return (

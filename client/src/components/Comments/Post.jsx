@@ -20,24 +20,26 @@ const [estado, setEstado] = useState('')
 
 
 useEffect(()=> 
-{dispatch(getAllReviews())}
-, [dispatch])
+{dispatch(getAllReviews(movieId))}
+, [dispatch, estado])
 
 
 
 const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(addReviews({
+        userImage: userImg,
+        userNickName: userName,
         movieId: movieId,
         userId: 1,
-        content: estado
+        content: estado,
     }))
+    setEstado('')
+    dispatch(getAllReviews(movieId))
 }
 
-
-//const peli = reviews.filter(a => a.movie.id === movieId)
-
 console.log(reviews)
+
 
 
     return (
@@ -65,16 +67,7 @@ console.log(reviews)
                 </form>
      
             
-                {reviews.length ?reviews.map(e=>{ 
-                return (<div className="post__comments">
-                    <Comments 
-                    like={like}
-                    content={e.content}
-                    name={e.user.username}
-                    img={e.user.image}
-                    />
-                </div>)
-            }): null}
+              
 
                 
 
