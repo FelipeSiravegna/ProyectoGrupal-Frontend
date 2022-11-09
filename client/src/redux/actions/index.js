@@ -145,6 +145,7 @@ export const allGenres= ()=>{
 
 }
 
+
 export const filterDirector = (filtro) =>{
     return async function (dispatch){
         let json = await axios.get(`http://localhost:3001/movies/search?director[]=${filtro}`)
@@ -154,6 +155,7 @@ export const filterDirector = (filtro) =>{
         })
     }
 }
+
 
 export const allDirector= ()=>{
     return async function (dispatch){
@@ -222,13 +224,12 @@ export const getAllReviews = () => {
     }
 }
 export const addReviews = (payload) => {
-    
-    console.log(payload)
+    console.log(payload, "payyy")
     return async function (dispatch){
             await axios.post(`http://localhost:3001/reviews`, payload);
             return dispatch({
                 type: ADD_REVIEW,
-               
+               payload: payload
             })
     }
 }
@@ -273,9 +274,9 @@ export const allUsers= ()=>{
     }
 }
 
-export const UserPremium= (id)=>{
+export const UserPremium= (email)=>{
     return async function (dispatch){
-        let result = await axios.get(`http://localhost:3001/${id}/premium`);
+        let result = await axios.get(`http://localhost:3001/premium/?email=${email}`);
         return dispatch({
             type: USER_PREMIUM,
             payload:result.data

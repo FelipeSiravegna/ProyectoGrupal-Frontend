@@ -133,6 +133,7 @@ export default function reducer(state = initialState, { type, payload }) {
           case ADD_REVIEW:
       return {
         ...state,
+        reviews: [...reviews, payload]
       };
 
       case DELETE_REVIEWS:

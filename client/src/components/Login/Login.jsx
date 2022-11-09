@@ -24,11 +24,11 @@ export default function Login(){
     setAge(event.target.value);
   };
   
-  const {loginWithRedirect,logout,isAuthenticated, isLoading} = useAuth0()
+  const {loginWithRedirect,logout,isAuthenticated, isLoading, user} = useAuth0()
 
   const dispatch = useDispatch()
 
-// }
+console.log(user)
 
 
   const [show, setShow] = useState(false);
@@ -40,7 +40,7 @@ export default function Login(){
     return(
           <div>
              {
-              !isAuthenticated && isLoading ?
+              !isAuthenticated && !isLoading ?
               <div>
             <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
               Login

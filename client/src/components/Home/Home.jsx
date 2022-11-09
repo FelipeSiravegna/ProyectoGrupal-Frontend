@@ -29,10 +29,9 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const Home = () => { 
   const dispatch = useDispatch()
-  const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+  const {loginWithRedirect,logout,isAuthenticated, user} = useAuth0()
   let peliculas = useSelector(state => (state.movies)) 
   let pagina = useSelector(state => (state.page))
-  console.log(peliculas)
 
   
   useEffect(() => {
@@ -93,6 +92,10 @@ const Home = () => {
           </Box>
         } 
             </div >
+ <div className='infoLIK'> 
+  <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul'/>
+<h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
+</div>
             </div>
             
                : <div>
@@ -101,7 +104,7 @@ const Home = () => {
 <NavbarP/>
 <img className='fondoLogeado'src={bg} alt="" />
 <img className='fondoLogeado2'src={bg2} alt="" />
-<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>"NombreDeUser"</h1></h1>
+<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>"{user.nickname}"</h1></h1>
 <h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen, 
   as well as <FavoriteIcon fontSize='small'/> it and save it to watch later<AccessTimeFilledIcon fontSize='small'/> Also if 
   are undecided you can compare two movies to choose the one that best suits you.</h6>
@@ -119,10 +122,6 @@ const Home = () => {
 director's 
 </Button>ACCOUNT?</h1>
  
- <div className='infoLIK'> 
-  <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul'/>
-<h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
-</div>
 
 
 <div className='carrousel2'>
