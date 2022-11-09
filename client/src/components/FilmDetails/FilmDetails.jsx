@@ -27,6 +27,7 @@ import Profile from '../Login/Profile';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
+import Post from '../Comments/Post';
 
 
 const FilmDetails = () => {
@@ -35,7 +36,8 @@ const FilmDetails = () => {
   const params = useParams();
   const { idFilm } = params
   const filmDetails = useSelector(state => state.detail)
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0()
+  const { loginWithRedirect, logout, isAuthenticated,user } = useAuth0()
+console.log(user)
 
   const [value, setValue] = useState(2);
   const [favorito, setFavorito] = useState(false);
@@ -172,7 +174,12 @@ const FilmDetails = () => {
       </div>
 
       <div className='comentarios'>
-        <label>REVIEWS</label>
+        <Post 
+        userId={user ? user.sub : null}
+        userName={user ? user.nickname : null}
+        userImg={user ? user.picture : null}
+        movieId={idFilm}
+        />
 
       </div>
     </div>

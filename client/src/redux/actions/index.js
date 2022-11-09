@@ -26,6 +26,8 @@ export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
+export const POST_USER_LOG = 'POST_USER_LOG'
+export const GET_USER_iNFO = 'GET_USER_iNFO'
 
 
 //peliculas
@@ -145,6 +147,7 @@ export const allGenres= ()=>{
 
 }
 
+
 export const filterDirector = (filtro) =>{
     return async function (dispatch){
         let json = await axios.get(`http://localhost:3001/movies/search?director[]=${filtro}`)
@@ -154,6 +157,7 @@ export const filterDirector = (filtro) =>{
         })
     }
 }
+
 
 export const allDirector= ()=>{
     return async function (dispatch){
@@ -222,13 +226,12 @@ export const getAllReviews = () => {
     }
 }
 export const addReviews = (payload) => {
-    
-    console.log(payload)
+    console.log(payload, "payyy")
     return async function (dispatch){
             await axios.post(`http://localhost:3001/reviews`, payload);
             return dispatch({
                 type: ADD_REVIEW,
-               
+               payload: payload
             })
     }
 }
@@ -273,9 +276,9 @@ export const allUsers= ()=>{
     }
 }
 
-export const UserPremium= (id)=>{
+export const UserPremium= (email)=>{
     return async function (dispatch){
-        let result = await axios.get(`http://localhost:3001/${id}/premium`);
+        let result = await axios.get(`http://localhost:3001/premium/?email=${email}`);
         return dispatch({
             type: USER_PREMIUM,
             payload:result.data
@@ -306,5 +309,40 @@ export const userCreate = (form) =>{
         }
 
 
+    }
+}
+
+
+//body should be identificator: pass:
+export const checkUserInfo = (body) =>{
+    return async function (dispatch){
+        //console.log('body:',body)
+        try {
+            let json = await axios.post('http://localhost:3001/login',body)
+            console.log('json:',json.data.token)
+            return dispatch({
+                type: POST_USER_LOG,
+                payload: json.data.token})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+}
+
+
+export const getUserInfo = (token) =>{
+    return async function (dispatch){
+        console.log(token)
+        try {
+            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJ1c2VybmFtZSI6IlVzdWFyaW8xIiwiaWQiOjF9XSwiaWF0IjoxNjY3NzcyMzYzfQ.CCuGwleGitvDJ-sKGWOAopH1MzBmeF6PYg_yPi9wyWk'}})
+            
+            console.log('json:',json.data)
+            return dispatch({
+                type: GET_USER_iNFO,
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 }
