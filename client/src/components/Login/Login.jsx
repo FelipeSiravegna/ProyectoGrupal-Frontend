@@ -12,25 +12,32 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
-import { useDispatch } from 'react-redux';
-import { userCreate } from '../../redux/actions/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { userCreate,getUserInfo } from '../../redux/actions/index.js';
 
 
 
 export default function Login(){
-  
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
   
-  const {loginWithRedirect,logout,isAuthenticated, isLoading, user} = useAuth0()
+const token = useSelector((state)=> state.idToken)
+const userDB = useSelector((state)=> state.user)
 
+  const {loginWithRedirect,logout,isAuthenticated, isLoading, user} = useAuth0()
+  
   const dispatch = useDispatch()
 
-console.log(user)
+  useEffect(()=>{
+    dispatch(getUserInfo(token)) 
+  },[token])
 
-
+  useEffect(()=>{
+    console.log(userDB)
+  },[userDB])
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -40,7 +47,7 @@ console.log(user)
     return(
           <div>
              {
-              !isAuthenticated && !isLoading ?
+              !token ?
               <div>
                 <Link to={'./login'} className={'botonRegisterLogin'} >
             <Button variant="text" color="rojo" className="botones2">

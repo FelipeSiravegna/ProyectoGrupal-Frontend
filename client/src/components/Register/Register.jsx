@@ -8,14 +8,13 @@ import Form from 'react-bootstrap/Form';
 import fondoRegister from '../media/LogoCompleto.png'
 import {userCreate,checkUserInfo} from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
+import { redirect } from "react-router-dom";
 
 export default function Register(){
 
     const dispatch = useDispatch()
 
     const {loginWithRedirect} = useAuth0()
-
-    const body = {"identificator":"Usuario1", "pass":"passWord$2"}
     
     const [form, setForm] = useState({
         username: '',
@@ -48,7 +47,8 @@ export default function Register(){
         e.preventDefault()
         dispatch(userCreate(form))
         alert('User succesful')
-        loginWithRedirect()
+        redirect("/")
+        
     }
 
     return(

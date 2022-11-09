@@ -7,22 +7,25 @@ import Form from 'react-bootstrap/Form';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import fondoRegister from '../media/LogoCompleto.png'
-import {userCreate} from '../../redux/actions'
+import {checkUserInfo} from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Loginscreen(){
 
     const dispatch = useDispatch()
 
     const {loginWithRedirect} = useAuth0()
+
+    const navigate = useNavigate();
     
     const [form, setForm] = useState({
-        email: '',
-        password: ''
+        identificator: '',
+        pass: ''
     })
 
     const [errors, setErrors] = useState({
-        email: ''
+        identificator: ''
     })
     
     function handleInput(e){
@@ -34,13 +37,12 @@ export default function Loginscreen(){
                 ...form,
                 [e.target.name] : e.target.value
             }))
-            console.log(errors)
     }
 
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(userCreate(form))
-        alert('User succesful')
+        dispatch(checkUserInfo(form))
+        navigate("/")
     }
 
     return(
@@ -55,8 +57,8 @@ export default function Loginscreen(){
            <form onSubmit={handleSubmit}>
 
             <Form.Group className={style.conteiner} controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name='email' onChange={e => handleInput(e)}/>
+        <Form.Label>UserName or E-mail</Form.Label>
+        <Form.Control type="text" placeholder="Enter email" name='identificator' onChange={e => handleInput(e)}/>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -66,18 +68,10 @@ export default function Loginscreen(){
 
             <Form.Group className={style.conteiner} controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='password' onChange={e => handleInput(e)}/>
+        <Form.Control type="password" placeholder="Password" name='pass' onChange={e => handleInput(e)}/>
       </Form.Group>
 
-      {errors.password && <p className={style.errors}>{errors.password}</p>}
-
-      <Form.Group className={style.conteiner} controlId="formBasicPassword">
-        <Form.Label>Confirm Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='confirmpassword' onChange={e => handleInput(e)}/>
-      </Form.Group>
-
-      {errors.confirmpassword && <p className={style.errors}>{errors.confirmpassword}</p>}
-
+      {errors.pass && <p className={style.errors}>{errors.pass}</p>}
 
             <div className={style.button}>
         <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
@@ -110,10 +104,9 @@ export default function Loginscreen(){
 export function validate(errors){
     let error = {}
     
-    if(errors.password !== errors.confirmpassword) error.confirmpassword = 'The password does not match'
-    if(!errors.password) error.password = 'Password is require'
-    if(errors.password.includes(' ')) error.password = "Password can't contain spaces."
-    if(!errors.email) error.email = 'E-mail is require'
+    if(!errors.pass) error.pass = 'Password is require'
+    if(errors.pass.includes(' ')) error.pass = "Password can't contain spaces."
+    if(!errors.identificator) error.identificator = 'E-mail is require'
 
 
     return error

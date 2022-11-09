@@ -334,7 +334,7 @@ export const getUserInfo = (token) =>{
     return async function (dispatch){
         console.log(token)
         try {
-            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJ1c2VybmFtZSI6IlVzdWFyaW8xIiwiaWQiOjF9XSwiaWF0IjoxNjY3NzcyMzYzfQ.CCuGwleGitvDJ-sKGWOAopH1MzBmeF6PYg_yPi9wyWk'}})
+            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${token}`}})
             
             console.log('json:',json.data)
             return dispatch({
