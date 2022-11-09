@@ -7,7 +7,7 @@ import PlayList from '../playListas/Playlist';
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { filterGenres, getAllMovies } from '../../redux/actions';
+import { filterGenres, getAllMovies,getUserInfo } from '../../redux/actions';
 import imagenLogo from '../media/Logo.png'
 
 export default function UserProfile() {
@@ -15,8 +15,11 @@ export default function UserProfile() {
     const {user} = useAuth0()
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.movies)) 
+    let token = useSelector(state=>state)
+    let dbUser = useSelector(state=>state.user)
     let pagina = useSelector(state => (state.page))
     console.log(peliculas)
+    console.log(token)
 
     useEffect(() => {
         dispatch(getAllMovies(pagina || 1))
@@ -27,6 +30,9 @@ export default function UserProfile() {
 
 <NavbarP/>
 <div className='fondo23'>
+    <button onClick={(e)=>{dispatch(getUserInfo(token))}}>send token</button>
+    <button onClick={(e)=>{console.log(dbUser)}}>check user</button>
+    <button onClick={(e)=>{console.log(token)}}>check token</button>
  {
     
 user && 

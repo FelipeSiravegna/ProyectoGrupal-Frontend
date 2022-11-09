@@ -26,6 +26,8 @@ export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
+export const POST_USER_LOG = 'POST_USER_LOG'
+export const GET_USER_iNFO = 'GET_USER_iNFO'
 
 
 //peliculas
@@ -307,5 +309,40 @@ export const userCreate = (form) =>{
         }
 
 
+    }
+}
+
+
+//body should be identificator: pass:
+export const checkUserInfo = (body) =>{
+    return async function (dispatch){
+        //console.log('body:',body)
+        try {
+            let json = await axios.post('http://localhost:3001/login',body)
+            console.log('json:',json.data.token)
+            return dispatch({
+                type: POST_USER_LOG,
+                payload: json.data.token})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+}
+
+
+export const getUserInfo = (token) =>{
+    return async function (dispatch){
+        console.log(token)
+        try {
+            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJ1c2VybmFtZSI6IlVzdWFyaW8xIiwiaWQiOjF9XSwiaWF0IjoxNjY3NzcyMzYzfQ.CCuGwleGitvDJ-sKGWOAopH1MzBmeF6PYg_yPi9wyWk'}})
+            
+            console.log('json:',json.data)
+            return dispatch({
+                type: GET_USER_iNFO,
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 }
