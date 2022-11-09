@@ -27,6 +27,8 @@ import {
   RESET_DETAIL,
   ORDER_POPULARITY,
   ORDER_RATING,
+  POST_USER_LOG,
+  GET_USER_iNFO,
 
 } from "../actions";
 
@@ -44,7 +46,9 @@ const initialState = {
   moviesSoon: [],
   genres: [],
   users: [],
-  directors: []
+  directors: [],
+  idToken:"",
+  user:[]
 };
 
 
@@ -188,6 +192,16 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload
       };
+      case POST_USER_LOG:
+      return {
+        ...state,
+        idToken:payload
+      }
+      case GET_USER_iNFO:
+      return {
+        ...state,
+        user:payload
+      }
 
     default:
       return state;
