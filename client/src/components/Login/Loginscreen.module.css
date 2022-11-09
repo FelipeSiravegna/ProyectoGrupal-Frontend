@@ -1,0 +1,68 @@
+.conteiner{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
+}
+
+.checkbox{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 650px;
+    border: 1px solid red;
+}
+
+.root{
+    background-image: url(../media/fondoDetalle.jpg);
+    margin-top: 55px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    border-radius: 5%;
+}
+
+.button{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.errors{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: red;
+}
+
+.logo{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
+}
+
+.titulo{
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    color: #f44336;
+}
+
+.fondo98{
+    background-image: url('https://wallpaperaccess.com/full/1597764.jpg');
+    background-repeat:round;
+    padding-bottom: 123px;
+}
+
+.loginSocial{
+    display: flex;
+    margin-left: 40%;
+    margin-top: 30px;
+}
+
+.marginButtons{
+    margin-left: 50px;
+}

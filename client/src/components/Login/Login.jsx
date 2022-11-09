@@ -40,12 +40,14 @@ export default function Login(){
     return(
           <div>
              {
-              !isAuthenticated && isLoading ?
+              !isAuthenticated && !isLoading ?
               <div>
-            <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
+                <Link to={'./login'} className={'botonRegisterLogin'} >
+            <Button variant="text" color="rojo" className="botones2">
               Login
             </Button>
-            <Link to={'./register'} className={'botonRegister'} >
+            </Link>
+            <Link to={'./register'} className={'botonRegisterLogin'} >
             <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
             Register
           </Button>

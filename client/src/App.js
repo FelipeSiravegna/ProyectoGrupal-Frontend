@@ -21,6 +21,7 @@ import Users from './components/Users.jsx/Users';
 import Register from './components/Register/Register'
 import Post from './components/Comments/Post.jsx'
 import Review from './components/Review/Review';
+import Loginscreen from './components/Login/Loginscreen'
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
         <Route exact path='/post' element={<Post/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/a' element={<Review/>}/>
+        <Route exact path='/login' element={<Loginscreen/>}/>
 
         </Routes>
       
