@@ -216,9 +216,9 @@ export const searchCompare2 = (name) => {
             })
     }
 }
-export const getAllReviews = (id) => {
+export const getAllReviews = () => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/reviews?id=${id}`);
+            let result = await axios.get(`http://localhost:3001/reviews`);
             return dispatch({
                 type: GET_ALL_REVIEWS,
                 payload: result.data
@@ -317,7 +317,6 @@ export const checkUserInfo = (body) =>{
         //console.log('body:',body)
         try {
             let json = await axios.post('http://localhost:3001/login',body)
-            console.log('json:',json.data.token)
             return dispatch({
                 type: POST_USER_LOG,
                 payload: json.data.token})
@@ -330,7 +329,6 @@ export const checkUserInfo = (body) =>{
 
 export const getUserInfo = (token) =>{
     return async function (dispatch){
-        console.log(token)
         try {
             let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${token}`}})
             

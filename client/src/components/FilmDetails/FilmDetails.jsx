@@ -187,9 +187,9 @@ const FilmDetails = () => {
 
       <div className='comentarios'>
         <Post 
-        userId={user ? user.sub : null}
-        userName={user ? user.nickname : null}
-        userImg={user ? user.picture : null}
+        userId={userDB ? userDB.id : null}
+        userName={userDB ? userDB.username : null}
+        userImg={userDB ? userDB.image : null}
         movieId={idFilm ? idFilm : null}
         />
 

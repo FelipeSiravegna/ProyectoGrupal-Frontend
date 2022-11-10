@@ -1,44 +1,36 @@
-
-import React, { useEffect } from "react";
-import {
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  TextField,
-  Button,
-} from "@material-ui/core";
-import Comments from "./Comments";
-import SendIcon from "@mui/icons-material/Send";
+import React, { useEffect } from 'react';
+import { ListItem, ListItemText, ListItemAvatar, Avatar, TextField, Button } from '@material-ui/core';
+import Comments from './Comments';
+import SendIcon from '@mui/icons-material/Send';
 import "./Post.css";
-import {
-  getAllReviews,
-  getLikeCounts,
-  addLikes,
-  addReviews,
-  deleteReviews,
-} from "../../redux/actions/index";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import {getAllReviews, addReviews, } from '../../redux/actions/index'
+import {useSelector, useDispatch} from 'react-redux'
+import { useState } from 'react';
 
-function Post({ movieId, userId }) {
-    const dispatch = useDispatch();
-    const like = useSelector((state) => state.like);
-    const reviews = useSelector((state) => state.reviews);
-    
-  
-  const [estado, setEstado] = useState("");
 
-  useEffect(() => {
-      dispatch(getAllReviews());
-    }, [dispatch]);
-    
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(
-      addReviews({
+function Post({movieId, userId, userName, userImg}) {
+
+
+const dispatch=useDispatch()
+const like = useSelector(state => state.like)
+const reviews = useSelector(state => state.reviews)
+
+const [estado, setEstado] = useState('')
+
+
+
+useEffect(()=> 
+{dispatch(getAllReviews(movieId))}
+, [dispatch, estado])
+
+
+
+const handleSubmit=(e)=>{
+    e.preventDefault()
+    dispatch(addReviews({
         movieId: movieId,
-        userId: userId || 1,
+        userId: userId,
+
         content: estado,
       })
     );
