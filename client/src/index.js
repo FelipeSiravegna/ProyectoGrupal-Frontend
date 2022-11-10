@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { blue, grey, red, yellow } from '@mui/material/colors';
+import { blue, green, grey, red, yellow } from '@mui/material/colors';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -30,6 +30,9 @@ const theme = createTheme({
     },
     azul: {
       main: blue[500],
+    },
+    verde: {
+      main: green[500],
     },
 
   },

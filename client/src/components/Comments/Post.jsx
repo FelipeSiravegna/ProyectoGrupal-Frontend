@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import {
   ListItem,
@@ -50,6 +51,7 @@ function Post({ movieId, userId }) {
 
   return (
    
+
         <div className="post">
             <div className="post__header">
           
@@ -74,6 +76,7 @@ function Post({ movieId, userId }) {
                 </form>
      
             
+
                 {peli.length? peli.map(e=>{ 
                 return (<div className="post__comments">
                     <Comments 
@@ -85,11 +88,14 @@ function Post({ movieId, userId }) {
                 </div>)
             }): null}
 
+
                 
 
 </div>
         </div>
+
   )
 }
 
 export default Post;
+

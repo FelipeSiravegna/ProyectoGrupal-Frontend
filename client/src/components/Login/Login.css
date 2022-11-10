@@ -1,8 +1,17 @@
 .picture{
     border-radius: 50%;
+    margin-top: 10px;
 }
 
+.register{
+    color: black;
+    text-decoration:none;
+}
 
+.register:hover{
+    color: black;
+    text-decoration:none;
+}
 
 #nav-dropdown{
     color: rgb(255, 255, 255);
@@ -25,8 +34,7 @@
 
 .drop{
     position: relative;
-    background: 10px 30px 50px;
-    padding: 0px 0px ;
+    background: 10px 30px 0px;
 }
 
 .botones4{
@@ -34,6 +42,12 @@
     color: yellow;
 }
 
+.botonesDiv{
+    position: absolute;
+text-align: center;
+left: 50%;
+top: 7%;
+}
 
 .my-modal .modal-content {
     width: 122.4%;
@@ -42,4 +56,15 @@
   .tituloModal{
     position: relative;
     left: 34%
+  }
+
+
+  .botonRegisterLogin{
+    text-decoration: none;
+    color: aliceblue;
+  }
+
+  .botonRegisterLogin:hover{
+    text-decoration: none;
+    color: aliceblue;
   }
