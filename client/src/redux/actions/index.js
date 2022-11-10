@@ -317,6 +317,7 @@ export const checkUserInfo = (body) =>{
         //console.log('body:',body)
         try {
             let json = await axios.post('http://localhost:3001/login',body)
+            localStorage.setItem("token",`${json.data.token}`)
             return dispatch({
                 type: POST_USER_LOG,
                 payload: json.data.token})
@@ -327,12 +328,10 @@ export const checkUserInfo = (body) =>{
 }
 
 
-export const getUserInfo = (token) =>{
+export const getUserInfo = () =>{
     return async function (dispatch){
         try {
-            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${token}`}})
-            
-            console.log('json:',json.data)
+            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}})
             return dispatch({
                 type: GET_USER_INFO,
                 payload: json.data

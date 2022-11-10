@@ -36,7 +36,7 @@ const Home = () => {
   const userDB = useSelector((state)=> state.user)
 
   useEffect(()=>{
-    dispatch(getUserInfo(token)) 
+    dispatch(getUserInfo()) 
   },[token])
 
   useEffect(()=>{
