@@ -3,8 +3,12 @@ import './PremiumSub.css'
 import fondo from '../media/fondo.jpg'
 import fondoPremium from '../media/fondoPremium.jpg'
 import Button from '@mui/material/Button'
+import { useDispatch } from 'react-redux';
+import { subscribe } from '../../redux/actions';
+
 
 const PremiumSub = () => {
+  const dispatch = useDispatch()
   return (
     <div>
         <img className='fondo2'src={fondo} alt="" />
@@ -15,7 +19,7 @@ const PremiumSub = () => {
 
 <div>
 <div className='contenidoPremium'>
-        <Button variant="contained" sx={{ fontSize: 35 }} color="amarillo" className='botonSub'>SUSCRIBE FOR $499</Button>
+        <Button variant="contained" sx={{ fontSize: 35 }} color="amarillo" className='botonSub' onClick={(e)=>{dispatch(subscribe())}}>SUSCRIBE FOR $499</Button>
         <h1 className='frase'>statistics, reviews, favorites, unlimited lists and much more</h1>
         </div>
         
