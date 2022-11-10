@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
 
 
-function Post({movieId, userId, userName, userImg}) {
+function Post({movieId, userId}) {
 
 
 const dispatch=useDispatch()
@@ -20,7 +20,7 @@ const [estado, setEstado] = useState('')
 
 
 useEffect(()=> 
-{dispatch(getAllReviews(movieId))}
+{dispatch(getAllReviews())}
 , [dispatch, estado])
 
 
@@ -30,7 +30,6 @@ const handleSubmit=(e)=>{
     dispatch(addReviews({
         movieId: movieId,
         userId: userId,
-
         content: estado,
       })
     );
@@ -38,8 +37,10 @@ const handleSubmit=(e)=>{
     dispatch(getAllReviews());
   };
 
-  console.log(reviews);
+
   let peli = reviews.filter(e=> e.movie.id ===movieId)
+console.log(reviews)
+
 
   return (
    
@@ -72,10 +73,12 @@ const handleSubmit=(e)=>{
                 {peli.length? peli.map(e=>{ 
                 return (<div className="post__comments">
                     <Comments 
-                    like={like}
+                    like={e.like}
                     content={e.content}
-                    name={e.user.username}
+                    name={e.user.username ? e.user.username : null}
                     img={e.user.image}
+                    id={e.id}
+                    idUser={e.user.id}
                     />
                 </div>)
             }): null}
