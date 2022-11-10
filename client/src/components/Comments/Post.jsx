@@ -3,7 +3,7 @@ import { ListItem, ListItemText, ListItemAvatar, Avatar, TextField, Button } fro
 import Comments from './Comments';
 import SendIcon from '@mui/icons-material/Send';
 import "./Post.css";
-import {getAllReviews, getLikeCounts, addLikes, addReviews, deleteReviews} from '../../redux/actions/index'
+import {getAllReviews, addReviews, } from '../../redux/actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
 
@@ -28,10 +28,8 @@ useEffect(()=>
 const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(addReviews({
-        userImage: userImg,
-        userNickName: userName,
         movieId: movieId,
-        userId: 1,
+        userId: userId,
         content: estado,
     }))
     setEstado('')
