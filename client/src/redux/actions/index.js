@@ -332,12 +332,29 @@ export const getUserInfo = () =>{
     return async function (dispatch){
         try {
             let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            console.log('soy info',json.data)
+            if(json.data){
+                localStorage.setItem("username",`${json.data.username}`)
+                localStorage.setItem("email",`${json.data.email}`)
+                localStorage.setItem("image",`${json.data.image}`)}
             return dispatch({
                 type: GET_USER_INFO,
                 payload: json.data
             })
         } catch (error) {
             console.log(error.message)
+        }
+    }
+}
+
+
+export const subscribe = ()=>{
+    return async function(dispatch){
+        const email = {email:localStorage.getItem("email")}
+        console.log(email)
+        const response = await axios.post(`http://localhost:3001/subscribe`,email)
+        if (response.data){
+            return window.open(response.data.init_point,'_blank')
         }
     }
 }
