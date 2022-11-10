@@ -14,13 +14,29 @@ import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllReviews } from '../../redux/actions';
+import { getAllReviews, deleteReviews} from '../../redux/actions';
+import Button from '@mui/material/Button';
+import { useState } from 'react';
+import { width } from '@mui/system';
 
-function Comments({content, name, img, like, id}) {
+function Comments({content, name, img, id, idUser}) {
   const dispatch=useDispatch()
 
+  const [estado, setEstado] = useState('')
 
 
+  useEffect(()=> 
+  {dispatch(getAllReviews())}
+  , [dispatch, estado])
+
+function deleteComment (id) {
+  setEstado(id)
+  dispatch(deleteReviews(id))
+}
+
+
+
+console.log(estado)
 
 
     return (
@@ -41,9 +57,11 @@ function Comments({content, name, img, like, id}) {
               </Typography>
               {content}
               <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-              <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton>
+
+              <Button variant="outlined" color="rojo" onClick={()=>deleteComment(id)}>
+              <DeleteIcon />
+              </Button>
+  
             </React.Fragment>
           }
         />
