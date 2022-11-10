@@ -10,7 +10,7 @@ export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const ADD_REVIEW = 'ADD_REVIEW';
-export const DELETE_REVIEWS = 'GET_ALL_REVIEWS';
+export const DELETE_REVIEWS = 'DELETE_REVIEWS';
 export const GET_LIKES_COUNT = 'GET_LIKES_COUNT';
 export const ADD_LIKES = 'ADD_LIKES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
@@ -216,9 +216,9 @@ export const searchCompare2 = (name) => {
             })
     }
 }
-export const getAllReviews = (id) => {
+export const getAllReviews = () => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/reviews?id=${id}`);
+            let result = await axios.get(`http://localhost:3001/reviews`);
             return dispatch({
                 type: GET_ALL_REVIEWS,
                 payload: result.data

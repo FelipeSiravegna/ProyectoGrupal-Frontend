@@ -3,12 +3,12 @@ import { ListItem, ListItemText, ListItemAvatar, Avatar, TextField, Button } fro
 import Comments from './Comments';
 import SendIcon from '@mui/icons-material/Send';
 import "./Post.css";
-import {getAllReviews, getLikeCounts, addLikes, addReviews, deleteReviews} from '../../redux/actions/index'
+import {getAllReviews, addReviews, } from '../../redux/actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
 
 
-function Post({movieId, userId, userName, userImg}) {
+function Post({movieId, userId}) {
 
 
 const dispatch=useDispatch()
@@ -20,7 +20,7 @@ const [estado, setEstado] = useState('')
 
 
 useEffect(()=> 
-{dispatch(getAllReviews(movieId))}
+{dispatch(getAllReviews())}
 , [dispatch, estado])
 
 
@@ -28,21 +28,23 @@ useEffect(()=>
 const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(addReviews({
-        userImage: userImg,
-        userNickName: userName,
         movieId: movieId,
-        userId: 1,
+        userId: userId,
         content: estado,
-    }))
-    setEstado('')
-    dispatch(getAllReviews(movieId))
-}
+      })
+    );
+    setEstado("");
+    dispatch(getAllReviews());
+  };
 
+
+  let peli = reviews.filter(e=> e.movie.id ===movieId)
 console.log(reviews)
 
 
+  return (
+   
 
-    return (
         <div className="post">
             <div className="post__header">
           
@@ -67,13 +69,28 @@ console.log(reviews)
                 </form>
      
             
-              
+
+                {peli.length? peli.map(e=>{ 
+                return (<div className="post__comments">
+                    <Comments 
+                    like={e.like}
+                    content={e.content}
+                    name={e.user.username ? e.user.username : null}
+                    img={e.user.image}
+                    id={e.id}
+                    idUser={e.user.id}
+                    />
+                </div>)
+            }): null}
+
 
                 
 
 </div>
         </div>
-    )
+
+  )
 }
 
-export default Post
+export default Post;
+
