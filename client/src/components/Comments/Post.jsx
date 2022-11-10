@@ -30,17 +30,20 @@ const handleSubmit=(e)=>{
     dispatch(addReviews({
         movieId: movieId,
         userId: userId,
+
         content: estado,
-    }))
-    setEstado('')
-    dispatch(getAllReviews(movieId))
-}
+      })
+    );
+    setEstado("");
+    dispatch(getAllReviews());
+  };
 
-console.log(reviews)
+  console.log(reviews);
+  let peli = reviews.filter(e=> e.movie.id ===movieId)
 
+  return (
+   
 
-
-    return (
         <div className="post">
             <div className="post__header">
           
@@ -65,13 +68,26 @@ console.log(reviews)
                 </form>
      
             
-              
+
+                {peli.length? peli.map(e=>{ 
+                return (<div className="post__comments">
+                    <Comments 
+                    like={like}
+                    content={e.content}
+                    name={e.user.username}
+                    img={e.user.image}
+                    />
+                </div>)
+            }): null}
+
 
                 
 
 </div>
         </div>
-    )
+
+  )
 }
 
-export default Post
+export default Post;
+
