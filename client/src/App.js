@@ -5,6 +5,7 @@ import Carrousel from './components/Carrousel/Carrousel';
 import FilmDetails from './components/FilmDetails/FilmDetails';
 import Home from './components/Home/Home';
 import PremiumSub from './components/PremiumSub/PremiumSub';
+import News from './components/Noticias/News';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import Compare from './components/Compare/Compare'
@@ -21,6 +22,7 @@ import Carrousel2 from './components/Carrousel/Carrousel2';
 import Admin from './components/Admin/Admin';
 import Users from './components/Users.jsx/Users';
 import Register from './components/Register/Register'
+
 const App = () => {
   return (  
 
@@ -32,7 +34,8 @@ const App = () => {
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/aa' element={<Users/>}/>
         <Route exact path='/register' element={<Register/>}/>
-        </Routes>
+        <Route exact path='/news' element={<News/>}/>
+      </Routes>
       
     );
   }

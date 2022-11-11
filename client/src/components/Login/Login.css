@@ -28,6 +28,10 @@
         background-color: red;
         
 }
+.botones2{
+    bottom:125px;
+    left:55px;
+}
 
 
 
@@ -44,9 +48,10 @@
 
 .botonesDiv{
     position: absolute;
-text-align: center;
-left: 48%;
-top: 5%;
+    display: inline-flex;
+    text-align: center;
+    left: 55%;
+    top: 5%;
 }
 
 .my-modal .modal-content {
