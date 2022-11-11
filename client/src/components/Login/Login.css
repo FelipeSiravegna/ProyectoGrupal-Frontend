@@ -29,6 +29,10 @@
         background-color: red;
         
 }
+.botones2{
+    bottom:125px;
+    left:55px;
+}
 
 
 
@@ -47,6 +51,7 @@
 text-align: center;
 left: 50%;
 top: 7%;
+
 }
 
 .my-modal .modal-content {

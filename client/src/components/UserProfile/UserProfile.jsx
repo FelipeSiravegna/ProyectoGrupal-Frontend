@@ -26,6 +26,7 @@ export default function UserProfile() {
         return (
             <div>
     
+
                 <NavbarP />
                 <div className='fondo23'>
                     <button onClick={(e) => { dispatch(getUserInfo(token)) }}>send token</button>
@@ -66,6 +67,7 @@ export default function UserProfile() {
                     <br />
                 </div>
             </div>
+
         )
     } else {
         return <h1>Loading...</h1>

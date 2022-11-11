@@ -5,6 +5,7 @@ import Carrousel from './components/Carrousel/Carrousel';
 import FilmDetails from './components/FilmDetails/FilmDetails';
 import Home from './components/Home/Home';
 import PremiumSub from './components/PremiumSub/PremiumSub';
+import News from './components/Noticias/News';
 import UserProfile from './components/UserProfile/UserProfile'
 import NavbarP from './components/NavbarP/NavbarP';
 import News from './components/Noticias/News';
@@ -25,6 +26,7 @@ dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 //<Route exact path='/post' element={<Post/>}/>
+
 const App = () => {
   return (  
 
@@ -41,6 +43,7 @@ const App = () => {
         <Route exact path='/login' element={<Loginscreen/>}/>
 
         </Routes>
+
       
     );
   }

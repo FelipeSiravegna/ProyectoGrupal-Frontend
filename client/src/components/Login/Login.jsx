@@ -55,44 +55,47 @@ const userDB = useSelector((state)=> state.user)
             :
             <div className='botonesDiv'>
 
+
 <Link className='botones4' to={'/premium'}>
-          <Link className='botones4' to={'/noticias'}>
-           <Button variant="text" color="azul">
-              News
-           </Button>
+         <Link className='botones4' to={'/news'}>
+          <Button variant="text" color="azul">
+             News
+          </Button>
           </Link>
 
           <Button variant="text" color="amarillo">
           Premium
+
           </Button>
           </Link>
 
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
-        Compare
+             Compare
           </Button> 
           <Modal show={show} onHide={handleClose} className="my-modal" >
-        <Modal.Header closeButton>
+          <Modal.Header closeButton>
           <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
-        </Modal.Header>
-        <Modal.Body> <Compare/> </Modal.Body>
+          </Modal.Header>
+          <Modal.Body> <Compare/> </Modal.Body>
  
       </Modal>
-    
-
-
 
           <Button variant="text" color="rojo" className="botones" >
-          Watchlist
+            Watchlist
           </Button>
 
           <Button variant="text" color="rojo" className="botones" >
-          List
+            List
           </Button>
 
           
           <Button variant="text" color="rojo" className="botones" >
-        favorites
+            favorito
           </Button>
+
+          
+          
+    
 
 
 

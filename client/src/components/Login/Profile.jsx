@@ -15,7 +15,9 @@ export default function Profile(){
     return(
             <div className='lafoto'>
                 {
+
                     token && <Link to={'/UserProfile'}><img className='picture' src={imagenLogo} width='50px' height='50px' /></Link>
+
                 
                 }
             </div>
