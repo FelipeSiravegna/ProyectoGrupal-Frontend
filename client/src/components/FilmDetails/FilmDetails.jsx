@@ -19,11 +19,8 @@ import Rating from '@mui/material/Rating';
 import Fab from '@mui/material/Fab';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import Profile from '../Login/Profile';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
@@ -56,7 +53,6 @@ const FilmDetails = () => {
     }
   }
   
-  
   const like = () => {
     setFavorito(true)
     if (favorito === true) {
@@ -76,12 +72,9 @@ const FilmDetails = () => {
   }, [])
 
   useEffect(()=>{
-    dispatch(getUserInfo(token)) 
+    dispatch(getUserInfo()) 
   },[token])
 
-  useEffect(()=>{
-    console.log(userDB)
-  },[userDB])
 
   //componentWillUnmount
   useEffect(() => {

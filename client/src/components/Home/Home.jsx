@@ -72,7 +72,7 @@ const Home = () => {
         
     <div className="App">
     {
-      !token ?
+      userDB.active !== true ?
       <div>
       <img className='fondo'src={fondo} alt="" />
 <NavbarP/>

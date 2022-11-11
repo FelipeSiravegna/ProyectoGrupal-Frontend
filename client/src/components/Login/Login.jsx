@@ -34,9 +34,7 @@ const userDB = useSelector((state)=> state.user)
     dispatch(getUserInfo(token)) 
   },[token])
 
-  useEffect(()=>{
-    console.log(userDB)
-  },[userDB])
+
   
   const [show, setShow] = useState(false);
 
@@ -47,7 +45,7 @@ const userDB = useSelector((state)=> state.user)
     return(
           <div>
              {
-              !token ?
+              userDB.active !== true ?
               <div>
                 <Link to={'./login'} className={'botonRegisterLogin'} >
             <Button variant="text" color="rojo" className="botones2">

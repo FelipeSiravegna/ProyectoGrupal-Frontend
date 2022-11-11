@@ -243,19 +243,18 @@ export const deleteReviews = (id) => {
 }
 export const getLikeCounts = () => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/likes`);
+        let result = await axios.get(`http://localhost:3001/likes`);
             return dispatch({
                 type: GET_LIKES_COUNT,
                 payload: result.data
             })
     }
 }
-export const addLikes = () => {
+export const addLikes = (payload) => {
     return async function (dispatch){
-            await axios.get(`http://localhost:3001/likes`);
+            await axios.post(`http://localhost:3001/likes`, payload);
             return dispatch({
                 type: ADD_LIKES,
-        
             })
     }
 }
@@ -332,7 +331,6 @@ export const getUserInfo = () =>{
     return async function (dispatch){
         try {
             let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}})
-            console.log('soy info',json.data)
             if(json.data){
                 localStorage.setItem("username",`${json.data.username}`)
                 localStorage.setItem("email",`${json.data.email}`)
@@ -351,7 +349,6 @@ export const getUserInfo = () =>{
 export const subscribe = ()=>{
     return async function(dispatch){
         const email = {email:localStorage.getItem("email")}
-        console.log(email)
         const response = await axios.post(`http://localhost:3001/subscribe`,email)
         if (response.data){
             return window.open(response.data.init_point,'_blank')

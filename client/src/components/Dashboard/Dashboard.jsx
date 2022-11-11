@@ -12,6 +12,7 @@ import DateWeb from './DateWeb';
 import Users from './Users';
 import Movies from './movies';
 import { useAuth0 } from '@auth0/auth0-react';
+import Admin from '../Admin/Admin';
 
 function Copyright(props) {
   return (
@@ -33,9 +34,14 @@ function DashboardContent() {
     const {isLoading,user} = useAuth0()
 
   return (
+    
       <ThemeProvider theme={mdTheme}>
     {
     !isLoading && <>
+    <div>
+    <Admin/>
+    </div>
+
       <Box sx={{ display: 'flex' }}>
         <Box
           component="main"
@@ -100,6 +106,7 @@ function DashboardContent() {
     </>
     }
     </ThemeProvider>
+    
   );
 }
 
