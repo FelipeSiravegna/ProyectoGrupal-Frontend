@@ -3,12 +3,11 @@ import { ListItem, ListItemText, ListItemAvatar, Avatar, TextField, Button } fro
 import Comments from './Comments';
 import SendIcon from '@mui/icons-material/Send';
 import "./Post.css";
-import {getAllReviews, getLikeCounts, addLikes, addReviews, deleteReviews} from '../../redux/actions/index'
+import {getAllReviews, addReviews, } from '../../redux/actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
 
-
-function Post({movieId, userId, userName, userImg}) {
+function Post({movieId, userId, userImg}) {
 
 
 const dispatch=useDispatch()
@@ -21,7 +20,7 @@ const [estado, setEstado] = useState('')
 
 useEffect(()=> 
 {dispatch(getAllReviews())}
-, [dispatch])
+, [dispatch, estado])
 
 
 
@@ -29,58 +28,80 @@ const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(addReviews({
         movieId: movieId,
-        userId: 1,
-        content: estado
-    }))
-}
+        userId: userId,
+        content: estado,
+      })
+    );
+    setEstado("");
+    dispatch(getAllReviews());
+  };
 
 
-//const peli = reviews.filter(a => a.movie.id === movieId)
+  let peli = reviews.filter(e=> e.movie.id ===movieId)
+  let prueba = reviews.filter(a => a.userId === userId)
+  let prueba3 = reviews.map(a => a.likes.length ? a.likes.map(a=>a.id) : null)
+  
 
-console.log(reviews)
+console.log(prueba3, "PRUEBA")
 
 
-    return (
+
+  return (
+   
+
         <div className="post">
             <div className="post__header">
           
-                <form className="post__form" onSubmit={handleSubmit} >
+
+                <form className="post__form" onSubmit={handleSubmit} style={{ color: "#f44336" }} >
+            <Avatar alt="Remy Sharp" src={userImg} className='avatar' sx={{ width: 56, height: 56 }} />
                     <TextField
-                        label="add comment"
-                        size="small"
-                        variant="outlined"
+                        label="add review..."
                         className="post__input"
-                        placeholder="add comment" 
+                        placeholder="add review..." 
                         value={estado} 
                         onChange={e => setEstado(e.target.value)}
-                        />
+                        
+                    />
                     <Button
                         variant="contained"
                         size="small"
                         endIcon={<SendIcon />}
                         type="submit"
+                        style={{ color: "#f44336" }}
                         >
                         Send
                     </Button>
                 </form>
-     
-            
-                {reviews.length ?reviews.map(e=>{ 
+     <br></br>
+     <br></br>
+     <br></br>
+
+                {peli.length? peli.map(e=>{ 
                 return (<div className="post__comments">
+                    
                     <Comments 
-                    like={like}
+                    like={e.likes}
                     content={e.content}
-                    name={e.user.username}
+                    name={e.user.username ? e.user.username : null}
                     img={e.user.image}
+                    id={e.id}
+                    idUser={e.user.id}
+                    prueba={prueba}
+                    prueba3={prueba3}
                     />
+                    
                 </div>)
             }): null}
+
 
                 
 
 </div>
         </div>
-    )
+
+  )
 }
 
-export default Post
+export default Post;
+

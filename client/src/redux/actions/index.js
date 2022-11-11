@@ -10,7 +10,7 @@ export const PAGES = 'PAGES';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const ADD_REVIEW = 'ADD_REVIEW';
-export const DELETE_REVIEWS = 'GET_ALL_REVIEWS';
+export const DELETE_REVIEWS = 'DELETE_REVIEWS';
 export const GET_LIKES_COUNT = 'GET_LIKES_COUNT';
 export const ADD_LIKES = 'ADD_LIKES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
@@ -26,8 +26,8 @@ export const USER_PREMIUM = 'USER_PREMIUM'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
+export const GET_USER_INFO = 'GET_USER_INFO'
 export const POST_USER_LOG = 'POST_USER_LOG'
-export const GET_USER_iNFO = 'GET_USER_iNFO'
 
 
 //peliculas
@@ -226,12 +226,10 @@ export const getAllReviews = () => {
     }
 }
 export const addReviews = (payload) => {
-    console.log(payload, "payyy")
     return async function (dispatch){
-            await axios.post(`http://localhost:3001/reviews`, payload);
+        await axios.post(`http://localhost:3001/reviews`, payload);
             return dispatch({
                 type: ADD_REVIEW,
-               payload: payload
             })
     }
 }
@@ -245,19 +243,18 @@ export const deleteReviews = (id) => {
 }
 export const getLikeCounts = () => {
     return async function (dispatch){
-            let result = await axios.get(`http://localhost:3001/likes`);
+        let result = await axios.get(`http://localhost:3001/likes`);
             return dispatch({
                 type: GET_LIKES_COUNT,
                 payload: result.data
             })
     }
 }
-export const addLikes = () => {
+export const addLikes = (payload) => {
     return async function (dispatch){
-            await axios.get(`http://localhost:3001/likes`);
+            await axios.post(`http://localhost:3001/likes`, payload);
             return dispatch({
                 type: ADD_LIKES,
-        
             })
     }
 }
@@ -319,7 +316,7 @@ export const checkUserInfo = (body) =>{
         //console.log('body:',body)
         try {
             let json = await axios.post('http://localhost:3001/login',body)
-            console.log('json:',json.data.token)
+            localStorage.setItem("token",`${json.data.token}`)
             return dispatch({
                 type: POST_USER_LOG,
                 payload: json.data.token})
@@ -330,19 +327,31 @@ export const checkUserInfo = (body) =>{
 }
 
 
-export const getUserInfo = (token) =>{
+export const getUserInfo = () =>{
     return async function (dispatch){
-        console.log(token)
         try {
-            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${token}`}})
-            
-            console.log('json:',json.data)
+            let json = await axios.get(`http://localhost:3001/users/user/`,{headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}})
+            if(json.data){
+                localStorage.setItem("username",`${json.data.username}`)
+                localStorage.setItem("email",`${json.data.email}`)
+                localStorage.setItem("image",`${json.data.image}`)}
             return dispatch({
-                type: GET_USER_iNFO,
+                type: GET_USER_INFO,
                 payload: json.data
             })
         } catch (error) {
             console.log(error.message)
+        }
+    }
+}
+
+
+export const subscribe = ()=>{
+    return async function(dispatch){
+        const email = {email:localStorage.getItem("email")}
+        const response = await axios.post(`http://localhost:3001/subscribe`,email)
+        if (response.data){
+            return window.open(response.data.init_point,'_blank')
         }
     }
 }

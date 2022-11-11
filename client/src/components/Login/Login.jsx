@@ -38,7 +38,7 @@ const userDB = useSelector((state)=> state.user)
     return(
           <div>
              {
-              !token ?
+              userDB.active !== true ?
               <div>
                 <Link to={'/login'} className={'botonRegisterLogin'} >
             <Button variant="text" color="rojo" className="botones2">
