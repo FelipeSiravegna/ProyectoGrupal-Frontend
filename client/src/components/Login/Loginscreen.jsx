@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import style from './Loginscreen.module.css'
 import NavbarP from '../NavbarP/NavbarP'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 //import GoogleIcon from '@mui/icons-material/Google';
 import fondoRegister from '../media/LogoCompleto.png'
-import {checkUserInfo,handleLoginExternal} from '../../redux/actions'
+import {checkUserInfo,handleLoginExternal, allUsers} from '../../redux/actions'
+import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode"
 
@@ -35,6 +36,16 @@ export default function Loginscreen(){
             {theme:"outline",size:"large"}
         )
     },[])
+
+
+    useEffect(() => {
+        dispatch(allUsers())
+    },[dispatch])
+
+    const users = useSelector((state)=>state.users)
+
+    const {loginWithRedirect} = useAuth0()
+
     
     const [form, setForm] = useState({
         identificator: '',
@@ -53,7 +64,7 @@ export default function Loginscreen(){
             setErrors(validate({
                 ...form,
                 [e.target.name] : e.target.value
-            }))
+            },users))
     }
 
     function handleSubmit(e){
@@ -81,6 +92,7 @@ export default function Loginscreen(){
                 <Form.Control type="password" placeholder="Password" name='pass' onChange={e => handleInput(e)}/>
                 </Form.Group>
 
+
             {errors.pass && <p className={style.errors}>{errors.pass}</p>}
 
             <div className={style.button}>
@@ -100,13 +112,18 @@ export default function Loginscreen(){
     )
 }
 
-export function validate(errors){
+export function validate(errors,users){
     let error = {}
-    
-    if(!errors.pass) error.pass = 'Password is require'
-    if(errors.pass.includes(' ')) error.pass = "Password can't contain spaces."
-    if(!errors.identificator) error.identificator = 'E-mail is require'
 
+    const usuarios = users.map(e => e.username)
+    const emails = users.map(e => e.email)
+console.log(usuarios.concat(emails))
+    const passwordv = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+    
+    if(!passwordv.test(errors.pass)) error.pass = "The password must contain between 8 and 15 characters, numbers and special characters"
+    
+    if(!errors.identificator) error.identificator = 'User or Email is require'
+    if(!usuarios.concat(emails).includes(errors.identificator)) error.identificator = 'User or Email does not exist'
 
     return error
 }

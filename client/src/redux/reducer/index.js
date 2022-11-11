@@ -43,7 +43,7 @@ const initialState = {
   busqueda1: [],
   busqueda2: [],
   reviews: [],
-  like: 0,
+  like: [],
   moviesSoon: [],
   genres: [],
   users: [],
