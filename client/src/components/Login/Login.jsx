@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Profile.jsx'
@@ -13,28 +12,22 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { userCreate,getUserInfo } from '../../redux/actions/index.js';
+import { getUserInfo } from '../../redux/actions/index.js';
 
 
 
 export default function Login(){
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
   
 const token = useSelector((state)=> state.idToken)
 const userDB = useSelector((state)=> state.user)
 
-  const {loginWithRedirect,logout,isAuthenticated, isLoading, user} = useAuth0()
+  const {logout} = useAuth0()
   
   const dispatch = useDispatch()
 
   useEffect(()=>{
     dispatch(getUserInfo(token)) 
   },[token])
-
-
   
   const [show, setShow] = useState(false);
 
@@ -47,12 +40,12 @@ const userDB = useSelector((state)=> state.user)
              {
               userDB.active !== true ?
               <div>
-                <Link to={'./login'} className={'botonRegisterLogin'} >
+                <Link to={'/login'} className={'botonRegisterLogin'} >
             <Button variant="text" color="rojo" className="botones2">
               Login
             </Button>
             </Link>
-            <Link to={'./register'} className={'botonRegisterLogin'} >
+            <Link to={'/register'} className={'botonRegisterLogin'} >
             <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
             Register
           </Button>

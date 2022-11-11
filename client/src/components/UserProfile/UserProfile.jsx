@@ -35,10 +35,10 @@ export default function UserProfile() {
     <button onClick={(e)=>{console.log(token)}}>check token</button>
  {
     
-user && 
+    token && 
 <div>
 
-<div className='name'><Typography variant="h3" gutterBottom>{user.nickname}</Typography>
+<div className='name'><Typography variant="h3" gutterBottom>{}</Typography>
 <div className='edit'>
 <Button variant="outlined">EDITAR PERFIL</Button>
 </div>
