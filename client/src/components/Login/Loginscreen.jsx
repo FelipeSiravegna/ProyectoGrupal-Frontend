@@ -4,11 +4,9 @@ import style from './Loginscreen.module.css'
 import NavbarP from '../NavbarP/NavbarP'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
+//import GoogleIcon from '@mui/icons-material/Google';
 import fondoRegister from '../media/LogoCompleto.png'
 import {checkUserInfo,handleLoginExternal} from '../../redux/actions'
-import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode"
 
@@ -37,9 +35,6 @@ export default function Loginscreen(){
             {theme:"outline",size:"large"}
         )
     },[])
-
-    const {loginWithRedirect} = useAuth0()
-
     
     const [form, setForm] = useState({
         identificator: '',
@@ -69,57 +64,38 @@ export default function Loginscreen(){
 
     return(
         <div className={style.fondo98}>
-
             <NavbarP />
-        <div id="signWithGoogle" ></div>
         <div className={style.root}>
            <h1 className={style.titulo}>Log in</h1>
-           
+                <form onSubmit={handleSubmit}>
+                <Form.Group className={style.conteiner} controlId="formBasicEmail">
+                <Form.Label>UserName or E-mail</Form.Label>
+                <Form.Control type="text" placeholder="Enter email" name='identificator' onChange={e => handleInput(e)}/>
+                <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+                </Form.Group>
 
-           <form onSubmit={handleSubmit}>
+            {errors.email && <p className={style.errors}>{errors.email}</p>}
 
-            <Form.Group className={style.conteiner} controlId="formBasicEmail">
-        <Form.Label>UserName or E-mail</Form.Label>
-        <Form.Control type="text" placeholder="Enter email" name='identificator' onChange={e => handleInput(e)}/>
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+                <Form.Group className={style.conteiner} controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" name='pass' onChange={e => handleInput(e)}/>
+                </Form.Group>
 
-      {errors.email && <p className={style.errors}>{errors.email}</p>}
-
-            <Form.Group className={style.conteiner} controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='pass' onChange={e => handleInput(e)}/>
-      </Form.Group>
-
-      {errors.pass && <p className={style.errors}>{errors.pass}</p>}
+            {errors.pass && <p className={style.errors}>{errors.pass}</p>}
 
             <div className={style.button}>
-        <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
-        Submit
-      </Button>
+            <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>Submit</Button>
             </div>
 
-            <div className={style.loginSocial}>
-                <div>
-        <Button variant="primary" type="button"  onClick={()=> loginWithRedirect()}>
-        <GoogleIcon/>
-      </Button>
-      </div>
-      <div className={style.marginButtons}>
-        <Button variant="primary" type="button"  onClick={()=> loginWithRedirect()}>
-        <FacebookIcon/>
-      </Button>
-      </div>
-            </div>
-
-           </form>
-           </div>
+                <div className={style.loginSocial}>
+                    <div id="signWithGoogle" ></div>
+                    {/* <div><Button variant="primary" type="button"  onClick={()=> loginWithRedirect()}><GoogleIcon/></Button></div> */}
+                <div className={style.marginButtons}></div>
+                </div>
+                </form>
+        </div>
            
-           <div className={style.logo}>
-            <img src={fondoRegister} alt="" height={'250px'} width={'400px'} />
-           </div>
+        <div className={style.logo}><img src={fondoRegister} alt="" height={'250px'} width={'400px'} /></div>
         </div>
     )
 }

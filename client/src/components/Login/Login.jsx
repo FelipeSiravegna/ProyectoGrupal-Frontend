@@ -31,8 +31,8 @@ const userDB = useSelector((state)=> state.user)
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch(getUserInfo(token)) 
-  },[token])
+    dispatch(getUserInfo()) 
+  },[])
 
   useEffect(()=>{
     console.log(userDB)
