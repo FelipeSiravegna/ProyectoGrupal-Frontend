@@ -7,17 +7,39 @@ import Form from 'react-bootstrap/Form';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import fondoRegister from '../media/LogoCompleto.png'
-import {checkUserInfo} from '../../redux/actions'
+import {checkUserInfo,handleLoginExternal} from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode"
+
 
 export default function Loginscreen(){
-
+    
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    //funcion de callback al loguearse
+    const handleCallbackResponse = (response)=>{
+        let userObject = jwt_decode(response.credential)
+        const info = {username:userObject.name.replace(" ","585"),email:userObject.email,password:userObject.sub.slice(0,10)+"TCm!"}
+        dispatch(handleLoginExternal(info))
+        navigate("/")
+    }
+    //activacion de script para autenticacion de google
+    useEffect(()=>{
+        google.accounts.id.initialize({
+            client_id:"865394757954-2n35bg590t4opfgu30pf5di2u9i7bu0p.apps.googleusercontent.com",
+            callback:handleCallbackResponse
+            
+        })
+        google.accounts.id.renderButton(
+            document.getElementById("signWithGoogle"),
+            {theme:"outline",size:"large"}
+        )
+    },[])
 
     const {loginWithRedirect} = useAuth0()
 
-    const navigate = useNavigate();
     
     const [form, setForm] = useState({
         identificator: '',
@@ -49,7 +71,7 @@ export default function Loginscreen(){
         <div className={style.fondo98}>
 
             <NavbarP />
-
+        <div id="signWithGoogle" ></div>
         <div className={style.root}>
            <h1 className={style.titulo}>Log in</h1>
            
@@ -94,6 +116,7 @@ export default function Loginscreen(){
 
            </form>
            </div>
+           
            <div className={style.logo}>
             <img src={fondoRegister} alt="" height={'250px'} width={'400px'} />
            </div>
