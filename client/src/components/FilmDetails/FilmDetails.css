@@ -85,25 +85,11 @@ font-display:inherit;
 .comentarios {
     margin-top: 20%;
     position: relative;
-    display: block;
-    background: rgb(255, 255, 255);
-    width: 1200px;
-    height: 200px;
-    max-height: 500px;
-    left: 5%;
-    box-shadow: 5px 5px 5px 5px rgb(173, 0, 0);
+
 
 }
 
-.comentarios>label {
-    position: relative;
-    margin-top: 2px;
-    font-size: 60px;
-    font-family: monospace;
-    color: #f44336;
-    box-shadow: 25px rgb(0, 0, 0);
-    left: 40%
-}
+
 
 .icono {
     margin-top: -10%;
