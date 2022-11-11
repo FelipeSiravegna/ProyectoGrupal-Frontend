@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
 import style from './form.module.css'
 import { Link } from 'react-router-dom'
 import NavbarP from '../NavbarP/NavbarP'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import fondoRegister from '../media/LogoCompleto.png'
-import {userCreate} from '../../redux/actions'
+import {userCreate,checkUserInfo,allUsers} from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(){
 
     const dispatch = useDispatch()
 
-    const {loginWithRedirect} = useAuth0()
+    const navigate = useNavigate();
     
     const [form, setForm] = useState({
         username: '',
@@ -26,8 +27,10 @@ export default function Register(){
     })
 
     useEffect(() => {
-      
+        dispatch(allUsers())
     },[dispatch])
+
+    const users = useSelector((state)=>state.users)
     
     function handleInput(e){
             setForm({
@@ -37,15 +40,18 @@ export default function Register(){
             setErrors(validate({
                 ...form,
                 [e.target.name] : e.target.value
-            }))
+            },users))
             console.log(errors)
+            console.log(form)
+
     }
 
     function handleSubmit(e){
         e.preventDefault()
         dispatch(userCreate(form))
         alert('User succesful')
-        loginWithRedirect()
+        navigate("/")
+        
     }
 
     return(
@@ -73,7 +79,7 @@ export default function Register(){
 
       <Form.Group className={style.conteiner} controlId="formBasicPassword">
         <Form.Label>Confirm Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='confirmpassword' onChange={e => handleInput(e)}/>
+        <Form.Control type="password" placeholder="confirmpassword" name='confirmpassword' onChange={e => handleInput(e)}/>
       </Form.Group>
 
       {errors.confirmpassword && <p className={style.errors}>{errors.confirmpassword}</p>}
@@ -92,6 +98,8 @@ export default function Register(){
         <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
         Submit
       </Button>
+      <Button onClick={(e)=>{dispatch(checkUserInfo(body))}}>enviar</Button>
+      <Button onClick={(e)=>{console.log(state)}}>ver datos</Button>
             </div>
 
            </form>
@@ -103,14 +111,28 @@ export default function Register(){
     )
 }
 
-export function validate(errors){
+export function validate(errors,users){
     let error = {}
+
+    const usuarios = users.map(e => e.username)
+    const emails = users.map(e => e.email)
+
+    const passwordv = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+    const emailv = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    const usernamev = /^([a-zA-Z0-9_-]){3,20}$/
     
-    if(errors.password !== errors.confirmpassword) error.confirmpassword = 'The password does not match'
     if(!errors.password) error.password = 'Password is require'
-    if(errors.password.includes(' ')) error.password = "Password can't contain spaces."
-    if(!errors.username) error.name = 'Username is require'
-    if(!errors.email) error.email = 'E-mail is require'
+    if(errors.password !== errors.confirmpassword) error.confirmpassword = 'The password does not match'
+    if(!passwordv.test(errors.password)) error.password = "The password must contain between 8 and 15 characters, numbers and special characters"
+    
+    if(!errors.username.length) error.username = 'Username is require'
+    if(usuarios.includes(errors.username)) error.username = 'Username already exists'
+    if(!usernamev.test(errors.username)) error.username = 'Username between 3 and 20 alphanumeric characters'
+    if(errors.username.includes('-') || errors.username.includes('_')) error.username = 'Username between 3 and 20 alphanumeric characters'
+    
+    if(!errors.email.length) error.email = 'E-mail is require'
+    if(!emailv.test(errors.email)) error.email = 'E-mail is invalid'
+    if(emails.includes(errors.email)) error.email = 'Email already exists'
 
 
     return error

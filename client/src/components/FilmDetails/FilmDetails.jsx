@@ -1,7 +1,7 @@
 import './FilmDetails.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from 'react';
-import { getMovieDetail } from '../../redux/actions';
+import { getMovieDetail, getAllReviews, getUserInfo } from '../../redux/actions';
 import { useParams } from "react-router-dom";
 import { resetDetail } from '../../redux/actions';
 import fondoDetalle from '../media/fondoDetalle.jpg'
@@ -19,14 +19,12 @@ import Rating from '@mui/material/Rating';
 import Fab from '@mui/material/Fab';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-import Profile from '../Login/Profile';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
+import Post from '../Comments/Post';
 
 
 const FilmDetails = () => {
@@ -35,28 +33,33 @@ const FilmDetails = () => {
   const params = useParams();
   const { idFilm } = params
   const filmDetails = useSelector(state => state.detail)
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0()
+  const token = useSelector((state)=> state.idToken)
+  const userDB = useSelector((state)=> state.user)
+  
+  
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
 
   const [value, setValue] = useState(2);
   const [favorito, setFavorito] = useState(false);
   const [guardado, setGuardado] = useState(false);
   const [playlist, setPlaylist] = useState(false);
 
+
+  
   const list = () => {
     setPlaylist(true)
     if (playlist === true) {
       setPlaylist(false)
     }
   }
-
-
+  
   const like = () => {
     setFavorito(true)
     if (favorito === true) {
       setFavorito(false)
     }
   }
-
+  
   const save = () => {
     setGuardado(true)
     if (guardado === true) {
@@ -68,6 +71,10 @@ const FilmDetails = () => {
     dispatch(getMovieDetail(idFilm))
   }, [])
 
+  useEffect(()=>{
+    dispatch(getUserInfo()) 
+  },[token])
+
 
   //componentWillUnmount
   useEffect(() => {
@@ -75,8 +82,8 @@ const FilmDetails = () => {
       dispatch(resetDetail());
     }
   }, [])
-
-
+  
+  
   return (
 
     <div>
@@ -109,7 +116,7 @@ const FilmDetails = () => {
           <QueueIcon color='gris' sx={{ fontSize: 30 }} className='icono3' />
           <p className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
 
-          <div>{isAuthenticated ?
+          <div>{token ?
 
             <div className='logeado'>
               <div className='interacción'>
@@ -165,14 +172,19 @@ const FilmDetails = () => {
             <a href={filmDetails.trailer} target="_blank">
 
 
-              <Button variant="text" color="rojo" className="botones" > <YouTubeIcon fontSize="large" /> watch movie preview</Button></a>
+              <Button variant="text" color="rojo"  > <YouTubeIcon fontSize="large" /> watch movie preview</Button></a>
           </div>
 
         </div>
       </div>
 
       <div className='comentarios'>
-        <label>REVIEWS</label>
+        <Post 
+        userId={userDB ? userDB.id : null}
+        userName={userDB ? userDB.username : null}
+        userImg={userDB ? userDB.image : null}
+        movieId={idFilm ? idFilm : null}
+        />
 
       </div>
     </div>

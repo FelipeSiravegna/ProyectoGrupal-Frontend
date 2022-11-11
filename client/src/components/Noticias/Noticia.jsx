@@ -21,6 +21,7 @@ const Noticia = (props) => {
                     </div>
             </div>
            
+
       </div>
     )
 }

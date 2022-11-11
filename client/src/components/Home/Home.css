@@ -96,7 +96,7 @@
     background-color: 0, 0, 0, 8;
     backdrop-filter: blur(3px);
     border-radius: 20%;
-    top: 67%;
+    top: 70%;
     left: 30%
 }
 
@@ -195,4 +195,30 @@
     top: 235%;
     left: 15%;
     width: 600px;
+}
+
+.infoLike{
+    position: absolute;
+    width: 500px;
+    top:300%;
+    left: -37%;
+    text-align: center;
+    color: white;
+    font-family:'Roboto';
+    text-shadow: 1px 1px 15px rgb(0, 0, 0);
+    max-height: 100px;
+    font-size: 19px;
+}
+
+.infoLIK{
+    position: absolute;
+    width: 300px;
+    text-align: center;
+    top: 235%;
+    left: 37%;
+}
+
+.favr{
+    position: relative;
+    top: 110px;
 }

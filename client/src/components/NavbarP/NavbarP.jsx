@@ -35,45 +35,7 @@ const NavbarP = () => {
            </>
     }
        </Container>
-     </Navbar>
-   
-   
-         <div className='VentanaLogin'>
-   
-             
-           <Modal show={show} onHide={handleClose}>
-           <Modal.Header closeButton>
-             <Modal.Title>Login</Modal.Title>
-           </Modal.Header>
-           <Modal.Body>
-   
-   
-           <div className='formLogin'>
-       <Form>
-         <Form.Group className="mb-3" controlId="formBasicEmail" >
-           <Form.Label>Email address</Form.Label>
-           <Form.Control type="email" placeholder="Enter email" />
-         </Form.Group>
-         <Form.Group className="mb-3" controlId="formBasicPassword">
-           <Form.Label>Password</Form.Label>
-           <Form.Control type="password" placeholder="Password" />
-         </Form.Group>
-         <Button  type="submit" color='rojo' variant="contained" >
-           Sign In
-         </Button>
-         <Button  type="submit" variant="text" color='rojo'>
-           Forgotten?
-         </Button>
-       </Form>
-       </div>
-             
-             </Modal.Body>
-           <Modal.Footer>
-             
-           </Modal.Footer>
-         </Modal>
-         </div>
-      
+     </Navbar> 
  
   </div>
 );

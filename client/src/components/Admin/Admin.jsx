@@ -144,7 +144,7 @@ const Admin = () => {
   return (
     <div>
         <div>
-      {['left'].map((anchor) => (
+      {['Admin>>'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <SwipeableDrawer

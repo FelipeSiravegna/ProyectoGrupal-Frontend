@@ -8,7 +8,7 @@ import Acordeon from '../Acordeon/Acordeon';
 import InfoHome from '../InfoHome/InfoHome';
 import Searchbar from '../Searchbar/Searchbar';
 import { useDispatch, useSelector } from 'react-redux'
-import {filterGenres, getAllMovies, getComingSoon} from '../../redux/actions'
+import {filterGenres, getAllMovies, getComingSoon, getUserInfo} from '../../redux/actions'
 import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import Paginado from '../Pagination/Pagination';
@@ -23,15 +23,25 @@ import SearchLog from '../Searchbar/SearchLog';
 import Filters from '../Filters/Filters';
 import Button from '@mui/material/Button'
 import Carrousel2 from '../Carrousel/Carrousel2';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 
 
 const Home = () => { 
   const dispatch = useDispatch()
-  const {loginWithRedirect,logout,isAuthenticated} = useAuth0()
+  const {loginWithRedirect,logout,isAuthenticated, user} = useAuth0()
   let peliculas = useSelector(state => (state.movies)) 
   let pagina = useSelector(state => (state.page))
-  console.log(peliculas)
+  const token = useSelector((state)=> state.idToken)
+  const userDB = useSelector((state)=> state.user)
+
+  useEffect(()=>{
+    dispatch(getUserInfo()) 
+  },[token])
+
+  useEffect(()=>{
+    console.log(userDB)
+  },[userDB])
 
   
   useEffect(() => {
@@ -62,7 +72,7 @@ const Home = () => {
         
     <div className="App">
     {
-      !isAuthenticated ?
+      userDB.active !== true ?
       <div>
       <img className='fondo'src={fondo} alt="" />
 <NavbarP/>
@@ -92,6 +102,10 @@ const Home = () => {
           </Box>
         } 
             </div >
+ <div className='infoLIK'> 
+  <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul'/>
+<h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
+</div>
             </div>
             
                : <div>
@@ -100,7 +114,7 @@ const Home = () => {
 <NavbarP/>
 <img className='fondoLogeado'src={bg} alt="" />
 <img className='fondoLogeado2'src={bg2} alt="" />
-<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>"NombreDeUser"</h1></h1>
+<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>{userDB.username}</h1></h1>
 <h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen, 
   as well as <FavoriteIcon fontSize='small'/> it and save it to watch later<AccessTimeFilledIcon fontSize='small'/> Also if 
   are undecided you can compare two movies to choose the one that best suits you.</h6>

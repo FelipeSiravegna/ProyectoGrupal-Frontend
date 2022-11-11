@@ -12,6 +12,11 @@ import {
   COMPARE_SELEC,
   SEARCH_COMPARE2,
   SEARCH_COMPARE,
+  GET_ALL_REVIEWS,
+  ADD_REVIEW,
+  DELETE_REVIEWS,
+  GET_LIKES_COUNT,
+  ADD_LIKES,
   GET_MOVIES_SOON,
   FILTER_GENRES,
   ALL_GENRES,
@@ -22,7 +27,11 @@ import {
   RESET_DETAIL,
   ORDER_POPULARITY,
   ORDER_RATING,
+  POST_USER_LOG,
+  GET_USER_INFO,
+
 } from "../actions";
+
 
 const initialState = {
   movies: [],
@@ -33,10 +42,14 @@ const initialState = {
   compare: [],
   busqueda1: [],
   busqueda2: [],
+  reviews: [],
+  like: [],
   moviesSoon: [],
   genres: [],
   users: [],
-  directors: []
+  directors: [],
+  idToken:"",
+  user:[]
 };
 
 
@@ -116,6 +129,29 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             busqueda2: payload
           };
+
+          case GET_ALL_REVIEWS:
+          return {
+            ...state,
+            reviews: payload
+          };
+          case ADD_REVIEW:
+      return {
+        ...state,
+      };
+      case DELETE_REVIEWS:
+        return {
+          ...state,
+        };
+      case ADD_LIKES:
+        return {
+          ...state,
+        };
+      case GET_LIKES_COUNT:
+        return {
+          ...state,
+          like: payload
+        };
           case GET_MOVIES_SOON:
       return {
         ...state,
@@ -156,6 +192,17 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload
       };
+      case POST_USER_LOG:
+      return {
+        ...state,
+        idToken:payload
+      }
+      case GET_USER_INFO:
+      return {
+        ...state,
+        user:payload
+      }
+
     default:
       return state;
   }
