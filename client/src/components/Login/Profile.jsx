@@ -21,7 +21,7 @@ export default function Profile(){
             <div className='lafoto'>
                 {
 
-                    token && <Link to={`/UserProfile/${userDB.id}`}><img className='picture' src={imagenLogo} width='50px' height='50px' /></Link>
+                    token && <Link to={`/UserProfile/${userDB.id}`}><img className='picture' src={userDB.image} /></Link>
 
                 
                 }

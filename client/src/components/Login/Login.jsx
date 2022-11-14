@@ -13,7 +13,7 @@ import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from '../../redux/actions/index.js';
-
+import Profile from './Profile.jsx';
 
 
 export default function Login() {
@@ -24,10 +24,14 @@ export default function Login() {
   const { logout } = useAuth0()
 
   const dispatch = useDispatch()
+  
+  useEffect(()=>{
+    dispatch(getUserInfo(token)) 
+  },[token])
 
-  useEffect(() => {
-    dispatch(getUserInfo(token))
-  }, [token])
+  useEffect(()=>{
+    
+  },[localStorage.username])
 
   const [show, setShow] = useState(false);
 
@@ -40,10 +44,14 @@ export default function Login() {
       {
         userDB.active !== true ?
           <div>
-            <Link to={'/login'} className={'botonRegisterLogin'} >
-              <Button variant="text" color="rojo" className="botones2">
-                Login
-              </Button>
+             {
+              !localStorage.username ?
+              <div>
+                <Link to={'/login'} className={'botonRegisterLogin'} >
+            <Button variant="text" color="rojo" className="botones2">
+              Login
+            </Button>
+            
             </Link>
             <Link to={'/register'} className={'botonRegisterLogin'} >
               <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
@@ -72,6 +80,25 @@ export default function Login() {
             <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
               Compare
             </Button>
+
+            </Link>
+            </Dropdown.Item>
+            <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
+            Following
+            </Button></Dropdown.Item>
+            <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
+           Settings
+            </Button></Dropdown.Item>
+        <Dropdown.Item className='drop'>
+          <Button variant="text" color="rojo" className="botones" onClick={() => localStorage.clear()}>
+            Logout
+            </Button></Dropdown.Item>
+            </div>
+            </div>
+      </DropdownButton>
+</div>
+             }
+
             <Modal show={show} onHide={handleClose} className="my-modal" >
               <Modal.Header closeButton>
                 <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
@@ -92,13 +119,6 @@ export default function Login() {
             <Button variant="text" color="rojo" className="botones" >
               favorito
             </Button>
-
-
-
-
-
-
-
 
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>

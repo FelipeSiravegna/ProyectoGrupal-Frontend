@@ -390,8 +390,8 @@ export const handleLoginExternal = (info) => {
                 return
             }
         }
-    }
-}
+}}
+
 
 export const followUser = (loggedUserId, followedUserId) => {
     return async function(){
@@ -404,5 +404,19 @@ export const unfollowUser = (loggedUserId, unfollowedUserId) => {
     return async function(){
         const body = {loggedUserId, unfollowedUserId};
         const response = await axios.put(`/followUnfollow/unfollow`, body);
+    }
+
+export const putUser = (id,changes) =>{
+    return async function (){
+        try {
+
+            const response = await axios.put('http://localhost:3001/user/' + id,changes)
+            return response
+            
+        } catch (error) {
+            console.log(error)
+        }
+}
+
     }
 }
