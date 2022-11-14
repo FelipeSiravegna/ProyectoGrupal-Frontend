@@ -28,7 +28,7 @@ export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const POST_USER_LOG = 'POST_USER_LOG'
-
+export const ALL_ACTOR = 'ALL_ACTOR'
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -58,10 +58,13 @@ export const getMovieDetail = (id) => {
 }
 
 
-export const addMovie = (payload) => {
-    return async (dispatch) => {
-        let json = await axios.post('')
-        return json
+export const addMovie= (payload)=>{
+    console.log(payload)
+    return async(dispatch)=>{
+        await axios.post('http://localhost:3001/createMovie', payload)
+        return dispatch({
+            type: ADD_MOVIE,
+        })
     }
 }
 
@@ -175,6 +178,16 @@ export const allDirector = () => {
     }
 }
 
+export const allActor= ()=>{
+    return async function (dispatch){
+        let result = await axios.get(`http://localhost:3001/actors`);
+        return dispatch({
+            type: ALL_ACTOR,
+            payload:result.data
+        })
+    }
+
+}
 //paginado
 
 export const pages = (page) => {
