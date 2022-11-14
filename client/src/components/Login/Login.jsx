@@ -13,6 +13,7 @@ import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfo } from '../../redux/actions/index.js';
+import Profile from './Profile.jsx';
 
 
 
@@ -28,6 +29,10 @@ const userDB = useSelector((state)=> state.user)
   useEffect(()=>{
     dispatch(getUserInfo(token)) 
   },[token])
+
+  useEffect(()=>{
+    
+  },[localStorage.username])
   
   const [show, setShow] = useState(false);
 
@@ -38,7 +43,7 @@ const userDB = useSelector((state)=> state.user)
     return(
           <div>
              {
-              userDB.active !== true ?
+              !localStorage.username ?
               <div>
                 <Link to={'/login'} className={'botonRegisterLogin'} >
             <Button variant="text" color="rojo" className="botones2">
@@ -124,13 +129,12 @@ const userDB = useSelector((state)=> state.user)
            Settings
             </Button></Dropdown.Item>
         <Dropdown.Item className='drop'>
-          <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+          <Button variant="text" color="rojo" className="botones" onClick={() => localStorage.clear()}>
             Logout
             </Button></Dropdown.Item>
             </div>
             </div>
       </DropdownButton>
-
 </div>
              }
 

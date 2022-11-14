@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import './PlayList.css'
 
-export default function Playlist(){
+export default function Playlist(props){
 const scrollCarrusel = useRef()
-
+console.log(props)
 const handleClickRigth = () => {
     scrollCarrusel.current.scrollLeft += scrollCarrusel.current.offsetWidth
 }
@@ -16,10 +18,9 @@ const handleClickLeft = () => {
     return(
         <div className='peliculas-recomendadas'>
             <div className='contenedor-titulo-controler'>
-                <h3>PLAYLIST</h3>
+                <h3>{props.name}</h3>
                 <div className='indicadores'>
-                <button></button>
-                <button></button>
+    
                 </div>
             </div>
             <div className='contenedor-principal'>
@@ -28,39 +29,17 @@ const handleClickLeft = () => {
 
                 <div ref={scrollCarrusel} className='contenedor-carrusel'>
                     <div className='carrusel'>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/rhr4y79GpxQF9IsfJItRXVaoGs4.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tM0hpWw3GONam6TKcMMciecHjhT.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/rhr4y79GpxQF9IsfJItRXVaoGs4.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tM0hpWw3GONam6TKcMMciecHjhT.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/rhr4y79GpxQF9IsfJItRXVaoGs4.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/tM0hpWw3GONam6TKcMMciecHjhT.jpg" alt="" />
-                        </div>
-                        <div className='pelicula'>
-                            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="" />
-                        </div>
+                        {
+                            props.peliculas.length !== 0 ? props.peliculas.rows.map(a => {
+                            
+                return <div className='pelicula'>
+                <img key = {a.id} src = {a.image}  />
+                </div>
+            }) : <Box className='carga'  sx={{ display: 'flex' }}>
+            <CircularProgress color="rojo" />
+          </Box>
+        } 
+                        
                     </div>
                 </div>
 

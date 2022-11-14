@@ -1,21 +1,29 @@
 import { useRef, useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import axios from 'axios';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 import { useGridApiMethod } from '@mui/x-data-grid';
 
 export default function UserAvatar(props) {
     const { urlImage, userId } = props;
 
     const dispatch = useDispatch()
-
+    const navigate = useNavigate();
+    
     const [currentImage, setCurrentImage] = useState(urlImage);
     const [previewImage, setPreviewImage] = useState(urlImage);
-    const inputFile = useRef();
+    const [render, setRender] = useState('');
 
+    const inputFile = useRef();
+    
+    
     useEffect(() => {
+        if(!props.changeimage) setPreviewImage(urlImage)
         setCurrentImage(urlImage);
         setPreviewImage(urlImage);
-    }, [urlImage])
+    }, [urlImage,props.changeimage,render])
 
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
@@ -42,6 +50,7 @@ export default function UserAvatar(props) {
                 headers: { "Content-Type": "multipart/form-data" }
             })
             setPreviewImage(response.data.imageURL);
+            navigate("/")
         } catch(error){
             console.log(error.message);
         }
@@ -51,16 +60,19 @@ export default function UserAvatar(props) {
         const formData = new FormData();
         formData.append("image", inputFile.current.files[0]);  
         
-        dispatch(sendData(formData));
+        sendData(formData);
+
     }
 
     return (
-        <div>
-            <button onClick={clickImage}>
+        <div className='avatar'>
+            
                 <img className='avatar' src={previewImage} alt="Profile picture"/>
-            </button>
+            
             <input type='file' ref={inputFile} onChange={handleChangeImage} style={{ display: "none" }} />
-            <button onClick={saveImage}>Save</button>
+            <button  className={props.changeimage ? 'changeImageDisabled' : 'changeImage'} disabled={props.changeimage} onClick={clickImage}><AddAPhotoIcon/></button>
+            
+            <Button  onClick={saveImage} disabled={props.changeimage} color='success' variant="outlined">Save</Button>
         </div>
     )
 }

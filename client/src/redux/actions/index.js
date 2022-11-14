@@ -377,3 +377,16 @@ export const handleLoginExternal = (info)=>{
             }
         }
 }}
+
+export const putUser = (id,changes) =>{
+    return async function (){
+        try {
+
+            const response = await axios.put('http://localhost:3001/user/' + id,changes)
+            return response
+            
+        } catch (error) {
+            console.log(error)
+        }
+}
+}

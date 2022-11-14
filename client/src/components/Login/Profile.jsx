@@ -9,13 +9,12 @@ import { useSelector } from 'react-redux';
 
 export default function Profile(){
 
-    const token = useSelector((state)=> state.idToken)
-
+    let dbUser = useSelector(state => state.user)
 
     return(
             <div className='lafoto'>
                 {
-                    token && <Link to={'/UserProfile'}><img className='picture' src={imagenLogo} width='50px' height='50px' /></Link>
+                    localStorage.username && <Link to={'/UserProfile'}><img className='picture' src={dbUser.image}/></Link>
                 
                 }
             </div>

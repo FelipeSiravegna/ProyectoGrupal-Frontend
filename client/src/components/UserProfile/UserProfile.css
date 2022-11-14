@@ -26,10 +26,52 @@
     margin-top: 8px;
 }
 
+.name .cancel{
+    margin-left: 25px;
+    margin-top: 8px;
+}
+
 .avatar{
     width: 250px;
     height: 250px;
     border-radius: 50%;
+    background: white;
+}
+
+.changeImage{
+    position: absolute;
+    margin-left: -65px;
+    margin-top: 190px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #f44336;
+    opacity: 0.7;
+    border: none;
+}
+
+.changeImage:hover{
+    position: absolute;
+    margin-left: -65px;
+    margin-top: 190px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #f44336;
+    width: 75px;
+    height: 75px;
+    transition: 0.5s;
+    opacity: 0.7;
+}
+
+.changeImageDisabled{
+    position: absolute;
+    margin-left: -65px;
+    margin-top: 190px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    opacity: 0;
 }
 
 .list{
