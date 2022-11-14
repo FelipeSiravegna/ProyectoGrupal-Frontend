@@ -78,8 +78,8 @@
 .trailer {
     position: absolute;
     padding-left: 90%;
-   top: 50px;
-font-display:inherit;
+    top: 50px;
+    font-display: inherit;
 }
 
 .comentarios {
@@ -137,7 +137,7 @@ font-display:inherit;
     text-align: center;
 }
 
-.logeado{
+.logeado {
     position: relative;
     margin-top: -180%;
     border-spacing: 100px;
@@ -145,7 +145,7 @@ font-display:inherit;
 }
 
 
-#ratingDet{
+#ratingDet {
     display: block;
     position: absolute;
     margin-top: 28%;
@@ -154,29 +154,33 @@ font-display:inherit;
     border-radius: 10px;
 }
 
-.interaccion{
+.interaccion {
     position: relative;
     top: 10%
-    
-    
 }
 
-.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+.link-muted {
+    color: #aaa;
+}
+
+.link-muted:hover {
+    color: #1266f1;
+}
 
 
-.ola{
+.ola {
     width: 800px;
     background-color: white;
 }
 
-.aberg{
+.aberg {
     position: absolute;
     right: 13%;
     top: 24%
 }
 
-.nene{
 
+.nene{
         position: absolute;
         font-size: 12px;
         color: white;

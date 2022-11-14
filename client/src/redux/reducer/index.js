@@ -29,7 +29,7 @@ import {
   ORDER_RATING,
   POST_USER_LOG,
   GET_USER_INFO,
-
+  ALL_ACTOR
 } from "../actions";
 
 
@@ -48,6 +48,7 @@ const initialState = {
   genres: [],
   users: [],
   directors: [],
+  actors: [],
   idToken:"",
   user:[]
 };
@@ -65,7 +66,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_ALL_GENRES:
       return {
         ...state,
-        genre: payload
+        genres: payload
 
       };
     case GET_MOVIE_DETAIL:
@@ -168,6 +169,13 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         directors: payload
       };
+
+      case ALL_ACTOR:
+      return {
+        ...state,
+        actors: payload
+      };
+
       case FILTER_DIRECTOR:
       return {
         ...state,

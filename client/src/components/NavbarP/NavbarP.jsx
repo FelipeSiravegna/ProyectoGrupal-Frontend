@@ -22,7 +22,7 @@ const NavbarP = () => {
        <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" >
        <Container>
         
-         <Navbar.Brand><Link to = {'/'}> <img src={imagen} alt="" className='imagen' /> </Link> </Navbar.Brand>
+         <Navbar.Brand><Link to = {'/'}> <img src={imagen} alt="hola" className='imagen' /> </Link> </Navbar.Brand>
          
     { dbUser && <>
              <Profile/>

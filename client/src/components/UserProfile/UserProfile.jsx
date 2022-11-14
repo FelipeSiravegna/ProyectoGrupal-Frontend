@@ -7,12 +7,17 @@ import PlayList from '../playListas/Playlist';
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { filterGenres, getAllMovies, getUserInfo } from '../../redux/actions';
+import { filterGenres, getAllMovies, getUserInfo, followUser, unfollowUser } from '../../redux/actions';
 import UserAvatar from '../UserAvatar/UserAvatar.jsx';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 
 export default function UserProfile() {
+
+    const url = window.location.href;
+    let profileId = url[url.length - 1];
+    profileId = parseInt(profileId);
+
     const { user } = useAuth0()
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.movies))
@@ -21,9 +26,21 @@ export default function UserProfile() {
     let pagina = useSelector(state => (state.page))
     const [changeimage, setChangeimage] = useState(true);
 
+    const [buttonValue, setButtonValue] = useState('FOLLOW');
+
     useEffect(() => {
         dispatch(getAllMovies(pagina || 1))
     }, [])
+
+    const handleFollow = () => {
+        if (buttonValue === 'FOLLOW') {
+            dispatch(followUser(dbUser.id, profileId));
+            setButtonValue('UNFOLLOW');
+        } else {
+            dispatch(unfollowUser(dbUser.id, profileId));
+            setButtonValue('FOLLOW');
+        }
+    }
 
     if (dbUser !== null) {
         return (
@@ -32,15 +49,17 @@ export default function UserProfile() {
 
                 <NavbarP />
                 <div className='fondo23'>
-                    <button onClick={(e) => { dispatch(getUserInfo(token)) }}>send token</button>
+                    {/* <button onClick={(e) => { dispatch(getUserInfo(token)) }}>send token</button>
                     <button onClick={(e) => { console.log(dbUser) }}>check user</button>
-                    <button onClick={(e) => { console.log(token) }}>check token</button>
+                    <button onClick={(e) => { console.log(token) }}>check token</button> */}
                     {
 
-                        dbUser &&
+
+                        token &&
                         <div>
 
                             <div className='name'><Typography variant="h3" gutterBottom>{dbUser.username}</Typography>
+
                                 <div className='edit'>
                                     <Button onClick={() => setChangeimage(false)} variant="outlined">CHANGE IMAGE</Button>
                                 </div>
@@ -68,7 +87,16 @@ export default function UserProfile() {
                                 <div className='seguidores' ><Typography variant="h6" gutterBottom>FOLLOWERS</Typography>
                                     <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.followers && dbUser.followers.length}</Typography>
                                 </div>
-
+                                
+                                {
+                                    dbUser.id !== profileId
+                                        ?
+                                        <div>
+                                            <Button variant="outlined" onClick={handleFollow}>{buttonValue}</Button>
+                                        </div>
+                                        :
+                                        null
+                                }
 
                             </div>
                         </div>

@@ -1,20 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
 import './Login.css'
 import './Profile.css'
 import imagenLogo from '../media/Logo.png'
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfo } from '../../redux/actions';
 
 export default function Profile(){
 
-    let dbUser = useSelector(state => state.user)
+    const token = useSelector((state) => state.idToken)
+    const userDB = useSelector((state) => state.user)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUserInfo(token))
+    }, [token])
 
     return(
             <div className='lafoto'>
                 {
-                    localStorage.username && <Link to={'/UserProfile'}><img className='picture' src={dbUser.image}/></Link>
+
+                    token && <Link to={`/UserProfile/${userDB.id}`}><img className='picture' src={userDB.image} /></Link>
+
                 
                 }
             </div>
