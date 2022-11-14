@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +11,9 @@ import Chart from './Chart';
 import DateWeb from './DateWeb';
 import Users from './Users';
 import Movies from './movies';
+import ModernTable from './Table/Table'
 import { useAuth0 } from '@auth0/auth0-react';
+import { AppBar ,Menu,MenuItem} from '@mui/material';
 
 function Copyright(props) {
   return (
@@ -29,10 +31,33 @@ function Copyright(props) {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-
+    const [anchorEl,setAnchorEl]=useState(null)
     const {isLoading,user} = useAuth0()
 
+    const [title,setTitle]=useState("")
+    const [items,setItems]=useState([])
+    const [properties,setProperties]=useState([])
+    const [action,setAction]=useState([])
+
+    const request = {}
+
+    const openMenu = Boolean(anchorEl)
+    const handleClick=(e)=>{
+      console.log("esto",e.currentTarget)
+      setAnchorEl(e.currentTarget)
+    }
+    const handleClose=()=>{
+      setAnchorEl(null)
+    }
+    const closeWActions =(e,action)=>{
+      handleClose()
+      console.log("me ejecute",e.target.innerText)
+      setTitle(e.target.innerText)
+    }
+
   return (
+    <div>    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"></nav>
       <ThemeProvider theme={mdTheme}>
     {
     !isLoading && <>
@@ -79,10 +104,76 @@ function DashboardContent() {
                   <DateWeb />
                 </Paper>
               </Grid>
+              
+                
+                  <Toolbar sx={{width:'80%',backgroundColor:'grey',margin:'10%'}}>
+                    <Box sx={{display:'flex',justifyContent: 'space-between',width:'100%',alignItems:'center'}} component="div">
+                      <Box><Typography 
+                            aria-controls='menu-users' 
+                            aria-haspopup='true' 
+                            aria-expanded={openMenu?'true':undefined}
+                            onClick={handleClick} 
+                            sx={{cursor:'pointer'}}>
+                            Users
+                          </Typography>
+                          {/*dropDown users */}
+                          <Menu id='menu-users' anchorEl={anchorEl} open={openMenu} onClose={handleClose}> 
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Users</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Users</MenuItem>
+                          </Menu>
+                      </Box>
+                      <Box><Typography 
+                            aria-controls='menu-movies' 
+                            aria-haspopup='true' 
+                            aria-expanded={openMenu?'true':undefined}
+                            onClick={handleClick} 
+                            sx={{cursor:'pointer'}}>
+                            Movies
+                          </Typography>
+                          {/*dropDown movies */}
+                          <Menu id='menu-movies' anchorEl={anchorEl} open={openMenu} onClose={handleClose}> 
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Movies</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Movies</MenuItem>
+                          </Menu></Box>
+                      <Box><Typography 
+                            aria-controls='menu-lists' 
+                            aria-haspopup='true' 
+                            aria-expanded={openMenu?'true':undefined}
+                            onClick={handleClick} 
+                            sx={{cursor:'pointer'}}>
+                            Lists
+                          </Typography>
+                          {/*dropDown users */}
+                          <Menu id='menu-lists' anchorEl={anchorEl} open={openMenu} onClose={handleClose}> 
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Lists</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Lists</MenuItem>
+                          </Menu></Box>
+                      <Box><Typography 
+                            aria-controls='menu-lists' 
+                            aria-haspopup='true' 
+                            aria-expanded={openMenu?'true':undefined}
+                            onClick={handleClick} 
+                            sx={{cursor:'pointer'}}>
+                            Genres
+                          </Typography>
+                          {/*dropDown users */}
+                          <Menu id='menu-lists' anchorEl={anchorEl} open={openMenu} onClose={handleClose}> 
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Genres</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Genres</MenuItem>
+                          </Menu></Box>
+                    </Box>
+                  </Toolbar>
+                
+              
               {/* Recent Orders */}
-              <Grid item xs={12}>
+              <Grid item xs={12} ys={5}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Users />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} ys={5}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <ModernTable title={title} items={items} properties={properties} action={action} />
                 </Paper>
               </Grid>
 
@@ -100,6 +191,7 @@ function DashboardContent() {
     </>
     }
     </ThemeProvider>
+    </div>
   );
 }
 
