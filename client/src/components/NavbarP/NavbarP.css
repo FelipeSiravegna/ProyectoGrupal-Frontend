@@ -1,32 +1,24 @@
+.imagen {
+  min-width: 25%;
+  width: 25%;
+  margin-top: -3%;
+  margin-left: -15%;
+  position: relative;
+  margin-bottom: -5%;
+  height: 5%;
+}
 
-  .imagen{
-    min-width: 25%;
-    width: 25%;
-    margin-top: -3%;
-    margin-left: -15%;
-    position:relative;
-    margin-bottom: -5%;
-  }
+.botones2 {
+  position: relative;
+  margin-top: 13%;
 
+}
 
-  .botones2{
-    position:relative;
-    margin-top: 13%;
-    
-  }
-
-  .botonesDiv{
-    padding-top: 1%;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-column-gap: 15px;
-    display: inline-flex;
-
-        
-  }
- 
-
-  
- 
-  
+.botonesDiv {
+  padding-top: 1%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: 15px;
+  display: inline-flex;
+}

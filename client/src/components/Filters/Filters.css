@@ -1,7 +1,8 @@
 .filtritos{
-    position: absolute;
-    padding: 0;
-    top: 70%;
-    border-radius: 20%;
-    background-color: aliceblue;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 79%;
+    gap: 50px;
+    padding-bottom: 20px;
+} 

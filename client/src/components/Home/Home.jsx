@@ -114,13 +114,13 @@ const Home = () => {
             <NavbarP />
             <img className='fondoLogeado' src={bg} alt="" />
             <img className='fondoLogeado2' src={bg2} alt="" />
-            <h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>{userDB.username}</h1></h1>
+            <h1 className='fraseBienvenida'> Welcome again <h3 className='nombredeUser'>{userDB.username}</h3></h1>
             <h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen,
               as well as <FavoriteIcon fontSize='small' /> it and save it to watch later<AccessTimeFilledIcon fontSize='small' /> Also if
               are undecided you can compare two movies to choose the one that best suits you.</h6>
 
             <div className='nuevasPelis'>
-              <h7 className='fraseRandom'>Very soon in The Corner Movies...</h7>
+              <h6 className='fraseRandom'>Very soon in The Corner Movies...</h6>
               <CarrouselSlick />
             </div>
             <img className='loguito' src={Logo}></img>
