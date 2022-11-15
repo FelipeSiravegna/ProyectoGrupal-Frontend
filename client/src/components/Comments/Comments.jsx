@@ -24,9 +24,7 @@ import { useSelector } from 'react-redux';
 
 
 
-
 function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid}) {
-
   const dispatch=useDispatch()
 
   const mg = useSelector((state)=> state.like)
@@ -37,27 +35,12 @@ function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid
 let userFind= like.find(e=> e.userId === userid && e.like === true)
 let likeFilter = like.filter(e=> e.like ===true)
 
-
   const [checked, setChecked] = useState(Boolean(userFind));
-
-  
-  let aber = prueba.filter(a => a.id === id)
-  
-  let prueba2= like[0] ? like[0].like : null
- 
-//console.log(memuero[2])
-console.log(id)
-
-
-
-  const [checkeda, setCheckeda] = useState();
-
 
   useEffect(()=> 
   {dispatch(getAllReviews())
   }
   , [dispatch, estado, checked])
-
 
   
   
@@ -69,12 +52,7 @@ console.log(id)
       {like: e.target.checked,
         reviewId: id, 
         userId: userid}))
-
   };
-        //userId: idUser}))
-        //setCheckeda(e)
-      //};
-
 
  
 
@@ -84,8 +62,8 @@ function deleteComment (id) {
 }
 
 
-
-
+let aber = prueba.filter(a => a.id === id)
+// let hdo = prueba3.map(a=> a === idUser)
 
 return (
   <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -112,13 +90,12 @@ return (
 <div className='iconicos'>
 
 
+              <Box component="span" sx={{color: 'rojo.main'}}>
+              {likeFilter.length? likeFilter.length : null}
+              </Box>
+             
+             <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
 
-
-
-          <Box component="span" sx={{color: 'rojo.main'}}>
-          {likeFilter.length? likeFilter.length : null}
-          </Box>
-         <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
 
           <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
           <DeleteIcon sx={{ fontSize: 20 }} />

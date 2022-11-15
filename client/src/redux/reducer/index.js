@@ -42,9 +42,11 @@ import {
   LIST_DETAILS,
   RESET_SEARCH,
   EDIT_LIST,
+  GET_ACTIVITY,
   DELETE_LIST,
   UN_FOLLOW_LIST,
   FOLLOW_LIST,
+  GET_OTHER_USER_INFO,
 } from "../actions";
 
 
@@ -69,7 +71,9 @@ const initialState = {
   user:[],
   items:[],
   list: [],
-  listDetails: []
+  listDetails: [],
+  activity: [],
+  otherUserInfo: {}
 };
 
 
@@ -296,6 +300,16 @@ export default function reducer(state = initialState, { type, payload }) {
           case EDIT_LIST:
             return{
             ...state
+            };
+          case GET_ACTIVITY:
+            return{
+              ...state,
+              activity: payload
+            }
+          case GET_OTHER_USER_INFO:
+            return{
+              ...state,
+              otherUserInfo: payload
             }
             case UN_FOLLOW_LIST:
             return{

@@ -43,9 +43,11 @@ export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
+export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
 export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
+export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -182,7 +184,27 @@ export const filterDirector = (filtro) => {
         })
     }
 }
-
+export const get4Search= (envio)=>{
+    return async function (dispatch) {
+    try{
+    console.log("soy el envio:",envio)
+    let routes = `http://localhost:3001/movies/search?`
+    console.log("routes1",routes)
+    if (envio.genres!=="null") {routes=routes+`genres[]=`+envio.genres+"&"}
+    if (envio.director!=="null") {routes=routes+`director[]=`+envio.director+"&"}
+    if (envio.popularity!=="null") {routes=routes+`popularity=`+envio.popularity+`&`}
+    if (envio.rating!=="null") {routes=routes+`rating=`+envio.rating+`&`}
+    console.log("routes:",routes)
+    let json = await axios.get(routes)
+    console.log(json.data)
+    return dispatch({
+        type: FILTER_DIRECTOR,
+        payload: json.data
+    })}
+    catch(error){
+        console.log(error)
+    }}
+}
 
 
 export const allDirector = () => {
@@ -377,7 +399,6 @@ export const getUserInfo = () => {
         }
     }
 }
-
 
 export const subscribe = () => {
     return async function (dispatch) {
@@ -662,4 +683,31 @@ export const freeUsers = () => {
 
     }
 }
-    
+
+export const getActivity = (loggedUser) => {
+    return async function(dispatch){
+        try{
+            let activity = await axios.get(`/activity/${loggedUser}`);
+            return dispatch({
+                type: GET_ACTIVITY,
+                payload: activity.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getOtherUserInfo = (id) => {
+    return async function(dispatch){
+        try{
+            let info = await axios.get(`/users/user/${id}`);
+            return dispatch({
+                type: GET_OTHER_USER_INFO,
+                payload: info.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}

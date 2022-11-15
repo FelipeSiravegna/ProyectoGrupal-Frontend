@@ -81,6 +81,12 @@ export default function Login() {
           </Link>
            :null}
 
+          <Link className='botones4' to={`/activity/${userDB.id}`}>
+            <Button variant="text" color="rojo">
+              Activity
+            </Button>
+          </Link>
+
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
           </Button> 
