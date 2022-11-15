@@ -181,7 +181,27 @@ export const filterDirector = (filtro) => {
         })
     }
 }
-
+export const get4Search= (envio)=>{
+    return async function (dispatch) {
+    try{
+    console.log("soy el envio:",envio)
+    let routes = `http://localhost:3001/movies/search?`
+    console.log("routes1",routes)
+    if (envio.genres!=="null") {routes=routes+`genres[]=`+envio.genres+"&"}
+    if (envio.director!=="null") {routes=routes+`director[]=`+envio.director+"&"}
+    if (envio.popularity!=="null") {routes=routes+`popularity=`+envio.popularity+`&`}
+    if (envio.rating!=="null") {routes=routes+`rating=`+envio.rating+`&`}
+    console.log("routes:",routes)
+    let json = await axios.get(routes)
+    console.log(json.data)
+    return dispatch({
+        type: FILTER_DIRECTOR,
+        payload: json.data
+    })}
+    catch(error){
+        console.log(error)
+    }}
+}
 
 
 export const allDirector = () => {
