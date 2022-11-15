@@ -79,11 +79,7 @@ export default function Login() {
           </Button>
           </Link>
 
-          <Link className='botones4' to={`/activity/${userDB.id}`}>
-            <Button variant="text" color="rojo">
-              Activity
-            </Button>
-          </Link>
+          
 
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
@@ -106,10 +102,14 @@ export default function Login() {
           </Button>
           </Link>
           
-          <Button variant="text" color="rojo" className="botones" >
-        favorites
-          </Button>
 
+
+          <Link className='botones4' to={`/activity/${userDB.id}`}>
+            <Button variant="text" color="rojo">
+              Activity
+            </Button>
+          </Link>
+          
 
            
 
@@ -141,7 +141,13 @@ export default function Login() {
                         Dashboard
                       </Button>
                     </Link>
+
                   </Dropdown.Item>
+                  <Dropdown.Item className='drop'>
+                  <Button variant="text" color="rojo" className="botones" >
+        favorites
+          </Button>
+          </Dropdown.Item>
                   <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
                     Following
                   </Button></Dropdown.Item>
