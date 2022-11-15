@@ -43,7 +43,7 @@ export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
-
+export const DELETE_LIST = 'DELETE_LIST'
 
 
 //peliculas
@@ -482,6 +482,16 @@ export const editList= (listId, body) => {
             })
     }
 }
+
+export const deleteList= (listId) => {
+    return async function (dispatch){
+        await axios.put(`http://localhost:3001/lists/manageDeletion/${listId}?action=delete`);
+            return dispatch({
+                type: DELETE_LIST,
+            })
+    }
+}
+
 
 
 

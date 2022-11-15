@@ -201,3 +201,8 @@ left: 67px;
     position: absolute;
    right: -10%;
 }
+
+.deletion{
+    position: absolute;
+    left: -30%;
+}

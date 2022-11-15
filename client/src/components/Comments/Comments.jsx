@@ -87,62 +87,54 @@ function deleteComment (id) {
 
 
 
-
-    return (
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src={img} />
-        </ListItemAvatar>
-        <ListItemText
-          primary={name}
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-              >      
-              </Typography>
-              <h className='pruebita'>
-              {content}
-              <br></br>
-              <br></br>
-              </h>
+return (
+  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+  <ListItem alignItems="flex-start">
+    <ListItemAvatar>
+      <Avatar alt="Remy Sharp" src={img} />
+    </ListItemAvatar>
+    <ListItemText
+      primary={name}
+      secondary={
+        <React.Fragment>
+          <Typography
+            sx={{ display: 'inline' }}
+            component="span"
+            variant="body2"
+          >      
+          </Typography>
+          <h className='pruebita'>
+          {content}
+          <br></br>
+          <br></br>
+          </h>
 
 <div className='iconicos'>
 
 
-{prueba2 ?
-              <Button variant="text"  onClick={()=>handleChange(false)} >
-              <Favorite color="rojo" /> </Button> 
-
-             : <Button variant="text" onClick={()=>handleChange(true)} >
-             <FavoriteBorder color="gris" />
-             </Button> }  
 
 
 
-              <Box component="span" sx={{color: 'rojo.main'}}>
-              {likeFilter.length? likeFilter.length : null}
-              </Box>
-             <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
+          <Box component="span" sx={{color: 'rojo.main'}}>
+          {likeFilter.length? likeFilter.length : null}
+          </Box>
+         <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
 
-              <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
-              <DeleteIcon sx={{ fontSize: 20 }} />
-              </Button>
+          <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
+          <DeleteIcon sx={{ fontSize: 20 }} />
+          </Button>
 </div>
 
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-  
-    </List>
-  );
+        </React.Fragment>
+      }
+    />
+  </ListItem>
+  <Divider variant="inset" component="li" />
 
-    
+</List>
+);
+
+
 }
 
 export default Comments

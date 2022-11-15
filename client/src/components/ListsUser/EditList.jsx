@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Button from '@mui/material/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import { editList, getList } from '../../redux/actions';
+import { editList, getList, deleteList } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -30,6 +30,13 @@ dispatch(editList(id,{
     name: name,
     description: description
 }))
+setShow(false)
+}
+
+function eliminacion (e) {
+  e.preventDefault
+  dispatch(deleteList(id))
+  setShow(false)
 }
 
 
@@ -65,6 +72,9 @@ dispatch(editList(id,{
           </Form>
         </Modal.Body>
         <Modal.Footer>
+        <Button color="rojo" variant='text'  className='deletion' onClick={eliminacion}>
+          Delete List
+          </Button>
           <Button color='rojo' variant='outlined' onClick={handleClose}>
             Close
           </Button>

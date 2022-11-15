@@ -42,7 +42,7 @@ export default function Login() {
   return (
     <div>
       {
-        userDB.active !== true ?
+        localStorage.username ?
           <div>
              {
               !localStorage.username ?
@@ -117,6 +117,8 @@ export default function Login() {
 
             </Modal>
 
+
+
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
 
@@ -128,7 +130,6 @@ export default function Login() {
                     </Button>
                   </Link>
                 </Dropdown.Item>
-
                 <div className='drope'>
                   <Dropdown.Item className='drop'>
                     <Link className='botones4' to={'/dashboard'}>
