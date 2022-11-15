@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Box from '@mui/material/Box';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllReviews, deleteReviews, addLikes, getLikeCounts} from '../../redux/actions';
@@ -23,13 +24,21 @@ import { useSelector } from 'react-redux';
 
 
 
-function Comments({content, name, img, id, idUser, prueba, like,id2}) {
+
+function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid}) {
+
   const dispatch=useDispatch()
 
   const mg = useSelector((state)=> state.like)
-
+ 
   const [estado, setEstado] = useState('')
+ console.log(userid, idUser)
 
+let userFind= like.find(e=> e.userId === userid && e.like === true)
+let likeFilter = like.filter(e=> e.like ===true)
+
+
+  const [checked, setChecked] = useState(Boolean(userFind));
 
   
   let aber = prueba.filter(a => a.id === id)
@@ -43,22 +52,29 @@ console.log(id)
 
   const [checkeda, setCheckeda] = useState();
 
+
   useEffect(()=> 
   {dispatch(getAllReviews())
-    dispatch
   }
-  , [dispatch, estado, checkeda])
+  , [dispatch, estado, checked])
+
 
   
   
   const handleChange = (e) => {
-    
+    console.log(e.target.checked +" "+ 12)
+    setChecked(e.target.checked);
+    console.log(checked)
     dispatch(addLikes(
-      {like: e,
+      {like: e.target.checked,
         reviewId: id, 
-        userId: idUser}))
-        setCheckeda(e)
-      };
+        userId: userid}))
+
+  };
+        //userId: idUser}))
+        //setCheckeda(e)
+      //};
+
 
  
 
@@ -96,6 +112,7 @@ function deleteComment (id) {
 
 <div className='iconicos'>
 
+
 {prueba2 ?
               <Button variant="text"  onClick={()=>handleChange(false)} >
               <Favorite color="rojo" /> </Button> 
@@ -106,12 +123,14 @@ function deleteComment (id) {
 
 
 
+              <Box component="span" sx={{color: 'rojo.main'}}>
+              {likeFilter.length? likeFilter.length : null}
+              </Box>
+             <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
 
-              {aber.length ? 
-              <Button  color="azul" size="10px" sx={{ width: 2 }} onClick={()=>deleteComment(id)}>
+              <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
               <DeleteIcon sx={{ fontSize: 20 }} />
               </Button>
-              : null}
 </div>
 
             </React.Fragment>

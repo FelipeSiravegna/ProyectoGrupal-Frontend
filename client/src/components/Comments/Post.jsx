@@ -33,12 +33,13 @@ const handleSubmit=(e)=>{
       })
     );
     setEstado("");
-    dispatch(getAllReviews());
+    // dispatch(getAllReviews());
   };
 
 
   let peli = reviews.filter(e=> e.movie.id ===movieId)
   let prueba = reviews.filter(a => a.userId === userId)
+
 
   let megusta = reviews.map(a=>a.likes)   //like[0] ? like[0].like : null
   let otravez = megusta.map(a=>a.map(e=>e.userId))
@@ -60,6 +61,7 @@ console.log(element, "HOLA")
   //otravez.filter(a=>a === userId)
 //console.log(megusta, "RESOLUCION")
 //console.log(otramas)
+
 
 
 
@@ -105,6 +107,9 @@ console.log(element, "HOLA")
                     id={e.id}
                     idUser={e.user.id}
                     prueba={prueba}
+                    prueba3={prueba3}
+                    userid={userId}
+
 
                     />
                     

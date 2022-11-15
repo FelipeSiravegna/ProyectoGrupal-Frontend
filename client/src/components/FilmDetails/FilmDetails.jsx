@@ -179,13 +179,14 @@ const FilmDetails = () => {
       </div>
 
       <div className='comentarios'>
-        <Post 
-        userId={userDB ? userDB.id : null}
-        userName={userDB ? userDB.username : null}
-        userImg={userDB ? userDB.image : null}
-        movieId={idFilm ? idFilm : null}
-        />
-
+        {Object.keys(userDB).length && idFilm && (
+          <Post
+            userId={userDB.id}
+            userName={userDB.username}
+            userImg={userDB.image}
+            movieId={idFilm}
+          />
+        )}
       </div>
     </div>
 
