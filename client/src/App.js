@@ -41,7 +41,7 @@ const App = () => {
         <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
-        <Route exact path='/activity' element={<Activity/>}/>
+        <Route exact path='/activity/:loggedUserId' element={<Activity/>}/>
         </Routes>
     );
   }

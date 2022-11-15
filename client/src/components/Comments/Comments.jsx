@@ -63,7 +63,7 @@ function deleteComment (id) {
 
 
 let aber = prueba.filter(a => a.id === id)
-let hdo = prueba3.map(a=> a === idUser)
+// let hdo = prueba3.map(a=> a === idUser)
 
 return (
   <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

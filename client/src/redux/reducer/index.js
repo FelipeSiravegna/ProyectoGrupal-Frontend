@@ -44,6 +44,7 @@ import {
   EDIT_LIST,
   GET_ACTIVITY,
   DELETE_LIST,
+  GET_OTHER_USER_INFO
 } from "../actions";
 
 
@@ -69,7 +70,8 @@ const initialState = {
   items:[],
   list: [],
   listDetails: [],
-  activity: []
+  activity: [],
+  otherUserInfo: {}
 };
 
 
@@ -301,6 +303,11 @@ export default function reducer(state = initialState, { type, payload }) {
             return{
               ...state,
               activity: payload
+            }
+          case GET_OTHER_USER_INFO:
+            return{
+              ...state,
+              otherUserInfo: payload
             }
     default:
       return state;
