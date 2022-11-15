@@ -29,6 +29,13 @@ import {
   ORDER_RATING,
   POST_USER_LOG,
   GET_USER_INFO,
+  CREATE_LIST,
+  ADD_MOVIE_TO_LIST,
+  REMOVE_MOVIE_TO_LIST,
+  GET_LIST,
+  LIST_DETAILS,
+  RESET_SEARCH,
+  EDIT_LIST,
   ALL_ACTOR
 } from "../actions";
 
@@ -50,7 +57,9 @@ const initialState = {
   directors: [],
   actors: [],
   idToken:"",
-  user:[]
+  user:[],
+  list: [],
+  listDetails: []
 };
 
 
@@ -210,7 +219,38 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         user:payload
       }
-
+      case CREATE_LIST:
+        return{
+          ...state
+        }
+      case ADD_MOVIE_TO_LIST:
+          return{
+            ...state,
+          }
+          case REMOVE_MOVIE_TO_LIST:
+        return{
+            ...state,
+          }
+          case GET_LIST:
+        return{
+            ...state,
+            list: payload
+          }
+          case LIST_DETAILS:
+        return{
+            ...state,
+            listDetails: payload
+          }
+          case RESET_SEARCH:
+          return{
+            ...state,
+            busqueda1: [],
+            busqueda2: [],
+          };
+          case EDIT_LIST:
+            return{
+            ...state
+            }
     default:
       return state;
   }

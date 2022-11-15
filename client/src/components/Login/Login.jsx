@@ -54,14 +54,57 @@ export default function Login() {
             
             </Link>
             <Link to={'/register'} className={'botonRegisterLogin'} >
-              <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
-                Register
-              </Button>
-            </Link>
 
+            <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
+            Register
+          </Button>
+          </Link>
+ 
           </div>
-          :
-          <div className='botonesDiv'>
+            :
+            <div className='botonesDiv'>
+
+<Link className='botones4' to={'/premium'}>
+  
+          <Link className='botones4' to={'/noticias'}>
+           <Button variant="text" color="azul">
+              News
+           </Button>
+          </Link>
+
+          <Button variant="text" color="amarillo">
+          Premium
+          </Button>
+          </Link>
+
+          <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
+        Compare
+          </Button> 
+          <Modal show={show} onHide={handleClose} className="my-modal" >
+        <Modal.Header closeButton>
+          <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <Compare/> </Modal.Body>
+ 
+      </Modal>
+    
+
+
+
+          <Button variant="text" color="rojo" className="botones" >
+          Watchlist
+          </Button>
+
+          <Link className='botones4' to={'/lists'}>
+          <Button variant="text" color="rojo" className="botones" >
+          List
+          </Button>
+          </Link>
+          
+          <Button variant="text" color="rojo" className="botones" >
+        favorites
+          </Button>
+
 
 
             <Link className='botones4' to={'/premium'}>

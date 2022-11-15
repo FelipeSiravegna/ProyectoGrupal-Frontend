@@ -39,10 +39,27 @@ const handleSubmit=(e)=>{
 
   let peli = reviews.filter(e=> e.movie.id ===movieId)
   let prueba = reviews.filter(a => a.userId === userId)
-  let prueba3 = reviews.map(a => a.likes.length ? a.likes.map(a=>a.id) : null)
-  
 
-console.log(prueba3, "PRUEBA")
+  let megusta = reviews.map(a=>a.likes)   //like[0] ? like[0].like : null
+  let otravez = megusta.map(a=>a.map(e=>e.userId))
+
+  let element 
+  function hola () {
+    for (let i = 0; i < otravez.length; i++) {
+      if(i === userId){
+      element = [i];
+      return element
+      }
+    }
+}
+
+  let hola1 = hola()
+console.log(element, "HOLA")
+    
+  
+  //otravez.filter(a=>a === userId)
+//console.log(megusta, "RESOLUCION")
+//console.log(otramas)
 
 
 
@@ -88,7 +105,7 @@ console.log(prueba3, "PRUEBA")
                     id={e.id}
                     idUser={e.user.id}
                     prueba={prueba}
-                    prueba3={prueba3}
+
                     />
                     
                 </div>)

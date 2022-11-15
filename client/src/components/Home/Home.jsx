@@ -45,30 +45,41 @@ const Home = () => {
 
 
   useEffect(() => {
-    dispatch(getAllMovies(pagina || 1))
-  }, [])
 
-  const images = [
-    "https://i.pinimg.com/564x/87/e7/1c/87e71c7d37a747dcfcdec2b6ce3b1adb.jpg",
-    "https://i.pinimg.com/564x/ad/b3/e5/adb3e50e5f10d289ac916ce5d0187c89.jpg",
-    "https://i.pinimg.com/564x/83/19/d5/8319d50b7a55bd6c80740da3b95e74cf.jpg",
-    "https://i.pinimg.com/564x/3e/d0/ce/3ed0cec2e68f993056aef64cb5fc174f.jpg",
-    "https://i.pinimg.com/564x/f4/f6/f1/f4f6f187ee110b2a32d8752fa7ed8960.jpg",
-    "https://i.pinimg.com/564x/85/35/14/853514b720202376d42d236c3623e4b4.jpg"
-  ]
-  const images2 = [
-    "https://i.pinimg.com/564x/5f/b6/d6/5fb6d62a14df6ac1253edc3bf82b2a37.jpg",
-    "https://i.pinimg.com/564x/98/d8/3e/98d83e03b1063e09483d084f8a603658.jpg",
-    "https://i.pinimg.com/564x/df/dd/fe/dfddfe14e7d1178b220fa08fd96e01f1.jpg",
-    "https://i.pinimg.com/564x/e3/e0/25/e3e02598d17737f778632428d7b1e708.jpg",
-    "https://i.pinimg.com/564x/2f/a2/12/2fa212650d39691cfcee6b4c74f0ca17.jpg",
-    "https://i.pinimg.com/564x/d7/d7/7d/d7d77dbfb35fa218ebb62b3781593451.jpg"
-  ]
+    dispatch(getAllMovies(pagina || 1)) 
+    }, [])
+    
+    const images = [
+      "https://i.pinimg.com/564x/87/e7/1c/87e71c7d37a747dcfcdec2b6ce3b1adb.jpg",
+      "https://i.pinimg.com/564x/ad/b3/e5/adb3e50e5f10d289ac916ce5d0187c89.jpg",
+      "https://i.pinimg.com/564x/83/19/d5/8319d50b7a55bd6c80740da3b95e74cf.jpg",
+      "https://i.pinimg.com/564x/3e/d0/ce/3ed0cec2e68f993056aef64cb5fc174f.jpg",
+      "https://i.pinimg.com/564x/f4/f6/f1/f4f6f187ee110b2a32d8752fa7ed8960.jpg",
+      "https://i.pinimg.com/564x/85/35/14/853514b720202376d42d236c3623e4b4.jpg"
+    ]
+    const images2 = [
+      "https://i.pinimg.com/564x/5f/b6/d6/5fb6d62a14df6ac1253edc3bf82b2a37.jpg",
+      "https://i.pinimg.com/564x/98/d8/3e/98d83e03b1063e09483d084f8a603658.jpg",
+      "https://i.pinimg.com/564x/df/dd/fe/dfddfe14e7d1178b220fa08fd96e01f1.jpg",
+      "https://i.pinimg.com/564x/e3/e0/25/e3e02598d17737f778632428d7b1e708.jpg",
+      "https://i.pinimg.com/564x/2f/a2/12/2fa212650d39691cfcee6b4c74f0ca17.jpg",
+      "https://i.pinimg.com/564x/d7/d7/7d/d7d77dbfb35fa218ebb62b3781593451.jpg"
+    ]
 
-  const bg = images[Math.floor(Math.random() * images.length)]
-  const bg2 = images2[Math.floor(Math.random() * images2.length)]
+    const bg = images[Math.floor(Math.random() * images.length)]
+    const bg2 = images2[Math.floor(Math.random() * images2.length)]
+ 
+      return (
+        
+    <div className="App">
+    {
+      !localStorage.username  ?
+      <div>
+      <img className='fondo'src={fondo} alt="" />
+<NavbarP/>
+       <Carrousel/>
+  <InfoHome/>
 
-  return (
 
     <div className="App">
       {
