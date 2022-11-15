@@ -43,6 +43,8 @@ import {
   RESET_SEARCH,
   EDIT_LIST,
   DELETE_LIST,
+  UN_FOLLOW_LIST,
+  FOLLOW_LIST,
 } from "../actions";
 
 
@@ -294,6 +296,14 @@ export default function reducer(state = initialState, { type, payload }) {
           case EDIT_LIST:
             return{
             ...state
+            }
+            case UN_FOLLOW_LIST:
+            return{
+              ...state
+            }
+            case FOLLOW_LIST:
+            return{
+              ...state
             }
     default:
       return state;
