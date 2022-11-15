@@ -491,6 +491,8 @@ export const resetSearch = () => {
         dispatch({
             type: RESET_SEARCH
         });
+    }
+}
 
 export const followUser = (loggedUserId, followedUserId) => {
     return async function(){
@@ -505,6 +507,7 @@ export const unfollowUser = (loggedUserId, unfollowedUserId) => {
         const response = await axios.put(`/followUnfollow/unfollow`, body);
     }
 }
+    
 export const putUser = (id,changes) =>{
     return async function (){
         try {
@@ -633,3 +636,4 @@ export const freeUsers = () => {
 
     }
 }
+    

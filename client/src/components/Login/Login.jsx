@@ -88,9 +88,6 @@ export default function Login() {
  
       </Modal>
     
-
-
-
           <Button variant="text" color="rojo" className="botones" >
           Watchlist
           </Button>
@@ -106,40 +103,10 @@ export default function Login() {
           </Button>
 
 
-
-            <Link className='botones4' to={'/premium'}>
-              <Link className='botones4' to={'/news'}>
-                <Button variant="text" color="azul">
-                  News
-                </Button>
-              </Link>
-
-              <Button variant="text" color="amarillo">
-                Premium
-
-              </Button>
-            </Link>
-
-            <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
-              Compare
-            </Button>
-
-            </Link>
-            </Dropdown.Item>
-            <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
-            Following
-            </Button></Dropdown.Item>
-            <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
-           Settings
-            </Button></Dropdown.Item>
-        <Dropdown.Item className='drop'>
-          <Button variant="text" color="rojo" className="botones" onClick={() => localStorage.clear()}>
-            Logout
-            </Button></Dropdown.Item>
+           
             </div>
-            </div>
-      </DropdownButton>
-</div>
+      
+
              }
 
             <Modal show={show} onHide={handleClose} className="my-modal" >
@@ -149,19 +116,6 @@ export default function Login() {
               <Modal.Body> <Compare /> </Modal.Body>
 
             </Modal>
-
-            <Button variant="text" color="rojo" className="botones" >
-              Watchlist
-            </Button>
-
-            <Button variant="text" color="rojo" className="botones" >
-              List
-            </Button>
-
-
-            <Button variant="text" color="rojo" className="botones" >
-              favorito
-            </Button>
 
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
@@ -198,8 +152,8 @@ export default function Login() {
             </DropdownButton>
 
           </div>
-      }
-
+     : null } 
+      
 
     </div>
   )
