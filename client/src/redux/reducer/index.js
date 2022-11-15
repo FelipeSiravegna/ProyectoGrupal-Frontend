@@ -42,7 +42,8 @@ import {
   LIST_DETAILS,
   RESET_SEARCH,
   EDIT_LIST,
-  GET_ACTIVITY
+  GET_ACTIVITY,
+  DELETE_LIST,
 } from "../actions";
 
 
@@ -282,6 +283,10 @@ export default function reducer(state = initialState, { type, payload }) {
             ...state,
             listDetails: payload
           }
+          case DELETE_LIST:
+            return{
+              ...state
+            }
           case RESET_SEARCH:
           return{
             ...state,

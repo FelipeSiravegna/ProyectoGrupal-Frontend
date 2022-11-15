@@ -8,8 +8,11 @@
 }
 
 .cards {
+    position:absolute;
     display: grid;
     gap: 10px;
+    top: 150%;
+    left:17%;
     grid-row-gap: 20px;
     grid-column-gap: 20px;
     color: white;
@@ -28,6 +31,7 @@
     width: 35%;
     max-width: 40%;
     max-height: 80%;
+    height: 1000px;
     position: absolute;
     top: 100px;
     left: 0%;
@@ -181,7 +185,7 @@
 .infoLike{
     position: absolute;
     width: 500px;
-    top:300%;
+    top:252%;
     left: -37%;
     text-align: center;
     color: white;
@@ -195,11 +199,16 @@
     position: absolute;
     width: 300px;
     text-align: center;
-    top: 235%;
+    top: 240%;
     left: 37%;
 }
 
 .favr{
     position: relative;
     top: 110px;
+}
+
+.fill{
+    background-color: none;
+    background: none;
 }

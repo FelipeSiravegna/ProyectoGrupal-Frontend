@@ -39,23 +39,25 @@ export default function Login() {
   const handleShow = () => setShow(true);
 
 
+  function deslogaut (){
+    localStorage.clear()
+  }
+
   return (
     <div>
-      {
-        userDB.active !== true ?
+      
           <div>
              {
               !localStorage.username ?
-              <div>
-                <Link to={'/login'} className={'botonRegisterLogin'} >
-            <Button variant="text" color="rojo" className="botones2">
+              <div className='deslogaut'>
+                <Link to={'/login'} className='botones4'>
+            <Button variant="text" color="rojo" className='ll' >
               Login
             </Button>
             
             </Link>
-            <Link to={'/register'} className={'botonRegisterLogin'} >
-
-            <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
+            <Link to={'/register'} className='ll'>
+            <Button  variant="contained" color="rojo" className='ll'>
             Register
           </Button>
           </Link>
@@ -104,10 +106,6 @@ export default function Login() {
 
 
            
-            </div>
-      
-
-             }
 
             <Modal show={show} onHide={handleClose} className="my-modal" >
               <Modal.Header closeButton>
@@ -116,6 +114,8 @@ export default function Login() {
               <Modal.Body> <Compare /> </Modal.Body>
 
             </Modal>
+
+
 
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
@@ -128,7 +128,6 @@ export default function Login() {
                     </Button>
                   </Link>
                 </Dropdown.Item>
-
                 <div className='drope'>
                   <Dropdown.Item className='drop'>
                     <Link className='botones4' to={'/dashboard'}>
@@ -144,16 +143,25 @@ export default function Login() {
                     Settings
                   </Button></Dropdown.Item>
                   <Dropdown.Item className='drop'>
-                    <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+
+                    <Link className='botones4' to="/">
+                    <Button variant="text" color="rojo" className="botones" onClick={() => deslogaut()}>
                       Logout
-                    </Button></Dropdown.Item>
+                    </Button>
+                    </Link>
+
+                    </Dropdown.Item>
+                    
                 </div>
               </div>
             </DropdownButton>
 
+            </div>
+         
+         
+             }
           </div>
-     : null } 
-      
+   
 
     </div>
   )

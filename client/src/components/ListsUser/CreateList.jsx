@@ -31,7 +31,7 @@ dispatch(createList(localStorage.id,{
     name: name,
     description: description
 }))
-handleClose()
+setShow(false)
 }
 
 

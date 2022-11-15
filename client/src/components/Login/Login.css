@@ -14,18 +14,19 @@
 }
 
 #nav-dropdown{
+  position:relative;
     color: rgb(255, 255, 255);
     padding: 10px ;
-    padding-left: 10%;
     background-color: #f13528;
     border-color: rgb(165, 164, 164);
     height: 34px;
     width: 34px;
     padding: 5px; 
+    top: 0px;
+    left: 0px;
 }
 
 #nav-dropdown:active{
-    
         background-color: red;
         
 }
@@ -40,6 +41,8 @@
     position: relative;
     background: 10px 30px 0px;
 }
+
+
 
 .botones4{
     text-decoration: none;
@@ -76,3 +79,13 @@ top: 7%;
 .botones{
     text-decoration: none;
   }
+
+.deslogaut{
+  position: relative;
+  text-decoration: none;
+}
+
+.ll{
+  text-decoration: none;
+  color: white;
+}
