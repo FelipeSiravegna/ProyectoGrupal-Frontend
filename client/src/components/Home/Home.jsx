@@ -83,11 +83,6 @@ const Home = () => {
               <Searchbar />
             </div>
 
-
-            <div className='Paginator'>
-              <Paginado />
-            </div>
-
             <div className='cards'>
               {peliculas.length !== 0 ? peliculas.rows.map(a => {
                 return <FilmCard
@@ -102,6 +97,11 @@ const Home = () => {
               </Box>
               }
             </div >
+
+            <div className='Paginator'>
+              <Paginado />
+            </div>
+
             <div className='infoLIK'>
               <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul' />
               <h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
