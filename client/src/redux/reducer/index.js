@@ -29,7 +29,12 @@ import {
   ORDER_RATING,
   POST_USER_LOG,
   GET_USER_INFO,
-  ALL_ACTOR
+  ALL_ACTOR,
+  ACTIVE_USERS,
+  AVAILABLE_USERS,
+  BANNED_USERS,
+  PREMIUM_USERS,
+  FREE_USERS
 } from "../actions";
 
 
@@ -50,7 +55,8 @@ const initialState = {
   directors: [],
   actors: [],
   idToken:"",
-  user:[]
+  user:[],
+  items:[]
 };
 
 
@@ -162,7 +168,8 @@ export default function reducer(state = initialState, { type, payload }) {
       case ALL_USERS:
       return {
         ...state,
-        users: payload
+        users: payload,
+        items:payload
       };
       case ALL_DIRECTOR:
       return {
@@ -210,9 +217,39 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         user:payload
       }
+      case ALL_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case ACTIVE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case AVAILABLE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case BANNED_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case PREMIUM_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case FREE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
 
     default:
       return state;
   }
 }
-
+AVAILABLE_USERS
