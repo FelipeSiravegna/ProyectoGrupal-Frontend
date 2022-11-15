@@ -30,7 +30,6 @@ import {
   POST_USER_LOG,
   GET_USER_INFO,
   ALL_ACTOR
-
 } from "../actions";
 
 
@@ -44,14 +43,14 @@ const initialState = {
   busqueda1: [],
   busqueda2: [],
   reviews: [],
-  like: 0,
+  like: [],
   moviesSoon: [],
   genres: [],
   users: [],
   directors: [],
   actors: [],
   idToken:"",
-  user:[]
+  user:{},
 };
 
 
@@ -170,11 +169,13 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         directors: payload
       };
+
       case ALL_ACTOR:
       return {
         ...state,
         actors: payload
       };
+
       case FILTER_DIRECTOR:
       return {
         ...state,
