@@ -79,7 +79,7 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
   return (
     <div className='filtritos' >
       
-      <FormControl sx={{ m: 0, minWidth: 90 }} size="small" style={{ color: "#f44336" }}>
+      <FormControl sx={{ m: 0, minWidth: 90 }} size="small" style={{ color: "#f44336"}}>
         <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Genres</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"

@@ -11,21 +11,20 @@ import Login from '../Login/Login'
 import Profile from '../Login/Profile'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const NavbarP = () => {
-  const [show, setShow] = useState(false);
-  const {isLoading,user} = useAuth0()
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
+  let dbUser = useSelector(state => state.user)
 
   return (
     <div className='navv'>
        <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" >
        <Container>
         
-         <Navbar.Brand><Link to = {'/'}> <img src={imagen} alt="" className='imagen' /> </Link> </Navbar.Brand>
+         <Navbar.Brand><Link to = {'/'}> <img src={imagen} alt="hola" className='imagen' /> </Link> </Navbar.Brand>
          
-    { !isLoading && <>
+    { dbUser && <>
              <Profile/>
            <Nav>
              <Nav.Link>

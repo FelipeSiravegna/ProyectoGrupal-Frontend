@@ -16,16 +16,20 @@ class News extends Component {
     }
 
     consultaNoticias = () => {
-        let url = 'https://newsapi.org/v2/top-headlines?country=de&category=business&apikey=63d551b6944e439888e91bf83ccda75f'
+
+        let url = 'https://api.themoviedb.org/3/discover/movie?api_key=756e1622851086c3d011b8461693b962&language=es-ES&sort_by=popularity.desc'
+
 
             fetch(url)
                .then(respuesta => {
                     return respuesta.json()
                })
                .then(noticias => {
-                console.log(noticias)
+
+                //console.log(noticias)
                   this.setState({
-                    noticias: noticias.articles
+                    noticias: noticias.results
+
                   })
                })
 

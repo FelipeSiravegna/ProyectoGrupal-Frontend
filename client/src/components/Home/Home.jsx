@@ -8,7 +8,7 @@ import Acordeon from '../Acordeon/Acordeon';
 import InfoHome from '../InfoHome/InfoHome';
 import Searchbar from '../Searchbar/Searchbar';
 import { useDispatch, useSelector } from 'react-redux'
-import {filterGenres, getAllMovies, getComingSoon, getUserInfo} from '../../redux/actions'
+import { filterGenres, getAllMovies, getComingSoon, getUserInfo } from '../../redux/actions'
 import FilmCard from '../FilmCard/FilmCard.jsx';
 import { useEffect } from 'react';
 import Paginado from '../Pagination/Pagination';
@@ -27,24 +27,25 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 
 
-const Home = () => { 
+const Home = () => {
   const dispatch = useDispatch()
-  const {loginWithRedirect,logout,isAuthenticated, user} = useAuth0()
-  let peliculas = useSelector(state => (state.movies)) 
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
+  let peliculas = useSelector(state => (state.movies))
   let pagina = useSelector(state => (state.page))
-  const token = useSelector((state)=> state.idToken)
-  const userDB = useSelector((state)=> state.user)
+  const token = useSelector((state) => state.idToken)
+  const userDB = useSelector((state) => state.user)
 
-  useEffect(()=>{
-    dispatch(getUserInfo()) 
-  },[token])
-
-  useEffect(()=>{
-    console.log(userDB)
-  },[userDB])
-
-  
   useEffect(() => {
+    dispatch(getUserInfo())
+  }, [token])
+
+  useEffect(() => {
+    console.log(userDB)
+  }, [userDB])
+
+
+  useEffect(() => {
+
     dispatch(getAllMovies(pagina || 1)) 
     }, [])
     
@@ -79,101 +80,111 @@ const Home = () => {
        <Carrousel/>
   <InfoHome/>
 
-  <div className='elBuscador'>
-  <Searchbar/>
-  </div>
 
+    <div className="App">
+      {
+        userDB.active !== true ?
+          <div>
+            <img className='fondo' src={fondo} alt="" />
+            <NavbarP />
+            <Carrousel />
+            <InfoHome />
 
-       <div className='Paginator'>
-<Paginado/>
-</div>
-
-       <div className='cards'>
-            {peliculas.length !== 0 ? peliculas.rows.map(a => {
-                return <FilmCard
-                key = {a.id}
-                name = {a.name}
-                id = {a.id}
-                img = {a.image}   
-                rating = {a.rating}    
-                />             
-            }) : <Box className='carga'  sx={{ display: 'flex' }}>
-            <CircularProgress color="rojo" />
-          </Box>
-        } 
-            </div >
- <div className='infoLIK'> 
-  <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul'/>
-<h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
-</div>
+            <div className='elBuscador'>
+              <Searchbar />
             </div>
-            
-               : <div>
-                
-                <img className='fondo'src={fondo} alt="" />
-<NavbarP/>
-<img className='fondoLogeado'src={bg} alt="" />
-<img className='fondoLogeado2'src={bg2} alt="" />
-<h1 className='fraseBienvenida'> Welcome again <h1 className='nombredeUser'>{userDB.username}</h1></h1>
-<h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen, 
-  as well as <FavoriteIcon fontSize='small'/> it and save it to watch later<AccessTimeFilledIcon fontSize='small'/> Also if 
-  are undecided you can compare two movies to choose the one that best suits you.</h6>
-
-<div className='nuevasPelis'>
-<h7 className='fraseRandom'>Very soon in The Corner Movies...</h7>
-<CarrouselSlick/>
-</div>
-  <img className='loguito' src={Logo}></img>
 
 
-<h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Button variant="text" sx={{ fontSize: 19 }} color="amarillo">
-  premium
-</Button>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }}  color="azul">
-director's 
-</Button>ACCOUNT?</h1>
- 
+            <div className='Paginator'>
+              <Paginado />
+            </div>
 
-
-<div className='carrousel2'>
-  <Carrousel2/>
-</div>
-
-<div className='busqueda'>
-<SearchLog/>
-<Filters/>
-
-<div className='lasCartulis'>
-{peliculas.length !== 0 ? peliculas.rows.map(a => {
+            <div className='cards'>
+              {peliculas.length !== 0 ? peliculas.rows.map(a => {
                 return <FilmCard
-                key = {a.id}
-                name = {a.name}
-                id = {a.id}
-                img = {a.image}   
-                rating = {a.rating}    
-                />             
-            }) : <Box className='carga'  sx={{ display: 'flex' }}>
-            <CircularProgress color="rojo" />
-          </Box>
-        } 
-</div>
-</div>
-<div className='Paginame'><Paginado/> </div>
+                  key={a.id}
+                  name={a.name}
+                  id={a.id}
+                  img={a.image}
+                  rating={a.rating}
+                />
+              }) : <Box className='carga' sx={{ display: 'flex' }}>
+                <CircularProgress color="rojo" />
+              </Box>
+              }
+            </div >
+            <div className='infoLIK'>
+              <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul' />
+              <h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
+            </div>
+          </div>
+
+          : <div>
+
+            <img className='fondo' src={fondo} alt="" />
+            <NavbarP />
+            <img className='fondoLogeado' src={bg} alt="" />
+            <img className='fondoLogeado2' src={bg2} alt="" />
+            <h1 className='fraseBienvenida'> Welcome again <h3 className='nombredeUser'>{userDB.username}</h3></h1>
+            <h6 className='infoLog'>The Corner Movies allows you to leave reviews on every movie you've seen,
+              as well as <FavoriteIcon fontSize='small' /> it and save it to watch later<AccessTimeFilledIcon fontSize='small' /> Also if
+              are undecided you can compare two movies to choose the one that best suits you.</h6>
+
+            <div className='nuevasPelis'>
+              <h6 className='fraseRandom'>Very soon in The Corner Movies...</h6>
+              <CarrouselSlick />
+            </div>
+            <img className='loguito' src={Logo}></img>
+
+
+            <h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Button variant="text" sx={{ fontSize: 19 }} color="amarillo">
+              premium
+            </Button>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }} color="azul">
+                director's
+              </Button>ACCOUNT?</h1>
 
 
 
-         
+            <div className='carrousel2'>
+              <Carrousel2 />
+            </div>
+
+            <div className='busqueda'>
+              <SearchLog />
+              <Filters />
+
+              <div className='lasCartulis'>
+                {peliculas.length !== 0 ? peliculas.rows.map(a => {
+                  return <FilmCard
+                    key={a.id}
+                    name={a.name}
+                    id={a.id}
+                    img={a.image}
+                    rating={a.rating}
+                  />
+                }) : <Box className='carga' sx={{ display: 'flex' }}>
+                  <CircularProgress color="rojo" />
+                </Box>
+                }
+              </div>
+            </div>
+            <div className='Paginame'><Paginado /> </div>
+
+
+
+
 
 
 
 
 
           </div>
-    }
-            </div>
+      }
+    </div>
 
 
-    );
-  }
+  );
+}
 
 
 export default Home;
