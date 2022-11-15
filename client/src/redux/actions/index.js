@@ -45,6 +45,7 @@ export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
+export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 
 
 //peliculas
@@ -378,7 +379,6 @@ export const getUserInfo = () => {
     }
 }
 
-
 export const subscribe = () => {
     return async function (dispatch) {
         const email = { email: localStorage.getItem("email") }
@@ -648,13 +648,27 @@ export const freeUsers = () => {
     }
 }
 
-export const getActivity = (users) => {
+export const getActivity = (loggedUser) => {
     return async function(dispatch){
         try{
-            let activity = await axios.get(`/activity`, users);
+            let activity = await axios.get(`/activity/${loggedUser}`);
             return dispatch({
                 type: GET_ACTIVITY,
                 payload: activity.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getOtherUserInfo = (id) => {
+    return async function(dispatch){
+        try{
+            let info = await axios.get(`/users/user/${id}`);
+            return dispatch({
+                type: GET_OTHER_USER_INFO,
+                payload: info.data
             })
         } catch(error){
             console.log(error);
