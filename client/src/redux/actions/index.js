@@ -46,6 +46,8 @@ export const FREE_USERS = 'FREE_USERS'
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
+export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
+export const FOLLOW_LIST = 'FOLLOW_LIST'
 
 
 //peliculas
@@ -513,8 +515,23 @@ export const deleteList= (listId) => {
     }
 }
 
+export const followList = (id, listId) => {
+    return async function (dispatch){
+        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=follow`);
+            return dispatch({
+                type: FOLLOW_LIST
+            })
+    }
+}
 
-
+export const unFollowList = (id, listId) => {
+    return async function (dispatch){
+        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=unfollow`);
+            return dispatch({
+                type: UN_FOLLOW_LIST
+            })
+    }
+}
 
 
 export const resetSearch = () => {

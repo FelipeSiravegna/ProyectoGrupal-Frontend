@@ -44,7 +44,10 @@ import {
   EDIT_LIST,
   GET_ACTIVITY,
   DELETE_LIST,
-  GET_OTHER_USER_INFO
+  GET_OTHER_USER_INFO,
+  UN_FOLLOW_LIST,
+  FOLLOW_LIST,
+
 } from "../actions";
 
 
@@ -308,6 +311,14 @@ export default function reducer(state = initialState, { type, payload }) {
             return{
               ...state,
               otherUserInfo: payload
+            }
+            case UN_FOLLOW_LIST:
+            return{
+              ...state
+            }
+            case FOLLOW_LIST:
+            return{
+              ...state
             }
     default:
       return state;

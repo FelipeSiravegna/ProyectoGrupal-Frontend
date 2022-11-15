@@ -25,7 +25,6 @@ const dispatch = useDispatch()
 
 
 function creacion (e){
-e.preventDefault()
 if(name.length > 30) return document.getElementById('errores').innerHTML=`the maximum number of characters allowed is 30`
 dispatch(createList(localStorage.id,{
     name: name,
