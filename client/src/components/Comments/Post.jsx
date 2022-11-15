@@ -107,7 +107,6 @@ console.log(element, "HOLA")
                     id={e.id}
                     idUser={e.user.id}
                     prueba={prueba}
-                    prueba3={prueba3}
                     userid={userId}
 
 

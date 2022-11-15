@@ -28,7 +28,6 @@ let usuario = listas.filter(a=>`${a.userId}` === localStorage.id)
 
 const [smShow, setSmShow] = useState(false);
 
-console.log(usuario)
 
 useEffect(()=>{
     dispatch(getList()) 
