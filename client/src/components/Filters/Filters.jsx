@@ -2,7 +2,7 @@ import React from 'react'
 import './Filters.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity, orderRating} from '../../redux/actions'
+import { get4Search,allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity, orderRating} from '../../redux/actions'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -17,6 +17,7 @@ const Filters = () => {
 const dispatch = useDispatch()
 const generos = useSelector(state => state.genres)
 const directores = useSelector(state => state.directors)
+const [envio,setEnvio] = useState({genres:"null",director:"null",popularity:"null",rating:"null"})
 
 const [age, setAge] = useState('');
 const [open, setOpen] = useState(false);
@@ -34,26 +35,54 @@ useEffect(() => {
 
   function onSelectChange(e){
     setAge(e.target.value)
-if(e.target.value === "None") return dispatch(getAllMovies(1))
-    dispatch(filterGenres(e.target.value))
+    let objeto = envio
+    objeto.genres=e.target.value
+    setEnvio(objeto)
+if(e.target.value === "None") {
+  let objeto = envio
+  objeto.genres="null"
+  setEnvio(objeto)
+  return dispatch(get4Search(envio))}
+    dispatch(get4Search(envio))
 }
 
 function onSelectDirector(e){
   setAge2(e.target.value)
-if(e.target.value === "None") return dispatch(filterDirector(1))
-  dispatch(filterDirector(e.target.value))
+  let objeto = envio
+  objeto.director=e.target.value
+  setEnvio(objeto)
+  if(e.target.value === "None") {
+    let objeto = envio
+    objeto.director="null"
+    setEnvio(objeto)
+    return dispatch(get4Search(envio))}
+dispatch(get4Search(envio))
 }
 
 function onSelectPopularity(e){
   setAge3(e.target.value)
-if(e.target.value === "None") return dispatch(getAllMovies(1))
-  dispatch(orderPopularity(e.target.value))
+  let objeto = envio
+  objeto.popularity=e.target.value
+  setEnvio(objeto)
+  if(e.target.value === "None") {
+    let objeto = envio
+    objeto.popularity="null"
+    setEnvio(objeto)
+    return dispatch(get4Search(envio))}
+dispatch(get4Search(envio))
 }
 
 function onSelectRating(e){
   setAge4(e.target.value)
-if(e.target.value === "None") return dispatch(getAllMovies(1))
-  dispatch(orderRating(e.target.value))
+  let objeto = envio
+  objeto.rating=e.target.value
+  setEnvio(objeto)
+  if(e.target.value === "None") {
+    let objeto = envio
+    objeto.rating="null"
+    setEnvio(objeto)
+    return dispatch(get4Search(envio))}
+  dispatch(get4Search(envio))
 }
 
 
@@ -133,8 +162,8 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
           color='rojo'
         >
           <MenuItem value={"None"}><em>None</em></MenuItem>
-          <MenuItem value="ASC">Less Popular</MenuItem>
-          <MenuItem value="DESC">Most Popular</MenuItem>
+          <MenuItem value="DESC">Less Popular</MenuItem>
+          <MenuItem value="ASC">Most Popular</MenuItem>
         </Select>
       </FormControl>
 
@@ -148,8 +177,8 @@ if(e.target.value === "None") return dispatch(getAllMovies(1))
           color='rojo'
         >
           <MenuItem value={"None"}><em>None</em></MenuItem>
-          <MenuItem value="ASC">Less Rating</MenuItem>
-          <MenuItem value="DESC">Most Rating</MenuItem>
+          <MenuItem value="DESC">Less Rating</MenuItem>
+          <MenuItem value="ASC">Most Rating</MenuItem>
         </Select>
       </FormControl>
 
