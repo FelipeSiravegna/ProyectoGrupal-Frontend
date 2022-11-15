@@ -28,6 +28,13 @@ export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const POST_USER_LOG = 'POST_USER_LOG'
+export const CREATE_LIST ='CREATE_LIST'
+export const ADD_MOVIE_TO_LIST = 'ADD_MOVIE_TO_LIST'
+export const REMOVE_MOVIE_TO_LIST = 'REMOVE_MOVIE_TO_LIST'
+export const GET_LIST = 'GET_LIST'
+export const LIST_DETAILS = 'LIST_DETAILS'
+export const RESET_SEARCH = 'RESET_SEARCH'
+export const EDIT_LIST = 'EDIT_LIST'
 export const ALL_ACTOR = 'ALL_ACTOR'
 export const ACTIVE_USERS = 'ACTIVE_USERS'
 export const BAN_USER = 'BAN_USER'
@@ -36,6 +43,7 @@ export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
+
 
 
 //peliculas
@@ -400,6 +408,89 @@ export const handleLoginExternal = (info) => {
         }
 }}
 
+
+
+
+// LIST // LIST // LIST // LIST // LIST // LIST // LIST // LIST // LIST
+
+export const createList = (id, payload) => {
+    return async function (dispatch){
+        let hola = await axios.post(`http://localhost:3001/lists/list/${id}`, payload);
+            return dispatch({
+                type: CREATE_LIST,
+            })
+    }
+}
+
+
+export const addMovieToList= (listId, movieId ) => {
+    return async function (dispatch){
+        await axios.put(`http://localhost:3001/lists/list/${listId}?add=true&movieId=${movieId}`);
+            return dispatch({
+                type: ADD_MOVIE_TO_LIST,
+            })
+    }
+}
+
+export const removeMovieToList= (listId, movieId ) => {
+    return async function (dispatch){
+        await axios.put(`http://localhost:3001/lists/list/${listId}?remove=true&movieId=${movieId}`);
+            return dispatch({
+                type: REMOVE_MOVIE_TO_LIST,
+            })
+    }
+}
+
+
+export const getList = (listId)=>{
+    return async function (dispatch) {
+        await axios.get(`http://localhost:3001/lists`)
+        .then((pelis) => {
+            dispatch ({
+                type: GET_LIST,
+                payload: pelis.data
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
+};
+
+
+
+export const listDetails = (listId)=>{
+    return async function (dispatch) {
+        await axios.get(`http://localhost:3001/lists/list/${listId}`)
+        .then((pelis) => {
+            dispatch ({
+                type: LIST_DETAILS,
+                payload: pelis.data
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
+};
+
+export const editList= (listId, body) => {
+    return async function (dispatch){
+        await axios.put(`http://localhost:3001/lists/list/${listId}/update`, body);
+            return dispatch({
+                type: EDIT_LIST,
+            })
+    }
+}
+
+
+
+
+export const resetSearch = () => {
+    return(dispatch) => {
+        dispatch({
+            type: RESET_SEARCH
+        });
 
 export const followUser = (loggedUserId, followedUserId) => {
     return async function(){

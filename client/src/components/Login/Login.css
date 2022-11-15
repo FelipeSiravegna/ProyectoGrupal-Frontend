@@ -43,7 +43,6 @@
 
 .botones4{
     text-decoration: none;
-    color: yellow;
 }
 
 .botonesDiv{
@@ -72,4 +71,8 @@ top: 7%;
   .botonRegisterLogin:hover{
     text-decoration: none;
     color: aliceblue;
+  }
+
+.botones{
+    text-decoration: none;
   }

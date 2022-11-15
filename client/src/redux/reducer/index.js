@@ -34,7 +34,15 @@ import {
   AVAILABLE_USERS,
   BANNED_USERS,
   PREMIUM_USERS,
-  FREE_USERS
+  FREE_USERS,
+  CREATE_LIST,
+  ADD_MOVIE_TO_LIST,
+  REMOVE_MOVIE_TO_LIST,
+  GET_LIST,
+  LIST_DETAILS,
+  RESET_SEARCH,
+  EDIT_LIST,
+  ALL_ACTOR
 } from "../actions";
 
 
@@ -56,7 +64,9 @@ const initialState = {
   actors: [],
   idToken:"",
   user:[],
-  items:[]
+  items:[],
+  list: [],
+  listDetails: []
 };
 
 
@@ -248,6 +258,38 @@ export default function reducer(state = initialState, { type, payload }) {
         items:payload
       };
 
+      case CREATE_LIST:
+        return{
+          ...state
+        }
+      case ADD_MOVIE_TO_LIST:
+          return{
+            ...state,
+          }
+          case REMOVE_MOVIE_TO_LIST:
+        return{
+            ...state,
+          }
+          case GET_LIST:
+        return{
+            ...state,
+            list: payload
+          }
+          case LIST_DETAILS:
+        return{
+            ...state,
+            listDetails: payload
+          }
+          case RESET_SEARCH:
+          return{
+            ...state,
+            busqueda1: [],
+            busqueda2: [],
+          };
+          case EDIT_LIST:
+            return{
+            ...state
+            }
     default:
       return state;
   }
