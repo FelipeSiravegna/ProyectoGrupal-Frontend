@@ -56,6 +56,7 @@ const userDB = useSelector((state)=> state.user)
             <div className='botonesDiv'>
 
 <Link className='botones4' to={'/premium'}>
+  
           <Link className='botones4' to={'/noticias'}>
            <Button variant="text" color="azul">
               News
@@ -85,10 +86,11 @@ const userDB = useSelector((state)=> state.user)
           Watchlist
           </Button>
 
+          <Link className='botones4' to={'/lists'}>
           <Button variant="text" color="rojo" className="botones" >
           List
           </Button>
-
+          </Link>
           
           <Button variant="text" color="rojo" className="botones" >
         favorites

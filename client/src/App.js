@@ -10,17 +10,15 @@ import NavbarP from './components/NavbarP/NavbarP';
 import News from './components/Noticias/News';
 import dotenv from 'dotenv';
 import axios from 'axios';
-import Compare from './components/Compare/Compare'
 import NavDash from './components/Nav+Dash/Nav+Dash';
 import { Route, Routes } from 'react-router-dom';
-import Carrousel2 from './components/Carrousel/Carrousel2';
-import Admin from './components/Admin/Admin';
-import Users from './components/Users.jsx/Users';
 import Register from './components/Register/Register'
-import Review from './components/Review/Review';
-import Comments from './components/Comments/Comments';
-import Post from './components/Comments/Post';
 import Loginscreen from './components/Login/Loginscreen'
+import ListUser from './components/ListsUser/ListUser';
+import ListCard from './components/ListsUser/ListDetails';
+import ListDetails from './components/ListsUser/ListDetails';
+import AddMovieList from './components/ListsUser/AddMovieList';
+import Listas from './components/ListsUser/Listas';
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -36,10 +34,9 @@ const App = () => {
         <Route exact path='/noticias' element={<News/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/register' element={<Register/>}/>
-        <Route exact path='/a' element={<Post/>}/>
-        <Route exact path='/aa' element={<Users/>}/>
+        <Route exact path='/list/:idList' element={<ListDetails/>}/>
+        <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
-
         </Routes>
       
     );

@@ -23,7 +23,7 @@ import { useSelector } from 'react-redux';
 
 
 
-function Comments({content, name, img, id, idUser, prueba, like, prueba3}) {
+function Comments({content, name, img, id, idUser, prueba, like,id2}) {
   const dispatch=useDispatch()
 
   const mg = useSelector((state)=> state.like)
@@ -31,8 +31,17 @@ function Comments({content, name, img, id, idUser, prueba, like, prueba3}) {
   const [estado, setEstado] = useState('')
 
 
+  
+  let aber = prueba.filter(a => a.id === id)
+  
   let prueba2= like[0] ? like[0].like : null
-  const [checkeda, setCheckeda] = useState(prueba2);
+ 
+//console.log(memuero[2])
+console.log(id)
+
+
+
+  const [checkeda, setCheckeda] = useState();
 
   useEffect(()=> 
   {dispatch(getAllReviews())
@@ -43,13 +52,13 @@ function Comments({content, name, img, id, idUser, prueba, like, prueba3}) {
   
   
   const handleChange = (e) => {
-    console.log(e)
-    setCheckeda(e)
+    
     dispatch(addLikes(
       {like: e,
         reviewId: id, 
         userId: idUser}))
-  };
+        setCheckeda(e)
+      };
 
  
 
@@ -59,10 +68,9 @@ function deleteComment (id) {
 }
 
 
-let aber = prueba.filter(a => a.id === id)
-let hdo = prueba3.map(a=> a === idUser)
 
-//console.log(hdo, "ID COMENT")
+
+
 
     return (
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -87,13 +95,14 @@ let hdo = prueba3.map(a=> a === idUser)
               </h>
 
 <div className='iconicos'>
-{checkeda  ?
-              <Button variant="text"  onClick={()=>handleChange(false)} onChange={()=>setCheckeda()} >
+
+{prueba2 ?
+              <Button variant="text"  onClick={()=>handleChange(false)} >
               <Favorite color="rojo" /> </Button> 
 
-             : <Button variant="text" onClick={()=>handleChange(true)} onChange={()=>setCheckeda()}>
+             : <Button variant="text" onClick={()=>handleChange(true)} >
              <FavoriteBorder color="gris" />
-             </Button> }
+             </Button> }  
 
 
 
