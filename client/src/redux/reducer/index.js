@@ -42,7 +42,6 @@ import {
   LIST_DETAILS,
   RESET_SEARCH,
   EDIT_LIST,
-  ALL_ACTOR
 } from "../actions";
 
 

@@ -71,17 +71,11 @@ const Home = () => {
  
       return (
         
-    <div className="App">
-    {
-      !localStorage.username  ?
-      <div>
-      <img className='fondo'src={fondo} alt="" />
-<NavbarP/>
-       <Carrousel/>
-  <InfoHome/>
+    
 
 
     <div className="App">
+      
       {
         userDB.active !== true ?
           <div>
@@ -111,14 +105,13 @@ const Home = () => {
               }) : <Box className='carga' sx={{ display: 'flex' }}>
                 <CircularProgress color="rojo" />
               </Box>
-              }
+              } 
             </div >
             <div className='infoLIK'>
               <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul' />
               <h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
             </div>
           </div>
-
           : <div>
 
             <img className='fondo' src={fondo} alt="" />
@@ -165,24 +158,17 @@ const Home = () => {
                 }) : <Box className='carga' sx={{ display: 'flex' }}>
                   <CircularProgress color="rojo" />
                 </Box>
-                }
+                } 
               </div>
             </div>
             <div className='Paginame'><Paginado /> </div>
+            </div>
 
 
+      } 
+</div>
 
-
-
-
-
-
-
-          </div>
-      }
-    </div>
-
-
+      
   );
 }
 
