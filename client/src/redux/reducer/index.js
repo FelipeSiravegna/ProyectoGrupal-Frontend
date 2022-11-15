@@ -29,6 +29,19 @@ import {
   ORDER_RATING,
   POST_USER_LOG,
   GET_USER_INFO,
+  ALL_ACTOR,
+  ACTIVE_USERS,
+  AVAILABLE_USERS,
+  BANNED_USERS,
+  PREMIUM_USERS,
+  FREE_USERS,
+  CREATE_LIST,
+  ADD_MOVIE_TO_LIST,
+  REMOVE_MOVIE_TO_LIST,
+  GET_LIST,
+  LIST_DETAILS,
+  RESET_SEARCH,
+  EDIT_LIST,
   ALL_ACTOR
 } from "../actions";
 
@@ -51,6 +64,10 @@ const initialState = {
   actors: [],
   idToken:"",
   user:{},
+  user:[],
+  items:[],
+  list: [],
+  listDetails: []
 };
 
 
@@ -162,7 +179,8 @@ export default function reducer(state = initialState, { type, payload }) {
       case ALL_USERS:
       return {
         ...state,
-        users: payload
+        users: payload,
+        items:payload
       };
       case ALL_DIRECTOR:
       return {
@@ -210,9 +228,71 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         user:payload
       }
+      case ALL_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case ACTIVE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case AVAILABLE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case BANNED_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case PREMIUM_USERS:
+      return {
+        ...state,
+        items:payload
+      };
+      case FREE_USERS:
+      return {
+        ...state,
+        items:payload
+      };
 
+      case CREATE_LIST:
+        return{
+          ...state
+        }
+      case ADD_MOVIE_TO_LIST:
+          return{
+            ...state,
+          }
+          case REMOVE_MOVIE_TO_LIST:
+        return{
+            ...state,
+          }
+          case GET_LIST:
+        return{
+            ...state,
+            list: payload
+          }
+          case LIST_DETAILS:
+        return{
+            ...state,
+            listDetails: payload
+          }
+          case RESET_SEARCH:
+          return{
+            ...state,
+            busqueda1: [],
+            busqueda2: [],
+          };
+          case EDIT_LIST:
+            return{
+            ...state
+            }
     default:
       return state;
   }
 }
-
+AVAILABLE_USERS

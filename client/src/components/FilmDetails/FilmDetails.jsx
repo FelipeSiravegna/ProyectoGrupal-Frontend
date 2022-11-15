@@ -36,7 +36,7 @@ const FilmDetails = () => {
   const token = useSelector((state)=> state.idToken)
   const userDB = useSelector((state)=> state.user)
   
-  
+
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
 
   const [value, setValue] = useState(2);

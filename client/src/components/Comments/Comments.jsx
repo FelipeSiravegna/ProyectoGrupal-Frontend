@@ -26,6 +26,7 @@ import { useSelector } from 'react-redux';
 
 
 function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid}) {
+
   const dispatch=useDispatch()
 
   const mg = useSelector((state)=> state.like)
@@ -36,7 +37,21 @@ function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid
 let userFind= like.find(e=> e.userId === userid && e.like === true)
 let likeFilter = like.filter(e=> e.like ===true)
 
+
   const [checked, setChecked] = useState(Boolean(userFind));
+
+  
+  let aber = prueba.filter(a => a.id === id)
+  
+  let prueba2= like[0] ? like[0].like : null
+ 
+//console.log(memuero[2])
+console.log(id)
+
+
+
+  const [checkeda, setCheckeda] = useState();
+
 
   useEffect(()=> 
   {dispatch(getAllReviews())
@@ -47,7 +62,6 @@ let likeFilter = like.filter(e=> e.like ===true)
   
   
   const handleChange = (e) => {
-
     console.log(e.target.checked +" "+ 12)
     setChecked(e.target.checked);
     console.log(checked)
@@ -57,6 +71,10 @@ let likeFilter = like.filter(e=> e.like ===true)
         userId: userid}))
 
   };
+        //userId: idUser}))
+        //setCheckeda(e)
+      //};
+
 
  
 
@@ -66,8 +84,7 @@ function deleteComment (id) {
 }
 
 
-let aber = prueba.filter(a => a.id === id)
-let hdo = prueba3.map(a=> a === idUser)
+
 
 
 
@@ -94,6 +111,16 @@ let hdo = prueba3.map(a=> a === idUser)
               </h>
 
 <div className='iconicos'>
+
+
+{prueba2 ?
+              <Button variant="text"  onClick={()=>handleChange(false)} >
+              <Favorite color="rojo" /> </Button> 
+
+             : <Button variant="text" onClick={()=>handleChange(true)} >
+             <FavoriteBorder color="gris" />
+             </Button> }  
+
 
 
               <Box component="span" sx={{color: 'rojo.main'}}>

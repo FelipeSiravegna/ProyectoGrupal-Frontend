@@ -1,0 +1,203 @@
+.listortis{ 
+    position: absolute;
+    width: 705px;
+    max-width: 705px;
+    border-radius: 5px;
+    word-break: break-all;
+right: -100%;
+}
+
+.fw-bold{
+    font-size: 25px;
+    font-family:'Roboto';
+    font-size-adjust: 1em;
+    
+}
+
+#Ey{
+    border-color: #f44336;
+    min-height: 100px;
+}
+
+.desclist{
+    font-size: 12px;
+    font-family:'Roboto';
+    font-size-adjust: 1em;
+}
+
+.boudy{
+    left: 65px;
+}
+
+.costado{
+    display: grid;
+}
+
+.rei{
+    text-decoration: none;
+    color: #f44336;
+    font-size: 25px;
+    font-family:'Roboto';
+    font-size-adjust: 1em;
+}
+
+.listImg{
+    width: 100px;
+    height: 150px;
+    border-color: #f44336;
+    padding: 1px 1px;
+    background-color: #f44336;
+}
+
+.elnombresito{
+    text-decoration: none;
+    color: #f44336;
+    font-size: 35px;
+    font-family:'Roboto';
+    font-size-adjust: 1em;
+    padding-left: 5%;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.lalista{
+    position: absolute;
+    top: 10px;
+    width: 1000px;
+    max-width: 1000px;
+    left: 10%;
+}
+
+.lalista:hover{
+    background-color: rgb(163, 162, 162);
+}
+
+.elnombre{
+    position:relative;
+    text-align: center;
+    text-decoration: none;
+    color: #f44336;
+    font-size: 60px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size-adjust: 1em;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.ojo{
+    position: absolute;
+    right: 0%;
+    top: 0%;
+}
+.ojo2{
+    position: absolute;
+    right: -8%;
+    top: 75%;
+}
+
+
+.ojo:hover{
+    color: #f44336;
+    background-color: #f44336;
+}
+
+.ladesc{
+    position: relative;
+    font-size: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: aliceblue;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    padding-bottom: 15px;
+}
+
+.ladesc2{
+    position: relative;
+    font-size: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: rgb(216, 202, 6);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    padding-bottom: 15px;
+    top: -40px;
+}
+
+.loge{
+    width: 150px;
+    height: 150px;
+}
+
+.nd{
+    color: black;
+}
+
+.agregar{
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+
+.lacartaelegida{
+position: absolute;
+height: 300px;
+max-width: 100px;
+left: 14%;
+padding-top: 2px;
+}
+
+.funcionaporfa{
+    height: 300px;
+    align-items: center;
+}
+
+.foteli{
+    width: 200px;
+    height: 250px;
+    padding-top: 5px;
+    padding: 1px;
+    background-color: #f44336;
+ 
+}
+
+.yu{
+left: 67px;
+}
+
+.nombreo{
+    width: 200px;
+}
+
+.lebotone{
+    position: absolute;
+    right: -200px;
+    display: grid;
+    top: 20%;
+}
+
+.botonCreador{
+    position: absolute;
+    top: 50%;
+    left: 300%;
+}
+
+.tableta{
+    position: absolute;
+    left: 40%;
+    top: 100px;
+}
+
+#errores{
+    color: red;
+    text-shadow: 1px 0.1px rgb(0, 0, 0);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.nd{
+    color:#f44336;
+    text-shadow: 1px 0.1px rgb(0, 0, 0);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+.botonEditor{
+    position: absolute;
+   right: -10%;
+}
