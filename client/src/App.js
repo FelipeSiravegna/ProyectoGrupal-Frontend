@@ -20,6 +20,7 @@ import ListDetails from './components/ListsUser/ListDetails';
 import AddMovieList from './components/ListsUser/AddMovieList';
 import Listas from './components/ListsUser/Listas';
 import AccountsEdit from './components/UserProfile/AccountsEdit'
+import Activity from './components/Activity/Activity.jsx';
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -40,9 +41,8 @@ const App = () => {
         <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
+        <Route exact path='/activity' element={<Activity/>}/>
         </Routes>
-
-      
     );
   }
 

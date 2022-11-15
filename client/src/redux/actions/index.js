@@ -43,6 +43,7 @@ export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
+export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
 
 
@@ -646,4 +647,17 @@ export const freeUsers = () => {
 
     }
 }
-    
+
+export const getActivity = (users) => {
+    return async function(dispatch){
+        try{
+            let activity = await axios.get(`/activity`, users);
+            return dispatch({
+                type: GET_ACTIVITY,
+                payload: activity.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
