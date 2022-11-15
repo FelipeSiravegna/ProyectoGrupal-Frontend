@@ -45,10 +45,11 @@ export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
+export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
+export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
-
 
 //peliculas
 export const getAllMovies = (name = 1) => {
