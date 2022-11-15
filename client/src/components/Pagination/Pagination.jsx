@@ -10,7 +10,7 @@ import { getAllMovies, pages } from '../../redux/actions';
 export default function Paginado() {
   let dispatch = useDispatch()
   let pagina = useSelector(state => (state.page))
-  
+  let peliculas = useSelector(state => (state.peliculas))
 
 
   const handleChange=(e, p)=>{
@@ -30,4 +30,5 @@ export default function Paginado() {
 
   );
 }
+
 

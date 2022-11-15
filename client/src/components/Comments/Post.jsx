@@ -41,8 +41,6 @@ const handleSubmit=(e)=>{
   let prueba = reviews.filter(a => a.userId === userId)
   let prueba3 = reviews.map(a => a.likes.length ? a.likes.map(a=>a.id) : null)
   
-  console.log(reviews)
-
 
 
 
@@ -91,6 +89,7 @@ const handleSubmit=(e)=>{
                     prueba={prueba}
                     prueba3={prueba3}
                     userid={userId}
+
                     />
                     
                 </div>)

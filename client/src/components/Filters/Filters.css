@@ -1,0 +1,8 @@
+.filtritos{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 79%;
+    gap: 50px;
+    padding-bottom: 20px;
+} 

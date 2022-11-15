@@ -1,9 +1,9 @@
-.titulo{
-position: relative;
-color: white;
+.titulo {
+    position: relative;
+    color: white;
 }
 
-.buscar{
+.buscar {
     background-color: rgb(163, 162, 162);
     position: relative;
     height: 50%;
@@ -11,18 +11,47 @@ color: white;
     border-radius: 10%;
 }
 
-.botonBusqueda{
-    position: relative;
-left: 122%;
-top: -52%;
+.botonBusqueda {
+    position: absolute;
+    left: 122%;
+    top: -32px;
 }
 
-.search{
-    display: inline-flex;
+.search {
+    position: absolute;
     margin-top: 1%;
-    padding-left: 35%;
+    left: 40%;
 }
 
-.buscar :focus{
+.buscar :focus {
     background-color: white;
+}
+
+
+
+.buscar2 {
+    position: absolute;
+    height: 40px;
+    left: 232%;
+    top: 5px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.botonBusqueda2 {
+    position: absolute;
+    left: 232%;
+    top: 5px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.search2 {
+    position: relative;
+    top: 30px;
+    width: 700px;
+    margin-bottom: -15px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    height: 50px;
 }

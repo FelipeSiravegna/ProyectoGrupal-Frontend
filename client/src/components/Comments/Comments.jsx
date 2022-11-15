@@ -24,6 +24,7 @@ import { useSelector } from 'react-redux';
 
 
 
+
 function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid}) {
   const dispatch=useDispatch()
 
@@ -42,9 +43,11 @@ let likeFilter = like.filter(e=> e.like ===true)
   }
   , [dispatch, estado, checked])
 
+
   
   
   const handleChange = (e) => {
+
     console.log(e.target.checked +" "+ 12)
     setChecked(e.target.checked);
     console.log(checked)
@@ -52,6 +55,7 @@ let likeFilter = like.filter(e=> e.like ===true)
       {like: e.target.checked,
         reviewId: id, 
         userId: userid}))
+
   };
 
  
@@ -65,7 +69,7 @@ function deleteComment (id) {
 let aber = prueba.filter(a => a.id === id)
 let hdo = prueba3.map(a=> a === idUser)
 
-//console.log(hdo, "ID COMENT")
+
 
     return (
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -90,25 +94,13 @@ let hdo = prueba3.map(a=> a === idUser)
               </h>
 
 <div className='iconicos'>
-{/* {checkeda  ?
-              <Button variant="text"  onClick={()=>handleChange(false)} onChange={()=>setCheckeda()} >
-              <Favorite color="rojo" /> </Button> 
 
-             : <Button variant="text" onClick={()=>handleChange(true)} onChange={()=>setCheckeda()}>
-             <FavoriteBorder color="gris" />
-             </Button> } */}
 
-             {/* <Button variant="text" checked={checked} onClick={handleChange} inputProps={{ 'aria-label': 'controlled' }}>
-             <FavoriteBorder color={checked? "rojo": "gris"} />
-             </Button>  */}
               <Box component="span" sx={{color: 'rojo.main'}}>
               {likeFilter.length? likeFilter.length : null}
               </Box>
-              {/* <span> {likeFilter.length? likeFilter.length : null} </span> */}
              <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
 
-
-               
               <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
               <DeleteIcon sx={{ fontSize: 20 }} />
               </Button>
