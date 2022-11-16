@@ -2,12 +2,16 @@
   border: 1px solid white;
   position: absolute;
   width: 160px;
+  max-width: 160px;
+  max-height: 210px;
   height: 210px;
 }
 
 .Cardback {
   width: 160px;
   height: 210px;
+  max-width: 160px;
+  max-height: 210px;
 }
 
 .Cardback:hover {
