@@ -189,3 +189,14 @@
         right: 0%;
         top: 20%;
     }
+
+.nda{
+    position: absolute;
+        color:#f44336;
+            text-shadow: 1px 0.1px rgb(0, 0, 0);
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center;
+            width: 300px;
+            left: 30%;
+        
+    }

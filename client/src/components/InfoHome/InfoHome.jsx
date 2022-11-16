@@ -8,6 +8,7 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import CompareIcon from '@mui/icons-material/Compare';
 import Button from '@mui/material/Button'
 import './InfoHome.css'
+import { Link } from 'react-router-dom';
 
 const InfoHome = () => {
   return (
@@ -74,9 +75,9 @@ Compare the characteristics of the movies you want
 </div>
 </body>
 <h1 className='hola'>IN THE CORNER MOVIES WE ALLOW YOU...</h1>
-<h1 className='publicidad'>BELOW ARE SOME  POPULAR MOVIES. <Button variant="text" sx={{ fontSize: 19 }} color="rojo">
+<h1 className='publicidad'>BELOW ARE SOME  POPULAR MOVIES. <Link className='ll' to= {'/login'}><Button variant="text" sx={{ fontSize: 19 }} color="rojo">
               Sign Up
-            </Button> TO SEE MORE.</h1>
+            </Button></Link> TO SEE MORE.</h1>
 </div>
 
   )

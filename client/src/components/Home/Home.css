@@ -143,7 +143,7 @@
 .Paginame {
     position: absolute;
     left: 16%;
-    top: 240%;
+    top: 233%;
     margin-top: 10%;
     width: 600px;
     align-items: center;
@@ -177,7 +177,7 @@
 .Paginator {
     position: absolute;
     align-items: center;
-    top: 235%;
+    top: 228%;
     left: 15%;
     width: 600px;
 }
@@ -185,7 +185,6 @@
 .infoLike{
     position: absolute;
     width: 500px;
-    top:252%;
     left: -37%;
     text-align: center;
     color: white;
@@ -205,10 +204,16 @@
 
 .favr{
     position: relative;
-    top: 110px;
+    top: 120px;
 }
 
 .fill{
     background-color: none;
     background: none;
+}
+
+.acordion{
+    position: relative;
+    top: 280px;
+    left: 0%;
 }
