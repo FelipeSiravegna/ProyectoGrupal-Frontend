@@ -17,10 +17,9 @@ import { Link } from 'react-router-dom';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import { addMovieToList } from '../../redux/actions';
 
-const AddMovieList = ({idList, dueño}) => {
+const AddMovieList = ({idList, lista}) => {
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.compare))
-
     const [show, setShow] = useState(false);
     const opciones = peliculas.length !== 0 ? peliculas.rows.map(a=>a.name) : null
     let eleccion1 = useSelector(state => (state.busqueda1))
@@ -48,6 +47,8 @@ useEffect(() => {
     dispatch(resetSearch());
   }
 }, [])
+
+
 
   return (
     <div>
