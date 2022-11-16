@@ -24,7 +24,20 @@ const CreateList = () => {
     dispatch(getListsByUser(localStorage.id))
   }, [show, name, description])
 
+
+function creacion (e){
+e.preventDefault()
+if(name.length > 30) return document.getElementById('errores').innerHTML=`the maximum number of characters allowed is 30`
+dispatch(createList(localStorage.id,{
+    name: name,
+    description: description,
+    ownerUserId:localStorage.id
+}))
+setShow(false)
+}
+
   const userLists = useSelector(state => state.userLists);
+
 
   function creacion(e) {
     if (name.length > 30) return document.getElementById('errores').innerHTML = `the maximum number of characters allowed is 30`
