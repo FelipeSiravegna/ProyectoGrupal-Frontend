@@ -11,6 +11,8 @@ import { filterGenres, getAllMovies, getOtherUserInfo, followUser, unfollowUser 
 import UserAvatar from '../UserAvatar/UserAvatar.jsx';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
+
 
 export default function UserProfile() {
 
@@ -18,7 +20,7 @@ export default function UserProfile() {
     let profileId = url[url.length - 1];
     profileId = parseInt(profileId);
 
-    const { user } = useAuth0()
+
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.movies))
     let token = useSelector(state => state)
@@ -27,6 +29,9 @@ export default function UserProfile() {
     let otherUserInfo = useSelector(state => state.otherUserInfo);
 
     const [changeimage, setChangeimage] = useState(true);
+
+    const [playlist, setPlaylist] = useState(true);
+    const [follows, setFollows] = useState('');
 
     const [buttonValue, setButtonValue] = useState('FOLLOW');
 
@@ -44,6 +49,21 @@ export default function UserProfile() {
             setButtonValue('FOLLOW');
         }
     }
+
+    const handleRender = (e) => {
+        console.log(e,playlist)
+        if(e.target.innerText === 'PlayList') setPlaylist(true)
+        if(e.target.innerText === 'Favorits') setPlaylist(false)
+    }
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+
+    const handleShow = (e) => {
+        setShow(true)
+        setFollows(e.target.innerText)
+    };
 
     if (dbUser !== null) {
         return (
@@ -84,13 +104,24 @@ export default function UserProfile() {
 
                                         <UserAvatar urlImage={dbUser.image} userId={dbUser.id} changeimage={changeimage} />
 
-                                        <div className='seguidores'><Typography variant="h6" gutterBottom>FOLLOWING</Typography>
+                                        <div className='seguidores'><button onClick={(e)=>handleShow(e)} className='seguidoresButton'>
+                                            <Typography variant="h6">FOLLOWING</Typography></button>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.following && dbUser.following.length}</Typography>
                                         </div>
 
-                                        <div className='seguidores' ><Typography variant="h6" gutterBottom>FOLLOWERS</Typography>
+                                        <div className='seguidores'><button onClick={(e)=>handleShow(e)} className='seguidoresButton'>
+                                            <Typography variant="h6">FOLLOWERS</Typography></button>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.followers && dbUser.followers.length}</Typography>
                                         </div>
+
+                                        
+                                    <Modal show={show} onHide={handleClose} className="my-modal" >
+              <Modal.Header closeButton>
+                <Modal.Title className='tituloModal'>{follows}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body> ghg </Modal.Body>
+
+            </Modal>
 
                                         {
                                             dbUser.id !== profileId
@@ -107,11 +138,37 @@ export default function UserProfile() {
                             }
                             <br />
                             <br />
-                            <div className='PlayList'>
-                                <PlayList name={'PlayList'} peliculas={peliculas} />
-                                <PlayList name={'Favorits'} peliculas={peliculas} />
+                            <div className='optionsProfile'>
+                            <div className='separadorLeft'>
+                            <button className='buttonsprofile' name='PlayList' onClick={(e)=> handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
                             </div>
-                            <br />
+                            <div className='separadorRigth'>
+                            <button className='buttonsprofile' name='Favorits' onClick={(e)=> handleRender(e)}><h4>Favorits</h4><h6 className='h3marcadores'>__________</h6></button>
+                            </div>
+                            </div>
+
+                            <div className='gridcontainer'>
+                                
+                                {
+                                playlist ?
+
+                                    peliculas.length !== 0 && peliculas.rows.map(e => {
+
+                        return <div className='griditem'>
+                            <Link className='linkPel' to={`/filmdetails/${e.id}`}>
+                            <img className='griditemImg' key = {e.id} src = {e.image} />
+                            <h4 className='nameMovieP'>{e.name}</h4>
+                            </Link>
+                        </div>
+                                    })
+                                    :
+                                    <div className='nolistas'>
+                                    <h1>you don't have favorite lists yet</h1>
+                    
+                                    </div>
+                                }
+
+                        </div>
                         </div>
                         :
                         <div className='fondo23'>
@@ -149,13 +206,7 @@ export default function UserProfile() {
                                     </div>
                                 </div>
                             }
-                            <br />
-                            <br />
-                            <div className='PlayList'>
-                                <PlayList name={'PlayList'} peliculas={peliculas} />
-                                <PlayList name={'Favorits'} peliculas={peliculas} />
-                            </div>
-                            <br />
+                   
                         </div>
                 }
             </div>
