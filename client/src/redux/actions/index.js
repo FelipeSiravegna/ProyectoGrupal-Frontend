@@ -44,6 +44,7 @@ export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
 export const DELETE_LIST = 'DELETE_LIST'
+export const ALL_REVIEWS = 'ALL_REVIEWS'
 
 
 //peliculas
@@ -659,6 +660,27 @@ export const freeUsers = () => {
             if (error){
                 return dispatch({
                     type: FREE_USERS,
+                    payload: []
+                })
+            }
+        }
+
+    }
+}
+
+
+export const allReviews = () => {
+    return async function (dispatch) {
+        try {
+            let result = await axios.get(`/reviews`);
+            return dispatch({
+                type: ALL_REVIEWS,
+                payload: result.data
+            })
+        } catch (error) {
+            if (error){
+                return dispatch({
+                    type: ALL_REVIEWS,
                     payload: []
                 })
             }
