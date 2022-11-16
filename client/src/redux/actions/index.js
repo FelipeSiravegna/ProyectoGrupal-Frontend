@@ -48,8 +48,10 @@ export const DELETE_LIST = 'DELETE_LIST'
 export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
+export const FOLLOWED_LIST = 'FOLLOWED_LIST'
 export const GET_USER_LISTS = 'GET_USER_LISTS';
 export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
+
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -517,7 +519,7 @@ export const deleteList= (listId) => {
     }
 }
 
-export const followList = (id, listId) => {
+export const followLists = (id, listId) => {
     return async function (dispatch){
         let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=follow`);
             return dispatch({
@@ -534,6 +536,28 @@ export const unFollowList = (id, listId) => {
             })
     }
 }
+
+
+export const followedList = (idUser)=>{
+    return async function (dispatch) {
+        await axios.get(`http://localhost:3001/lists/followedLists/${idUser}`)
+        .then((pelis) => {
+            dispatch ({
+                type: FOLLOWED_LIST,
+                payload: pelis.data
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
+};
+
+
+
+
+
+
 
 
 export const resetSearch = () => {

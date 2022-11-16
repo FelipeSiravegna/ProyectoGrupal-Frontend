@@ -129,6 +129,13 @@ export default function Login() {
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
 
+              {userDB.director ? 
+                     <Dropdown.Item className='drop'>
+                  <Button variant="text" color="azul" className="botones" >
+        Director
+          </Button>
+          </Dropdown.Item>
+          : null}
 
                 <Dropdown.Item className='drop'>
                   <Link className='botones4' to={`/UserProfile/${userDB.id}`}>
@@ -137,38 +144,41 @@ export default function Login() {
                     </Button>
                   </Link>
                 </Dropdown.Item>
-                <div className='drope'>
+
+ 
                   <Dropdown.Item className='drop'>
                     <Link className='botones4' to={'/dashboard'}>
                       <Button variant="text" color="rojo" className="botones">
                         Dashboard
                       </Button>
                     </Link>
-
                   </Dropdown.Item>
-                  <Dropdown.Item className='drop'>
-                  <Button variant="text" color="rojo" className="botones" >
-        favorites
-          </Button>
-          </Dropdown.Item>
+                  
+              
                   <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
                     Following
                   </Button></Dropdown.Item>
-                  <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
-                    Settings
-                  </Button></Dropdown.Item>
-                  <Dropdown.Item className='drop'>
 
+                  <Dropdown.Item className='drop'> 
+                  <Button variant="text" color="rojo" className="botones">
+                    Settings
+                  </Button>
+                  </Dropdown.Item>
+
+
+                  <Dropdown.Item className='drop'>
                     <Link className='botones4' to="/">
                     <Button variant="text" color="rojo" className="botones" onClick={() => deslogaut()}>
                       Logout
                     </Button>
                     </Link>
 
+                   
+
                     </Dropdown.Item>
                     
                 </div>
-              </div>
+             
             </DropdownButton>
 
             </div>
