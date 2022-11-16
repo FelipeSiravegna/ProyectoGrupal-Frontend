@@ -180,12 +180,16 @@ const Forms = () => {
                     <Select name="language" label="Language" options={lang} />
                   </Grid>
 
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <ComboBox
                       name="director"
                       label="Director"
                       options={directores}
                     />
+                  </Grid> */}
+
+                  <Grid item xs={12}>
+                    <Textfield name="director" label="Director" />
                   </Grid>
 
                   <Grid item xs={12}>

@@ -49,6 +49,8 @@ export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const FOLLOWED_LIST = 'FOLLOWED_LIST'
+export const GET_USER_LISTS = 'GET_USER_LISTS';
+
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -390,6 +392,7 @@ export const getUserInfo = () => {
                 localStorage.setItem("email", `${json.data.email}`)
                 localStorage.setItem("image", `${json.data.image}`)
                 localStorage.setItem("id", `${json.data.id}`)
+                localStorage.setItem("premium", `${json.data.premium}`);
             }
             return dispatch({
                 type: GET_USER_INFO,
@@ -400,7 +403,7 @@ export const getUserInfo = () => {
         }
     }
 }
-
+;
 export const subscribe = () => {
     return async function (dispatch) {
         const email = { email: localStorage.getItem("email") }
@@ -728,6 +731,20 @@ export const getOtherUserInfo = (id) => {
             return dispatch({
                 type: GET_OTHER_USER_INFO,
                 payload: info.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getListsByUser = (userId) => {
+    return async function(dispatch){
+        try{
+            const lists = await axios.get(`/getUserLists/${userId}`);
+            return dispatch({
+                type: GET_USER_LISTS,
+                payload: lists.data
             })
         } catch(error){
             console.log(error);

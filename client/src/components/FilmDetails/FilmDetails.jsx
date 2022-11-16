@@ -150,11 +150,11 @@ const FilmDetails = () => {
               {filmDetails.length !== 0 ? filmDetails.genres.map(a => a.name + ", ") : null}
             </Tab>
             <Tab eventKey="profile" title="DETAILS" className='cast'>
-              <li>LANGUAJE: <br></br>{filmDetails.language}</li>
+              <li>LANGUAGE: <br></br>{filmDetails.language}</li>
               <br></br>
               <li>DURATION: <br></br>{(filmDetails.length / 60).toFixed(2)} hr</li>
               <br></br>
-              <li>RELEASED DATE: <br></br>{filmDetails.releaseDate}</li>
+              <li>RELEASE DATE: <br></br>{filmDetails.releaseDate}</li>
 
             </Tab>
             <Tab eventKey="home" title="CAST" className='cast'>
