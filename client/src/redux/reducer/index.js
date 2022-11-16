@@ -311,7 +311,7 @@ export default function reducer(state = initialState, { type, payload }) {
           case ALL_REVIEWS:
             return{
             ...state,
-            items:payload
+            items:payload}
           case GET_ACTIVITY:
             return{
               ...state,
@@ -322,29 +322,28 @@ export default function reducer(state = initialState, { type, payload }) {
               ...state,
               otherUserInfo: payload
             }
-            case UN_FOLLOW_LIST:
+          case UN_FOLLOW_LIST:
             return{
               ...state
             }
-            case FOLLOW_LIST:
+          case FOLLOW_LIST:
             return{
               ...state
             }
-            case FOLLOWED_LIST:
-              return{
-                ...state,
-                listFollowed: payload
-}
-            case GET_USER_LISTS:
-              return{
-                ...state,
-                userLists: payload
-
-              }
-            case GET_ALL_REVIEWS_V2:
-              return{
-                ...state,
-                reviewsV2: payload
+          case FOLLOWED_LIST:
+            return{
+              ...state,
+              listFollowed: payload
+            }
+          case GET_USER_LISTS:
+            return{
+              ...state,
+              userLists: payload
+            }
+          case GET_ALL_REVIEWS_V2:
+            return{
+              ...state,
+              reviewsV2: payload
               }
     default:
       return state;
