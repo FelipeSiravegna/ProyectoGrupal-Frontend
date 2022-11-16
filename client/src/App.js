@@ -22,6 +22,7 @@ import Listas from './components/ListsUser/Listas';
 import AccountsEdit from './components/UserProfile/AccountsEdit'
 import Activity from './components/Activity/Activity.jsx';
 import Wachlist from './components/WatchList/WatchList'
+import Form from './components/Form/Form.jsx';
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -44,6 +45,7 @@ const App = () => {
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
         <Route exact path='/activity/:loggedUserId' element={<Activity/>}/>
         <Route exact path='/wachlist' element={<Wachlist/>}/>
+        <Route exact path='/createMovie' element={<Form />}/>
         </Routes>
     );
   }
