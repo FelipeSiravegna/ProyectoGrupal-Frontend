@@ -25,7 +25,7 @@ import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import CarrouselSlick from '../CarrouselSlick/CarrouselSlick';
 import Post from '../Comments/Post';
-
+import { Link } from 'react-router-dom';
 
 const FilmDetails = () => {
 
@@ -188,6 +188,15 @@ const FilmDetails = () => {
           />
         )}
       </div>
+{!localStorage.username ?
+
+<div className='nda'>
+
+<h1 className='nda'><Link className='ll' to= {'/login'}><Button sx={{ fontSize: 39 }} color='rojo'>Log in</Button></Link> TO SEE THE REVIEWS OF THIS MOVIE</h1>
+
+</div>
+: null }
+
     </div>
 
 
