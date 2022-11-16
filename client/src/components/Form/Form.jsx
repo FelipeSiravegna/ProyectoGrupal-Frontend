@@ -75,18 +75,19 @@ const Forms = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("aqui");
-    dispatch(allDirector());
+    // dispatch(allDirector());
     dispatch(allActor());
     dispatch(allGenres());
   }, [dispatch]);
 
-  let directors = useSelector((state) => state.directors);
+  // let directors = useSelector((state) => state.directors);
   let actors = useSelector((state) => state.actors);
   let genres = useSelector((state) => state.genres);
-  let directores = directors.map((e) => e.name);
-  let actores = actors.map((e) => e.name);
-  let generos = genres.map((e) => e.name);
-
+  // let directores = directors.map((e) => e.name);
+  let actore = actors.map((e) => e.name);
+  let genero = genres.map((e) => e.name);
+  let actores= actore?.unshift('Select an option')
+  let generos= genero?.unshift('Select an option')
   const handleSubmit = (values) => {
     const {
       name,
@@ -180,6 +181,10 @@ const Forms = () => {
                     <Select name="language" label="Language" options={lang} />
                   </Grid>
 
+                  <Grid item xs={12}>
+                    <Textfield name="director" label="Director" />
+                  </Grid>
+
                   {/* <Grid item xs={12}>
                     <ComboBox
                       name="director"
@@ -189,15 +194,11 @@ const Forms = () => {
                   </Grid> */}
 
                   <Grid item xs={12}>
-                    <Textfield name="director" label="Director" />
+                    <Tags name="actor" label="Actors" options={actore} />
                   </Grid>
 
                   <Grid item xs={12}>
-                    <Tags name="actor" label="Actors" options={actores} />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Tags name="genre" label="Genres" options={generos} />
+                    <Tags name="genre" label="Genres" options={genero} />
                   </Grid>
 
                   <Grid item xs={12}>
@@ -218,3 +219,4 @@ const Forms = () => {
 };
 
 export default Forms;
+
