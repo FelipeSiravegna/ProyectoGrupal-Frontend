@@ -50,6 +50,7 @@ export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const FOLLOWED_LIST = 'FOLLOWED_LIST'
 export const GET_USER_LISTS = 'GET_USER_LISTS';
+export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
 
 
 //peliculas
@@ -745,6 +746,20 @@ export const getListsByUser = (userId) => {
             return dispatch({
                 type: GET_USER_LISTS,
                 payload: lists.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getAllReviews2 = () => {
+    return async function (dispatch) {
+        try{
+            const reviews = await axios.get(`/getAllReviews`);
+            return dispatch({
+                type: GET_ALL_REVIEWS_V2,
+                payload: reviews.data
             })
         } catch(error){
             console.log(error);
