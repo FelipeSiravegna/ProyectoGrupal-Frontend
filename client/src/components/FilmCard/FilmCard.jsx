@@ -6,7 +6,7 @@ const FilmCard = ({ name, img, id, rating }) => {
         <Link to={`/filmdetails/${id}`}>
             <div className='Cardback'>
                 <div className='Imagen'>
-                    <img src={img} alt={"IMG NOT FOUND"} />
+                    <img className='Imagen' src={img} alt={"IMG NOT FOUND"} />
                 </div>
             </div>
         </Link>

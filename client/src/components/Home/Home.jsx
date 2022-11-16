@@ -76,9 +76,9 @@ const Home = () => {
     <div className="App">
       
       {
-        userDB.active !== true ?
+        !localStorage.username ?
           <div>
-            
+            <img className='fondo'src={fondo} alt="" />
             <NavbarP />
             <Carrousel />
             <InfoHome />
