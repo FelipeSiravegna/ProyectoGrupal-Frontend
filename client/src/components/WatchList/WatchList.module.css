@@ -1,0 +1,41 @@
+.fondo{
+    background-image: url('../media/fondo.jpg');
+    padding-bottom: 100%;
+}
+
+.gridcontainer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.griditem{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 2px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 10%;
+}
+
+.griditem:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+    vertical-align: top;
+    cursor: pointer;
+    transition: .3s ease all;
+
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #f44336;
+    padding: 40px;
+}
+
+.icono{
+    margin-left: 20px;
+    margin-top: 5px;
+}

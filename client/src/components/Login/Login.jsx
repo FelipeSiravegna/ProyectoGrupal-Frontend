@@ -93,10 +93,11 @@ export default function Login() {
         <Modal.Body> <Compare/> </Modal.Body>
  
       </Modal>
-    
+          <Link className='botones4' to={'/wachlist'}>
           <Button variant="text" color="rojo" className="botones" >
           Watchlist
           </Button>
+          </Link>
 
           <Link className='botones4' to={'/lists'}>
           <Button variant="text" color="rojo" className="botones" >
