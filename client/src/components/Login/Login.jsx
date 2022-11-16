@@ -30,7 +30,6 @@ export default function Login() {
   },[token])
 
   useEffect(()=>{
-    
   },[localStorage.username])
 
   const [show, setShow] = useState(false);
@@ -66,18 +65,23 @@ export default function Login() {
             :
             <div className='botonesDiv'>
 
-<Link className='botones4' to={'/premium'}>
+
   
-          <Link className='botones4' to={'/noticias'}>
+          <Link className='botones4' to={'/comingsoon'}>
            <Button variant="text" color="azul">
-              News
+              Coming soon
            </Button>
           </Link>
 
+{!userDB.premium ?
+  <Link className='botones4' to={'/premium'}>
           <Button variant="text" color="amarillo">
           Premium
           </Button>
           </Link>
+           :null}
+
+          
 
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
@@ -101,10 +105,14 @@ export default function Login() {
           </Button>
           </Link>
           
-          <Button variant="text" color="rojo" className="botones" >
-        favorites
-          </Button>
 
+
+          <Link className='botones4' to={`/activity/${userDB.id}`}>
+            <Button variant="text" color="rojo">
+              Activity
+            </Button>
+          </Link>
+          
 
            
 
@@ -136,7 +144,13 @@ export default function Login() {
                         Dashboard
                       </Button>
                     </Link>
+
                   </Dropdown.Item>
+                  <Dropdown.Item className='drop'>
+                  <Button variant="text" color="rojo" className="botones" >
+        favorites
+          </Button>
+          </Dropdown.Item>
                   <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
                     Following
                   </Button></Dropdown.Item>

@@ -35,14 +35,14 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile/:userId' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
-        <Route exact path='/noticias' element={<News/>}/>
+        <Route exact path='/comingsoon' element={<News/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/list/:idList' element={<ListDetails/>}/>
         <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
-        <Route exact path='/activity' element={<Activity/>}/>
+        <Route exact path='/activity/:loggedUserId' element={<Activity/>}/>
         <Route exact path='/wachlist' element={<Wachlist/>}/>
         </Routes>
     );

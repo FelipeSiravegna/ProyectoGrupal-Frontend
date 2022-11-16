@@ -5,6 +5,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import ListUser from './ListUser';
 import fondo from '../media/fondo.jpg'
 import NavbarP from '../NavbarP/NavbarP'
+import FollowList from './FollowList';
 
 const Listas = () => {
   return (
@@ -22,8 +23,9 @@ const Listas = () => {
       <Tab eventKey="profile" title="My lists">
       <ListUser/>
       </Tab>
+      
       <Tab eventKey="home" title="Followed lists">
-        <p>hola</p>
+        <FollowList/>
       </Tab>
 
     </Tabs>
