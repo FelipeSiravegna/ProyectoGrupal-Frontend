@@ -20,6 +20,9 @@ import ListDetails from './components/ListsUser/ListDetails';
 import AddMovieList from './components/ListsUser/AddMovieList';
 import Listas from './components/ListsUser/Listas';
 import AccountsEdit from './components/UserProfile/AccountsEdit'
+import Activity from './components/Activity/Activity.jsx';
+import Wachlist from './components/WatchList/WatchList'
+import Form from './components/Form/Form.jsx';
 dotenv.config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
@@ -33,13 +36,17 @@ const App = () => {
         <Route exact path='/filmdetails/:idFilm' element={<FilmDetails/>}/>
         <Route exact path='/UserProfile/:userId' element={<UserProfile/>}/>
         <Route exact path='/premium' element={<PremiumSub/>}/>
-        <Route exact path='/noticias' element={<News/>}/>
+        <Route exact path='/comingsoon' element={<News/>}/>
         <Route exact path='/dashboard' element={<NavDash/>}/>
         <Route exact path='/register' element={<Register/>}/>
         <Route exact path='/list/:idList' element={<ListDetails/>}/>
         <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
+        <Route exact path='/aa' element={<Form/>}/>
+        <Route exact path='/activity/:loggedUserId' element={<Activity/>}/>
+        <Route exact path='/wachlist' element={<Wachlist/>}/>
+        <Route exact path='/createMovie' element={<Form />}/>
         </Routes>
 
       

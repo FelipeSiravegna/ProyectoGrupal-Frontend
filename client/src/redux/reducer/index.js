@@ -43,7 +43,14 @@ import {
   RESET_SEARCH,
   EDIT_LIST,
   ALL_REVIEWS,
+  GET_ACTIVITY,
   DELETE_LIST,
+  GET_OTHER_USER_INFO,
+  UN_FOLLOW_LIST,
+  FOLLOW_LIST,
+  GET_USER_LISTS,
+  GET_ALL_REVIEWS_V2,
+  FOLLOWED_LIST,
 } from "../actions";
 
 
@@ -69,7 +76,11 @@ const initialState = {
   items:[],
   list: [],
   listDetails: [],
-  ALL_REVIEWS
+  activity: [],
+  otherUserInfo: {},
+  userLists: [],
+  reviewsV2: [],
+  listFollowed: [],
 };
 
 
@@ -301,9 +312,42 @@ export default function reducer(state = initialState, { type, payload }) {
             return{
             ...state,
             items:payload
+          case GET_ACTIVITY:
+            return{
+              ...state,
+              activity: payload
             }
+          case GET_OTHER_USER_INFO:
+            return{
+              ...state,
+              otherUserInfo: payload
+            }
+            case UN_FOLLOW_LIST:
+            return{
+              ...state
+            }
+            case FOLLOW_LIST:
+            return{
+              ...state
+            }
+            case FOLLOWED_LIST:
+              return{
+                ...state,
+                listFollowed: payload
+}
+            case GET_USER_LISTS:
+              return{
+                ...state,
+                userLists: payload
+
+              }
+            case GET_ALL_REVIEWS_V2:
+              return{
+                ...state,
+                reviewsV2: payload
+              }
     default:
       return state;
   }
 }
-AVAILABLE_USERS
+

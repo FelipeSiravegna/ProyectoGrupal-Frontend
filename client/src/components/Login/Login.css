@@ -23,7 +23,7 @@
     width: 34px;
     padding: 5px; 
     top: 0px;
-    left: 27px;
+    left: 0px;
 }
 
 #nav-dropdown:active{
@@ -79,3 +79,13 @@ top: 7%;
 .botones{
     text-decoration: none;
   }
+
+.deslogaut{
+  position: relative;
+  text-decoration: none;
+}
+
+.ll{
+  text-decoration: none;
+  color: white;
+}

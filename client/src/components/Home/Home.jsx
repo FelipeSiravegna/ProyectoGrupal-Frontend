@@ -24,6 +24,7 @@ import Filters from '../Filters/Filters';
 import Button from '@mui/material/Button'
 import Carrousel2 from '../Carrousel/Carrousel2';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import { Link } from 'react-router-dom';
 
 
 
@@ -73,13 +74,12 @@ const Home = () => {
         
     
 
-
     <div className="App">
       
       {
-        userDB.active !== true ?
+        !localStorage.username ?
           <div>
-            <img className='fondo' src={fondo} alt="" />
+            <img className='fondo'src={fondo} alt="" />22
             <NavbarP />
             <Carrousel />
             <InfoHome />
@@ -130,9 +130,9 @@ const Home = () => {
             <img className='loguito' src={Logo}></img>
 
 
-            <h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Button variant="text" sx={{ fontSize: 19 }} color="amarillo">
+            <h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Link className='ll' to= {'/premium'}><Button className='ll' variant="text" sx={{ fontSize: 19 }} color="amarillo">
               premium
-            </Button>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }} color="azul">
+            </Button></Link>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }} color="azul">
                 director's
               </Button>ACCOUNT?</h1>
 

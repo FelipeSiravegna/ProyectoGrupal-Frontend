@@ -1,0 +1,58 @@
+.fondo{
+    background-image: url('../media/fondo.jpg');
+    padding-bottom: 100%;
+}
+
+.gridcontainer{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin-left: 5%;
+}
+
+.griditem{
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 10%;
+}
+
+.griditemImg{
+    width: 100%;
+    vertical-align: top;
+    cursor: pointer;
+    border-radius: 10%;
+}
+
+.griditem:hover{
+    transform: scale(1.1);
+    transform-origin: center;
+}
+
+.nameMovieP{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 13px;
+    color:#f44336;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+    opacity: 0.8;
+}
+
+.linkPel{
+    text-decoration: none;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #f44336;
+    padding: 40px;
+}
+
+.icono{
+    margin-left: 20px;
+    margin-top: 5px;
+}

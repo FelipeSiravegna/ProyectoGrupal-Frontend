@@ -43,8 +43,18 @@ export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
+export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
+
 export const ALL_REVIEWS = 'ALL_REVIEWS'
+
+export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
+export const FOLLOW_LIST = 'FOLLOW_LIST'
+export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
+export const FOLLOWED_LIST = 'FOLLOWED_LIST'
+export const GET_USER_LISTS = 'GET_USER_LISTS';
+export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
+
 
 
 //peliculas
@@ -387,6 +397,7 @@ export const getUserInfo = () => {
                 localStorage.setItem("email", `${json.data.email}`)
                 localStorage.setItem("image", `${json.data.image}`)
                 localStorage.setItem("id", `${json.data.id}`)
+                localStorage.setItem("premium", `${json.data.premium}`);
             }
             return dispatch({
                 type: GET_USER_INFO,
@@ -397,8 +408,7 @@ export const getUserInfo = () => {
         }
     }
 }
-
-
+;
 export const subscribe = () => {
     return async function (dispatch) {
         const email = { email: localStorage.getItem("email") }
@@ -512,6 +522,43 @@ export const deleteList= (listId) => {
             })
     }
 }
+
+export const followLists = (id, listId) => {
+    return async function (dispatch){
+        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=follow`);
+            return dispatch({
+                type: FOLLOW_LIST
+            })
+    }
+}
+
+export const unFollowList = (id, listId) => {
+    return async function (dispatch){
+        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=unfollow`);
+            return dispatch({
+                type: UN_FOLLOW_LIST
+            })
+    }
+}
+
+
+export const followedList = (idUser)=>{
+    return async function (dispatch) {
+        await axios.get(`http://localhost:3001/lists/followedLists/${idUser}`)
+        .then((pelis) => {
+            dispatch ({
+                type: FOLLOWED_LIST,
+                payload: pelis.data
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
+};
+
+
+
 
 
 
@@ -669,6 +716,7 @@ export const freeUsers = () => {
 }
 
 
+
 export const allReviews = () => {
     return async function (dispatch) {
         try {
@@ -689,3 +737,60 @@ export const allReviews = () => {
     }
 }
     
+
+export const getActivity = (loggedUser) => {
+    return async function(dispatch){
+        try{
+            let activity = await axios.get(`/activity/${loggedUser}`);
+            return dispatch({
+                type: GET_ACTIVITY,
+                payload: activity.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getOtherUserInfo = (id) => {
+    return async function(dispatch){
+        try{
+            let info = await axios.get(`/users/user/${id}`);
+            return dispatch({
+                type: GET_OTHER_USER_INFO,
+                payload: info.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getListsByUser = (userId) => {
+    return async function(dispatch){
+        try{
+            const lists = await axios.get(`/getUserLists/${userId}`);
+            return dispatch({
+                type: GET_USER_LISTS,
+                payload: lists.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const getAllReviews2 = () => {
+    return async function (dispatch) {
+        try{
+            const reviews = await axios.get(`/getAllReviews`);
+            return dispatch({
+                type: GET_ALL_REVIEWS_V2,
+                payload: reviews.data
+            })
+        } catch(error){
+            console.log(error);
+        }
+    }
+}
+

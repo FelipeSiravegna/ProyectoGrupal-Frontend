@@ -30,7 +30,6 @@ export default function Login() {
   },[token])
 
   useEffect(()=>{
-    
   },[localStorage.username])
 
   const [show, setShow] = useState(false);
@@ -39,23 +38,25 @@ export default function Login() {
   const handleShow = () => setShow(true);
 
 
+  function deslogaut (){
+    localStorage.clear()
+  }
+
   return (
     <div>
-      {
-        localStorage.username ?
+      
           <div>
              {
               !localStorage.username ?
-              <div>
-                <Link to={'/login'} className={'botonRegisterLogin'} >
-            <Button variant="text" color="rojo" className="botones2">
+              <div className='deslogaut'>
+                <Link to={'/login'} className='botones4'>
+            <Button variant="text" color="rojo" className='ll' >
               Login
             </Button>
             
             </Link>
-            <Link to={'/register'} className={'botonRegisterLogin'} >
-
-            <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
+            <Link to={'/register'} className='ll'>
+            <Button  variant="contained" color="rojo" className='ll'>
             Register
           </Button>
           </Link>
@@ -64,18 +65,23 @@ export default function Login() {
             :
             <div className='botonesDiv'>
 
-<Link className='botones4' to={'/premium'}>
+
   
-          <Link className='botones4' to={'/noticias'}>
+          <Link className='botones4' to={'/comingsoon'}>
            <Button variant="text" color="azul">
-              News
+              Coming soon
            </Button>
           </Link>
 
+{!userDB.premium ?
+  <Link className='botones4' to={'/premium'}>
           <Button variant="text" color="amarillo">
           Premium
           </Button>
           </Link>
+           :null}
+
+          
 
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
@@ -87,10 +93,11 @@ export default function Login() {
         <Modal.Body> <Compare/> </Modal.Body>
  
       </Modal>
-    
+          <Link className='botones4' to={'/wachlist'}>
           <Button variant="text" color="rojo" className="botones" >
           Watchlist
           </Button>
+          </Link>
 
           <Link className='botones4' to={'/lists'}>
           <Button variant="text" color="rojo" className="botones" >
@@ -98,16 +105,16 @@ export default function Login() {
           </Button>
           </Link>
           
-          <Button variant="text" color="rojo" className="botones" >
-        favorites
-          </Button>
 
+
+          <Link className='botones4' to={`/activity/${userDB.id}`}>
+            <Button variant="text" color="rojo">
+              Activity
+            </Button>
+          </Link>
+          
 
            
-            </div>
-      
-
-             }
 
             <Modal show={show} onHide={handleClose} className="my-modal" >
               <Modal.Header closeButton>
@@ -122,6 +129,13 @@ export default function Login() {
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
 
+              {userDB.director ? 
+                     <Dropdown.Item className='drop'>
+                  <Button variant="text" color="azul" className="botones" >
+        Director
+          </Button>
+          </Dropdown.Item>
+          : null}
 
                 <Dropdown.Item className='drop'>
                   <Link className='botones4' to={`/UserProfile/${userDB.id}`}>
@@ -130,7 +144,8 @@ export default function Login() {
                     </Button>
                   </Link>
                 </Dropdown.Item>
-                <div className='drope'>
+
+ 
                   <Dropdown.Item className='drop'>
                     <Link className='botones4' to={'/dashboard'}>
                       <Button variant="text" color="rojo" className="botones">
@@ -138,23 +153,40 @@ export default function Login() {
                       </Button>
                     </Link>
                   </Dropdown.Item>
+                  
+              
                   <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
                     Following
                   </Button></Dropdown.Item>
-                  <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
+
+                  <Dropdown.Item className='drop'> 
+                  <Button variant="text" color="rojo" className="botones">
                     Settings
-                  </Button></Dropdown.Item>
+                  </Button>
+                  </Dropdown.Item>
+
+
                   <Dropdown.Item className='drop'>
-                    <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
+                    <Link className='botones4' to="/">
+                    <Button variant="text" color="rojo" className="botones" onClick={() => deslogaut()}>
                       Logout
-                    </Button></Dropdown.Item>
+                    </Button>
+                    </Link>
+
+                   
+
+                    </Dropdown.Item>
+                    
                 </div>
-              </div>
+             
             </DropdownButton>
 
+            </div>
+         
+         
+             }
           </div>
-     : null } 
-      
+   
 
     </div>
   )

@@ -206,3 +206,19 @@ left: 67px;
     position: absolute;
     left: -30%;
 }
+
+.ojo3{
+    position: absolute;
+    background-color: yellowgreen;
+}
+
+.followers{
+    position: absolute;
+    cursor: pointer;
+    top: 200px;
+    left: 200px;
+}
+
+.letras{
+    color: white;
+}
