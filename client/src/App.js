@@ -43,10 +43,13 @@ const App = () => {
         <Route exact path='/lists' element={<Listas/>}/>
         <Route exact path='/login' element={<Loginscreen/>}/>
         <Route exact path='/accounts/edit' element={<AccountsEdit/>}/>
+        <Route exact path='/aa' element={<Form/>}/>
         <Route exact path='/activity/:loggedUserId' element={<Activity/>}/>
         <Route exact path='/wachlist' element={<Wachlist/>}/>
         <Route exact path='/createMovie' element={<Form />}/>
         </Routes>
+
+      
     );
   }
 

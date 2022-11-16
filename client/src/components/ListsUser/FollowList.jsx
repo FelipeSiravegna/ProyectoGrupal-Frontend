@@ -1,9 +1,9 @@
 import React from 'react'
 import './ListUser.css'
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import { useEffect } from 'react'
-import { getList, removeMovieToList } from '../../redux/actions'
+import { getList, removeMovieToList, followedList  } from '../../redux/actions'
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -20,13 +20,14 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 const FollowList = () => {
     const dispatch = useDispatch()
     
-    const listas = useSelector(state => (state.list))
-    let usuario = listas.filter(a=>`${a.userId}` === localStorage.id)
+    const listas = useSelector(state => (state.listFollowed))
+    //let usuario = listas.filter(a=>`${a.userId}` === localStorage.id)
     
     const [smShow, setSmShow] = useState(false);
     
     useEffect(()=>{
-        dispatch(getList()) 
+        dispatch(getList())
+        dispatch(followedList(localStorage.id)) 
     },[])
 
 
@@ -41,7 +42,7 @@ const FollowList = () => {
       <CssBaseline />
       <Container maxWidth="xl">
 
-{usuario ? usuario.map(a =>{ return(
+{listas.followedLists ? listas.followedLists.map(a =>{ return(
 <ListGroup as="ol">
 <br></br>
       <ListGroup.Item

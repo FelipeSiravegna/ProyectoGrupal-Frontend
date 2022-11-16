@@ -3,7 +3,7 @@ import './ListUser.css'
 import './ListUser.css'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { addMovieToList, listDetails, removeMovieToList, resetSearch } from '../../redux/actions'
+import { followedList, listDetails, removeMovieToList, followLists, unFollowList } from '../../redux/actions'
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import { useSelector, useDispatch } from 'react-redux'
@@ -19,6 +19,9 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import AddMovieList from './AddMovieList'
 import fondo from '../media/fondo.jpg'
 import NavbarP from '../NavbarP/NavbarP'
+import AddIcon from '@mui/icons-material/Add';
+import DownloadDoneIcon from '@mui/icons-material/DownloadDone';
+import CloseIcon from '@mui/icons-material/Close';
 
 const ListDetails = () => {
 
@@ -28,19 +31,34 @@ const ListDetails = () => {
     const lista = useSelector(state => (state.listDetails))
     const usuario = lista.user?lista.user.id:null
     const dueño = `${usuario}` === localStorage.id
-
+    const seguido = useSelector(state => (state.listFollowed))
     const [estado, setEstado] = useState('')
-    
+    const [estadito, setE] = useState('')
 
 var items = document.getElementsByClassName("elnombresito")
 
-console.log(lista)
 
+let variable = seguido.followedLists?seguido.followedLists.map(a=>`${a.id}`):null
+let follow = variable? variable.filter(a=> a === idList):null
+let ayuda = follow?follow.length:null
 
 useEffect(()=>{
   dispatch(listDetails(idList)) 
+  dispatch(followedList(localStorage.id)) 
   items
-},[items.length, estado, dueño, usuario])
+},[items.length, estado, dueño, usuario, estadito])
+
+console.log(estadito)
+
+
+
+function seguirLista (e){
+dispatch(followLists(e, idList))
+}
+
+function noSeguirLista (e){
+  dispatch(unFollowList(e, idList))
+  }
 
 function removeFilm(b){
   dispatch(removeMovieToList(idList, b))
@@ -56,8 +74,25 @@ function removeFilm(b){
       <CssBaseline />
       <Container maxWidth="xl">
 
+
+
+{!dueño ? 
+<div className='followers'>
+{ayuda === 0 ? 
+        
+        
+        <Button variant='outlined' color='azul' onClick={()=>seguirLista(localStorage.id)} > <h className='letras'>FOLLOW</h>
+<AddIcon onClick={()=>setE(false)} sx={{ fontSize: 50 }} color='azul'>  </AddIcon>
+        </Button> 
+        : <Button variant='outlined' color='rojo' onClick={()=>noSeguirLista(localStorage.id)}> <h className='letras'>UNFOLLOW</h>
+        <CloseIcon onClick={()=>setE(true)} sx={{ fontSize: 50 }} color='rojo'/>
+                </Button>}
+                </div>      
+: null}
+
+
    {dueño ? 
-      <AddMovieList idList={idList}/>
+      <AddMovieList idList={idList} lista={lista}/>
       : null}
 
       <ListGroup as="ol" numbered>
@@ -72,13 +107,10 @@ function removeFilm(b){
 <h className="elnombresito">{a.name}</h>
 
 
-<Badge bg="none" pill className='ojo'>
-
-  
+<Badge bg="none" pill className='ojo'> 
 <Link to={`/filmdetails/${a.id}`}>
 <RemoveRedEyeIcon color='azul'/>
 </Link>
-
         </Badge>
 
 
@@ -89,6 +121,11 @@ function removeFilm(b){
         </Button>
         </Badge>
         : null}
+
+
+
+
+        
 
 </ListGroup.Item>
 )}): <div>
