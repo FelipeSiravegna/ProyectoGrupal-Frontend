@@ -45,12 +45,16 @@ export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
+
+export const ALL_REVIEWS = 'ALL_REVIEWS'
+
 export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const FOLLOWED_LIST = 'FOLLOWED_LIST'
 export const GET_USER_LISTS = 'GET_USER_LISTS';
 export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
+
 
 
 //peliculas
@@ -711,6 +715,29 @@ export const freeUsers = () => {
     }
 }
 
+
+
+export const allReviews = () => {
+    return async function (dispatch) {
+        try {
+            let result = await axios.get(`/reviews`);
+            return dispatch({
+                type: ALL_REVIEWS,
+                payload: result.data
+            })
+        } catch (error) {
+            if (error){
+                return dispatch({
+                    type: ALL_REVIEWS,
+                    payload: []
+                })
+            }
+        }
+
+    }
+}
+    
+
 export const getActivity = (loggedUser) => {
     return async function(dispatch){
         try{
@@ -766,3 +793,4 @@ export const getAllReviews2 = () => {
         }
     }
 }
+

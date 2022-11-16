@@ -21,6 +21,7 @@ function preventDefault(event) {
   }
   
   export default function ModernTable ({title,items,properties,action}){
+    console.log("debbuger:",title,items,properties,action)
     return (
       
       <React.Fragment>

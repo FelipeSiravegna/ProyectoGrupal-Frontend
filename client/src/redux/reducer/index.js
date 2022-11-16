@@ -42,6 +42,7 @@ import {
   LIST_DETAILS,
   RESET_SEARCH,
   EDIT_LIST,
+  ALL_REVIEWS,
   GET_ACTIVITY,
   DELETE_LIST,
   GET_OTHER_USER_INFO,
@@ -307,6 +308,10 @@ export default function reducer(state = initialState, { type, payload }) {
             return{
             ...state
             };
+          case ALL_REVIEWS:
+            return{
+            ...state,
+            items:payload
           case GET_ACTIVITY:
             return{
               ...state,
@@ -345,4 +350,4 @@ export default function reducer(state = initialState, { type, payload }) {
       return state;
   }
 }
-AVAILABLE_USERS
+

@@ -22,7 +22,9 @@ import { allUsers,
   bannedUsers,
   unBanUser,
   premiumUsers,
-  freeUsers} from '../../redux/actions/index.js';
+  freeUsers,
+  allReviews,
+  deleteReviews} from '../../redux/actions/index.js';
 
 function Copyright(props) {
   return (
@@ -88,6 +90,19 @@ function DashboardContent() {
       setProperties(["username","email","premium","banned"]) 
       dispatch(freeUsers())
       setAction([])
+    }
+    const getAllReviews = ()=>{
+      setProperties(["id","content","banned","movieId","userId"]) 
+      dispatch(allReviews())
+      setAction([])
+    }
+    const deleteAReview = ()=>{
+      setProperties(["id","content","banned","movieId","userId"]) 
+      dispatch(allReviews())
+      setAction(["Delete Review",(j)=>{
+        dispatch(deleteReviews(j.id))
+        dispatch(allReviews())
+        }])
     }
 
     const openMenu = Boolean(anchorEl)
@@ -206,18 +221,18 @@ function DashboardContent() {
                                 <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Lists</MenuItem>
                           </Menu></Box>
                       <Box><Typography 
-                            aria-controls='menu-comments' 
+                            aria-controls='menu-Reviews' 
                             aria-haspopup='true' 
                             aria-expanded={openMenu?'true':undefined}
                             onClick={handleClick} 
                             sx={{cursor:'pointer'}}>
-                            Comments
+                            Reviews
                           </Typography>
                           {/*dropDown users */}
-                          <Menu id='menu-comments' anchorEl={!!anchorEl?"Comments"==anchorEl[0]?anchorEl[1]:undefined:undefined} open={!!anchorEl&&"Comments"==anchorEl[0]?true:false} onClose={handleClose}> 
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Comment</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Comment</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Comment</MenuItem>
+                          <Menu id='menu-Reviews' anchorEl={!!anchorEl?"Reviews"==anchorEl[0]?anchorEl[1]:undefined:undefined} open={!!anchorEl&&"Reviews"==anchorEl[0]?true:false} onClose={handleClose}> 
+                                <MenuItem onClick={(e)=>{closeWActions(e,getAllReviews)}}>Get Reviews</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,deleteAReview)}}>Delete Reviews</MenuItem>
+                                {/* <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Reviews</MenuItem> */}
                           </Menu></Box>
                     </Box>
                   </Toolbar>
