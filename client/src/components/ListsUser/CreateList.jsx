@@ -54,8 +54,8 @@ setShow(false)
   if (dbUser !== null) {
     return (
       <>
-        {
-          userLists.length < 3 || dbUser.premium === true
+     {
+          userLists.length < 3  || dbUser.premium === true || userLists.length === 0
             ?
             <Button variant="contained" color='rojo' onClick={handleShow}>
               Create List

@@ -116,7 +116,7 @@ const FilmDetails = () => {
           <QueueIcon color='gris' sx={{ fontSize: 30 }} className='icono3' />
           <p className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
 
-          <div>{token ?
+          <div>{localStorage.token ?
 
             <div className='logeado'>
               <div className='interacción'>
