@@ -54,17 +54,39 @@ const FilmDetails = () => {
   }
   
   const like = () => {
-    setFavorito(true)
-    if (favorito === true) {
+
+    if (favorito === false) {
+      setFavorito(true)
+
+      if(!localStorage.favnum)localStorage.setItem('favnum', localStorage.length); 
+      localStorage.setItem('fav', JSON.stringify([wach]));
+      localStorage.setItem(`fav${localStorage.length +1}`, JSON.stringify([wach]));
+    }
+    else{
       setFavorito(false)
     }
+
   }
   
   const save = () => {
-    setGuardado(true)
-    if (guardado === true) {
+
+    if (guardado === false) {
+      setGuardado(true)
+
+      localStorage.setItem('mov', JSON.stringify([wach]));
+      localStorage.setItem(`mov${localStorage.length +1}`, JSON.stringify([wach]));
+    }
+    else{
       setGuardado(false)
     }
+
+  }
+  
+  
+  let wach = {
+    id: filmDetails.id,
+    name: filmDetails.name,
+    image: filmDetails.image
   }
 
   useEffect(() => {

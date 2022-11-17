@@ -1,13 +1,10 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import NavbarP from '../NavbarP/NavbarP';
-import { useAuth0 } from "@auth0/auth0-react";
-import ListFav from '../List/List';
-import PlayList from '../playListas/Playlist';
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { filterGenres, getAllMovies, getOtherUserInfo, followUser, unfollowUser, getList } from '../../redux/actions';
+import { getAllMovies, followUser, unfollowUser, getList } from '../../redux/actions';
 import UserAvatar from '../UserAvatar/UserAvatar.jsx';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
@@ -22,7 +19,7 @@ export default function UserProfile() {
 
 
     const dispatch = useDispatch()
-    let peliculas = useSelector(state => (state.movies))
+
     let token = useSelector(state => state)
     let dbUser = useSelector(state => state.user)
     let pagina = useSelector(state => (state.page))
@@ -30,7 +27,7 @@ export default function UserProfile() {
 
     const [changeimage, setChangeimage] = useState(true);
 
-    const [playlist, setPlaylist] = useState(true);
+    const [render, setRender] = useState(true);
     const [follows, setFollows] = useState('');
 
     const listas = useSelector(state => (state.list))
@@ -45,8 +42,6 @@ export default function UserProfile() {
 
     const movie = usuario.map(e=> e.movies)
 
-    console.log(movie.length)
-
     const handleFollow = () => {
         if (buttonValue === 'FOLLOW') {
             dispatch(followUser(dbUser.id, profileId));
@@ -58,9 +53,10 @@ export default function UserProfile() {
     }
 
     const handleRender = (e) => {
-        console.log(e,playlist)
-        if(e.target.innerText === 'PlayList') setPlaylist(true)
-        if(e.target.innerText === 'Favorits') setPlaylist(false)
+        
+        if(e.target.innerText === 'PlayList') setRender(true)
+        if(e.target.innerText === 'Favorits') setRender(false)
+
     }
 
     const [show, setShow] = useState(false);
@@ -70,7 +66,26 @@ export default function UserProfile() {
     const handleShow = (e) => {
         setShow(true)
         setFollows(e.target.innerText)
-    };
+    }
+
+    //fav
+
+    let data = localStorage.fav && JSON.parse(localStorage.fav).concat(localStorage.fav8 && JSON.parse(localStorage.fav8).concat(localStorage.fav9 && JSON.parse(localStorage.fav9)).concat(localStorage.fav10 && JSON.parse(localStorage.fav10)).concat(localStorage.fav11 && JSON.parse(localStorage.fav11)).concat(localStorage.fav12 && JSON.parse(localStorage.fav12)).concat(localStorage.fav13 && JSON.parse(localStorage.fav13)).concat(localStorage.fav14 && JSON.parse(localStorage.fav14)).concat(localStorage.fav15 && JSON.parse(localStorage.fav15)).concat(localStorage.fav16 && JSON.parse(localStorage.fav16)).concat(localStorage.fav17 && JSON.parse(localStorage.fav17)).concat(localStorage.fav18 && JSON.parse(localStorage.fav18)).concat(localStorage.fav19 && JSON.parse(localStorage.fav19)).concat(localStorage.fav20 && JSON.parse(localStorage.fav20)).concat(localStorage.fav21 && JSON.parse(localStorage.fav21)).concat(localStorage.fav23 && JSON.parse(localStorage.fav23)).concat(localStorage.fav24 && JSON.parse(localStorage.fav24)).concat(localStorage.fav29 && JSON.parse(localStorage.fav29)).concat(localStorage.fav30 && JSON.parse(localStorage.fav30)).concat(localStorage.fav31 && JSON.parse(localStorage.fav31)).concat(localStorage.fav32 && JSON.parse(localStorage.fav32)).concat(localStorage.fav33 && JSON.parse(localStorage.fav33)).concat(localStorage.fav34 && JSON.parse(localStorage.fav34)).concat(localStorage.favv35 && JSON.parse(localStorage.fav35)).concat(localStorage.favfav36 && JSON.parse(localStorage.favfav36)).concat(localStorage.fav37 && JSON.parse(localStorage.fav37)).concat(localStorage.fav38 && JSON.parse(localStorage.fav38)).concat(localStorage.fav39 && JSON.parse(localStorage.fav39)).concat(localStorage.fav40 && JSON.parse(localStorage.fav40)))
+    let dataLimpia = data !== undefined && data.filter(e => e !== undefined)
+   console.log(data)
+    const [watch, setWatch] = useState();
+
+    
+    useEffect(()=>{
+
+      if(dataLimpia){
+  
+        let set =  new Set( dataLimpia.map( JSON.stringify ) )
+        let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
+        setWatch(arrSinDuplicaciones)
+      }
+      
+    },[])
 
     if (dbUser !== null) {
         return (
@@ -147,19 +162,18 @@ export default function UserProfile() {
                             <br />
                             <div className='optionsProfile'>
                             <div className='separadorLeft'>
-                            <button className='buttonsprofile' name='PlayList' onClick={(e)=> handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
+                            <button className={!render ? 'buttonplaylist' : 'buttonplaylistCheck'} name='PlayList' onClick={(e)=> handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
                             </div>
                             <div className='separadorRigth'>
-                            <button className='buttonsprofile' name='Favorits' onClick={(e)=> handleRender(e)}><h4>Favorits</h4><h6 className='h3marcadores'>__________</h6></button>
+                            <button className={render ? 'buttonfavorite' : 'buttonfavoriteCheck'} name='Favorits' onClick={(e)=> handleRender(e)}><h4>Favorits</h4><h6 className='h3marcadores'>__________</h6></button>
                             </div>
                             </div>
 
                             <div className='gridcontainer'>
                                 
                                 {
-                                playlist &&
-
-                                movie.length ? movie[0].map(e => {
+                                
+                                render && movie.length ? movie[0].map(e => {
 
                         return <div className='griditem'>
                             <Link className='linkPel' to={`/filmdetails/${e.id}`}>
@@ -169,12 +183,20 @@ export default function UserProfile() {
                         </div>
                                     })
                                     :
-                                    <div className='nolistas'>
-                                    <h1>you don't have favorite lists yet</h1>
-                    
-                                    </div>
+                                    watch !== undefined ? watch.map(e => {
+
+                                        return <div className='griditem'>
+                                            <Link className='linkPel' to={`/filmdetails/${e.id}`}>
+                                            <img className='griditemImg' key = {e.id} src = {e.image} />
+                                            <h4 className='nameMovieP'>{e.name}</h4>
+                                            </Link>
+                                        </div>
+                                                    })
+                                                    :
+                                                    <div className='nolistas'>
+                                                    <h1>you don't have favorite movies</h1>
+                                                    </div>
                                 }
-                                
 
                         </div>
                         </div>

@@ -105,7 +105,7 @@
     color: aliceblue;
 }
 
-.buttonsprofile{
+.buttonplaylist{
     background: none;
     border: 0;
     color: inherit;
@@ -115,6 +115,64 @@
   padding: 40%;
   cursor: pointer;
   opacity: 0.8;
+}
+
+.buttonplaylist:hover{
+    opacity: 1.2;
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.buttonplaylistCheck{
+    background: none;
+    border: 0;
+    color: white;
+    font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 40%;
+  cursor: pointer;
+}
+
+.buttonplaylistCheck:hover{
+    opacity: 1.2;
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.buttonfavorite{
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 40%;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.buttonfavorite:hover{
+    opacity: 1.2;
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.buttonfavoriteCheck{
+    background: none;
+    border: 0;
+    color: white;
+    font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 40%;
+  cursor: pointer;
+}
+
+.buttonfavoriteCheck:hover{
+    opacity: 1.2;
+    transform: scale(1.2);
+    transform-origin: center;
 }
 
 .separadorLeft{
@@ -136,15 +194,9 @@
     transform-origin: center;
 }
 
-.buttonsprofile:hover{
-    opacity: 1.2;
-    transform: scale(1.2);
-    transform-origin: center;
-}
-
 .gridcontainer{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 32% 32% 32%;
     padding: 10px;
     margin-left: 5%;
 }
@@ -190,6 +242,6 @@
     text-align: center;
     color: aliceblue;
     opacity: 0.4;
-    margin-left: 50%;
+    margin-left: 100px;
     padding-bottom: 50%;
 }
