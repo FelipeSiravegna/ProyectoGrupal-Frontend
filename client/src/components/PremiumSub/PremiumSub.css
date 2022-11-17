@@ -7,31 +7,74 @@ top: -1%;
 
 }
 
-.fondo3{
- 
-    width: 60%;
-    height: 90%;
-    left: 40%;
-    border-radius: 100%;
+.video{
+    display: grid;
+    width: 72%;
     position: absolute;
-top: 10%;
-box-shadow: 3px 3px red, -3em 0 1em rgb(38, 40, 197);
-opacity: 30%;
+    opacity: 90%;
+    top: -50%;
+    left: 10%;
 }
 
 
 .contenidoPremium{
-    position: relative;
-    padding-top: 30%;
-    padding-left: 15%
+position: absolute;
+text-align: center;
+top: 100%;
+align-items: center;
+left: 33%;
 }
 
 .frase{
-    position: relative;
+    box-shadow: 2px 2px#f44336;
+    background-color: #242422;
+    display: inline-flex;
+    box-sizing: content-box;
+    grid-column: 2;
     color: aliceblue;
+    text-shadow: 1px 1px 15px rgb(177, 165, 8);
     font-size: 40px;
     font-family: 'Roboto';
-    margin-top: -15%;
-    width: 600px;
-    margin-left: -10%;
+    width: 500px;
+    padding: 30px;
+    border-radius: 20px;
 }
+
+.lasCarteras{
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 0%;
+    left: 24%;
+ top: 30%;
+ filter: blur(20%);
+ grid-template-columns: repeat(2, 1fr); 
+ display: grid;
+ 
+    flex-direction:row;
+
+}
+
+#DAL{
+    left: 50%;
+}
+
+.once{
+position: absolute;
+top: 140%;
+left: 15%;
+}
+
+.iconitoss{
+    position: absolute;
+    top: 13%;
+    right:10%;
+}
+
+.iconitoss2{
+    position: absolute;
+    top: 13%;
+    left:2%;
+}
+

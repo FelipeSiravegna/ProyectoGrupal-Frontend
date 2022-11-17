@@ -12,7 +12,7 @@ export default function DateWeb() {
     <React.Fragment>
       <Title>Active users</Title>
       <Typography component="p" variant="h4">
-        3.800
+        3
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
         on 04 November, 2022

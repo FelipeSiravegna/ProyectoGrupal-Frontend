@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Profile.jsx'
@@ -12,57 +11,52 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Compare from '../Compare/Compare.jsx';
-import { useDispatch } from 'react-redux';
-import { userCreate } from '../../redux/actions/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInfo } from '../../redux/actions/index.js';
+import Profile from './Profile.jsx';
 
-export default function Login(){
-  
+
+export default function Login() {
+
+  const token = useSelector((state) => state.idToken)
+  const userDB = useSelector((state) => state.user)
+
+  const { logout } = useAuth0()
+
   const dispatch = useDispatch()
   
-  const {loginWithRedirect,logout,isAuthenticated,isLoading,user} = useAuth0()
-  
-  const [newUser,setUser] = useState({
-    email: '',
-    password: '',
-    username: ''
-  })
-  
-  
-//   useEffect(()=>{
-//   let num = 22
-//   if(user){
-//     setUser({
-//       email: user.email ? user.email : `example${num+1}@example.com`,
-//       password: `${user.sub.split("|")[1].slice(12)}@hH`,
-//       username: user.nickname.split(" ")[0]
-//     })
-//   }
-//   num += 1
-// },[])
+  useEffect(()=>{
+    dispatch(getUserInfo(token)) 
+  },[token])
 
-// if(user && newUser.username){
-//   console.log(newUser,'llegueeeee')
-//   dispatch(userCreate(newUser))
-
-// }
-
+  useEffect(()=>{
+  },[localStorage.username])
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- 
 
-    return(
+
+  function deslogaut (){
+    localStorage.clear()
+  }
+
+  return (
+    <div>
+      
           <div>
              {
-              !isAuthenticated && !isLoading ?
-              <div>
-            <Button variant="text" color="rojo" className="botones2" onClick={() => loginWithRedirect()}>
+              !localStorage.username ?
+              <div className='deslogaut'>
+                <Link to={'/login'} className='botones4'>
+            <Button variant="text" color="rojo" className='ll' >
               Login
             </Button>
-            <Link to={'./register'} className={'botonRegister'} >
-            <Button /*onClick={() => loginWithRedirect()}*/ variant="contained" color="rojo" className="botones2">
+            
+            </Link>
+            <Link to={'/register'} className='ll'>
+            <Button  variant="contained" color="rojo" className='ll'>
             Register
           </Button>
           </Link>
@@ -71,16 +65,29 @@ export default function Login(){
             :
             <div className='botonesDiv'>
 
-<Link className='botones4' to={'/premium'}>
-          <Button variant="text" color="amarillo">
-          Premium
 
-          </Button>
+  
+          <Link className='botones4' to={'/comingsoon'}>
+           <Button variant="text" color="azul">
+              Coming soon
+           </Button>
           </Link>
 
+{!userDB.premium ?
+  <Link className='botones4' to={'/premium'}>
+          <Button variant="text" color="amarillo">
+          Premium
+          </Button>
+          </Link>
+           :null}
+
+          
+{userDB.premium ?
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
           </Button> 
+          : null}
+
           <Modal show={show} onHide={handleClose} className="my-modal" >
         <Modal.Header closeButton>
           <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
@@ -88,63 +95,97 @@ export default function Login(){
         <Modal.Body> <Compare/> </Modal.Body>
  
       </Modal>
-    
+          
 
-
-
-          <Button variant="text" color="rojo" className="botones" >
-          Watchlist
-          </Button>
-
+          <Link className='botones4' to={'/lists'}>
           <Button variant="text" color="rojo" className="botones" >
           List
           </Button>
-
+          </Link>
           
-          <Button variant="text" color="rojo" className="botones" >
-        favorites
-          </Button>
 
 
+          <Link className='botones4' to={`/activity/${userDB.id}`}>
+            <Button variant="text" color="rojo">
+              Activity
+            </Button>
+          </Link>
           
-      <DropdownButton  align="end" id="nav-dropdown">
-        <div>
 
-        
-        <Dropdown.Item className='drop'>
-        <Link className='botones4' to={'/UserProfile'}>
-          <Button variant="text" color="rojo" className="botones">
-            My Profile
-            </Button>
-            </Link>
-            </Dropdown.Item>
+           
 
-<div className='drope'>
-            <Dropdown.Item className='drop'>
-        <Link className='botones4' to={'/dashboard'}>
-          <Button variant="text" color="rojo" className="botones">
-            Dashboard
-            </Button>
-            </Link>
-            </Dropdown.Item>
-            <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
-            Following
-            </Button></Dropdown.Item>
-            <Dropdown.Item className='drop'> <Button variant="text" color="rojo" className="botones">
-           Settings
-            </Button></Dropdown.Item>
-        <Dropdown.Item className='drop'>
-          <Button variant="text" color="rojo" className="botones" onClick={() => logout()}>
-            Logout
-            </Button></Dropdown.Item>
+            <Modal show={show} onHide={handleClose} className="my-modal" >
+              <Modal.Header closeButton>
+                <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
+              </Modal.Header>
+              <Modal.Body> <Compare /> </Modal.Body>
+
+            </Modal>
+
+
+
+            <DropdownButton align="end" id="nav-dropdown">
+              <div className='dropy'>
+
+              {userDB.premium ? 
+                     <Dropdown.Item className='drop'>
+                  <Link className='botones4' to={`/createMovie`}><Button variant="text" color="azul" className="botones" >
+        Director
+          </Button></Link>
+          </Dropdown.Item>
+          : null}
+
+                <Dropdown.Item className='drop'>
+                  <Link className='botones4' to={`/UserProfile/${userDB.id}`}>
+                    <Button variant="text" color="rojo" className="botones">
+                      My Profile
+                    </Button>
+                  </Link>
+                </Dropdown.Item>
+
+ {userDB.admin ? 
+                  <Dropdown.Item className='drop'>
+                    <Link className='botones4' to={'/dashboard'}>
+                      <Button variant="text" color="azul" className="botones">
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </Dropdown.Item>
+                  : null}
+              
+
+
+                  <Dropdown.Item className='drop'> 
+                  <Link className='botones4' to={'/accounts/edit'}>
+                  <Button variant="text" color="rojo" className="botones">
+                    Settings
+                  </Button>
+                  </Link>
+                  </Dropdown.Item>
+
+
+                  <Dropdown.Item className='drop'>
+                    <Link className='botones4' to="/">
+                    <Button variant="text" color="rojo" className="botones" onClick={() => deslogaut()}>
+                      Logout
+                    </Button>
+                    </Link>
+
+                   
+
+                    </Dropdown.Item>
+                    
+                </div>
+             
+            </DropdownButton>
+
             </div>
-            </div>
-      </DropdownButton>
-
-</div>
+         
+         
              }
-
-
           </div>
-    )
+   
+
+    </div>
+  )
 }
