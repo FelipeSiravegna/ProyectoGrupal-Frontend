@@ -384,8 +384,7 @@ export const checkUserInfo = (body) => {
                 payload: json.data.token
             })
         } catch (error) {
-            console.log(error.message)
-            return
+          return error.response.data
         }
     }
 }
