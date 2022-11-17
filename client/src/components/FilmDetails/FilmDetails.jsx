@@ -116,7 +116,7 @@ const FilmDetails = () => {
           <QueueIcon color='gris' sx={{ fontSize: 30 }} className='icono3' />
           <p className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
 
-          <div>{localStorage.token ?
+          <div>{token ?
 
             <div className='logeado'>
               <div className='interacción'>
@@ -130,7 +130,7 @@ const FilmDetails = () => {
                   {playlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}</Fab>
               </div>
 
-              <Rating id='ratingDet' name="simple-controlled" value={value} size="small" onChange={(event, newValue) => { setValue(newValue); }} />
+             
 
             </div>
             : null}
@@ -191,9 +191,7 @@ const FilmDetails = () => {
 {!localStorage.username ?
 
 <div className='nda'>
-
 <h1 className='nda'><Link className='ll' to= {'/login'}><Button sx={{ fontSize: 39 }} color='rojo'>Log in</Button></Link> TO SEE THE REVIEWS OF THIS MOVIE</h1>
-
 </div>
 : null }
 
