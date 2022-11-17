@@ -75,9 +75,9 @@ function Post({ movieId, userId, userImg }) {
       <div className="post">
         <div className="post__header">
 
-          {/* {
-            loggedUserReviews.length === 0 || userDb.premium === true
-              ? */}
+          {
+            loggedUserReviews.length === 0 || localStorage.premium === "true"
+              ?
               <form className="post__form" onSubmit={handleSubmit} style={{ color: "#f44336" }} >
                 <Avatar alt="Remy Sharp" src={userImg} className='avatar' sx={{ width: 56, height: 56 }} />
                 <TextField
@@ -100,7 +100,7 @@ function Post({ movieId, userId, userImg }) {
               </form>
               :
               null
-          {/* } */}
+          }
           <br></br>
           <br></br>
           <br></br>
