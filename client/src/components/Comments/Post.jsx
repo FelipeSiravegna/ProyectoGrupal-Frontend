@@ -64,7 +64,7 @@ function Post({ movieId, userId, userImg }) {
   //console.log(otramas)
 
   const loggedUserReviews = reviewsV2.map(rev => {
-    if (rev.userId === parseInt(localStorage.id)) {
+    if (rev.userId === userDb.id) {
       return rev;
     }
   })
@@ -76,7 +76,7 @@ function Post({ movieId, userId, userImg }) {
         <div className="post__header">
 
           {
-            loggedUserReviews.length === 0 || localStorage.premium === "true"
+            loggedUserReviews.length === 0 || userDb.premium === true
               ?
               <form className="post__form" onSubmit={handleSubmit} style={{ color: "#f44336" }} >
                 <Avatar alt="Remy Sharp" src={userImg} className='avatar' sx={{ width: 56, height: 56 }} />
