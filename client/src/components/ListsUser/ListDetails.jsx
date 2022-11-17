@@ -68,24 +68,25 @@ function removeFilm(b){
 
   return (
     <div>
-      <img className='fondo'src={fondo} alt="" />
-    <NavbarP/>
-<React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="xl">
+      <img className='fondo' src={fondo} alt="" />
+      <NavbarP />
+      <React.Fragment>
+        <CssBaseline />
+        <Container maxWidth="xl">
 
 
 
-{!dueño ? 
-<div className='followers'>
-{ayuda === 0 ? 
-        
-        
-        <Button variant='outlined' color='azul' onClick={()=>seguirLista(localStorage.id)} > <h className='letras'>FOLLOW</h>
-<AddIcon onClick={()=>setE(false)} sx={{ fontSize: 50 }} color='azul'>  </AddIcon>
-        </Button> 
-        : <Button variant='outlined' color='rojo' onClick={()=>noSeguirLista(localStorage.id)}> <h className='letras'>UNFOLLOW</h>
-        <CloseIcon onClick={()=>setE(true)} sx={{ fontSize: 50 }} color='rojo'/>
+          {!dueño ?
+            <div className='followers'>
+              {ayuda !== 0 ?
+
+
+                <Button variant='outlined' color='azul' onClick={() => seguirLista(localStorage.id)} > <h className='letras'>FOLLOW</h>
+                  <AddIcon onClick={() => setE(false)} sx={{ fontSize: 50 }} color='azul'>  </AddIcon>
+                </Button>
+                : <Button variant='outlined' color='rojo' onClick={() => noSeguirLista(localStorage.id)}> <h className='letras'>UNFOLLOW</h>
+                  <CloseIcon onClick={() => setE(true)} sx={{ fontSize: 50 }} color='rojo' />
+
                 </Button>}
                 </div>      
 : null}
