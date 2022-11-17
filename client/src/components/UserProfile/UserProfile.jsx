@@ -35,7 +35,7 @@ export default function UserProfile() {
 
     const listas = useSelector(state => (state.list))
     let usuario = listas.filter(a=>`${a.userId}` === localStorage.id)
-    let listasUser = listas?listas.filter(a=>a.userId === profileId):null
+
     const [buttonValue, setButtonValue] = useState('FOLLOW');
 
     useEffect(() => {
@@ -44,6 +44,8 @@ export default function UserProfile() {
     },[])
 
     const movie = usuario.map(e=> e.movies)
+
+    let listasUser = listas?listas.filter(a=>a.userId === profileId):null
 
     const handleFollow = () => {
         if (buttonValue === 'FOLLOW') {
@@ -77,7 +79,8 @@ export default function UserProfile() {
 
                 <NavbarP />
                 {
-                    profileId === dbUser.id?
+                    profileId === dbUser.id
+                        ?
                         <div className='fondo23'>
                             {/* <button onClick={(e) => { dispatch(getUserInfo(token)) }}>send token</button>
                             <button onClick={(e) => { console.log(dbUser) }}>check user</button>
@@ -140,46 +143,42 @@ export default function UserProfile() {
                                     </div>
                                 </div>
                             }
-
                             <br />
                             <br />
-                            
                             <div className='optionsProfile'>
                             <div className='separadorLeft'>
                             <button className='buttonsprofile' name='PlayList' onClick={(e)=> handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
+                            </div>
+                            <div className='separadorRigth'>
+                            <button className='buttonsprofile' name='Favorits' onClick={(e)=> handleRender(e)}><h4>Favorits</h4><h6 className='h3marcadores'>__________</h6></button>
                             </div>
                             </div>
 
                             <div className='gridcontainer'>
                                 
                                 {
-                                    
                                 playlist &&
 
-                                listasUser.length ? listasUser.map(e => {
+                                listasUser.length? listasUser.map(a=> {
+                                    <div className='lasListas'>
+                                   <h1> {a.name} </h1>
+                                   <h2> {a.description}</h2>
 
-                        return <div className='griditem'>
-                            <Link className='linkPel' to={`/list/${e.id}`}>
-                            <img className='griditemImg' key = {e.id} />
-                            <h4 className='nameMovieP'>{e.name}</h4>
-                            <h4 className='descMovieP'>{e.description}</h4>
-                            </Link>
-                        </div>
-                                    })
-                                    :
-                                    <div className='nolistas'>
-                                    <h1>you don't have favorite lists yet</h1>
-                    
-                                    </div>
-                               }
+                                   </div>
+                                }):null
+                                }
+                            
                                 
 
                         </div>
                         </div>
                         :
                         <div className='fondo23'>
-                           
-                               {} token &&
+                            {/* <button onClick={(e) => { dispatch(getUserInfo(token)) }}>send token</button>
+                            <button onClick={(e) => { console.log(dbUser) }}>check user</button>
+                            <button onClick={(e) => { console.log(token) }}>check token</button> */}
+                            {
+                                token &&
                                 <div>
 
                                     <div className='name'><Typography variant="h3" gutterBottom>{otherUserInfo.username}</Typography></div>
