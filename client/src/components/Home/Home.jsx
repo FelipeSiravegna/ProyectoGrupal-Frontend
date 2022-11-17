@@ -106,8 +106,8 @@ const Home = () => {
               } 
             </div >
 
-            <div className='Paginator'>
-              <Paginado />
+           <div className='Paginator'>
+              <Paginado movies={peliculas.count}/>
             </div>
 
             <div className='infoLIK'>
@@ -164,7 +164,7 @@ const Home = () => {
                 } 
               </div>
             </div>
-            <div className='Paginame'><Paginado /> </div>
+            <div className='Paginame'><Paginado movies={peliculas.count}/> </div>
             </div>
 
 
