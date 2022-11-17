@@ -24,7 +24,11 @@ import { allUsers,
   premiumUsers,
   freeUsers,
   allReviews,
-  deleteReviews} from '../../redux/actions/index.js';
+  deleteReviews,
+  getList,
+  banList,
+  getMoviesAdmin,
+  banMovie} from '../../redux/actions/index.js';
 
 function Copyright(props) {
   return (
@@ -65,6 +69,16 @@ function DashboardContent() {
       dispatch(activeUsers())
       setAction([])
     }
+    const getMovies = ()=>{
+      setProperties(["id","name","active","banned","description"]) 
+      dispatch(getMoviesAdmin())
+      setAction([])
+    }
+    const banMoviesAdmin = ()=>{
+      setProperties(["id","name","active","banned","description"]) 
+      dispatch(getMoviesAdmin())
+      setAction(["Ban Movie",(j)=>{banMovie(j)}])
+    }
     const getAvailableUsers = ()=>{
       setProperties(["username","email","premium","banned"])
       dispatch(availableUsers())
@@ -95,6 +109,16 @@ function DashboardContent() {
       setProperties(["id","content","banned","movieId","userId"]) 
       dispatch(allReviews())
       setAction([])
+    }
+    const getAllList = ()=>{
+      setProperties(["name","description","banned","ownerUserId","active"]) 
+      dispatch(getList())
+      setAction([])
+    }
+    const bannList = ()=>{
+      setProperties(["name","description","banned","ownerUserId","active"]) 
+      dispatch(getList())
+      setAction(["Ban",(j)=>{dispatch(banList(j))}])
     }
     const deleteAReview = ()=>{
       setProperties(["id","content","banned","movieId","userId"]) 
@@ -142,7 +166,7 @@ function DashboardContent() {
             >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                  <h1>Whelcome {user && user.name} to the Dashboard</h1>
+                  <h1>Welcome to the Dashboard {localStorage.username}</h1>
             <Grid container spacing={3}>
               {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
@@ -202,9 +226,9 @@ function DashboardContent() {
                           </Typography>
                           {/*dropDown movies */}
                           <Menu id='menu-movies' anchorEl={!!anchorEl?"Movies"==anchorEl[0]?anchorEl[1]:null:null} open={!!anchorEl&&"Movies"==anchorEl[0]?true:false} onClose={handleClose}> 
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Movies</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Movies</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Movies</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,getMovies)}}>Get Movies</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,banMoviesAdmin)}}>Ban Movies</MenuItem>
+                                {/* <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Movies</MenuItem> */}
                           </Menu></Box>
                       <Box><Typography 
                             aria-controls='menu-lists' 
@@ -216,9 +240,9 @@ function DashboardContent() {
                           </Typography>
                           {/*dropDown users */}
                           <Menu id='menu-lists' anchorEl={!!anchorEl?"Lists"==anchorEl[0]?anchorEl[1]:null:null} open={!!anchorEl&&"Lists"==anchorEl[0]?true:false} onClose={handleClose}> 
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Get Lists</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Ban Lists</MenuItem>
-                                <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Lists</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,getAllList)}}>Get Lists</MenuItem>
+                                <MenuItem onClick={(e)=>{closeWActions(e,bannList)}}>Ban Lists</MenuItem>
+                                {/* <MenuItem onClick={(e)=>{closeWActions(e,request)}}>Unbann Lists</MenuItem> */}
                           </Menu></Box>
                       <Box><Typography 
                             aria-controls='menu-Reviews' 

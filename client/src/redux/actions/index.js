@@ -1,5 +1,6 @@
 import axios from 'axios'
 export const GET_ALL_MOVIES = 'GET_ALL_MOVIES';
+export const ALL_MOVIES = 'ALL_MOVIES';
 export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const GET_SORT_ASC = 'GET_SORT_ASC';
@@ -11,6 +12,7 @@ export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 export const ADD_REVIEW = 'ADD_REVIEW';
 export const DELETE_REVIEWS = 'DELETE_REVIEWS';
+export const BAN_MOVIE = 'BAN_MOVIE';
 export const GET_LIKES_COUNT = 'GET_LIKES_COUNT';
 export const ADD_LIKES = 'ADD_LIKES';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'
@@ -39,6 +41,7 @@ export const ALL_ACTOR = 'ALL_ACTOR'
 export const ACTIVE_USERS = 'ACTIVE_USERS'
 export const BAN_USER = 'BAN_USER'
 export const UNBAN_USER = 'UNBAN_USER'
+export const BAN_LIST = 'BAN_LIST'
 export const AVAILABLE_USERS = 'AVAILABLE_USERS'
 export const BANNED_USERS = 'BANNED_USERS'
 export const PREMIUM_USERS = 'PREMIUM_USERS'
@@ -632,6 +635,25 @@ export const availableUsers = () => {
 
     }
 }
+export const getMoviesAdmin = () => {
+    return async function (dispatch) {
+        try {
+            let result = await axios.get(`/movies/all`);
+            return dispatch({
+                type: ALL_MOVIES,
+                payload: result.data.rows
+            })
+        } catch (error) {
+            if (error){
+                return dispatch({
+                    type: ALL_MOVIES,
+                    payload: []
+                })
+            }
+        }
+
+    }
+}
 
 export const banUser = (j) => {
     return async function (dispatch) {
@@ -641,6 +663,26 @@ export const banUser = (j) => {
             payload: result.data
         })
 
+    }
+}
+export const banMovie = (j) => {
+    return async function (dispatch) {
+        let result = await axios.put(`/deleteMovie/${j.id}`);
+        return dispatch({
+            type: BAN_MOVIE,
+            payload: result.data
+        })
+
+    }
+}
+
+export const banList = (j) => {
+    return async function (dispatch) {
+        let result = await axios.put(`/lists/manageBanning/${j.id}?action=bann`);
+        return dispatch({
+            type: BAN_LIST,
+            payload: result.data
+        })
     }
 }
 
