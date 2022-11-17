@@ -111,12 +111,12 @@ function DashboardContent() {
       setAction([])
     }
     const getAllList = ()=>{
-      setProperties(["name","description","banned","ownerUserId","active"]) 
+      setProperties(["name","description","banned","userId","active"]) 
       dispatch(getList())
       setAction([])
     }
     const bannList = ()=>{
-      setProperties(["name","description","banned","ownerUserId","active"]) 
+      setProperties(["name","description","banned","userId","active"]) 
       dispatch(getList())
       setAction(["Ban",(j)=>{dispatch(banList(j))}])
     }
