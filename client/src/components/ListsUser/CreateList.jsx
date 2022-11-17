@@ -51,11 +51,12 @@ setShow(false)
   const getPremiumAlert = () => {
     alert('Become a premium user to create more lists!');
   }
+
   if (dbUser !== null) {
     return (
       <>
      {
-          userLists.length < 3  || dbUser.premium === true || userLists.length === 0
+          userLists.length < 3  || dbUser.premium === true || userLists.message === "The user has no lists created"
             ?
             <Button variant="contained" color='rojo' onClick={handleShow}>
               Create List

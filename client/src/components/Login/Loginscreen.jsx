@@ -43,7 +43,6 @@ export default function Loginscreen(){
     },[dispatch])
 
     const users = useSelector((state)=>state.users)
-
     const {loginWithRedirect} = useAuth0()
 
     
@@ -67,9 +66,12 @@ export default function Loginscreen(){
             },users))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        dispatch(checkUserInfo(form))
+        let err = await dispatch(checkUserInfo(form))
+        err === 'Usuario o Contraseña incorrectos' ?
+        alert('Usuario o Contraseña incorrectos')
+        :
         navigate("/")
     }
 
@@ -105,19 +107,6 @@ export default function Loginscreen(){
         <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
         Submit
       </Button>
-            </div>
-
-            <div className={style.loginSocial}>
-                <div>
-        <Button variant="primary" type="button"  onClick={()=> loginWithRedirect()}>
-        <GoogleIcon/>
-      </Button>
-      </div>
-      <div className={style.marginButtons}>
-        <Button variant="primary" type="button"  onClick={()=> loginWithRedirect()}>
-        <FacebookIcon/>
-      </Button>
-      </div>
             </div>
 
            </form>
