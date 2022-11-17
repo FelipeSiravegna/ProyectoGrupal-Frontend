@@ -4,8 +4,6 @@ import style from './Loginscreen.module.css'
 import NavbarP from '../NavbarP/NavbarP'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import fondoRegister from '../media/LogoCompleto.png'
 import {checkUserInfo,handleLoginExternal, allUsers} from '../../redux/actions'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -79,7 +77,6 @@ export default function Loginscreen(){
         <div className={style.fondo98}>
 
             <NavbarP />
-        <div id="signWithGoogle" ></div>
         <div className={style.root}>
            <h1 className={style.titulo}>Log in</h1>
            
@@ -108,7 +105,10 @@ export default function Loginscreen(){
         Submit
       </Button>
             </div>
+            <div className={style.button}>
+        <div id="signWithGoogle" ></div>
 
+            </div>
            </form>
            </div>
            
