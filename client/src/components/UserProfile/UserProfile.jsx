@@ -208,6 +208,41 @@ export default function UserProfile() {
                                         }
 
                                     </div>
+
+                                    <br />
+                                    <br />
+
+                                    <div className='optionsProfile'>
+                                        <div className='separadorLeft'>
+                                            <button className='buttonsprofile' name='PlayList' onClick={(e) => handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
+                                        </div>
+                                    </div>
+
+                                    <div className='gridcontainer'>
+
+                                        {
+
+                                            playlist &&
+
+                                                listasUser.length ? listasUser.map(e => {
+
+                                                    return <div className='griditem'>
+                                                        <Link className='linkPel' to={`/list/${e.id}`}>
+                                                            <img className='griditemImg' key={e.id} />
+                                                            <h4 className='nameMovieP'>{e.name}</h4>
+                                                            <h4 className='descMovieP'>{e.description}</h4>
+                                                        </Link>
+                                                    </div>
+                                                })
+                                                :
+                                                <div className='nolistas'>
+                                                    <h1>you don't have favorite lists yet</h1>
+
+                                                </div>
+                                        }
+
+
+                                    </div>
                                 </div>
                             }
 
