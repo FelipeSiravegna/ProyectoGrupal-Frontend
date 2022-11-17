@@ -82,10 +82,12 @@ export default function Login() {
            :null}
 
           
-
+{userDB.premium ?
           <Button variant="text" onClick={handleShow} color="rojo" className="botones" >
         Compare
           </Button> 
+          : null}
+
           <Modal show={show} onHide={handleClose} className="my-modal" >
         <Modal.Header closeButton>
           <Modal.Title className='tituloModal'>Compare Movies</Modal.Title>
@@ -93,11 +95,7 @@ export default function Login() {
         <Modal.Body> <Compare/> </Modal.Body>
  
       </Modal>
-          <Link className='botones4' to={'/wachlist'}>
-          <Button variant="text" color="rojo" className="botones" >
-          Watchlist
-          </Button>
-          </Link>
+          
 
           <Link className='botones4' to={'/lists'}>
           <Button variant="text" color="rojo" className="botones" >
@@ -129,11 +127,11 @@ export default function Login() {
             <DropdownButton align="end" id="nav-dropdown">
               <div className='dropy'>
 
-              {userDB.director ? 
+              {userDB.premium ? 
                      <Dropdown.Item className='drop'>
-                  <Button variant="text" color="azul" className="botones" >
+                  <Link className='botones4' to={`/createMovie`}><Button variant="text" color="azul" className="botones" >
         Director
-          </Button>
+          </Button></Link>
           </Dropdown.Item>
           : null}
 
@@ -145,24 +143,24 @@ export default function Login() {
                   </Link>
                 </Dropdown.Item>
 
- 
+ {userDB.admin ? 
                   <Dropdown.Item className='drop'>
                     <Link className='botones4' to={'/dashboard'}>
-                      <Button variant="text" color="rojo" className="botones">
+                      <Button variant="text" color="azul" className="botones">
                         Dashboard
                       </Button>
                     </Link>
                   </Dropdown.Item>
-                  
+                  : null}
               
-                  <Dropdown.Item className='drop'><Button variant="text" color="rojo" className="botones">
-                    Following
-                  </Button></Dropdown.Item>
+
 
                   <Dropdown.Item className='drop'> 
+                  <Link className='botones4' to={'/accounts/edit'}>
                   <Button variant="text" color="rojo" className="botones">
                     Settings
                   </Button>
+                  </Link>
                   </Dropdown.Item>
 
 

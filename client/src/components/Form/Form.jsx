@@ -13,7 +13,11 @@ import DateTimePicker from "./DataTimePicker";
 import Button from "./Button";
 import { addMovie, allDirector, allActor, allGenres } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './Form.css'
+import NavbarP from "../NavbarP/NavbarP";
+import fondo from '../media/fondo.jpg'
+
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -21,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(8),
   },
 }));
+
+
 let lang = ["ES", "EN", "FR"];
 const INITIAL_FORM_STATE = {
   name: "",
@@ -73,20 +79,22 @@ const Forms = () => {
   let navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
+  const userDB = useSelector((state) => state.user)
   useEffect(() => {
-    console.log("aqui");
-    dispatch(allDirector());
+    //console.log("aqui");
+    // dispatch(allDirector());
     dispatch(allActor());
     dispatch(allGenres());
   }, [dispatch]);
 
-  let directors = useSelector((state) => state.directors);
+  // let directors = useSelector((state) => state.directors);
   let actors = useSelector((state) => state.actors);
   let genres = useSelector((state) => state.genres);
-  let directores = directors.map((e) => e.name);
-  let actores = actors.map((e) => e.name);
-  let generos = genres.map((e) => e.name);
-
+  // let directores = directors.map((e) => e.name);
+  let actore = actors.map((e) => e.name);
+  let genero = genres.map((e) => e.name);
+  let actores= actore?.unshift('Select an option')
+  let generos= genero?.unshift('Select an option')
   const handleSubmit = (values) => {
     const {
       name,
@@ -129,6 +137,11 @@ const Forms = () => {
   };
 
   return (
+    <div className="formu">
+      <NavbarP/>
+      <h1 className="ndea">Create movie</h1>
+      <br></br>
+      {userDB.premium ?
     <Grid container>
       <Grid item xs={12}></Grid>
       <Grid item xs={12}>
@@ -180,6 +193,10 @@ const Forms = () => {
                     <Select name="language" label="Language" options={lang} />
                   </Grid>
 
+                  <Grid item xs={12}>
+                    <Textfield name="director" label="Director" />
+                  </Grid>
+
                   {/* <Grid item xs={12}>
                     <ComboBox
                       name="director"
@@ -189,24 +206,21 @@ const Forms = () => {
                   </Grid> */}
 
                   <Grid item xs={12}>
-                    <Textfield name="director" label="Director" />
+                    <Tags name="actor" label="Actors" options={actore} />
                   </Grid>
 
                   <Grid item xs={12}>
-                    <Tags name="actor" label="Actors" options={actores} />
-                  </Grid>
-
-                  <Grid item xs={12}>
-                    <Tags name="genre" label="Genres" options={generos} />
+                    <Tags name="genre" label="Genres" options={genero} />
                   </Grid>
 
                   <Grid item xs={12}>
                     <Upload name="image" label="image" />
                   </Grid>
-
+                  
                   <Grid item xs={12}>
                     {<Button>Submit Form</Button>}
                   </Grid>
+                      
                 </Grid>
               </Form>
             </Formik>
@@ -214,7 +228,14 @@ const Forms = () => {
         </Container>
       </Grid>
     </Grid>
+    : <div className="accesoDenegau">
+<h1 className="er">Do you want to create movies? <Link className="ll" to={'/premium'}>SUBSCRIBE TO PREMIUM</Link> to get this and more exclusive benefits</h1>
+      
+      
+      </div>}
+    </div>
   );
 };
 
 export default Forms;
+

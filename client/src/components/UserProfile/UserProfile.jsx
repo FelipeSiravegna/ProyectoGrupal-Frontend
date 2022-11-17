@@ -42,6 +42,10 @@ export default function UserProfile() {
 
     const movie = usuario.map(e=> e.movies)
 
+
+    let listasUser = listas?listas.filter(a=>a.userId === profileId):null
+
+
     const handleFollow = () => {
         if (buttonValue === 'FOLLOW') {
             dispatch(followUser(dbUser.id, profileId));
@@ -160,43 +164,29 @@ export default function UserProfile() {
                             }
                             <br />
                             <br />
+                              
                             <div className='optionsProfile'>
                             <div className='separadorLeft'>
                             <button className={!render ? 'buttonplaylist' : 'buttonplaylistCheck'} name='PlayList' onClick={(e)=> handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
-                            </div>
-                            <div className='separadorRigth'>
-                            <button className={render ? 'buttonfavorite' : 'buttonfavoriteCheck'} name='Favorits' onClick={(e)=> handleRender(e)}><h4>Favorits</h4><h6 className='h3marcadores'>__________</h6></button>
                             </div>
                             </div>
 
                             <div className='gridcontainer'>
                                 
                                 {
-                                
-                                render && movie.length ? movie[0].map(e => {
 
-                        return <div className='griditem'>
-                            <Link className='linkPel' to={`/filmdetails/${e.id}`}>
-                            <img className='griditemImg' key = {e.id} src = {e.image} />
-                            <h4 className='nameMovieP'>{e.name}</h4>
-                            </Link>
-                        </div>
-                                    })
-                                    :
-                                    watch !== undefined ? watch.map(e => {
+                                playlist &&
 
-                                        return <div className='griditem'>
-                                            <Link className='linkPel' to={`/filmdetails/${e.id}`}>
-                                            <img className='griditemImg' key = {e.id} src = {e.image} />
-                                            <h4 className='nameMovieP'>{e.name}</h4>
-                                            </Link>
-                                        </div>
-                                                    })
-                                                    :
-                                                    <div className='nolistas'>
-                                                    <h1>you don't have favorite movies</h1>
-                                                    </div>
+                                listasUser.length? listasUser.map(a=> {
+                                    <div className='lasListas'>
+                                   <h1> {a.name} </h1>
+                                   <h2> {a.description}</h2>
+
+                                   </div>
+                                }):null
                                 }
+                            
+
 
                         </div>
                         </div>

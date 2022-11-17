@@ -79,11 +79,14 @@ const Home = () => {
       {
         !localStorage.username ?
           <div>
-            <img className='fondo'src={fondo} alt="" />22
+            <img className='fondo'src={fondo} alt="" />
             <NavbarP />
             <Carrousel />
             <InfoHome />
-
+            
+            <div className='acordion'>
+<Acordeon className='acordion'/>
+</div>
             <div className='elBuscador'>
               <Searchbar />
             </div>
@@ -103,13 +106,13 @@ const Home = () => {
               } 
             </div >
 
-            <div className='Paginator'>
-              <Paginado />
+           <div className='Paginator'>
+              <Paginado movies={peliculas.count}/>
             </div>
 
             <div className='infoLIK'>
               <PlaylistAddIcon className='favr' sx={{ fontSize: 59 }} color='azul' />
-              <h1 className='infoLike'><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button>TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
+              <h1 className='infoLike'><Link className='ll' to= {'/login'}><Button variant="text" sx={{ fontSize: 19 }} color="rojo">Sign in</Button></Link> TO ACCESS YOUR CUSTOM OR SAVED PLAYLISTS.</h1>
             </div>
           </div>
           : <div>
@@ -132,9 +135,9 @@ const Home = () => {
 
             <h1 className='intro'>DID YOU KNOW THAT BY ACCESSING THE<Link className='ll' to= {'/premium'}><Button className='ll' variant="text" sx={{ fontSize: 19 }} color="amarillo">
               premium
-            </Button></Link>PACK YOU CAN REQUEST A<Button variant="text" sx={{ fontSize: 19 }} color="azul">
+            </Button></Link>PACK YOU CAN REQUEST A<Link className='ll' to= {'/premium'}><Button variant="text" sx={{ fontSize: 19 }} color="azul">
                 director's
-              </Button>ACCOUNT?</h1>
+              </Button></Link>ACCOUNT?</h1>
 
 
 
@@ -161,7 +164,7 @@ const Home = () => {
                 } 
               </div>
             </div>
-            <div className='Paginame'><Paginado /> </div>
+            <div className='Paginame'><Paginado movies={peliculas.count}/> </div>
             </div>
 
 

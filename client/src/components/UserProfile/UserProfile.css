@@ -194,12 +194,23 @@
     transform-origin: center;
 }
 
+
 .gridcontainer{
     display: grid;
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: auto auto auto;
     padding: 10px;
     margin-left: 5%;
 }
+
+
+.buttonsprofile:hover{
+    opacity: 1.2;
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+
+
 
 .griditem{
     padding: 20px;
@@ -244,4 +255,22 @@
     opacity: 0.4;
     margin-left: 100px;
     padding-bottom: 50%;
+}
+
+.lasListas2{
+    background-color: #f44336;
+    color: black;
+    width: 600px;
+    left: 90%;
+    top: 100%;
+
+}
+
+.usernot{
+    background-color: #f44336;
+    color: black;
+    width: 600px;
+    left: 90%;
+    top: 100%;
+
 }
