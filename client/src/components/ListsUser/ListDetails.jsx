@@ -78,7 +78,7 @@ const ListDetails = () => {
 
           {!dueño ?
             <div className='followers'>
-              {ayuda === 0 ?
+              {ayuda !== 0 ?
 
 
                 <Button variant='outlined' color='azul' onClick={() => seguirLista(localStorage.id)} > <h className='letras'>FOLLOW</h>
