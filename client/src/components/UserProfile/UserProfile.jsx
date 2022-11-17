@@ -187,8 +187,7 @@ export default function UserProfile() {
 
                                     <div className='conteiner'>
 
-                                        {/* <UserAvatar urlImage={otherUserInfo.image} userId={otherUserInfo.id} changeimage={changeimage} /> */}
-                                        <img src={otherUserInfo.image}/>
+                                        <UserAvatar urlImage={otherUserInfo.image} userId={otherUserInfo.id} changeimage={changeimage} />
 
                                         <div className='seguidores'><Typography variant="h6" gutterBottom>FOLLOWING</Typography>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{otherUserInfo.following && otherUserInfo.following.length}</Typography>
