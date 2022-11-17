@@ -33,9 +33,9 @@ const FilmDetails = () => {
   const params = useParams();
   const { idFilm } = params
   const filmDetails = useSelector(state => state.detail)
-  const token = useSelector((state)=> state.idToken)
-  const userDB = useSelector((state)=> state.user)
-  
+  const token = useSelector((state) => state.idToken)
+  const userDB = useSelector((state) => state.user)
+
 
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0()
 
@@ -45,21 +45,21 @@ const FilmDetails = () => {
   const [playlist, setPlaylist] = useState(false);
 
 
-  
+
   const list = () => {
     setPlaylist(true)
     if (playlist === true) {
       setPlaylist(false)
     }
   }
-  
+
   const like = () => {
     setFavorito(true)
     if (favorito === true) {
       setFavorito(false)
     }
   }
-  
+
   const save = () => {
 
     if (guardado === false) {
@@ -83,9 +83,9 @@ const FilmDetails = () => {
     dispatch(getMovieDetail(idFilm))
   }, [])
 
-  useEffect(()=>{
-    dispatch(getUserInfo()) 
-  },[token])
+  useEffect(() => {
+    dispatch(getUserInfo())
+  }, [token])
 
 
   //componentWillUnmount
@@ -94,8 +94,8 @@ const FilmDetails = () => {
       dispatch(resetDetail());
     }
   }, [])
-  
-  
+
+
   return (
 
     <div>
@@ -142,7 +142,7 @@ const FilmDetails = () => {
                   {playlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}</Fab>
               </div>
 
-             
+
 
             </div>
             : null}
@@ -173,8 +173,6 @@ const FilmDetails = () => {
               <li>DIRECTOR: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.director.name : null}.</li>
               <br></br>
               <li>CAST: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.cast.map(a => a.name + "," + " ") : null}.</li>
-              <br></br>
-              <li>PRODUCERS: <br></br>{filmDetails.length !== 0 ? filmDetails.fullCast.producers.map(a => a.name + "," + " ") : null}.</li>
             </Tab>
           </Tabs>
 
@@ -200,16 +198,14 @@ const FilmDetails = () => {
           />
         )}
       </div>
-{!localStorage.username ?
+      {!localStorage.username ?
 
-<div className='nda'>
-<h1 className='nda'><Link className='ll' to= {'/login'}><Button sx={{ fontSize: 39 }} color='rojo'>Log in</Button></Link> TO SEE THE REVIEWS OF THIS MOVIE</h1>
-</div>
-: null }
+        <div className='nda'>
+          <h1 className='nda'><Link className='ll' to={'/login'}><Button sx={{ fontSize: 39 }} color='rojo'>Log in</Button></Link> TO SEE THE REVIEWS OF THIS MOVIE</h1>
+        </div>
+        : null}
 
     </div>
-
-
   )
 }
 

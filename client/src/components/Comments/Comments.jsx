@@ -15,7 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllReviews, deleteReviews, addLikes, getLikeCounts} from '../../redux/actions';
+import { getAllReviews, deleteReviews, addLikes, getLikeCounts } from '../../redux/actions';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { width } from '@mui/system';
@@ -24,92 +24,94 @@ import { useSelector } from 'react-redux';
 
 
 
-function Comments({content, name, img, id, idUser, prueba, like, prueba3, userid}) {
-  const dispatch=useDispatch()
+function Comments({ content, name, img, id, idUser, prueba, like, prueba3, userid }) {
+  const dispatch = useDispatch()
 
-  const mg = useSelector((state)=> state.like)
- 
+  const mg = useSelector((state) => state.like)
+
   const [estado, setEstado] = useState('')
- console.log(userid, idUser)
+  console.log(userid, idUser)
 
-let userFind= like.find(e=> e.userId === userid && e.like === true)
-let likeFilter = like.filter(e=> e.like ===true)
+  let userFind = like.find(e => e.userId === userid && e.like === true)
+  let likeFilter = like.filter(e => e.like === true)
 
   const [checked, setChecked] = useState(Boolean(userFind));
 
-  useEffect(()=> 
-  {dispatch(getAllReviews())
+  useEffect(() => {
+    dispatch(getAllReviews())
   }
-  , [dispatch, estado, checked])
+    , [dispatch, estado, checked])
 
-  
-  
+
+
   const handleChange = (e) => {
-    console.log(e.target.checked +" "+ 12)
+    console.log(e.target.checked + " " + 12)
     setChecked(e.target.checked);
     console.log(checked)
     dispatch(addLikes(
-      {like: e.target.checked,
-        reviewId: id, 
-        userId: userid}))
+      {
+        like: e.target.checked,
+        reviewId: id,
+        userId: userid
+      }))
   };
 
- 
-
-function deleteComment (id) {
-  setEstado(id)
-  dispatch(deleteReviews(id))
-}
 
 
-let aber = prueba.filter(a => a.id === id)
-// let hdo = prueba3.map(a=> a === idUser)
-
-return (
-  <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-  <ListItem alignItems="flex-start">
-    <ListItemAvatar>
-      <Avatar alt="Remy Sharp" src={img} />
-    </ListItemAvatar>
-    <ListItemText
-      primary={name}
-      secondary={
-        <React.Fragment>
-          <Typography
-            sx={{ display: 'inline' }}
-            component="span"
-            variant="body2"
-          >      
-          </Typography>
-          <h className='pruebita'>
-          {content}
-          <br></br>
-          <br></br>
-          </h>
-
-<div className='iconicos'>
+  function deleteComment(id) {
+    setEstado(id)
+    dispatch(deleteReviews(id))
+  }
 
 
-              <Box component="span" sx={{color: 'rojo.main'}}>
-              {likeFilter.length? likeFilter.length : null}
-              </Box>
-             
-             <Checkbox  icon={<FavoriteBorder color={!checked && "gris"}/>} checkedIcon={<Favorite color={checked && "rojo"}/>} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }}/>
+  let aber = prueba.filter(a => a.id === id)
+  // let hdo = prueba3.map(a=> a === idUser)
+
+  return (
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp" src={img} />
+        </ListItemAvatar>
+        <ListItemText
+          primary={name}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+              >
+              </Typography>
+              <h className='pruebita'>
+                {content}
+                <br></br>
+                <br></br>
+              </h>
+
+              <div className='iconicos'>
 
 
-          <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={()=>deleteComment(id)}>
-          <DeleteIcon sx={{ fontSize: 20 }} />
-          </Button>
-</div>
+                <Box component="span" sx={{ color: 'rojo.main' }}>
+                  {likeFilter.length ? likeFilter.length : null}
+                </Box>
 
-        </React.Fragment>
-      }
-    />
-  </ListItem>
-  <Divider variant="inset" component="li" />
+                <Checkbox icon={<FavoriteBorder color={!checked && "gris"} />} checkedIcon={<Favorite color={checked && "rojo"} />} checked={checked} onChange={handleChange} inputProps={{ 'aria-label': 'controlled' }} />
 
-</List>
-);
+
+                <Button disabled={Boolean(!aber.length)} size="10px" sx={{ width: 2, color: "azul.main" }} onClick={() => deleteComment(id)}>
+                  <DeleteIcon sx={{ fontSize: 20 }} />
+                </Button>
+              </div>
+
+            </React.Fragment>
+          }
+        />
+      </ListItem>
+      <Divider variant="inset" component="li" />
+
+    </List>
+  );
 
 
 }

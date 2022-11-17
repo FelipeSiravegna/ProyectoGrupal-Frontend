@@ -63,7 +63,7 @@ export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
 //peliculas
 export const getAllMovies = (name = 1) => {
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/movies/rating?page=${name}&ord=DESC`)
+        await axios.get(`/movies/rating?page=${name}&ord=DESC`)
             .then((pelis) => {
                 dispatch({
                     type: GET_ALL_MOVIES,
@@ -79,7 +79,7 @@ export const getAllMovies = (name = 1) => {
 
 export const getMovieDetail = (id) => {
     return async function (dispatch) {
-        const detalle = await axios.get(`http://localhost:3001/detail/${id}`)
+        const detalle = await axios.get(`/detail/${id}`)
         dispatch({
             type: GET_MOVIE_DETAIL,
             payload: detalle.data
@@ -91,7 +91,7 @@ export const getMovieDetail = (id) => {
 export const addMovie= (payload)=>{
     console.log(payload)
     return async(dispatch)=>{
-        await axios.post('http://localhost:3001/createMovie', payload)
+        await axios.post('/createMovie', payload)
         return dispatch({
             type: ADD_MOVIE,
         })
@@ -100,7 +100,7 @@ export const addMovie= (payload)=>{
 
 export const searchByName = (name) => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&page=1`);
+        let result = await axios.get(`/movies/search/?name=${name}&page=1`);
         return dispatch({
             type: SEARCH_BY_NAME,
             payload: result.data
@@ -130,7 +130,7 @@ export const getComingSoon = () => {
 
 export const orderRating = (filtro) => {
     return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/movies/rating/?page=1&ord=${filtro}`)
+        let json = await axios.get(`/movies/rating/?page=1&ord=${filtro}`)
         return dispatch({
             type: ORDER_RATING,
             payload: json.data
@@ -141,7 +141,7 @@ export const orderRating = (filtro) => {
 
 export const orderPopularity = (filtro) => {
     return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/movies/popular/?page=1&ord=${filtro}`)
+        let json = await axios.get(`/movies/popular/?page=1&ord=${filtro}`)
         return dispatch({
             type: ORDER_POPULARITY,
             payload: json.data
@@ -177,7 +177,7 @@ export const filterGenres = (filtro) => {
 
 export const allGenres = () => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/genres`);
+        let result = await axios.get(`/genres`);
         return dispatch({
             type: ALL_GENRES,
             payload: result.data
@@ -188,7 +188,7 @@ export const allGenres = () => {
 
 export const filterDirector = (filtro) => {
     return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/movies/search?director[]=${filtro}`)
+        let json = await axios.get(`/movies/search?director[]=${filtro}`)
         return dispatch({
             type: FILTER_DIRECTOR,
             payload: json.data
@@ -199,7 +199,7 @@ export const get4Search= (envio)=>{
     return async function (dispatch) {
     try{
     console.log("soy el envio:",envio)
-    let routes = `http://localhost:3001/movies/search?`
+    let routes = `/movies/search?`
     console.log("routes1",routes)
     if (envio.genres!=="null") {routes=routes+`genres[]=`+envio.genres+"&"}
     if (envio.director!=="null") {routes=routes+`director[]=`+envio.director+"&"}
@@ -220,7 +220,7 @@ export const get4Search= (envio)=>{
 
 export const allDirector = () => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/directors`);
+        let result = await axios.get(`/directors`);
         return dispatch({
             type: ALL_DIRECTOR,
             payload: result.data
@@ -230,7 +230,7 @@ export const allDirector = () => {
 
 export const allActor= ()=>{
     return async function (dispatch){
-        let result = await axios.get(`http://localhost:3001/actors`);
+        let result = await axios.get(`/actors`);
         return dispatch({
             type: ALL_ACTOR,
             payload:result.data
@@ -274,7 +274,7 @@ export const searchCompare = (name) => {
 export const searchCompare2 = (name) => {
 
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/movies/search/?name=${name}&offset=true`);
+        let result = await axios.get(`/movies/search/?name=${name}&offset=true`);
         return dispatch({
             type: SEARCH_COMPARE2,
             payload: result.data
@@ -283,7 +283,7 @@ export const searchCompare2 = (name) => {
 }
 export const getAllReviews = () => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/reviews`);
+        let result = await axios.get(`/reviews`);
         return dispatch({
             type: GET_ALL_REVIEWS,
             payload: result.data
@@ -292,7 +292,7 @@ export const getAllReviews = () => {
 }
 export const addReviews = (payload) => {
     return async function (dispatch) {
-        await axios.post(`http://localhost:3001/reviews`, payload);
+        await axios.post(`/reviews`, payload);
         return dispatch({
             type: ADD_REVIEW,
         })
@@ -300,7 +300,7 @@ export const addReviews = (payload) => {
 }
 export const deleteReviews = (id) => {
     return async function (dispatch) {
-        await axios.delete(`http://localhost:3001/reviews/${id}`);
+        await axios.delete(`/reviews/${id}`);
         return dispatch({
             type: DELETE_REVIEWS,
         })
@@ -308,7 +308,7 @@ export const deleteReviews = (id) => {
 }
 export const getLikeCounts = () => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/likes`);
+        let result = await axios.get(`/likes`);
         return dispatch({
             type: GET_LIKES_COUNT,
             payload: result.data
@@ -317,7 +317,7 @@ export const getLikeCounts = () => {
 }
 export const addLikes = (payload) => {
     return async function (dispatch) {
-        await axios.post(`http://localhost:3001/likes`, payload);
+        await axios.post(`/likes`, payload);
         return dispatch({
             type: ADD_LIKES,
         })
@@ -340,7 +340,7 @@ export const allUsers = () => {
 
 export const UserPremium = (email) => {
     return async function (dispatch) {
-        let result = await axios.get(`http://localhost:3001/premium/?email=${email}`);
+        let result = await axios.get(`/premium/?email=${email}`);
         return dispatch({
             type: USER_PREMIUM,
             payload: result.data
@@ -360,7 +360,7 @@ export const userCreate = (form) => {
     return async function () {
         try {
 
-            let response = await axios.post('http://localhost:3001/user', form)
+            let response = await axios.post('/user', form)
             return response
 
         } catch (error) {
@@ -377,7 +377,7 @@ export const checkUserInfo = (body) => {
     return async function (dispatch) {
         //console.log('body:',body)
         try {
-            let json = await axios.post('http://localhost:3001/login', body)
+            let json = await axios.post('/login', body)
             await localStorage.setItem("token", `${json.data.token}`)
             return dispatch({
                 type: POST_USER_LOG,
@@ -393,7 +393,7 @@ export const checkUserInfo = (body) => {
 export const getUserInfo = () => {
     return async function (dispatch) {
         try {
-            let json = await axios.get(`http://localhost:3001/users/user/`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+            let json = await axios.get(`/users/user/`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
             if (json.data) {
                 localStorage.setItem("username", `${json.data.username.replace("585", " ")}`)
                 localStorage.setItem("email", `${json.data.email}`)
@@ -414,7 +414,7 @@ export const getUserInfo = () => {
 export const subscribe = () => {
     return async function (dispatch) {
         const email = { email: localStorage.getItem("email") }
-        const response = await axios.post(`http://localhost:3001/subscribe`, email)
+        const response = await axios.post(`/subscribe`, email)
         if (response.data) {
             return window.open(response.data.init_point, '_blank')
         }
@@ -426,15 +426,15 @@ export const handleLoginExternal = (info) => {
     return async function () {
         const body = { identificator: info.email, pass: info.password }
         try {
-            let TryRegister = await axios.post('http://localhost:3001/user', info)
+            let TryRegister = await axios.post('/user', info)
             if (TryRegister.status == 200) {
-                let json = await axios.post('http://localhost:3001/login', body)
+                let json = await axios.post('/login', body)
                 localStorage.setItem("token", `${json.data.token}`)
                 return
             }
         } catch (error) {
             if (error.response.data.status == 403) {
-                let json = await axios.post('http://localhost:3001/login', body)
+                let json = await axios.post('/login', body)
                 localStorage.setItem("token", `${json.data.token}`)
                 return
             }
@@ -448,7 +448,7 @@ export const handleLoginExternal = (info) => {
 
 export const createList = (id, payload) => {
     return async function (dispatch){
-        let hola = await axios.post(`http://localhost:3001/lists/list/${id}`, payload);
+        let hola = await axios.post(`/lists/list/${id}`, payload);
             return dispatch({
                 type: CREATE_LIST,
             })
@@ -458,7 +458,7 @@ export const createList = (id, payload) => {
 
 export const addMovieToList= (listId, movieId ) => {
     return async function (dispatch){
-        await axios.put(`http://localhost:3001/lists/list/${listId}?add=true&movieId=${movieId}`);
+        await axios.put(`/lists/list/${listId}?add=true&movieId=${movieId}`);
             return dispatch({
                 type: ADD_MOVIE_TO_LIST,
             })
@@ -467,7 +467,7 @@ export const addMovieToList= (listId, movieId ) => {
 
 export const removeMovieToList= (listId, movieId ) => {
     return async function (dispatch){
-        await axios.put(`http://localhost:3001/lists/list/${listId}?remove=true&movieId=${movieId}`);
+        await axios.put(`/lists/list/${listId}?remove=true&movieId=${movieId}`);
             return dispatch({
                 type: REMOVE_MOVIE_TO_LIST,
             })
@@ -477,7 +477,7 @@ export const removeMovieToList= (listId, movieId ) => {
 
 export const getList = (listId)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/lists`)
+        await axios.get(`/lists`)
         .then((pelis) => {
             dispatch ({
                 type: GET_LIST,
@@ -494,7 +494,7 @@ export const getList = (listId)=>{
 
 export const listDetails = (listId)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/lists/list/${listId}`)
+        await axios.get(`/lists/list/${listId}`)
         .then((pelis) => {
             dispatch ({
                 type: LIST_DETAILS,
@@ -509,7 +509,7 @@ export const listDetails = (listId)=>{
 
 export const editList= (listId, body) => {
     return async function (dispatch){
-        await axios.put(`http://localhost:3001/lists/list/${listId}/update`, body);
+        await axios.put(`/lists/list/${listId}/update`, body);
             return dispatch({
                 type: EDIT_LIST,
             })
@@ -518,7 +518,7 @@ export const editList= (listId, body) => {
 
 export const deleteList= (listId) => {
     return async function (dispatch){
-        await axios.put(`http://localhost:3001/lists/manageDeletion/${listId}?action=delete`);
+        await axios.put(`/lists/manageDeletion/${listId}?action=delete`);
             return dispatch({
                 type: DELETE_LIST,
             })
@@ -527,7 +527,7 @@ export const deleteList= (listId) => {
 
 export const followLists = (id, listId) => {
     return async function (dispatch){
-        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=follow`);
+        let hola = await axios.post(`/lists/list/${id}?list=${listId}&action=follow`);
             return dispatch({
                 type: FOLLOW_LIST
             })
@@ -536,7 +536,7 @@ export const followLists = (id, listId) => {
 
 export const unFollowList = (id, listId) => {
     return async function (dispatch){
-        let hola = await axios.post(`http://localhost:3001/lists/list/${id}?list=${listId}&action=unfollow`);
+        let hola = await axios.post(`/lists/list/${id}?list=${listId}&action=unfollow`);
             return dispatch({
                 type: UN_FOLLOW_LIST
             })
@@ -546,7 +546,7 @@ export const unFollowList = (id, listId) => {
 
 export const followedList = (idUser)=>{
     return async function (dispatch) {
-        await axios.get(`http://localhost:3001/lists/followedLists/${idUser}`)
+        await axios.get(`/lists/followedLists/${idUser}`)
         .then((pelis) => {
             dispatch ({
                 type: FOLLOWED_LIST,
@@ -592,7 +592,7 @@ export const putUser = (id,changes) =>{
     return async function (){
         try {
 
-            const response = await axios.put('http://localhost:3001/user/' + id,changes)
+            const response = await axios.put('/user/' + id,changes)
             return response
             
         } catch (error) {
