@@ -61,10 +61,22 @@ const FilmDetails = () => {
   }
   
   const save = () => {
-    setGuardado(true)
-    if (guardado === true) {
+
+    if (guardado === false) {
+      setGuardado(true)
+
+      localStorage.setItem('mov', JSON.stringify([wach]));
+      localStorage.setItem(`mov${localStorage.length +1}`, JSON.stringify([wach]));
+    }
+    else{
       setGuardado(false)
     }
+  }
+
+  let wach = {
+    id: filmDetails.id,
+    name: filmDetails.name,
+    image: filmDetails.image
   }
 
   useEffect(() => {
@@ -116,7 +128,7 @@ const FilmDetails = () => {
           <QueueIcon color='gris' sx={{ fontSize: 30 }} className='icono3' />
           <p className='valores3'>{filmDetails.saves ? filmDetails.save : 0}</p>
 
-          <div>{token ?
+          <div>{localStorage.token ?
 
             <div className='logeado'>
               <div className='interacción'>

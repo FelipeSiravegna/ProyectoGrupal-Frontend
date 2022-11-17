@@ -5,7 +5,7 @@
 
 .gridcontainer{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 32% 32% 32%;
     padding: 10px;
     margin-left: 5%;
 }
@@ -55,4 +55,14 @@
 .icono{
     margin-left: 20px;
     margin-top: 5px;
+}
+
+.nolistas{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
+    opacity: 0.4;
+    margin-left: 100px;
+    padding-bottom: 50%;
 }
