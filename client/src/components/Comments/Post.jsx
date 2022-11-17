@@ -64,7 +64,7 @@ function Post({ movieId, userId, userImg }) {
   //console.log(otramas)
 
   const loggedUserReviews = reviewsV2.map(rev => {
-    if (rev.userId === userDb.id) {
+    if (rev.userId === parseInt(localStorage.id)) {
       return rev;
     }
   })
