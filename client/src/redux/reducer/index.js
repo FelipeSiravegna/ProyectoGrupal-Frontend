@@ -51,6 +51,7 @@ import {
   GET_USER_LISTS,
   GET_ALL_REVIEWS_V2,
   FOLLOWED_LIST,
+  ALL_MOVIES
 } from "../actions";
 
 
@@ -251,6 +252,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         items:payload
       };
+      case ALL_MOVIES:
+      return {
+        ...state,
+        items:payload
+      };
       case AVAILABLE_USERS:
       return {
         ...state,
@@ -287,7 +293,8 @@ export default function reducer(state = initialState, { type, payload }) {
           case GET_LIST:
         return{
             ...state,
-            list: payload
+            list: payload,
+            items:payload
           }
           case LIST_DETAILS:
         return{

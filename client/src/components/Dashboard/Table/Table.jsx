@@ -26,6 +26,7 @@ function preventDefault(event) {
       
       <React.Fragment>
         {title.length!==0&&properties.length!==0&&action?
+        
         <>
         <Title>{title}</Title>
         <Table size="small">
@@ -35,7 +36,7 @@ function preventDefault(event) {
               {!!action[0]?<TableCell>{action[0]}</TableCell>:null}
             </TableRow>
           </TableHead>
-          {items.length!=0?
+          {items.length!=0 && properties.every(i=>{return Object.keys(items[0]).includes(i)})?
           <TableBody>
               {items.map((j)=>
                 (<TableRow key={j.id}>
