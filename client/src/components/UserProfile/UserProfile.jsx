@@ -89,9 +89,15 @@ export default function UserProfile() {
 
                                     <div className='name'><Typography variant="h3" gutterBottom>{dbUser.username}</Typography>
 
-                                        <div className='edit'>
-                                            <Button onClick={() => setChangeimage(false)} variant="outlined">CHANGE IMAGE</Button>
-                                        </div>
+                                        {
+                                            dbUser.premium === true
+                                            ?
+                                            <div className='edit'>
+                                                <Button onClick={() => setChangeimage(false)} variant="outlined">CHANGE IMAGE</Button>
+                                            </div>
+                                            :
+                                            null
+                                        }
 
                                         {
                                             !changeimage ?
@@ -118,15 +124,6 @@ export default function UserProfile() {
                                             <Typography variant="h6">FOLLOWERS</Typography></button>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.followers && dbUser.followers.length}</Typography>
                                         </div>
-
-
-                                        <Modal show={show} onHide={handleClose} className="my-modal" >
-                                            <Modal.Header closeButton>
-                                                <Modal.Title className='tituloModal'>{follows}</Modal.Title>
-                                            </Modal.Header>
-                                            <Modal.Body> ghg </Modal.Body>
-
-                                        </Modal>
 
                                         {
                                             dbUser.id !== profileId
