@@ -75,32 +75,28 @@ function Post({ movieId, userId, userImg }) {
       <div className="post">
         <div className="post__header">
 
-          {
-            loggedUserReviews.length === 0 || userDb.premium === true
-              ?
-              <form className="post__form" onSubmit={handleSubmit} style={{ color: "#f44336" }} >
-                <Avatar alt="Remy Sharp" src={userImg} className='avatar' sx={{ width: 56, height: 56 }} />
-                <TextField
-                  label="add review..."
-                  className="post__input"
-                  placeholder="add review..."
-                  value={estado}
-                  onChange={e => setEstado(e.target.value)}
+          <form className="post__form" onSubmit={handleSubmit} style={{ color: "#f44336" }} >
+            <Avatar alt="Remy Sharp" src={userImg} className='avatar' sx={{ width: 56, height: 56 }} />
+            <TextField
+              label="add review..."
+              className="post__input"
+              placeholder="add review..."
+              value={estado}
+              onChange={e => setEstado(e.target.value)}
 
-                />
-                <Button
-                  variant="contained"
-                  size="small"
-                  endIcon={<SendIcon />}
-                  type="submit"
-                  style={{ color: "#f44336" }}
-                >
-                  Send
-                </Button>
-              </form>
-              :
-              null
-          }
+            />
+            <Button
+              variant="contained"
+              size="small"
+              endIcon={<SendIcon />}
+              type="submit"
+              style={{ color: "#f44336" }}
+            >
+              Send
+            </Button>
+          </form>
+
+
           <br></br>
           <br></br>
           <br></br>
