@@ -168,7 +168,7 @@ export default function UserProfile() {
                                     })
                                     :
                                     <div className='nolistas'>
-                                    <h1>you don't have favorite lists yet</h1>
+                                    <h1>you don't have lists yet</h1>
                     
                                     </div>
                                }
