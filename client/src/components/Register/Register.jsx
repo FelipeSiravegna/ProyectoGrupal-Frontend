@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
 import style from './form.module.css'
-import { Link } from 'react-router-dom'
 import NavbarP from '../NavbarP/NavbarP'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import fondoRegister from '../media/LogoCompleto.png'
 import {userCreate,checkUserInfo,allUsers} from '../../redux/actions'
-import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Register(){
@@ -98,8 +96,6 @@ export default function Register(){
         <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
         Submit
       </Button>
-      <Button onClick={(e)=>{dispatch(checkUserInfo(body))}}>enviar</Button>
-      <Button onClick={(e)=>{console.log(state)}}>ver datos</Button>
             </div>
 
            </form>
