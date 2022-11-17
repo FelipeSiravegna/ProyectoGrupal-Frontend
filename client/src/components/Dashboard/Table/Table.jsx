@@ -32,7 +32,7 @@ function preventDefault(event) {
         <Table size="small">
           <TableHead>
           <TableRow>
-              {properties.map((i)=>{return (<TableCell>{i}</TableCell>)})}
+              {properties ? properties.map((i)=>{return (<TableCell>{i}</TableCell>)}) : null}
               {!!action[0]?<TableCell>{action[0]}</TableCell>:null}
             </TableRow>
           </TableHead>
