@@ -41,6 +41,7 @@ export default function UserProfile() {
     useEffect(() => {
         dispatch(getAllMovies(pagina || 1));
         dispatch(getList());
+        dispatch(getOtherUserInfo(profileId));
     }, [])
 
     const movie = usuario.map(e => e.movies)
