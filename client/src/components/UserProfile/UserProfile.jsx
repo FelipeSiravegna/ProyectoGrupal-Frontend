@@ -45,7 +45,7 @@ export default function UserProfile() {
 
     const movie = usuario.map(e=> e.movies)
 
-    console.log(movie.length)
+    let listasUser = listas?listas.filter(a=>a.userId === profileId):null
 
     const handleFollow = () => {
         if (buttonValue === 'FOLLOW') {
@@ -159,21 +159,15 @@ export default function UserProfile() {
                                 {
                                 playlist &&
 
-                                movie.length ? movie[0].map(e => {
+                                listasUser.length? listasUser.map(a=> {
+                                    <div className='lasListas'>
+                                   <h1> {a.name} </h1>
+                                   <h2> {a.description}</h2>
 
-                        return <div className='griditem'>
-                            <Link className='linkPel' to={`/filmdetails/${e.id}`}>
-                            <img className='griditemImg' key = {e.id} src = {e.image} />
-                            <h4 className='nameMovieP'>{e.name}</h4>
-                            </Link>
-                        </div>
-                                    })
-                                    :
-                                    <div className='nolistas'>
-                                    <h1>you don't have favorite lists yet</h1>
-                    
-                                    </div>
+                                   </div>
+                                }):null
                                 }
+                            
                                 
 
                         </div>

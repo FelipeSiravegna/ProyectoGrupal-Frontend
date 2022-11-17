@@ -13,7 +13,11 @@ import DateTimePicker from "./DataTimePicker";
 import Button from "./Button";
 import { addMovie, allDirector, allActor, allGenres } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './Form.css'
+import NavbarP from "../NavbarP/NavbarP";
+import fondo from '../media/fondo.jpg'
+
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -21,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(8),
   },
 }));
+
+
 let lang = ["ES", "EN", "FR"];
 const INITIAL_FORM_STATE = {
   name: "",
@@ -73,8 +79,9 @@ const Forms = () => {
   let navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
+  const userDB = useSelector((state) => state.user)
   useEffect(() => {
-    console.log("aqui");
+    //console.log("aqui");
     // dispatch(allDirector());
     dispatch(allActor());
     dispatch(allGenres());
@@ -130,6 +137,11 @@ const Forms = () => {
   };
 
   return (
+    <div className="formu">
+      <NavbarP/>
+      <h1 className="ndea">Create movie</h1>
+      <br></br>
+      {userDB.premium ?
     <Grid container>
       <Grid item xs={12}></Grid>
       <Grid item xs={12}>
@@ -204,10 +216,11 @@ const Forms = () => {
                   <Grid item xs={12}>
                     <Upload name="image" label="image" />
                   </Grid>
-
+                  
                   <Grid item xs={12}>
                     {<Button>Submit Form</Button>}
                   </Grid>
+                      
                 </Grid>
               </Form>
             </Formik>
@@ -215,6 +228,12 @@ const Forms = () => {
         </Container>
       </Grid>
     </Grid>
+    : <div className="accesoDenegau">
+<h1 className="er">Do you want to create movies? <Link className="ll" to={'/premium'}>SUBSCRIBE TO PREMIUM</Link> to get this and more exclusive benefits</h1>
+      
+      
+      </div>}
+    </div>
   );
 };
 
