@@ -179,7 +179,7 @@ export default function UserProfile() {
                         :
                         <div className='fondo23'>
                            
-                               {} token &&
+                                {token &&
                                 <div>
 
                                     <div className='name'><Typography variant="h3" gutterBottom>{otherUserInfo.username}</Typography></div>

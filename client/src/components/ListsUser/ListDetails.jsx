@@ -95,18 +95,18 @@ function removeFilm(b){
       <AddMovieList idList={idList} lista={lista}/>
       : null}
 
+
       <ListGroup as="ol" numbered>
 
 <h2 className='elnombre'><img className='loge' src={Logo}></img>{lista.name}</h2>     
 <h3 className='ladesc2'>By: {lista.user ? lista.user.username : null} </h3>
 <h3 className='ladesc'>{lista.description}</h3>
+
 {lista.movies? lista.movies.map(a => {return( 
+  <div className='lalista2'>
       <ListGroup.Item className='lalista'>
-      
 <img className='listImg' src={a.image} alt="" />
 <h className="elnombresito">{a.name}</h>
-
-
 <Badge bg="none" pill className='ojo'> 
 <Link to={`/filmdetails/${a.id}`}>
 <RemoveRedEyeIcon color='azul'/>
@@ -121,14 +121,12 @@ function removeFilm(b){
         </Button>
         </Badge>
         : null}
-
-
-
-
         
 
 </ListGroup.Item>
-)}): <div>
+</div>
+)}) : 
+<div>
 <h1 className='nd'>This list does not contain movies</h1>
 </div>
 }
