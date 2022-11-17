@@ -7,7 +7,7 @@ import { getAllMovies, pages } from '../../redux/actions';
 
 
 
-export default function Paginado() {
+export default function Paginado({movies}) {
   let dispatch = useDispatch()
   let pagina = useSelector(state => (state.page))
   let peliculas = useSelector(state => (state.peliculas))
@@ -18,17 +18,20 @@ export default function Paginado() {
     dispatch(getAllMovies(p))
   }
     
- 
+ let counts = Math.ceil(movies /10)
+ console.log(counts)
 
   return (
 <div className='elPaginado'>
     <Stack spacing={2}>
-      <Pagination count={9} color="rojo" sx={{button:{color: '#ffffff'}}} onChange={handleChange}/>
+      <Pagination count={counts===0? 1: counts } color="rojo" sx={{button:{color: '#ffffff'}}} onChange={handleChange}/>
     </Stack>
     </div>
 
 
   );
 }
+
+
 
 
