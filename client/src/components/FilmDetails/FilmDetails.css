@@ -156,7 +156,8 @@
 
 .interaccion {
     position: relative;
-    top: 10%
+    top: 10%;
+    background-color: aliceblue;
 }
 
 .link-muted {

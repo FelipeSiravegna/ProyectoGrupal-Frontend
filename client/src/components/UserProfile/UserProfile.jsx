@@ -34,8 +34,10 @@ export default function UserProfile() {
     const [follows, setFollows] = useState('');
 
     const listas = useSelector(state => (state.list))
+
     let usuario = listas.filter(a => `${a.userId}` === localStorage.id)
     let listasUser = listas ? listas.filter(a => a.userId === profileId) : null
+
     const [buttonValue, setButtonValue] = useState('FOLLOW');
 
     useEffect(() => {
@@ -43,6 +45,7 @@ export default function UserProfile() {
         dispatch(getList());
         dispatch(getOtherUserInfo(profileId));
     }, [])
+
 
     const movie = usuario.map(e => e.movies)
 
@@ -142,6 +145,7 @@ export default function UserProfile() {
                             <br />
                             <br />
 
+
                             <div className='optionsProfile'>
                                 <div className='separadorLeft'>
                                     <button className='buttonsprofile' name='PlayList' onClick={(e) => handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
@@ -151,6 +155,7 @@ export default function UserProfile() {
                             <div className='gridcontainer'>
 
                                 {
+
 
                                     playlist &&
 
@@ -166,11 +171,10 @@ export default function UserProfile() {
                                         })
                                         :
                                         <div className='nolistas'>
-                                            <h1>you don't have favorite lists yet</h1>
+                                            <h1>You don't have lists yet</h1>
 
                                         </div>
                                 }
-
 
                             </div>
                         </div>
@@ -178,6 +182,7 @@ export default function UserProfile() {
                         <div className='fondo23'>
 
                             {token &&
+
                                 <div>
 
                                     <div className='name'><Typography variant="h3" gutterBottom>{otherUserInfo.username}</Typography></div>
