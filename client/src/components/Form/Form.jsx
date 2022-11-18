@@ -6,18 +6,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, Grid } from "@material-ui/core";
 import Textfield from "./Textfield";
 import Select from "./Select";
-import ComboBox from "./AutoComplete";
 import Tags from "./tags";
 import Upload from "./Upload";
 import DateTimePicker from "./DataTimePicker";
 import Button from "./Button";
-import { addMovie, allDirector, allActor, allGenres } from "../../redux/actions/index";
+import { addMovie, allActor, allGenres } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import './Form.css'
 import NavbarP from "../NavbarP/NavbarP";
-import fondo from '../media/fondo.jpg'
-
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -26,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 let lang = ["ES", "EN", "FR"];
+
 const INITIAL_FORM_STATE = {
   name: "",
   description: "",
@@ -42,6 +39,7 @@ const INITIAL_FORM_STATE = {
   actor: [],
   genre: [],
 };
+
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string().typeError("This field is required").required("Required"),
   description: Yup.string()
@@ -75,6 +73,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .required("You can't leave this blank.")
     .nullable(),
 });
+
 const Forms = () => {
   let navigate = useNavigate();
   const classes = useStyles();
@@ -93,8 +92,9 @@ const Forms = () => {
   // let directores = directors.map((e) => e.name);
   let actore = actors.map((e) => e.name);
   let genero = genres.map((e) => e.name);
-  let actores= actore?.unshift('Select an option')
-  let generos= genero?.unshift('Select an option')
+  let actores = actore?.unshift('Select an option')
+  let generos = genero?.unshift('Select an option')
+
   const handleSubmit = (values) => {
     const {
       name,
@@ -110,6 +110,7 @@ const Forms = () => {
       genre,
       language,
     } = values;
+
     let datos = {
       name,
       image,
@@ -138,66 +139,66 @@ const Forms = () => {
 
   return (
     <div className="formu">
-      <NavbarP/>
+      <NavbarP />
       <h1 className="ndea">Create movie</h1>
       <br></br>
       {userDB.premium ?
-    <Grid container>
-      <Grid item xs={12}></Grid>
-      <Grid item xs={12}>
-        <Container maxWidth="md">
-          <div className={classes.formWrapper}>
-            <Formik
-              initialValues={{
-                ...INITIAL_FORM_STATE,
-              }}
-              validationSchema={FORM_VALIDATION}
-              onSubmit={handleSubmit}
-            >
-              <Form>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <Textfield name="name" label="Movie Name" />
-                  </Grid>
+        <Grid container>
+          <Grid item xs={12}></Grid>
+          <Grid item xs={12}>
+            <Container maxWidth="md">
+              <div className={classes.formWrapper}>
+                <Formik
+                  initialValues={{
+                    ...INITIAL_FORM_STATE,
+                  }}
+                  validationSchema={FORM_VALIDATION}
+                  onSubmit={handleSubmit}
+                >
+                  <Form>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        <Textfield name="name" label="Movie Name" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield
-                      name="description"
-                      label="Description"
-                      multiline={true}
-                      minRows={4}
-                    />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield
+                          name="description"
+                          label="Description"
+                          multiline={true}
+                          minRows={4}
+                        />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <DateTimePicker name="releaseDate" label="Release Date" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <DateTimePicker name="releaseDate" label="Release Date" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield name="length" label="Length" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield name="length" label="Length" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield name="rating" label="Rating" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield name="rating" label="Rating" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield name="popularity" label="Popularity" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield name="popularity" label="Popularity" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield name="trailer" label="Trailer" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield name="trailer" label="Trailer" />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Select name="language" label="Language" options={lang} />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Select name="language" label="Language" options={lang} />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Textfield name="director" label="Director" />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Textfield name="director" label="Director" />
+                      </Grid>
 
-                  {/* <Grid item xs={12}>
+                      {/* <Grid item xs={12}>
                     <ComboBox
                       name="director"
                       label="Director"
@@ -205,34 +206,32 @@ const Forms = () => {
                     />
                   </Grid> */}
 
-                  <Grid item xs={12}>
-                    <Tags name="actor" label="Actors" options={actore} />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Tags name="actor" label="Actors" options={actore} />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Tags name="genre" label="Genres" options={genero} />
-                  </Grid>
+                      <Grid item xs={12}>
+                        <Tags name="genre" label="Genres" options={genero} />
+                      </Grid>
 
-                  <Grid item xs={12}>
-                    <Upload name="image" label="image" />
-                  </Grid>
-                  
-                  <Grid item xs={12}>
-                    {<Button>Submit Form</Button>}
-                  </Grid>
-                      
-                </Grid>
-              </Form>
-            </Formik>
-          </div>
-        </Container>
-      </Grid>
-    </Grid>
-    : <div className="accesoDenegau">
-<h1 className="er">Do you want to create movies? <Link className="ll" to={'/premium'}>SUBSCRIBE TO PREMIUM</Link> to get this and more exclusive benefits</h1>
-      
-      
-      </div>}
+                      <Grid item xs={12}>
+                        <Upload name="image" label="image" />
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        {<Button>Submit Form</Button>}
+                      </Grid>
+
+                    </Grid>
+                  </Form>
+                </Formik>
+              </div>
+            </Container>
+          </Grid>
+        </Grid>
+        : <div className="accesoDenegau">
+          <h1 className="er">Do you want to create movies? <Link className="ll" to={'/premium'}>SUBSCRIBE TO PREMIUM</Link> to get this and more exclusive benefits</h1>
+        </div>}
     </div>
   );
 };

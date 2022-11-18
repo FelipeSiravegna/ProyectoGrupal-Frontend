@@ -1,4 +1,3 @@
-
 .contenedor-titulo-controler {
     display: flex;
     justify-content: space-between;
@@ -23,8 +22,6 @@
 .contenedor-titulo-controler .indicadores button.activo {
     background: red;
 }
-
-
 
 .peliculas-recomendadas {
     margin-bottom: 70px;
@@ -64,8 +61,6 @@
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
     right: 0;
 }
-
-
 
 .peliculas-recomendadas .contenedor-carrusel {
     width: 100%;

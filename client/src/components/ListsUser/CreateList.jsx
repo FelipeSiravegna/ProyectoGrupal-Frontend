@@ -24,20 +24,18 @@ const CreateList = () => {
     dispatch(getListsByUser(localStorage.id))
   }, [show, name, description])
 
-
-function creacion (e){
-e.preventDefault()
-if(name.length > 30) return document.getElementById('errores').innerHTML=`the maximum number of characters allowed is 30`
-dispatch(createList(localStorage.id,{
-    name: name,
-    description: description,
-    ownerUserId:localStorage.id
-}))
-setShow(false)
-}
+  function creacion(e) {
+    e.preventDefault()
+    if (name.length > 30) return document.getElementById('errores').innerHTML = `the maximum number of characters allowed is 30`
+    dispatch(createList(localStorage.id, {
+      name: name,
+      description: description,
+      ownerUserId: localStorage.id
+    }))
+    setShow(false)
+  }
 
   const userLists = useSelector(state => state.userLists);
-
 
   function creacion(e) {
     if (name.length > 30) return document.getElementById('errores').innerHTML = `the maximum number of characters allowed is 30`
@@ -48,15 +46,11 @@ setShow(false)
     setShow(false)
   }
 
-  const getPremiumAlert = () => {
-    alert('Become a premium user to create more lists!');
-  }
-
   if (dbUser !== null) {
     return (
       <>
-     {
-          userLists.length < 3  || dbUser.premium === true || userLists.message === "The user has no lists created"
+        {
+          userLists.length < 3 || dbUser.premium === true || userLists.message === "The user has no lists created"
             ?
             <Button variant="contained" color='rojo' onClick={handleShow}>
               Create List
@@ -64,7 +58,6 @@ setShow(false)
             :
             null
         }
-
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Create List</Modal.Title>
@@ -103,7 +96,5 @@ setShow(false)
     );
   }
 }
-
-
 
 export default CreateList

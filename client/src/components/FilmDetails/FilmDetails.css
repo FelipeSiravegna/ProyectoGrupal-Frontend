@@ -1,5 +1,4 @@
 .Contenedor {
-
     margin-top: -5%;
 }
 
@@ -43,10 +42,6 @@
 
 }
 
-
-
-
-
 .Tab {
     position: relative;
     color: aliceblue;
@@ -57,14 +52,11 @@
     background-color: 0, 0, 0
 }
 
-
 .tabs {
     display: inline-flex;
-   background-color: rgb(48, 48, 48) !important;
-   border-radius: 10px;
-  }
-
-
+    background-color: rgb(48, 48, 48) !important;
+    border-radius: 10px;
+}
 
 .cast>li {
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -85,11 +77,7 @@
 .comentarios {
     margin-top: 20%;
     position: relative;
-
-
 }
-
-
 
 .icono {
     margin-top: -10%;
@@ -144,7 +132,6 @@
     margin-left: -30%;
 }
 
-
 #ratingDet {
     display: block;
     position: absolute;
@@ -168,7 +155,6 @@
     color: #1266f1;
 }
 
-
 .ola {
     width: 800px;
     background-color: white;
@@ -180,24 +166,22 @@
     top: 24%
 }
 
-
-.nene{
-        position: absolute;
-        font-size: 12px;
-        color: white;
-        font-family: 'Roboto';
-        text-shadow: 1px 1px #181818;
-        right: 0%;
-        top: 20%;
-    }
-
-.nda{
+.nene {
     position: absolute;
-        color:#f44336;
-            text-shadow: 1px 0.1px rgb(0, 0, 0);
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            text-align: center;
-            width: 300px;
-            left: 30%;
-        
-    }
+    font-size: 12px;
+    color: white;
+    font-family: 'Roboto';
+    text-shadow: 1px 1px #181818;
+    right: 0%;
+    top: 20%;
+}
+
+.nda {
+    position: absolute;
+    color: #f44336;
+    text-shadow: 1px 0.1px rgb(0, 0, 0);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    width: 300px;
+    left: 30%;
+}

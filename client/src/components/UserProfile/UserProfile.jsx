@@ -1,25 +1,18 @@
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import NavbarP from '../NavbarP/NavbarP';
-import { useAuth0 } from "@auth0/auth0-react";
-import ListFav from '../List/List';
-import PlayList from '../playListas/Playlist';
 import './UserProfile.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { filterGenres, getAllMovies, getOtherUserInfo, followUser, unfollowUser, getList } from '../../redux/actions';
+import { getAllMovies, getOtherUserInfo, followUser, unfollowUser, getList } from '../../redux/actions';
 import UserAvatar from '../UserAvatar/UserAvatar.jsx';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
-import Modal from 'react-bootstrap/Modal';
-
 
 export default function UserProfile() {
-
     const url = window.location.href;
     let profileId = url[url.length - 1];
     profileId = parseInt(profileId);
-
 
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.movies))
@@ -45,7 +38,6 @@ export default function UserProfile() {
         dispatch(getList());
         dispatch(getOtherUserInfo(profileId));
     }, [])
-
 
     const movie = usuario.map(e => e.movies)
 
@@ -77,8 +69,6 @@ export default function UserProfile() {
     if (dbUser !== null) {
         return (
             <div>
-
-
                 <NavbarP />
                 {
                     profileId === dbUser.id ?
@@ -89,19 +79,16 @@ export default function UserProfile() {
                             {
                                 token &&
                                 <div>
-
                                     <div className='name'><Typography variant="h3" gutterBottom>{dbUser.username}</Typography>
-
                                         {
                                             dbUser.premium === true
-                                            ?
-                                            <div className='edit'>
-                                                <Button onClick={() => setChangeimage(false)} variant="outlined">CHANGE IMAGE</Button>
-                                            </div>
-                                            :
-                                            null
+                                                ?
+                                                <div className='edit'>
+                                                    <Button onClick={() => setChangeimage(false)} variant="outlined">CHANGE IMAGE</Button>
+                                                </div>
+                                                :
+                                                null
                                         }
-
                                         {
                                             !changeimage ?
                                                 <div className='cancel'>
@@ -113,21 +100,16 @@ export default function UserProfile() {
                                                 </div>
                                         }
                                     </div>
-
                                     <div className='conteiner'>
-
                                         <UserAvatar urlImage={dbUser.image} userId={dbUser.id} changeimage={changeimage} />
-
                                         <div className='seguidores'><button onClick={(e) => handleShow(e)} className='seguidoresButton'>
                                             <Typography variant="h6">FOLLOWING</Typography></button>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.following && dbUser.following.length}</Typography>
                                         </div>
-
                                         <div className='seguidores'><button onClick={(e) => handleShow(e)} className='seguidoresButton'>
                                             <Typography variant="h6">FOLLOWERS</Typography></button>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{dbUser.followers && dbUser.followers.length}</Typography>
                                         </div>
-
                                         {
                                             dbUser.id !== profileId
                                                 ?
@@ -137,30 +119,20 @@ export default function UserProfile() {
                                                 :
                                                 null
                                         }
-
                                     </div>
                                 </div>
                             }
-
                             <br />
                             <br />
-
-
                             <div className='optionsProfile'>
                                 <div className='separadorLeft'>
                                     <button className='buttonsprofile' name='PlayList' onClick={(e) => handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
                                 </div>
                             </div>
-
                             <div className='gridcontainer'>
-
                                 {
-
-
                                     playlist &&
-
                                         listasUser.length ? listasUser.map(e => {
-
                                             return <div className='griditem'>
                                                 <Link className='linkPel' to={`/list/${e.id}`}>
                                                     <img className='griditemImg' key={e.id} />
@@ -171,34 +143,24 @@ export default function UserProfile() {
                                         })
                                         :
                                         <div className='nolistas'>
-                                            <h1>You don't have lists yet</h1>
-
+                                            <h1>You don't have any lists yet</h1>
                                         </div>
                                 }
-
                             </div>
                         </div>
                         :
                         <div className='fondo23'>
-
                             {token &&
-
                                 <div>
-
                                     <div className='name'><Typography variant="h3" gutterBottom>{otherUserInfo.username}</Typography></div>
-
                                     <div className='conteiner'>
-
                                         <UserAvatar urlImage={otherUserInfo.image} userId={otherUserInfo.id} changeimage={changeimage} />
-
                                         <div className='seguidores'><Typography variant="h6" gutterBottom>FOLLOWING</Typography>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{otherUserInfo.following && otherUserInfo.following.length}</Typography>
                                         </div>
-
                                         <div className='seguidores' ><Typography variant="h6" gutterBottom>FOLLOWERS</Typography>
                                             <Typography className='contador' variant="h7" display="block" gutterBottom>{otherUserInfo.followers && otherUserInfo.followers.length}</Typography>
                                         </div>
-
                                         {
                                             dbUser.id !== profileId
                                                 ?
@@ -208,26 +170,18 @@ export default function UserProfile() {
                                                 :
                                                 null
                                         }
-
                                     </div>
-
                                     <br />
                                     <br />
-
                                     <div className='optionsProfile'>
                                         <div className='separadorLeft'>
                                             <button className='buttonsprofile' name='PlayList' onClick={(e) => handleRender(e)} ><h4>PlayList</h4><h6 className='h3marcadores'>__________</h6></button>
                                         </div>
                                     </div>
-
                                     <div className='gridcontainer'>
-
                                         {
-
                                             playlist &&
-
                                                 listasUser.length ? listasUser.map(e => {
-
                                                     return <div className='griditem'>
                                                         <Link className='linkPel' to={`/list/${e.id}`}>
                                                             <img className='griditemImg' key={e.id} />
@@ -239,19 +193,14 @@ export default function UserProfile() {
                                                 :
                                                 <div className='nolistas'>
                                                     <h1>you don't have favorite lists yet</h1>
-
                                                 </div>
                                         }
-
-
                                     </div>
                                 </div>
                             }
-
                         </div>
                 }
             </div>
-
         )
     } else {
         return <h1>Loading...</h1>

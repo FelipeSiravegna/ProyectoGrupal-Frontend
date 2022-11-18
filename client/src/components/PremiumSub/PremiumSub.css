@@ -1,13 +1,12 @@
-.fondo2{
- 
+.fondo2 {
     width: 100%;
     height: 105%;
     position: absolute;
-top: -1%;
+    top: -1%;
 
 }
 
-.video{
+.video {
     display: grid;
     width: 72%;
     position: absolute;
@@ -16,16 +15,15 @@ top: -1%;
     left: 10%;
 }
 
-
-.contenidoPremium{
-position: absolute;
-text-align: center;
-top: 100%;
-align-items: center;
-left: 33%;
+.contenidoPremium {
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    align-items: center;
+    left: 33%;
 }
 
-.frase{
+.frase {
     box-shadow: 2px 2px#f44336;
     background-color: #242422;
     display: inline-flex;
@@ -40,41 +38,38 @@ left: 33%;
     border-radius: 20px;
 }
 
-.lasCarteras{
+.lasCarteras {
     position: absolute;
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
     column-gap: 0%;
     left: 24%;
- top: 30%;
- filter: blur(20%);
- grid-template-columns: repeat(2, 1fr); 
- display: grid;
- 
-    flex-direction:row;
-
+    top: 30%;
+    filter: blur(20%);
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    flex-direction: row;
 }
 
-#DAL{
+#DAL {
     left: 50%;
 }
 
-.once{
-position: absolute;
-top: 140%;
-left: 15%;
+.once {
+    position: absolute;
+    top: 140%;
+    left: 15%;
 }
 
-.iconitoss{
+.iconitoss {
     position: absolute;
     top: 13%;
-    right:10%;
+    right: 10%;
 }
 
-.iconitoss2{
+.iconitoss2 {
     position: absolute;
     top: 13%;
-    left:2%;
+    left: 2%;
 }
-

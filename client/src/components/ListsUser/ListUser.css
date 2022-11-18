@@ -1,47 +1,47 @@
-.listortis{ 
+.listortis {
     position: absolute;
     width: 705px;
     max-width: 705px;
     border-radius: 5px;
     word-break: break-all;
-right: -100%;
+    right: -100%;
 }
 
-.fw-bold{
+.fw-bold {
     font-size: 25px;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     font-size-adjust: 1em;
-    
+
 }
 
-#Ey{
+#Ey {
     border-color: #f44336;
     min-height: 100px;
 }
 
-.desclist{
+.desclist {
     font-size: 12px;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     font-size-adjust: 1em;
 }
 
-.boudy{
+.boudy {
     left: 65px;
 }
 
-.costado{
+.costado {
     display: grid;
 }
 
-.rei{
+.rei {
     text-decoration: none;
     color: #f44336;
     font-size: 25px;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     font-size-adjust: 1em;
 }
 
-.listImg{
+.listImg {
     width: 100px;
     height: 150px;
     border-color: #f44336;
@@ -49,17 +49,17 @@ right: -100%;
     background-color: #f44336;
 }
 
-.elnombresito{
+.elnombresito {
     text-decoration: none;
     color: #f44336;
     font-size: 35px;
-    font-family:'Roboto';
+    font-family: 'Roboto';
     font-size-adjust: 1em;
     padding-left: 5%;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
-.lalista{
+.lalista {
     position: relative;
     top: 100px;
     width: 1000px;
@@ -67,52 +67,52 @@ right: -100%;
     left: 10%;
 }
 
-.lalista:hover{
+.lalista:hover {
     background-color: rgb(163, 162, 162);
 }
 
-.elnombre{
-    position:relative;
+.elnombre {
+    position: relative;
     text-align: center;
     text-decoration: none;
     color: #f44336;
     font-size: 60px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size-adjust: 1em;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
-.ojo{
+.ojo {
     position: absolute;
     right: 0%;
     top: 0%;
 }
-.ojo2{
+
+.ojo2 {
     position: absolute;
     right: -8%;
     top: 75%;
 }
 
-
-.ojo:hover{
+.ojo:hover {
     color: #f44336;
     background-color: #f44336;
 }
 
-.ladesc{
+.ladesc {
     position: relative;
     font-size: 15px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     color: aliceblue;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     padding-bottom: 15px;
 }
 
-.ladesc2{
+.ladesc2 {
     position: relative;
     font-size: 15px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     color: rgb(216, 202, 6);
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
@@ -120,105 +120,104 @@ right: -100%;
     top: -40px;
 }
 
-.loge{
+.loge {
     width: 150px;
     height: 150px;
 }
 
-.nd{
+.nd {
     color: black;
 }
 
-.agregar{
+.agregar {
     position: absolute;
     top: 200px;
     left: 10px;
 }
 
-.lacartaelegida{
-position: absolute;
-height: 300px;
-max-width: 100px;
-left: 14%;
-padding-top: 2px;
+.lacartaelegida {
+    position: absolute;
+    height: 300px;
+    max-width: 100px;
+    left: 14%;
+    padding-top: 2px;
 }
 
-.funcionaporfa{
+.funcionaporfa {
     height: 300px;
     align-items: center;
 }
 
-.foteli{
+.foteli {
     width: 200px;
     height: 250px;
     padding-top: 5px;
     padding: 1px;
     background-color: #f44336;
- 
 }
 
-.yu{
-left: 67px;
+.yu {
+    left: 67px;
 }
 
-.nombreo{
+.nombreo {
     width: 200px;
 }
 
-.lebotone{
+.lebotone {
     position: absolute;
     right: -200px;
     display: grid;
     top: 20%;
 }
 
-.botonCreador{
+.botonCreador {
     position: absolute;
     top: 50%;
     left: 300%;
 }
 
-.tableta{
+.tableta {
     position: absolute;
     left: 40%;
     top: 100px;
 }
 
-#errores{
+#errores {
     color: red;
     text-shadow: 1px 0.1px rgb(0, 0, 0);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.nd{
-    color:#f44336;
+.nd {
+    color: #f44336;
     text-shadow: 1px 0.1px rgb(0, 0, 0);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
 
-.botonEditor{
+.botonEditor {
     position: absolute;
-   right: -10%;
+    right: -10%;
 }
 
-.deletion{
+.deletion {
     position: absolute;
     left: -30%;
 }
 
-.ojo3{
+.ojo3 {
     position: absolute;
     background-color: yellowgreen;
 }
 
-.followers{
+.followers {
     position: absolute;
     cursor: pointer;
     top: 200px;
     left: 200px;
 }
 
-.letras{
+.letras {
     color: white;
 }

@@ -30,7 +30,7 @@ export const ORDER_POPULARITY = 'ORDER_POPULARITY'
 export const ORDER_RATING = 'ORDER_RATING'
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const POST_USER_LOG = 'POST_USER_LOG'
-export const CREATE_LIST ='CREATE_LIST'
+export const CREATE_LIST = 'CREATE_LIST'
 export const ADD_MOVIE_TO_LIST = 'ADD_MOVIE_TO_LIST'
 export const REMOVE_MOVIE_TO_LIST = 'REMOVE_MOVIE_TO_LIST'
 export const GET_LIST = 'GET_LIST'
@@ -48,17 +48,13 @@ export const PREMIUM_USERS = 'PREMIUM_USERS'
 export const FREE_USERS = 'FREE_USERS'
 export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_LIST = 'DELETE_LIST'
-
 export const ALL_REVIEWS = 'ALL_REVIEWS'
-
 export const UN_FOLLOW_LIST = 'UN_FOLLOW_LIST'
 export const FOLLOW_LIST = 'FOLLOW_LIST'
 export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const FOLLOWED_LIST = 'FOLLOWED_LIST'
 export const GET_USER_LISTS = 'GET_USER_LISTS';
 export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
-
-
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -69,13 +65,12 @@ export const getAllMovies = (name = 1) => {
                     type: GET_ALL_MOVIES,
                     payload: pelis.data
                 })
-                    // .catch((err) => {
-                    //     console.log(err);
-                    // });
+                // .catch((err) => {
+                //     console.log(err);
+                // });
             });
     };
 }
-
 
 export const getMovieDetail = (id) => {
     return async function (dispatch) {
@@ -87,10 +82,9 @@ export const getMovieDetail = (id) => {
     }
 }
 
-
-export const addMovie= (payload)=>{
+export const addMovie = (payload) => {
     console.log(payload)
-    return async(dispatch)=>{
+    return async (dispatch) => {
         await axios.post('/createMovie', payload)
         return dispatch({
             type: ADD_MOVIE,
@@ -124,10 +118,7 @@ export const getComingSoon = () => {
     };
 };
 
-
-
 //filtros
-
 export const orderRating = (filtro) => {
     return async function (dispatch) {
         let json = await axios.get(`/movies/rating/?page=1&ord=${filtro}`)
@@ -138,7 +129,6 @@ export const orderRating = (filtro) => {
     }
 }
 
-
 export const orderPopularity = (filtro) => {
     return async function (dispatch) {
         let json = await axios.get(`/movies/popular/?page=1&ord=${filtro}`)
@@ -148,9 +138,6 @@ export const orderPopularity = (filtro) => {
         })
     }
 }
-
-
-
 
 export const sortPopularity = (payload) => {
     return async (dispatch) => {
@@ -172,9 +159,6 @@ export const filterGenres = (filtro) => {
     }
 }
 
-
-
-
 export const allGenres = () => {
     return async function (dispatch) {
         let result = await axios.get(`/genres`);
@@ -185,7 +169,6 @@ export const allGenres = () => {
     }
 }
 
-
 export const filterDirector = (filtro) => {
     return async function (dispatch) {
         let json = await axios.get(`/movies/search?director[]=${filtro}`)
@@ -195,28 +178,26 @@ export const filterDirector = (filtro) => {
         })
     }
 }
-export const get4Search= (envio)=>{
-    return async function (dispatch) {
-    try{
-    console.log("soy el envio:",envio)
-    let routes = `/movies/search?`
-    console.log("routes1",routes)
-    if (envio.genres!=="null") {routes=routes+`genres[]=`+envio.genres+"&"}
-    if (envio.director!=="null") {routes=routes+`director[]=`+envio.director+"&"}
-    if (envio.popularity!=="null") {routes=routes+`popularity=`+envio.popularity+`&`}
-    if (envio.rating!=="null") {routes=routes+`rating=`+envio.rating+`&`}
-    console.log("routes:",routes)
-    let json = await axios.get(routes)
-    console.log(json.data)
-    return dispatch({
-        type: FILTER_DIRECTOR,
-        payload: json.data
-    })}
-    catch(error){
-        console.log(error)
-    }}
-}
 
+export const get4Search = (envio) => {
+    return async function (dispatch) {
+        try {
+            let routes = `/movies/search?`
+            if (envio.genres !== "null") { routes = routes + `genres[]=` + envio.genres + "&" }
+            if (envio.director !== "null") { routes = routes + `director[]=` + envio.director + "&" }
+            if (envio.popularity !== "null") { routes = routes + `popularity=` + envio.popularity + `&` }
+            if (envio.rating !== "null") { routes = routes + `rating=` + envio.rating + `&` }
+            let json = await axios.get(routes)
+            return dispatch({
+                type: FILTER_DIRECTOR,
+                payload: json.data
+            })
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 export const allDirector = () => {
     return async function (dispatch) {
@@ -228,18 +209,18 @@ export const allDirector = () => {
     }
 }
 
-export const allActor= ()=>{
-    return async function (dispatch){
+export const allActor = () => {
+    return async function (dispatch) {
         let result = await axios.get(`/actors`);
         return dispatch({
             type: ALL_ACTOR,
-            payload:result.data
+            payload: result.data
         })
     }
 
 }
-//paginado
 
+//paginado
 export const pages = (page) => {
     return async function (dispatch) {
         return dispatch({
@@ -248,7 +229,6 @@ export const pages = (page) => {
         })
     }
 }
-
 
 //Compare
 export const compareSelec = () => {
@@ -272,7 +252,6 @@ export const searchCompare = (name) => {
 }
 
 export const searchCompare2 = (name) => {
-
     return async function (dispatch) {
         let result = await axios.get(`/movies/search/?name=${name}&offset=true`);
         return dispatch({
@@ -281,6 +260,7 @@ export const searchCompare2 = (name) => {
         })
     }
 }
+
 export const getAllReviews = () => {
     return async function (dispatch) {
         let result = await axios.get(`/reviews`);
@@ -290,6 +270,7 @@ export const getAllReviews = () => {
         })
     }
 }
+
 export const addReviews = (payload) => {
     return async function (dispatch) {
         await axios.post(`/reviews`, payload);
@@ -298,6 +279,7 @@ export const addReviews = (payload) => {
         })
     }
 }
+
 export const deleteReviews = (id) => {
     return async function (dispatch) {
         await axios.delete(`/reviews/${id}`);
@@ -306,6 +288,7 @@ export const deleteReviews = (id) => {
         })
     }
 }
+
 export const getLikeCounts = () => {
     return async function (dispatch) {
         let result = await axios.get(`/likes`);
@@ -315,6 +298,7 @@ export const getLikeCounts = () => {
         })
     }
 }
+
 export const addLikes = (payload) => {
     return async function (dispatch) {
         await axios.post(`/likes`, payload);
@@ -324,7 +308,6 @@ export const addLikes = (payload) => {
     }
 }
 
-
 //admin
 export const allUsers = () => {
     return async function (dispatch) {
@@ -333,10 +316,8 @@ export const allUsers = () => {
             type: ALL_USERS,
             payload: result.data
         })
-
     }
 }
-
 
 export const UserPremium = (email) => {
     return async function (dispatch) {
@@ -359,18 +340,13 @@ export const resetDetail = () => {
 export const userCreate = (form) => {
     return async function () {
         try {
-
             let response = await axios.post('/user', form)
             return response
-
         } catch (error) {
             console.log(error)
         }
-
-
     }
 }
-
 
 //body should be identificator: pass:
 export const checkUserInfo = (body) => {
@@ -384,11 +360,10 @@ export const checkUserInfo = (body) => {
                 payload: json.data.token
             })
         } catch (error) {
-          return error.response.data
+            return error.response.data
         }
     }
 }
-
 
 export const getUserInfo = () => {
     return async function (dispatch) {
@@ -409,8 +384,8 @@ export const getUserInfo = () => {
             console.log(error)
         }
     }
-}
-;
+};
+
 export const subscribe = () => {
     return async function (dispatch) {
         const email = { email: localStorage.getItem("email") }
@@ -420,7 +395,6 @@ export const subscribe = () => {
         }
     }
 }
-
 
 export const handleLoginExternal = (info) => {
     return async function () {
@@ -439,135 +413,120 @@ export const handleLoginExternal = (info) => {
                 return
             }
         }
-}}
-
-
-
+    }
+}
 
 // LIST // LIST // LIST // LIST // LIST // LIST // LIST // LIST // LIST
-
 export const createList = (id, payload) => {
-    return async function (dispatch){
+    return async function (dispatch) {
         let hola = await axios.post(`/lists/list/${id}`, payload);
-            return dispatch({
-                type: CREATE_LIST,
-            })
+        return dispatch({
+            type: CREATE_LIST,
+        })
     }
 }
 
-
-export const addMovieToList= (listId, movieId ) => {
-    return async function (dispatch){
+export const addMovieToList = (listId, movieId) => {
+    return async function (dispatch) {
         await axios.put(`/lists/list/${listId}?add=true&movieId=${movieId}`);
-            return dispatch({
-                type: ADD_MOVIE_TO_LIST,
-            })
+        return dispatch({
+            type: ADD_MOVIE_TO_LIST,
+        })
     }
 }
 
-export const removeMovieToList= (listId, movieId ) => {
-    return async function (dispatch){
+export const removeMovieToList = (listId, movieId) => {
+    return async function (dispatch) {
         await axios.put(`/lists/list/${listId}?remove=true&movieId=${movieId}`);
-            return dispatch({
-                type: REMOVE_MOVIE_TO_LIST,
-            })
+        return dispatch({
+            type: REMOVE_MOVIE_TO_LIST,
+        })
     }
 }
 
-
-export const getList = (listId)=>{
+export const getList = (listId) => {
     return async function (dispatch) {
         await axios.get(`/lists`)
-        .then((pelis) => {
-            dispatch ({
-                type: GET_LIST,
-                payload: pelis.data
+            .then((pelis) => {
+                dispatch({
+                    type: GET_LIST,
+                    payload: pelis.data
+                })
             })
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     };
 };
 
-
-
-export const listDetails = (listId)=>{
+export const listDetails = (listId) => {
     return async function (dispatch) {
         await axios.get(`/lists/list/${listId}`)
-        .then((pelis) => {
-            dispatch ({
-                type: LIST_DETAILS,
-                payload: pelis.data
+            .then((pelis) => {
+                dispatch({
+                    type: LIST_DETAILS,
+                    payload: pelis.data
+                })
             })
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     };
 };
 
-export const editList= (listId, body) => {
-    return async function (dispatch){
+export const editList = (listId, body) => {
+    return async function (dispatch) {
         await axios.put(`/lists/list/${listId}/update`, body);
-            return dispatch({
-                type: EDIT_LIST,
-            })
+        return dispatch({
+            type: EDIT_LIST,
+        })
     }
 }
 
-export const deleteList= (listId) => {
-    return async function (dispatch){
+export const deleteList = (listId) => {
+    return async function (dispatch) {
         await axios.put(`/lists/manageDeletion/${listId}?action=delete`);
-            return dispatch({
-                type: DELETE_LIST,
-            })
+        return dispatch({
+            type: DELETE_LIST,
+        })
     }
 }
 
 export const followLists = (id, listId) => {
-    return async function (dispatch){
+    return async function (dispatch) {
         let hola = await axios.post(`/lists/list/${id}?list=${listId}&action=follow`);
-            return dispatch({
-                type: FOLLOW_LIST
-            })
+        return dispatch({
+            type: FOLLOW_LIST
+        })
     }
 }
 
 export const unFollowList = (id, listId) => {
-    return async function (dispatch){
+    return async function (dispatch) {
         let hola = await axios.post(`/lists/list/${id}?list=${listId}&action=unfollow`);
-            return dispatch({
-                type: UN_FOLLOW_LIST
-            })
+        return dispatch({
+            type: UN_FOLLOW_LIST
+        })
     }
 }
 
-
-export const followedList = (idUser)=>{
+export const followedList = (idUser) => {
     return async function (dispatch) {
         await axios.get(`/lists/followedLists/${idUser}`)
-        .then((pelis) => {
-            dispatch ({
-                type: FOLLOWED_LIST,
-                payload: pelis.data
+            .then((pelis) => {
+                dispatch({
+                    type: FOLLOWED_LIST,
+                    payload: pelis.data
+                })
             })
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     };
 };
 
-
-
-
-
-
-
-
 export const resetSearch = () => {
-    return(dispatch) => {
+    return (dispatch) => {
         dispatch({
             type: RESET_SEARCH
         });
@@ -575,32 +534,29 @@ export const resetSearch = () => {
 }
 
 export const followUser = (loggedUserId, followedUserId) => {
-    return async function(){
-        const body = {loggedUserId, followedUserId};
+    return async function () {
+        const body = { loggedUserId, followedUserId };
         const response = await axios.put(`/followUnfollow/follow`, body);
     }
 }
 
 export const unfollowUser = (loggedUserId, unfollowedUserId) => {
-    return async function(){
-        const body = {loggedUserId, unfollowedUserId};
+    return async function () {
+        const body = { loggedUserId, unfollowedUserId };
         const response = await axios.put(`/followUnfollow/unfollow`, body);
     }
 }
-    
-export const putUser = (id,changes) =>{
-    return async function (){
-        try {
 
-            const response = await axios.put('/user/' + id,changes)
+export const putUser = (id, changes) => {
+    return async function () {
+        try {
+            const response = await axios.put('/user/' + id, changes)
             return response
-            
+
         } catch (error) {
             console.log(error)
         }
-}
-
-    
+    }
 }
 
 export const activeUsers = () => {
@@ -610,7 +566,6 @@ export const activeUsers = () => {
             type: ACTIVE_USERS,
             payload: result.data
         })
-
     }
 }
 
@@ -624,16 +579,16 @@ export const availableUsers = () => {
                 payload: result.data
             })
         } catch (error) {
-            if (error){
+            if (error) {
                 return dispatch({
                     type: AVAILABLE_USERS,
                     payload: []
                 })
             }
         }
-
     }
 }
+
 export const getMoviesAdmin = () => {
     return async function (dispatch) {
         try {
@@ -643,14 +598,13 @@ export const getMoviesAdmin = () => {
                 payload: result.data.rows
             })
         } catch (error) {
-            if (error){
+            if (error) {
                 return dispatch({
                     type: ALL_MOVIES,
                     payload: []
                 })
             }
         }
-
     }
 }
 
@@ -661,9 +615,9 @@ export const banUser = (j) => {
             type: BAN_USER,
             payload: result.data
         })
-
     }
 }
+
 export const banMovie = (j) => {
     return async function (dispatch) {
         let result = await axios.put(`/deleteMovie/${j.id}`);
@@ -671,7 +625,6 @@ export const banMovie = (j) => {
             type: BAN_MOVIE,
             payload: result.data
         })
-
     }
 }
 
@@ -696,16 +649,16 @@ export const bannedUsers = () => {
             })
         } catch (error) {
             console.log(error)
-            if (error){
+            if (error) {
                 return dispatch({
                     type: BANNED_USERS,
                     payload: []
                 })
             }
         }
-
     }
 }
+
 export const unBanUser = (j) => {
     return async function (dispatch) {
         let result = await axios.put(`/user/?action=Unbann&data=${j.id}`);
@@ -713,7 +666,6 @@ export const unBanUser = (j) => {
             type: UNBAN_USER,
             payload: result.data
         })
-
     }
 }
 
@@ -726,16 +678,16 @@ export const premiumUsers = () => {
                 payload: result.data
             })
         } catch (error) {
-            if (error){
+            if (error) {
                 return dispatch({
                     type: PREMIUM_USERS,
                     payload: []
                 })
             }
         }
-
     }
 }
+
 export const freeUsers = () => {
     return async function (dispatch) {
         try {
@@ -745,18 +697,15 @@ export const freeUsers = () => {
                 payload: result.data
             })
         } catch (error) {
-            if (error){
+            if (error) {
                 return dispatch({
                     type: FREE_USERS,
                     payload: []
                 })
             }
         }
-
     }
 }
-
-
 
 export const allReviews = () => {
     return async function (dispatch) {
@@ -767,55 +716,53 @@ export const allReviews = () => {
                 payload: result.data
             })
         } catch (error) {
-            if (error){
+            if (error) {
                 return dispatch({
                     type: ALL_REVIEWS,
                     payload: []
                 })
             }
         }
-
     }
 }
-    
 
 export const getActivity = (loggedUser) => {
-    return async function(dispatch){
-        try{
+    return async function (dispatch) {
+        try {
             let activity = await axios.get(`/activity/${loggedUser}`);
             return dispatch({
                 type: GET_ACTIVITY,
                 payload: activity.data
             })
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
     }
 }
 
 export const getOtherUserInfo = (id) => {
-    return async function(dispatch){
-        try{
+    return async function (dispatch) {
+        try {
             let info = await axios.get(`/users/user/${id}`);
             return dispatch({
                 type: GET_OTHER_USER_INFO,
                 payload: info.data
             })
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
     }
 }
 
 export const getListsByUser = (userId) => {
-    return async function(dispatch){
-        try{
+    return async function (dispatch) {
+        try {
             const lists = await axios.get(`/getUserLists/${userId}`);
             return dispatch({
                 type: GET_USER_LISTS,
                 payload: lists.data
             })
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
     }
@@ -823,15 +770,14 @@ export const getListsByUser = (userId) => {
 
 export const getAllReviews2 = () => {
     return async function (dispatch) {
-        try{
+        try {
             const reviews = await axios.get(`/getAllReviews`);
             return dispatch({
                 type: GET_ALL_REVIEWS_V2,
                 payload: reviews.data
             })
-        } catch(error){
+        } catch (error) {
             console.log(error);
         }
     }
 }
-

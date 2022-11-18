@@ -51,11 +51,11 @@ const rows = [
 function preventDefault(event) {
   event.preventDefault();
 }
-const item = [{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"},{property1:"algo",property2:"algo2",property3:"algo3",property4:"algo4",property6:"algo6",property7:"algo7"}]
-const properties = ["property1","property3","property7","property4"]
-const action = ["name",(j)=>{console.log(j)}]
+const item = [{ property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }, { property1: "algo", property2: "algo2", property3: "algo3", property4: "algo4", property6: "algo6", property7: "algo7" }]
+const properties = ["property1", "property3", "property7", "property4"]
+const action = ["name", (j) => { console.log(j) }]
 
-const handleAction = (j,action)=>{
+const handleAction = (j, action) => {
   action[1](j)
 }
 
@@ -65,18 +65,18 @@ export default function Users() {
       <Title>Default Table</Title>
       <Table size="small">
         <TableHead>
-        <TableRow>
-            {properties.map((i)=>{return (<TableCell>{i}</TableCell>)})}
-            {!!action[0]?<TableCell>{action[0]}</TableCell>:null}
+          <TableRow>
+            {properties.map((i) => { return (<TableCell>{i}</TableCell>) })}
+            {!!action[0] ? <TableCell>{action[0]}</TableCell> : null}
           </TableRow>
         </TableHead>
         <TableBody>
-            {item.map((j)=>
-              (<TableRow key={j.id}>
-                {properties.map((i)=> (<TableCell>{j[i]}</TableCell>))}
-                {!!action[1]?<TableCell><button onClick={(e)=>{handleAction(j=j,action)}}>X</button></TableCell>:null}
-              </TableRow>))}
-          </TableBody>
+          {item.map((j) =>
+          (<TableRow key={j.id}>
+            {properties.map((i) => (<TableCell>{j[i]}</TableCell>))}
+            {!!action[1] ? <TableCell><button onClick={(e) => { handleAction(j = j, action) }}>X</button></TableCell> : null}
+          </TableRow>))}
+        </TableBody>
       </Table>
       <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
         See more orders

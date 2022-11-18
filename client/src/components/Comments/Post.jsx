@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ListItem, ListItemText, ListItemAvatar, Avatar, TextField, Button } from '@material-ui/core';
+import { Avatar, TextField, Button } from '@material-ui/core';
 import Comments from './Comments';
 import SendIcon from '@mui/icons-material/Send';
 import "./Post.css";
@@ -11,19 +11,14 @@ function Post({ movieId, userId, userImg }) {
 
   const userDb = useSelector(state => state.user);
   const dispatch = useDispatch()
-  const like = useSelector(state => state.like)
   const reviews = useSelector(state => state.reviews)
-  const reviewsV2 = useSelector(state => state.reviewsV2);
 
   const [estado, setEstado] = useState('')
-
-
 
   useEffect(() => {
     dispatch(getAllReviews())
     dispatch(getAllReviews2())
   }, [dispatch, estado])
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,43 +29,12 @@ function Post({ movieId, userId, userImg }) {
     })
     );
     setEstado("");
-    // dispatch(getAllReviews());
   };
-
 
   let peli = reviews.filter(e => e.movie.id === movieId)
   let prueba = reviews.filter(a => a.userId === userId)
 
-
-  let megusta = reviews.map(a => a.likes)   //like[0] ? like[0].like : null
-  let otravez = megusta.map(a => a.map(e => e.userId))
-
-  let element
-  function hola() {
-    for (let i = 0; i < otravez.length; i++) {
-      if (i === userId) {
-        element = [i];
-        return element
-      }
-    }
-  }
-
-  let hola1 = hola()
-  console.log(element, "HOLA")
-
-
-  //otravez.filter(a=>a === userId)
-  //console.log(megusta, "RESOLUCION")
-  //console.log(otramas)
-
-  const loggedUserReviews = reviewsV2.map(rev => {
-    if (rev.userId === userDb.id) {
-      return rev;
-    }
-  })
-
   if (userDb !== null) {
-
     return (
       <div className="post">
         <div className="post__header">
@@ -83,7 +47,6 @@ function Post({ movieId, userId, userImg }) {
               placeholder="add review..."
               value={estado}
               onChange={e => setEstado(e.target.value)}
-
             />
             <Button
               variant="contained"
@@ -95,7 +58,6 @@ function Post({ movieId, userId, userImg }) {
               Send
             </Button>
           </form>
-
 
           <br></br>
           <br></br>
@@ -114,21 +76,14 @@ function Post({ movieId, userId, userImg }) {
                 prueba={prueba}
                 userid={userId}
 
-
               />
 
             </div>)
           }) : null}
-
-
-
-
         </div>
       </div>
-
     )
   }
 }
 
 export default Post;
-

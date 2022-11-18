@@ -49,7 +49,6 @@ export default function AccountsEdit() {
     }
 
     function handleClick(e) {
-
         if (e.target.name === 'username') {
 
             if (username) {
@@ -66,10 +65,9 @@ export default function AccountsEdit() {
                     [e.target.name]: ''
                 })
             }
-
         }
-        if (e.target.name === 'password') {
 
+        if (e.target.name === 'password') {
             if (password) {
                 setPassword(false)
             }
@@ -86,7 +84,6 @@ export default function AccountsEdit() {
             }
         }
         if (e.target.name === 'email') {
-
             if (email) {
                 setEmail(false)
             }
@@ -101,9 +98,7 @@ export default function AccountsEdit() {
                     [e.target.name]: ''
                 })
             }
-
         }
-
     }
 
     function handleSubmit(e) {
@@ -120,36 +115,28 @@ export default function AccountsEdit() {
 
     return (
         <div className={style.fondo98}>
-
             <NavbarP />
             {
                 dbUser.active &&
                 <>
                     <div className={style.root}>
                         <h1 className={style.titulo}>EDIT ACCOUNT</h1>
-
                         <form onSubmit={handleSubmit}>
-
                             <Form.Group className={style.conteiner} controlId="formBasicUsername">
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" placeholder="Username" name='username' value={form.username} disabled={username} onChange={e => handleInput(e)} />
                             </Form.Group>
-
                             <div className={style.buttonChange}>
                                 <Button variant="primary" name='username' onClick={(e) => handleClick(e)} >{username ? 'Change' : 'Cancel'}</Button>
                             </div>
-
                             {errors.username && <p className={style.errors}>{errors.username}</p>}
-
                             <Form.Group className={style.conteiner} controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" name='password' value={form.password} disabled={password} onChange={e => handleInput(e)} />
                             </Form.Group>
-
                             <div className={style.buttonChange}>
                                 <Button variant="primary" name='password' onClick={(e) => handleClick(e)} >{password ? 'Change' : 'Cancel'}</Button>
                             </div>
-
                             {errors.password && <p className={style.errors}>{errors.password}</p>}
                             {
                                 !password &&
@@ -158,9 +145,7 @@ export default function AccountsEdit() {
                                     <Form.Control type="password" placeholder="confirm password" name='confirmpassword' disabled={password} onChange={e => handleInput(e)} />
                                 </Form.Group>
                             }
-
                             {errors.confirmpassword && <p className={style.errors}>{errors.confirmpassword}</p>}
-
                             <Form.Group className={style.conteiner} controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" name='email' value={form.email} disabled={email} onChange={e => handleInput(e)} />
@@ -168,19 +153,15 @@ export default function AccountsEdit() {
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-
                             <div className={style.buttonChange}>
                                 <Button variant="primary" name='email' onClick={(e) => handleClick(e)} >{email ? 'Change' : 'Cancel'}</Button>
                             </div>
-
                             {errors.email && <p className={style.errors}>{errors.email}</p>}
-
                             <div className={style.button}>
                                 <Button variant="primary" type="submit" disabled={Object.entries(errors).length}>
                                     SUBMIT
                                 </Button>
                             </div>
-
                         </form>
                     </div>
                     <div className={style.logo}>
@@ -214,7 +195,6 @@ export function validate(errors, users, username, password, email) {
     if (!errors.email.length && !email) error.email = 'E-mail is require'
     if (!emailv.test(errors.email) && !email) error.email = 'E-mail is invalid'
     if (emails.includes(errors.email) && !email) error.email = 'Email already exists'
-
 
     return error
 }

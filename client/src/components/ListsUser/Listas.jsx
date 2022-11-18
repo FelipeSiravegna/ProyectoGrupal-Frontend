@@ -10,27 +10,23 @@ import FollowList from './FollowList';
 const Listas = () => {
   return (
     <div>
-         <img className='fondo'src={fondo} alt="" />
-    <NavbarP/>
-        
-        <div className='tableta'>
-    <Tabs
-      defaultActiveKey="profile"
-      id="fill-tab-example"
-      className="mb-3"
-      fill
-    >
-      <Tab eventKey="profile" title="My lists">
-      <ListUser/>
-      </Tab>
-      
-      <Tab eventKey="home" title="Followed lists">
-        <FollowList/>
-      </Tab>
-
-    </Tabs>
- 
-    </div>
+      <img className='fondo' src={fondo} alt="" />
+      <NavbarP />
+      <div className='tableta'>
+        <Tabs
+          defaultActiveKey="profile"
+          id="fill-tab-example"
+          className="mb-3"
+          fill
+        >
+          <Tab eventKey="profile" title="My lists">
+            <ListUser />
+          </Tab>
+          <Tab eventKey="home" title="Followed lists">
+            <FollowList />
+          </Tab>
+        </Tabs>
+      </div>
     </div>
   )
 }

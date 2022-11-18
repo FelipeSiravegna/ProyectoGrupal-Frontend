@@ -1,32 +1,33 @@
-.formu{
+.formu {
     background-color: rgb(180, 180, 180);
 }
 
-.ndea{
+.ndea {
     position: absolute;
-        color:#f44336;
-            text-shadow: 1px 2px rgb(0, 0, 0);
-            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            text-align: center;
-            width: 300px;
-            left: 30%;
-            left: 38%;
-            background-color:rgb(208, 223, 6),  rgb(208, 223, 6);
-            border-radius: 10px;
-            box-shadow: 1px 2px rgb(0, 0, 0);;
-    }
-
-.ndea:hover{
-    box-shadow: 1px 2px rgb(255, 0, 0);;
+    color: #f44336;
+    text-shadow: 1px 2px rgb(0, 0, 0);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    width: 300px;
+    left: 30%;
+    left: 38%;
+    background-color: rgb(208, 223, 6), rgb(208, 223, 6);
+    border-radius: 10px;
+    box-shadow: 1px 2px rgb(0, 0, 0);
+    ;
 }
 
-.accesoDenegau{
-padding-bottom: 41%;
-background-color: #202020;
-
+.ndea:hover {
+    box-shadow: 1px 2px rgb(255, 0, 0);
+    ;
 }
 
-.er{
+.accesoDenegau {
+    padding-bottom: 41%;
+    background-color: #202020;
+}
+
+.er {
     position: absolute;
     top: 30%;
     width: 500px;
@@ -34,5 +35,6 @@ background-color: #202020;
     left: 30%;
     color: #f44336;
     border-radius: 10px;
-            text-shadow: 1px 2px rgb(0, 0, 0);;
+    text-shadow: 1px 2px rgb(0, 0, 0);
+    ;
 }
