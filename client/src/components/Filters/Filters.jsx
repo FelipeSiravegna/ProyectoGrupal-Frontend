@@ -2,90 +2,86 @@ import React from 'react'
 import './Filters.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { get4Search,allDirector, allGenres, filterDirector, filterGenres, getAllMovies, orderPopularity, orderRating} from '../../redux/actions'
+import { get4Search, allDirector, allGenres } from '../../redux/actions'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
-import { minHeight } from '@mui/system'
-
-
 
 
 const Filters = () => {
-const dispatch = useDispatch()
-const generos = useSelector(state => state.genres)
-const directores = useSelector(state => state.directors)
-const [envio,setEnvio] = useState({genres:"null",director:"null",popularity:"null",rating:"null"})
+  const dispatch = useDispatch()
+  const generos = useSelector(state => state.genres)
+  const directores = useSelector(state => state.directors)
+  const [envio, setEnvio] = useState({ genres: "null", director: "null", popularity: "null", rating: "null" })
 
-const [age, setAge] = useState('');
-const [open, setOpen] = useState(false);
-const [age2, setAge2] = useState('');
-const [open2, setOpen2] = useState(false);
-const [age3, setAge3] = useState('');
-const [age4, setAge4] = useState('');
+  const [age, setAge] = useState('');
+  const [open, setOpen] = useState(false);
+  const [age2, setAge2] = useState('');
+  const [open2, setOpen2] = useState(false);
+  const [age3, setAge3] = useState('');
+  const [age4, setAge4] = useState('');
 
-
-useEffect(() => {
-  dispatch(allGenres())
-  dispatch(allDirector())
+  useEffect(() => {
+    dispatch(allGenres())
+    dispatch(allDirector())
   }, [])
 
-
-  function onSelectChange(e){
+  function onSelectChange(e) {
     setAge(e.target.value)
     let objeto = envio
-    objeto.genres=e.target.value
+    objeto.genres = e.target.value
     setEnvio(objeto)
-if(e.target.value === "None") {
-  let objeto = envio
-  objeto.genres="null"
-  setEnvio(objeto)
-  return dispatch(get4Search(envio))}
+    if (e.target.value === "None") {
+      let objeto = envio
+      objeto.genres = "null"
+      setEnvio(objeto)
+      return dispatch(get4Search(envio))
+    }
     dispatch(get4Search(envio))
-}
+  }
 
-function onSelectDirector(e){
-  setAge2(e.target.value)
-  let objeto = envio
-  objeto.director=e.target.value
-  setEnvio(objeto)
-  if(e.target.value === "None") {
+  function onSelectDirector(e) {
+    setAge2(e.target.value)
     let objeto = envio
-    objeto.director="null"
+    objeto.director = e.target.value
     setEnvio(objeto)
-    return dispatch(get4Search(envio))}
-dispatch(get4Search(envio))
-}
+    if (e.target.value === "None") {
+      let objeto = envio
+      objeto.director = "null"
+      setEnvio(objeto)
+      return dispatch(get4Search(envio))
+    }
+    dispatch(get4Search(envio))
+  }
 
-function onSelectPopularity(e){
-  setAge3(e.target.value)
-  let objeto = envio
-  objeto.popularity=e.target.value
-  setEnvio(objeto)
-  if(e.target.value === "None") {
+  function onSelectPopularity(e) {
+    setAge3(e.target.value)
     let objeto = envio
-    objeto.popularity="null"
+    objeto.popularity = e.target.value
     setEnvio(objeto)
-    return dispatch(get4Search(envio))}
-dispatch(get4Search(envio))
-}
+    if (e.target.value === "None") {
+      let objeto = envio
+      objeto.popularity = "null"
+      setEnvio(objeto)
+      return dispatch(get4Search(envio))
+    }
+    dispatch(get4Search(envio))
+  }
 
-function onSelectRating(e){
-  setAge4(e.target.value)
-  let objeto = envio
-  objeto.rating=e.target.value
-  setEnvio(objeto)
-  if(e.target.value === "None") {
+  function onSelectRating(e) {
+    setAge4(e.target.value)
     let objeto = envio
-    objeto.rating="null"
+    objeto.rating = e.target.value
     setEnvio(objeto)
-    return dispatch(get4Search(envio))}
-  dispatch(get4Search(envio))
-}
-
-
+    if (e.target.value === "None") {
+      let objeto = envio
+      objeto.rating = "null"
+      setEnvio(objeto)
+      return dispatch(get4Search(envio))
+    }
+    dispatch(get4Search(envio))
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -103,12 +99,9 @@ function onSelectRating(e){
     setOpen2(true);
   };
 
-
-
   return (
     <div className='filtritos' >
-      
-      <FormControl sx={{ m: 0, minWidth: 90 }} size="small" style={{ color: "#f44336"}}>
+      <FormControl sx={{ m: 0, minWidth: 90 }} size="small" style={{ color: "#f44336" }}>
         <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Genres</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
@@ -124,12 +117,12 @@ function onSelectRating(e){
           <MenuItem value={"None"}>
             <em>None</em>
           </MenuItem>
-          {generos.map(a=> 
-          <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
+          {generos.map(a =>
+            <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
           )}
         </Select>
       </FormControl>
-      
+
       <FormControl sx={{ m: 0, minWidth: 98 }} size="small" style={{ color: "#f44336" }}>
         <InputLabel id="demo-controlled-open-select-label" style={{ color: "#f44336" }}>Director</InputLabel>
         <Select
@@ -146,8 +139,8 @@ function onSelectRating(e){
           <MenuItem value={"None"}>
             <em>None</em>
           </MenuItem>
-          {directores.map(a=> 
-          <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
+          {directores.map(a =>
+            <MenuItem key={a.id} value={a.name}>{a.name}</MenuItem>
           )}
         </Select>
       </FormControl>
@@ -182,7 +175,7 @@ function onSelectRating(e){
         </Select>
       </FormControl>
 
-      </div>
+    </div>
   )
 }
 

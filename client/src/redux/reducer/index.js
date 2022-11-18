@@ -4,7 +4,6 @@ import {
   ADD_MOVIE,
   GET_SORT_ASC,
   GET_SORT_POP,
-  FILTER,
   SEARCH_BY_NAME,
   PAGES,
   RESET,
@@ -54,7 +53,6 @@ import {
   ALL_MOVIES
 } from "../actions";
 
-
 const initialState = {
   movies: [],
   detail: [],
@@ -71,10 +69,10 @@ const initialState = {
   users: [],
   directors: [],
   actors: [],
-  idToken:"",
-  user:{},
-  user:[],
-  items:[],
+  idToken: "",
+  user: {},
+  user: [],
+  items: [],
   list: [],
   listDetails: [],
   activity: [],
@@ -83,8 +81,6 @@ const initialState = {
   reviewsV2: [],
   listFollowed: [],
 };
-
-
 
 export default function reducer(state = initialState, { type, payload }) {
   switch (type) {
@@ -104,7 +100,6 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         detail: payload,
-        
       };
     case ADD_MOVIE:
       return {
@@ -125,235 +120,229 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         movies: payload
       };
-      case ALL_GENRES:
+    case ALL_GENRES:
       return {
         ...state,
         genres: payload
       };
-
     case RESET:
       return {
         ...state,
         games: state.backvideos,
       };
-      case PAGES:
-        return{
+    case PAGES:
+      return {
         ...state,
         page: payload
-        };
-        case SEARCH_BY_NAME:
-          return {
-            ...state,
-            movies: payload
-          };
-          case COMPARE_SELEC:
-          return {
-            ...state,
-            compare: payload
-          };
-          case SEARCH_COMPARE:
-          return {
-            ...state,
-            busqueda1: payload
-          };
-          case SEARCH_COMPARE2:
-          return {
-            ...state,
-            busqueda2: payload
-          };
-
-          case GET_ALL_REVIEWS:
-          return {
-            ...state,
-            reviews: payload
-          };
-          case ADD_REVIEW:
+      };
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        movies: payload
+      };
+    case COMPARE_SELEC:
+      return {
+        ...state,
+        compare: payload
+      };
+    case SEARCH_COMPARE:
+      return {
+        ...state,
+        busqueda1: payload
+      };
+    case SEARCH_COMPARE2:
+      return {
+        ...state,
+        busqueda2: payload
+      };
+    case GET_ALL_REVIEWS:
+      return {
+        ...state,
+        reviews: payload
+      };
+    case ADD_REVIEW:
       return {
         ...state,
       };
-      case DELETE_REVIEWS:
-        return {
-          ...state,
-        };
-      case ADD_LIKES:
-        return {
-          ...state,
-        };
-      case GET_LIKES_COUNT:
-        return {
-          ...state,
-          like: payload
-        };
-          case GET_MOVIES_SOON:
+    case DELETE_REVIEWS:
+      return {
+        ...state,
+      };
+    case ADD_LIKES:
+      return {
+        ...state,
+      };
+    case GET_LIKES_COUNT:
+      return {
+        ...state,
+        like: payload
+      };
+    case GET_MOVIES_SOON:
       return {
         ...state,
         moviesSoon: payload
       };
-
-      case ALL_USERS:
+    case ALL_USERS:
       return {
         ...state,
         users: payload,
-        items:payload
+        items: payload
       };
-      case ALL_DIRECTOR:
+    case ALL_DIRECTOR:
       return {
         ...state,
         directors: payload
       };
-
-      case ALL_ACTOR:
+    case ALL_ACTOR:
       return {
         ...state,
         actors: payload
       };
-
-      case FILTER_DIRECTOR:
+    case FILTER_DIRECTOR:
       return {
         ...state,
         movies: payload
       };
-      case USER_PREMIUM:
+    case USER_PREMIUM:
       return {
         ...state,
       };
-      case RESET_DETAIL:
-          return{
-            ...state,
-            detail: []
-          };
-          case ORDER_POPULARITY:
+    case RESET_DETAIL:
+      return {
+        ...state,
+        detail: []
+      };
+    case ORDER_POPULARITY:
       return {
         ...state,
         movies: payload
       };
-      case ORDER_RATING:
+    case ORDER_RATING:
       return {
         ...state,
         movies: payload
       };
-      case POST_USER_LOG:
+    case POST_USER_LOG:
       return {
         ...state,
-        idToken:payload
+        idToken: payload
       }
-      case GET_USER_INFO:
+    case GET_USER_INFO:
       return {
         ...state,
-        user:payload
+        user: payload
       }
-      case ALL_USERS:
+    case ALL_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case ACTIVE_USERS:
+    case ACTIVE_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case ALL_MOVIES:
+    case ALL_MOVIES:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case AVAILABLE_USERS:
+    case AVAILABLE_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case BANNED_USERS:
+    case BANNED_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case PREMIUM_USERS:
+    case PREMIUM_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-      case FREE_USERS:
+    case FREE_USERS:
       return {
         ...state,
-        items:payload
+        items: payload
       };
-
-      case CREATE_LIST:
-        return{
-          ...state
-        }
-      case ADD_MOVIE_TO_LIST:
-          return{
-            ...state,
-          }
-          case REMOVE_MOVIE_TO_LIST:
-        return{
-            ...state,
-          }
-          case GET_LIST:
-        return{
-            ...state,
-            list: payload,
-            items:payload
-          }
-          case LIST_DETAILS:
-        return{
-            ...state,
-            listDetails: payload
-          }
-          case DELETE_LIST:
-            return{
-              ...state
-            }
-          case RESET_SEARCH:
-          return{
-            ...state,
-            busqueda1: [],
-            busqueda2: [],
-          };
-          case EDIT_LIST:
-            return{
-            ...state
-            };
-          case ALL_REVIEWS:
-            return{
-            ...state,
-            items:payload}
-          case GET_ACTIVITY:
-            return{
-              ...state,
-              activity: payload
-            }
-          case GET_OTHER_USER_INFO:
-            return{
-              ...state,
-              otherUserInfo: payload
-            }
-          case UN_FOLLOW_LIST:
-            return{
-              ...state
-            }
-          case FOLLOW_LIST:
-            return{
-              ...state
-            }
-          case FOLLOWED_LIST:
-            return{
-              ...state,
-              listFollowed: payload
-            }
-          case GET_USER_LISTS:
-            return{
-              ...state,
-              userLists: payload
-            }
-          case GET_ALL_REVIEWS_V2:
-            return{
-              ...state,
-              reviewsV2: payload
-              }
+    case CREATE_LIST:
+      return {
+        ...state
+      }
+    case ADD_MOVIE_TO_LIST:
+      return {
+        ...state,
+      }
+    case REMOVE_MOVIE_TO_LIST:
+      return {
+        ...state,
+      }
+    case GET_LIST:
+      return {
+        ...state,
+        list: payload,
+        items: payload
+      }
+    case LIST_DETAILS:
+      return {
+        ...state,
+        listDetails: payload
+      }
+    case DELETE_LIST:
+      return {
+        ...state
+      }
+    case RESET_SEARCH:
+      return {
+        ...state,
+        busqueda1: [],
+        busqueda2: [],
+      };
+    case EDIT_LIST:
+      return {
+        ...state
+      };
+    case ALL_REVIEWS:
+      return {
+        ...state,
+        items: payload
+      }
+    case GET_ACTIVITY:
+      return {
+        ...state,
+        activity: payload
+      }
+    case GET_OTHER_USER_INFO:
+      return {
+        ...state,
+        otherUserInfo: payload
+      }
+    case UN_FOLLOW_LIST:
+      return {
+        ...state
+      }
+    case FOLLOW_LIST:
+      return {
+        ...state
+      }
+    case FOLLOWED_LIST:
+      return {
+        ...state,
+        listFollowed: payload
+      }
+    case GET_USER_LISTS:
+      return {
+        ...state,
+        userLists: payload
+      }
+    case GET_ALL_REVIEWS_V2:
+      return {
+        ...state,
+        reviewsV2: payload
+      }
     default:
       return state;
   }
 }
-

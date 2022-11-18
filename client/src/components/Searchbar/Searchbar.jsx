@@ -1,37 +1,33 @@
 import React from 'react';
 import { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Button from '@mui/material/Button'
 import Input from '@mui/material/Input';
 import './searchbar.css'
-import {searchByName } from '../../redux/actions';
+import { searchByName } from '../../redux/actions';
 
-export default function Searchbar(){
+export default function Searchbar() {
     const dispatch = useDispatch()
     const [input, setInput] = useState('')
 
-    function handleChange(e){
+    function handleChange(e) {
         e.preventDefault()
         setInput(e.target.value)
-     }
-    
+    }
 
-    const handleClick = (e) =>{
+    const handleClick = (e) => {
         e.preventDefault()
-       dispatch(searchByName(input))
-        }
-    
+        dispatch(searchByName(input))
+    }
 
-
-    return(
+    return (
         <div className='search'>
             <label>
-            <Input className='buscar' placeholder='movie...' type="text" value={input} onChange={(e) => handleChange(e)} />
-            <Button onClick={e => handleClick(e)} className='botonBusqueda' variant="contained" color="rojo">
-              Search
-            </Button>
+                <Input className='buscar' placeholder='movie...' type="text" value={input} onChange={(e) => handleChange(e)} />
+                <Button onClick={e => handleClick(e)} className='botonBusqueda' variant="contained" color="rojo">
+                    Search
+                </Button>
             </label>
         </div>
     )
 }
-

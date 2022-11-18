@@ -1,91 +1,85 @@
-.picture{
-    border-radius: 50%;
-    margin-top: 10px;
+.picture {
+  border-radius: 50%;
+  margin-top: 10px;
 }
 
-.register{
-    color: black;
-    text-decoration:none;
+.register {
+  color: black;
+  text-decoration: none;
 }
 
-.register:hover{
-    color: black;
-    text-decoration:none;
+.register:hover {
+  color: black;
+  text-decoration: none;
 }
 
-#nav-dropdown{
-  position:relative;
-    color: rgb(255, 255, 255);
-    padding: 10px ;
-    background-color: #f13528;
-    border-color: rgb(165, 164, 164);
-    height: 34px;
-    width: 34px;
-    padding: 5px; 
-    top: 0px;
-    left: 0px;
+#nav-dropdown {
+  position: relative;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  background-color: #f13528;
+  border-color: rgb(165, 164, 164);
+  height: 34px;
+  width: 34px;
+  padding: 5px;
+  top: 0px;
+  left: 0px;
 }
 
-#nav-dropdown:active{
-        background-color: red;
-        
-}
-.botones2{
-    bottom:125px;
-    left:55px;
+#nav-dropdown:active {
+  background-color: red;
 }
 
-
-
-.drop{
-    position: relative;
-    background: 10px 30px 0px;
+.botones2 {
+  bottom: 125px;
+  left: 55px;
 }
 
-
-
-.botones4{
-    text-decoration: none;
+.drop {
+  position: relative;
+  background: 10px 30px 0px;
 }
 
-.botonesDiv{
-    position: absolute;
-text-align: center;
-left: 50%;
-top: 7%;
+.botones4 {
+  text-decoration: none;
+}
 
+.botonesDiv {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 7%;
 }
 
 .my-modal .modal-content {
-    width: 122.4%;
-  }
+  width: 122.4%;
+}
 
-  .tituloModal{
-    position: relative;
-    left: 34%
-  }
+.tituloModal {
+  position: relative;
+  left: 34%
+}
 
+.botonRegisterLogin {
+  text-decoration: none;
+  color: aliceblue;
+}
 
-  .botonRegisterLogin{
-    text-decoration: none;
-    color: aliceblue;
-  }
+.botonRegisterLogin:hover {
+  text-decoration: none;
+  color: aliceblue;
+}
 
-  .botonRegisterLogin:hover{
-    text-decoration: none;
-    color: aliceblue;
-  }
+.botones {
+  text-decoration: none;
+}
 
-.botones{
-    text-decoration: none;
-  }
-
-.deslogaut{
+.deslogaut {
   position: relative;
   text-decoration: none;
 }
 
-.ll{
+.ll {
   text-decoration: none;
   color: white;
 }

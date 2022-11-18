@@ -57,7 +57,7 @@ export default function Chart() {
                 ...theme.typography.body1,
               }}
             >
-             Users
+              Users
             </Label>
           </YAxis>
           <Line

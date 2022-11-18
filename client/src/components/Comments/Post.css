@@ -8,24 +8,28 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 .post__image {
     max-width: 500px;
 }
+
 .post__text {
- margin: 20px 0px 20px 20px
+    margin: 20px 0px 20px 20px
 }
 
 .post__text {
     font-weight: normal;
     padding: 5px;
 }
+
 .post__form {
     position: absolute;
     display: flex;
     margin-top: 20px;
     left: 35%;
-    
+
 }
+
 .post__input {
     flex: 1;
     border: 1px solid #f44336 !important;
@@ -33,13 +37,12 @@
     border-radius: 5px;
 }
 
-
-.avatar{
+.avatar {
     top: 9%;
     left: -3%;
 }
 
-.post__comments{
+.post__comments {
     top: 100px;
     width: 665px;
     max-width: 665px;
@@ -48,14 +51,12 @@
     color: #f44336;
 }
 
-.pruebita{
+.pruebita {
     color: white;
 }
 
-
-
-.iconicos{
+.iconicos {
     position: absolute;
-right: 0%;
-top: 65%;
+    right: 0%;
+    top: 65%;
 }

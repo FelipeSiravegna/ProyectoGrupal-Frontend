@@ -1,19 +1,16 @@
-.carrousel{
- width:100%; 
-height:175px;
-position: absolute;
+.carrousel {
+  width: 100%;
+  height: 175px;
+  position: absolute;
 }
 
-.carousel-item{
+.carousel-item {
   align-items: center;
-    height: 300px;
-    width: 100%;
-  }
+  height: 300px;
+  width: 100%;
+}
 
-  .carousel-item > img {
-    height: 100%;
+.carousel-item>img {
+  height: 100%;
   object-fit: center center
-  
-
-
-  }
+}

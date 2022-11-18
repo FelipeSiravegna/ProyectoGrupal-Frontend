@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './FilmCard.css'
 
-const FilmCard = ({ name, img, id, rating }) => {
+const FilmCard = ({ img, id }) => {
     return (
         <Link to={`/filmdetails/${id}`}>
             <div className='Cardback'>

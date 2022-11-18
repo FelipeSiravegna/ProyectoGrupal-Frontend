@@ -11,7 +11,7 @@ export default function Activity() {
 
     const loggedUser = parseInt(localStorage.id);
     const dispatch = useDispatch();
-    
+
     const showActivity = () => {
         console.log(activity);
     }
@@ -22,10 +22,10 @@ export default function Activity() {
     }, [])
 
 
-    if(dbUser !== null){
+    if (dbUser !== null) {
         return (
             <div className={s.fondo}>
-                <NavbarP/>
+                <NavbarP />
                 {
                     activity.length > 0
                         ?
@@ -34,12 +34,12 @@ export default function Activity() {
                             <div className={s.container}>
                                 <div className={s.allP}>
                                     {activity.map(act => {
-                                        if(act.type === "review"){
+                                        if (act.type === "review") {
                                             return <pre className={s.activityP}>✏<NavLink to={`/userProfile/${act.userId}`} className={s.textDecorationName}>{act.userName}</NavLink> reviewed the movie <NavLink to={`/filmdetails/${act.movieId}`} className={s.textDecorationMovie}>{act.movieName}</NavLink>✏</pre>
                                         } else {
                                             return <pre className={s.activityP}>📃<NavLink to={`/userProfile/${act.userId}`} className={s.textDecorationName}>{act.userName}</NavLink> created the list called <NavLink to={`/list/${act.id}`} className={s.textDecorationList}>{act.name}</NavLink>📃</pre>
                                         }
-                                        
+
                                     })}
                                 </div>
                             </div>

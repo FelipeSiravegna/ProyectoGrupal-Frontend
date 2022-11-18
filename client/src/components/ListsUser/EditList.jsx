@@ -8,9 +8,9 @@ import { editList, getList, deleteList } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 import EditIcon from '@mui/icons-material/Edit';
 
-const EditList = ({id}) => {
+const EditList = ({ id }) => {
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const [show, setShow] = useState(false);
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -20,32 +20,29 @@ const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getList())
-}, [show, name, description])
+  }, [show, name, description])
 
+  function creacion(e) {
+    e.preventDefault()
+    if (name.length > 30) return document.getElementById('errores').innerHTML = `the maximum number of characters allowed is 30`
+    dispatch(editList(id, {
+      name: name,
+      description: description
+    }))
+    setShow(false)
+  }
 
-function creacion (e){
-e.preventDefault()
-if(name.length > 30) return document.getElementById('errores').innerHTML=`the maximum number of characters allowed is 30`
-dispatch(editList(id,{
-    name: name,
-    description: description
-}))
-setShow(false)
-}
-
-function eliminacion (e) {
-  e.preventDefault
-  dispatch(deleteList(id))
-  setShow(false)
-}
-
+  function eliminacion(e) {
+    e.preventDefault
+    dispatch(deleteList(id))
+    setShow(false)
+  }
 
   return (
     <>
       <Button variant="contained" color='rojo' onClick={handleShow}>
-      <EditIcon sx={{ fontSize: 15 }}/>
+        <EditIcon sx={{ fontSize: 15 }} />
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit List</Modal.Title>
@@ -67,19 +64,19 @@ function eliminacion (e) {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} value={description} onChange={e => setDescription(e.target.value)}/>
+              <Form.Control as="textarea" rows={3} value={description} onChange={e => setDescription(e.target.value)} />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button color="rojo" variant='text'  className='deletion' onClick={eliminacion}>
-          Delete List
+          <Button color="rojo" variant='text' className='deletion' onClick={eliminacion}>
+            Delete List
           </Button>
           <Button color='rojo' variant='outlined' onClick={handleClose}>
             Close
           </Button>
           <Button color="rojo" variant='contained' onClick={creacion}>
-          Save Changes
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
@@ -87,6 +84,4 @@ function eliminacion (e) {
   );
 }
 
-        
-  
 export default EditList
