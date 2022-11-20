@@ -31,14 +31,12 @@ const Home = () => {
   const token = useSelector((state) => state.idToken)
   const userDB = useSelector((state) => state.user)
 
+  
   useEffect(() => {
     dispatch(getUserInfo())
   }, [token])
 
-  useEffect(() => {
-    console.log(userDB)
-  }, [userDB])
-
+  
   useEffect(() => {
 
     dispatch(getAllMovies(pagina || 1))

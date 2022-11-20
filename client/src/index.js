@@ -38,6 +38,9 @@ const theme = createTheme({
     verde: {
       main: green[500],
     },
+    negro: {
+      main: grey[900],
+    },
   },
 });
 

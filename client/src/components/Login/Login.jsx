@@ -59,6 +59,11 @@ export default function Login() {
             </div>
             :
             <div className='botonesDiv'>
+              <Link className='botones4' to={'/community'}>
+                <Button variant="text" color="rojo" className="botones" >
+                  Members
+                </Button>
+              </Link>
               <Link className='botones4' to={'/comingsoon'}>
                 <Button variant="text" color="azul">
                   Coming soon
@@ -84,7 +89,7 @@ export default function Login() {
               </Modal>
               <Link className='botones4' to={'/lists'}>
                 <Button variant="text" color="rojo" className="botones" >
-                  List
+                  Lists
                 </Button>
               </Link>
               <Link className='botones4' to={`/activity/${userDB.id}`}>
