@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 
 export default function UserProfile() {
     const url = window.location.href;
-    let profileId = url[url.length - 1];
-    profileId = parseInt(profileId);
+    let profileId = url.split('/UserProfile/');
+    profileId = parseInt(profileId[1]);
 
     const dispatch = useDispatch()
     let peliculas = useSelector(state => (state.movies))
