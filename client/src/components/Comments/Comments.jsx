@@ -15,12 +15,13 @@ import { useDispatch } from 'react-redux';
 import { getAllReviews, deleteReviews, addLikes } from '../../redux/actions';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Comments({ content, name, img, id, idUser, prueba, like, userid }) {
   const dispatch = useDispatch()
 
   const [estado, setEstado] = useState('')
-  console.log(userid, idUser)
+
 
   let userFind = like.find(e => e.userId === userid && e.like === true)
   let likeFilter = like.filter(e => e.like === true)
@@ -55,9 +56,11 @@ function Comments({ content, name, img, id, idUser, prueba, like, userid }) {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
+        <Link to={`/UserProfile/${idUser}`}>
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src={img} />
         </ListItemAvatar>
+        </Link>
         <ListItemText
           primary={name}
           secondary={

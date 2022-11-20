@@ -50,7 +50,8 @@ import {
   GET_USER_LISTS,
   GET_ALL_REVIEWS_V2,
   FOLLOWED_LIST,
-  ALL_MOVIES
+  ALL_MOVIES,
+  GET_ALL_USERS,
 } from "../actions";
 
 const initialState = {
@@ -80,6 +81,7 @@ const initialState = {
   userLists: [],
   reviewsV2: [],
   listFollowed: [],
+  usuarios: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -342,6 +344,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         reviewsV2: payload
       }
+      case GET_ALL_USERS:
+        return {
+          ...state,
+          usuarios: payload
+        }
     default:
       return state;
   }

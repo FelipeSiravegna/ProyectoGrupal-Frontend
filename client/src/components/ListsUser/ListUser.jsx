@@ -22,6 +22,7 @@ const ListUser = () => {
   const listas = useSelector(state => (state.list))
   let usuario = listas.filter(a => `${a.userId}` === localStorage.id)
 
+
   const [smShow, setSmShow] = useState(false);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const ListUser = () => {
                     </div>
                     <h className='costado'>
                       <Badge bg="danger" pill>
-                        {a.moviesIdList ? a.moviesIdList.length : 0} movies
+                        {a.movies? a.movies.length : 0} movies
                       </Badge>
                       <div className='botonEditor'>
                         <EditList id={a.id} />

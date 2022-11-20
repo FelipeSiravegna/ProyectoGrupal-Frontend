@@ -55,6 +55,8 @@ export const GET_OTHER_USER_INFO = 'GET_OTHER_USER_INFO';
 export const FOLLOWED_LIST = 'FOLLOWED_LIST'
 export const GET_USER_LISTS = 'GET_USER_LISTS';
 export const GET_ALL_REVIEWS_V2 = 'GET_ALL_REVIEWS_V2';
+export const GET_ALL_USERS = 'GET_ALL_USERS'
+
 
 //peliculas
 export const getAllMovies = (name = 1) => {
@@ -775,6 +777,20 @@ export const getAllReviews2 = () => {
             return dispatch({
                 type: GET_ALL_REVIEWS_V2,
                 payload: reviews.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const getAllUsers = (id) => {
+    return async function (dispatch) {
+        try {
+            let info = await axios.get(`/allusers`);
+            return dispatch({
+                type: GET_ALL_USERS,
+                payload: info.data
             })
         } catch (error) {
             console.log(error);
