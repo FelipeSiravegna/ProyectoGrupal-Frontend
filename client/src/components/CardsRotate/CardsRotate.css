@@ -1,6 +1,6 @@
 .elbody{
     width: 155px;
-    height: 250px;
+    height: 210px;
 
 }
 
@@ -72,3 +72,7 @@
 .redes{
     top: 40%;
 }
+
+.fsd{
+    text-decoration: underline;
+} 

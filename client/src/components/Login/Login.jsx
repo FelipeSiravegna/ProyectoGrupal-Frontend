@@ -143,6 +143,14 @@ export default function Login() {
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item className='drop'>
+                  
+                    <Link className='botones4' to="/developers">
+                      <Button variant="text" color="rojo" className="botones">
+                        Developers
+                      </Button>
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item className='drop'>
                     <Link className='botones4' to="/">
                       <Button variant="text" color="rojo" className="botones" onClick={() => deslogaut()}>
                         Logout

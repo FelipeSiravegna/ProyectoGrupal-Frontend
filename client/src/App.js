@@ -17,7 +17,7 @@ import AccountsEdit from './components/UserProfile/AccountsEdit'
 import Activity from './components/Activity/Activity.jsx';
 import Wachlist from './components/WatchList/WatchList'
 import Form from './components/Form/Form.jsx';
-import Nosotros from './components/Nosotros/Nosotros';
+import Nosotros from './components/Nosotros/Nosotros.jsx';
 import Community from './components/Community/Community';
 
 dotenv.config();
@@ -41,6 +41,7 @@ const App = () => {
       <Route exact path='/activity/:loggedUserId' element={<Activity />} />
       <Route exact path='/wachlist' element={<Wachlist />} />
       <Route exact path='/createMovie' element={<Form />} />
+      <Route exact path='/developers' element={<Nosotros />} />
     </Routes>
   );
 }
