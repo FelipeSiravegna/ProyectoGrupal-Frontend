@@ -5,3 +5,15 @@ text-shadow: 1px 1px 3px #f44336;
 position: relative;
 text-align: center;
 }
+
+.cartitas{
+    position: absolute;
+    display: grid;
+    left: 15%;
+    top: 30%;
+    grid-row-gap: 50px;
+    grid-column-gap: 50px;
+    color: white;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0px;
+}

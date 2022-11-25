@@ -7,8 +7,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import { Link } from 'react-router-dom';
 
-const CardsRotate = ({ imagen, name, date }) => {
+const CardsRotate = ({ imagen, name, linke, git }) => {
 
     return (
         <div>
@@ -19,20 +20,23 @@ const CardsRotate = ({ imagen, name, date }) => {
                 <div className='trasero'>
                     <h1 className='nombreMio'>{name}</h1>
                         <br></br>
-                        <p>Front-end</p>
+                        <p className='fsd'>FULL STACK DEVELOPER</p>
 
 
                         <div className='redes'>
                         <Stack direction="row" spacing={1}>
+
+                            <a href={linke}>
                             <IconButton aria-label="delete">
                             <LinkedInIcon color='azul'/>
                             </IconButton>
-                            <IconButton color="secondary" aria-label="add an alarm">
-                                <InstagramIcon />
-                                </IconButton>
+                            </a>
+
+                            <a href={git}>
                                 <IconButton color="negro" aria-label="add to shopping cart">
                                     <GitHubIcon color='negro' />
                                     </IconButton>
+                                    </a>
                             </Stack>
                             </div>
                 </div>
